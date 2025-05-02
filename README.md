@@ -1,5 +1,6 @@
 # PDNode 600 / PDNode 600 Pro  
-**High-Performance USB PD Power Distribution Unit – 10" Rackmount**
+## High-Performance USB PD Power Distribution Unit – 10" Rackmount
+
 
 ## Description  
 The PDNode 600 is a professional-grade, 600W USB Power Delivery Unit designed specifically for compact 10-inch rack systems, targeting embedded developers, homelab enthusiasts, test benches, and smart infrastructure. It delivers precision-regulated, high-current power across 8x independent USB-C PD outputs and 4x fixed 5V USB-A outputs, from a standard 230V AC input.
