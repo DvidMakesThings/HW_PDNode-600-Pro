@@ -13151,7 +13151,7 @@ Updated by Ella Wu 2023-02-17&lt;br&gt;
 <part name="GND209" library="ds_passive" deviceset="GND" device=""/>
 <part name="R208" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="10K"/>
 <part name="+3V24" library="ds_passive" deviceset="+3V3" device=""/>
-<part name="S1" library="Wurth_Switch_WS-TASV" library_urn="urn:adsk.eagle:library:18304196" deviceset="430182050816" device="" package3d_urn="urn:adsk.eagle:package:18304299/2" value="430182050816"/>
+<part name="RESET" library="Wurth_Switch_WS-TASV" library_urn="urn:adsk.eagle:library:18304196" deviceset="430182050816" device="" package3d_urn="urn:adsk.eagle:package:18304299/2" value="430182050816"/>
 <part name="IC27" library="ds_ic_memory" deviceset="W25Q128JV" device="P" package3d_urn="urn:adsk.eagle:package:45369668/1" value="W25Q128JVPIQ"/>
 <part name="R209" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="DNI"/>
 <part name="GND210" library="ds_passive" deviceset="GND" device=""/>
@@ -13169,7 +13169,7 @@ Updated by Ella Wu 2023-02-17&lt;br&gt;
 <part name="R211" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="1K"/>
 <part name="GND215" library="ds_passive" deviceset="GND" device=""/>
 <part name="X1" library="Wurth_Quartz Crystals &amp; Oscillators_WE-XTAL" library_urn="urn:adsk.eagle:library:14284023" deviceset="WE-XTAL_CFPX-180" device="" package3d_urn="urn:adsk.eagle:package:13029090/2" technology="_830055295" value="12MHz"/>
-<part name="S2" library="Wurth_Switch_WS-TASV" library_urn="urn:adsk.eagle:library:18304196" deviceset="430182050816" device="" package3d_urn="urn:adsk.eagle:package:18304299/2" value="430182050816"/>
+<part name="BOOT" library="Wurth_Switch_WS-TASV" library_urn="urn:adsk.eagle:library:18304196" deviceset="430182050816" device="" package3d_urn="urn:adsk.eagle:package:18304299/2" value="430182050816"/>
 <part name="REF1" library="ds_ic_vreg" deviceset="LM4040BXX" device="" package3d_urn="urn:adsk.eagle:package:46684430/3"/>
 <part name="GND216" library="ds_passive" deviceset="GND" device=""/>
 <part name="R212" library="ds_passive" deviceset="R" device="0402" package3d_urn="urn:adsk.eagle:package:46683744/2" value="4.7K"/>
@@ -13449,8 +13449,8 @@ Updated by Ella Wu 2023-02-17&lt;br&gt;
 <part name="AGND14" library="ds_passive" deviceset="AGND" device=""/>
 <part name="AGND15" library="ds_passive" deviceset="AGND" device=""/>
 <part name="+24VC1" library="ds_passive" deviceset="+24VC" device=""/>
-<part name="J1" library="Wurth_Connectors_WR-USB" library_urn="urn:adsk.eagle:library:16513831" deviceset="61400826021" device="" package3d_urn="urn:adsk.eagle:package:16513910/3" value=" 61400826021 "/>
-<part name="J2" library="Wurth_Connectors_WR-USB" library_urn="urn:adsk.eagle:library:16513831" deviceset="61400826021" device="" package3d_urn="urn:adsk.eagle:package:16513910/3" value=" 61400826021 "/>
+<part name="USBA_1-2" library="Wurth_Connectors_WR-USB" library_urn="urn:adsk.eagle:library:16513831" deviceset="61400826021" device="" package3d_urn="urn:adsk.eagle:package:16513910/3" value=" 61400826021 "/>
+<part name="USBA_3-4" library="Wurth_Connectors_WR-USB" library_urn="urn:adsk.eagle:library:16513831" deviceset="61400826021" device="" package3d_urn="urn:adsk.eagle:package:16513910/3" value=" 61400826021 "/>
 <part name="+3V78" library="ds_passive" deviceset="+3V3" device=""/>
 <part name="+3V79" library="ds_passive" deviceset="+3V3" device=""/>
 <part name="+3V80" library="ds_passive" deviceset="+3V3" device=""/>
@@ -14119,14 +14119,14 @@ Updated by Ella Wu 2023-02-17&lt;br&gt;
 <part name="+24VA26" library="ds_passive" deviceset="+24VB" device=""/>
 <part name="+24VA27" library="ds_passive" deviceset="+24VB" device=""/>
 <part name="+24VA28" library="ds_passive" deviceset="+24VB" device=""/>
-<part name="J3" library="ds_con" deviceset="632722100213" device="" package3d_urn="urn:adsk.eagle:package:40783099/3" value="632722100213"/>
-<part name="J4" library="ds_con" deviceset="632722100213" device="" package3d_urn="urn:adsk.eagle:package:40783099/3" value="632722100213"/>
-<part name="J5" library="ds_con" deviceset="632722100213" device="" package3d_urn="urn:adsk.eagle:package:40783099/3" value="632722100213"/>
-<part name="J6" library="ds_con" deviceset="632722100213" device="" package3d_urn="urn:adsk.eagle:package:40783099/3" value="632722100213"/>
-<part name="J7" library="ds_con" deviceset="632722100213" device="" package3d_urn="urn:adsk.eagle:package:40783099/3" value="632722100213"/>
-<part name="J9" library="ds_con" deviceset="632722100213" device="" package3d_urn="urn:adsk.eagle:package:40783099/3" value="632722100213"/>
-<part name="J10" library="ds_con" deviceset="632722100213" device="" package3d_urn="urn:adsk.eagle:package:40783099/3" value="632722100213"/>
-<part name="J11" library="ds_con" deviceset="632722100213" device="" package3d_urn="urn:adsk.eagle:package:40783099/3" value="632722100213"/>
+<part name="PORT2" library="ds_con" deviceset="632722100213" device="" package3d_urn="urn:adsk.eagle:package:40783099/3" value="632722100213"/>
+<part name="PORT1" library="ds_con" deviceset="632722100213" device="" package3d_urn="urn:adsk.eagle:package:40783099/3" value="632722100213"/>
+<part name="PORT3" library="ds_con" deviceset="632722100213" device="" package3d_urn="urn:adsk.eagle:package:40783099/3" value="632722100213"/>
+<part name="PORT4" library="ds_con" deviceset="632722100213" device="" package3d_urn="urn:adsk.eagle:package:40783099/3" value="632722100213"/>
+<part name="PORT5" library="ds_con" deviceset="632722100213" device="" package3d_urn="urn:adsk.eagle:package:40783099/3" value="632722100213"/>
+<part name="PORT6" library="ds_con" deviceset="632722100213" device="" package3d_urn="urn:adsk.eagle:package:40783099/3" value="632722100213"/>
+<part name="PORT7" library="ds_con" deviceset="632722100213" device="" package3d_urn="urn:adsk.eagle:package:40783099/3" value="632722100213"/>
+<part name="PORT8" library="ds_con" deviceset="632722100213" device="" package3d_urn="urn:adsk.eagle:package:40783099/3" value="632722100213"/>
 <part name="+24VB1" library="ds_passive" deviceset="+24VB" device=""/>
 <part name="+24VA2" library="ds_passive" deviceset="+24VA" device=""/>
 </parts>
@@ -14216,7 +14216,7 @@ RP2040 I2C1 BUS MAP:
 <instance part="+3V24" gate="G$1" x="99.06" y="236.22" smashed="yes">
 <attribute name="VALUE" x="99.06" y="238.76" size="1.778" layer="96" align="top-center"/>
 </instance>
-<instance part="S1" gate="G$1" x="81.28" y="226.06" smashed="yes" rot="R90">
+<instance part="RESET" gate="G$1" x="81.28" y="226.06" smashed="yes" rot="R90">
 <attribute name="NAME" x="78.74" y="231.902" size="1.778" layer="95" align="bottom-center"/>
 <attribute name="VALUE" x="81.28" y="215.9" size="1.778" layer="96" rot="R180" align="bottom-center"/>
 </instance>
@@ -14278,7 +14278,7 @@ RP2040 I2C1 BUS MAP:
 <attribute name="NAME" x="30.48" y="41.402" size="1.778" layer="95" align="bottom-center"/>
 <attribute name="VALUE" x="26.67" y="38.862" size="1.778" layer="96"/>
 </instance>
-<instance part="S2" gate="G$1" x="152.4" y="50.8" smashed="yes" rot="R90">
+<instance part="BOOT" gate="G$1" x="152.4" y="50.8" smashed="yes" rot="R90">
 <attribute name="NAME" x="149.86" y="56.642" size="1.778" layer="95" align="bottom-center"/>
 <attribute name="VALUE" x="147.32" y="40.64" size="1.778" layer="96" rot="R180" align="bottom-center"/>
 </instance>
@@ -14663,10 +14663,10 @@ RP2040 I2C1 BUS MAP:
 <segment>
 <wire x1="71.12" y1="218.44" x2="71.12" y2="213.36" width="0.1524" layer="91"/>
 <pinref part="GND209" gate="1" pin="GND"/>
-<pinref part="S1" gate="G$1" pin="1"/>
+<pinref part="RESET" gate="G$1" pin="1"/>
 <wire x1="76.2" y1="220.98" x2="76.2" y2="218.44" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="218.44" x2="71.12" y2="218.44" width="0.1524" layer="91"/>
-<pinref part="S1" gate="G$1" pin="3"/>
+<pinref part="RESET" gate="G$1" pin="3"/>
 <wire x1="76.2" y1="231.14" x2="76.2" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="233.68" x2="71.12" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="71.12" y1="233.68" x2="71.12" y2="218.44" width="0.1524" layer="91"/>
@@ -14686,10 +14686,10 @@ RP2040 I2C1 BUS MAP:
 <segment>
 <wire x1="160.02" y1="43.18" x2="160.02" y2="40.64" width="0.1524" layer="91"/>
 <pinref part="GND212" gate="1" pin="GND"/>
-<pinref part="S2" gate="G$1" pin="2"/>
+<pinref part="BOOT" gate="G$1" pin="2"/>
 <wire x1="154.94" y1="45.72" x2="154.94" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="154.94" y1="43.18" x2="160.02" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="S2" gate="G$1" pin="4"/>
+<pinref part="BOOT" gate="G$1" pin="4"/>
 <wire x1="154.94" y1="55.88" x2="154.94" y2="58.42" width="0.1524" layer="91"/>
 <wire x1="154.94" y1="58.42" x2="160.02" y2="58.42" width="0.1524" layer="91"/>
 <wire x1="160.02" y1="58.42" x2="160.02" y2="43.18" width="0.1524" layer="91"/>
@@ -15178,9 +15178,9 @@ RP2040 I2C1 BUS MAP:
 <junction x="99.06" y="218.44"/>
 <pinref part="R208" gate="G$1" pin="2"/>
 <label x="102.87" y="218.44" size="1.778" layer="95"/>
-<pinref part="S1" gate="G$1" pin="2"/>
+<pinref part="RESET" gate="G$1" pin="2"/>
 <wire x1="83.82" y1="220.98" x2="83.82" y2="218.44" width="0.1524" layer="91"/>
-<pinref part="S1" gate="G$1" pin="4"/>
+<pinref part="RESET" gate="G$1" pin="4"/>
 <wire x1="83.82" y1="231.14" x2="83.82" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="83.82" y1="233.68" x2="88.9" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="233.68" x2="88.9" y2="218.44" width="0.1524" layer="91"/>
@@ -15196,10 +15196,10 @@ RP2040 I2C1 BUS MAP:
 <segment>
 <label x="134.62" y="43.18" size="1.27" layer="95" rot="R180" xref="yes"/>
 <wire x1="147.32" y1="43.18" x2="142.24" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="S2" gate="G$1" pin="1"/>
+<pinref part="BOOT" gate="G$1" pin="1"/>
 <wire x1="142.24" y1="43.18" x2="134.62" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="43.18" x2="147.32" y2="45.72" width="0.1524" layer="91"/>
-<pinref part="S2" gate="G$1" pin="3"/>
+<pinref part="BOOT" gate="G$1" pin="3"/>
 <wire x1="147.32" y1="55.88" x2="147.32" y2="58.42" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="58.42" x2="142.24" y2="58.42" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="58.42" x2="142.24" y2="43.18" width="0.1524" layer="91"/>
@@ -18610,25 +18610,25 @@ For 3.3V VTG (VOUT = 3.3V):
 <instance part="+3V77" gate="G$1" x="210.82" y="215.9" smashed="yes" rot="R90">
 <attribute name="VALUE" x="208.28" y="215.9" size="1.778" layer="96" rot="R180" align="top-center"/>
 </instance>
-<instance part="J1" gate="USBA" x="177.8" y="218.44" smashed="yes">
+<instance part="USBA_1-2" gate="USBA" x="177.8" y="218.44" smashed="yes">
 <attribute name="NAME" x="177.8" y="224.282" size="1.778" layer="95" align="bottom-center"/>
 <attribute name="VALUE" x="177.8" y="208.28" size="1.778" layer="96" align="bottom-center"/>
 <attribute name="NAME" x="177.8" y="224.282" size="1.778" layer="95" align="bottom-center"/>
 <attribute name="VALUE" x="177.8" y="208.28" size="1.778" layer="96" align="bottom-center"/>
 </instance>
-<instance part="J1" gate="USBB" x="360.68" y="218.44" smashed="yes">
+<instance part="USBA_1-2" gate="USBB" x="360.68" y="218.44" smashed="yes">
 <attribute name="NAME" x="360.68" y="224.282" size="1.778" layer="95" align="bottom-center"/>
 <attribute name="VALUE" x="360.68" y="208.28" size="1.778" layer="96" align="bottom-center"/>
 <attribute name="NAME" x="360.68" y="224.282" size="1.778" layer="95" align="bottom-center"/>
 <attribute name="VALUE" x="360.68" y="208.28" size="1.778" layer="96" align="bottom-center"/>
 </instance>
-<instance part="J2" gate="USBA" x="177.8" y="137.16" smashed="yes">
+<instance part="USBA_3-4" gate="USBA" x="177.8" y="137.16" smashed="yes">
 <attribute name="NAME" x="177.8" y="143.002" size="1.778" layer="95" align="bottom-center"/>
 <attribute name="VALUE" x="177.8" y="127" size="1.778" layer="96" align="bottom-center"/>
 <attribute name="NAME" x="177.8" y="143.002" size="1.778" layer="95" align="bottom-center"/>
 <attribute name="VALUE" x="177.8" y="127" size="1.778" layer="96" align="bottom-center"/>
 </instance>
-<instance part="J2" gate="USBB" x="360.68" y="137.16" smashed="yes">
+<instance part="USBA_3-4" gate="USBB" x="360.68" y="137.16" smashed="yes">
 <attribute name="NAME" x="360.68" y="143.002" size="1.778" layer="95" align="bottom-center"/>
 <attribute name="VALUE" x="360.68" y="127" size="1.778" layer="96" align="bottom-center"/>
 <attribute name="NAME" x="360.68" y="143.002" size="1.778" layer="95" align="bottom-center"/>
@@ -18694,7 +18694,7 @@ For 3.3V VTG (VOUT = 3.3V):
 <pinref part="C1" gate="G$1" pin="1"/>
 <wire x1="149.86" y1="203.2" x2="147.32" y2="203.2" width="0.1524" layer="91"/>
 <junction x="147.32" y="203.2"/>
-<pinref part="J1" gate="USBA" pin="GND"/>
+<pinref part="USBA_1-2" gate="USBA" pin="GND"/>
 </segment>
 <segment>
 <pinref part="IC1" gate="G$1" pin="GND"/>
@@ -18731,7 +18731,7 @@ For 3.3V VTG (VOUT = 3.3V):
 <wire x1="350.52" y1="213.36" x2="330.2" y2="213.36" width="0.1524" layer="91"/>
 <pinref part="GND8" gate="1" pin="GND"/>
 <wire x1="330.2" y1="213.36" x2="330.2" y2="200.66" width="0.1524" layer="91"/>
-<pinref part="J1" gate="USBB" pin="GND"/>
+<pinref part="USBA_1-2" gate="USBB" pin="GND"/>
 </segment>
 <segment>
 <pinref part="IC2" gate="G$1" pin="GND"/>
@@ -18776,7 +18776,7 @@ For 3.3V VTG (VOUT = 3.3V):
 <pinref part="C11" gate="G$1" pin="1"/>
 <wire x1="149.86" y1="121.92" x2="147.32" y2="121.92" width="0.1524" layer="91"/>
 <junction x="147.32" y="121.92"/>
-<pinref part="J2" gate="USBA" pin="GND"/>
+<pinref part="USBA_3-4" gate="USBA" pin="GND"/>
 </segment>
 <segment>
 <pinref part="IC3" gate="G$1" pin="GND"/>
@@ -18813,7 +18813,7 @@ For 3.3V VTG (VOUT = 3.3V):
 <wire x1="350.52" y1="132.08" x2="330.2" y2="132.08" width="0.1524" layer="91"/>
 <pinref part="GND22" gate="1" pin="GND"/>
 <wire x1="330.2" y1="132.08" x2="330.2" y2="119.38" width="0.1524" layer="91"/>
-<pinref part="J2" gate="USBB" pin="GND"/>
+<pinref part="USBA_3-4" gate="USBB" pin="GND"/>
 </segment>
 <segment>
 <pinref part="D1" gate="G$1" pin="C"/>
@@ -18909,7 +18909,7 @@ For 3.3V VTG (VOUT = 3.3V):
 <wire x1="116.84" y1="220.98" x2="116.84" y2="223.52" width="0.1524" layer="91"/>
 <wire x1="167.64" y1="220.98" x2="129.54" y2="220.98" width="0.1524" layer="91"/>
 <junction x="129.54" y="220.98"/>
-<pinref part="J1" gate="USBA" pin="VBUS"/>
+<pinref part="USBA_1-2" gate="USBA" pin="VBUS"/>
 </segment>
 </net>
 <net name="OCP1" class="0">
@@ -18944,13 +18944,13 @@ For 3.3V VTG (VOUT = 3.3V):
 <pinref part="C1" gate="G$1" pin="2"/>
 <wire x1="160.02" y1="203.2" x2="165.1" y2="203.2" width="0.1524" layer="91"/>
 <junction x="165.1" y="203.2"/>
-<pinref part="J1" gate="USBA" pin="SHIELD"/>
+<pinref part="USBA_1-2" gate="USBA" pin="SHIELD"/>
 </segment>
 <segment>
 <wire x1="350.52" y1="210.82" x2="347.98" y2="210.82" width="0.1524" layer="91"/>
 <pinref part="AGND2" gate="M" pin="AGND"/>
 <wire x1="347.98" y1="210.82" x2="347.98" y2="200.66" width="0.1524" layer="91"/>
-<pinref part="J1" gate="USBB" pin="SHIELD"/>
+<pinref part="USBA_1-2" gate="USBB" pin="SHIELD"/>
 </segment>
 <segment>
 <wire x1="167.64" y1="129.54" x2="165.1" y2="129.54" width="0.1524" layer="91"/>
@@ -18964,13 +18964,13 @@ For 3.3V VTG (VOUT = 3.3V):
 <pinref part="C11" gate="G$1" pin="2"/>
 <wire x1="160.02" y1="121.92" x2="165.1" y2="121.92" width="0.1524" layer="91"/>
 <junction x="165.1" y="121.92"/>
-<pinref part="J2" gate="USBA" pin="SHIELD"/>
+<pinref part="USBA_3-4" gate="USBA" pin="SHIELD"/>
 </segment>
 <segment>
 <wire x1="350.52" y1="129.54" x2="347.98" y2="129.54" width="0.1524" layer="91"/>
 <pinref part="AGND4" gate="M" pin="AGND"/>
 <wire x1="347.98" y1="129.54" x2="347.98" y2="119.38" width="0.1524" layer="91"/>
-<pinref part="J2" gate="USBB" pin="SHIELD"/>
+<pinref part="USBA_3-4" gate="USBB" pin="SHIELD"/>
 </segment>
 </net>
 <net name="USBA1_EN" class="0">
@@ -19123,7 +19123,7 @@ For 3.3V VTG (VOUT = 3.3V):
 <wire x1="299.72" y1="220.98" x2="299.72" y2="223.52" width="0.1524" layer="91"/>
 <wire x1="350.52" y1="220.98" x2="312.42" y2="220.98" width="0.1524" layer="91"/>
 <junction x="312.42" y="220.98"/>
-<pinref part="J1" gate="USBB" pin="VBUS"/>
+<pinref part="USBA_1-2" gate="USBB" pin="VBUS"/>
 </segment>
 </net>
 <net name="VBUS_USBA3" class="0">
@@ -19147,7 +19147,7 @@ For 3.3V VTG (VOUT = 3.3V):
 <wire x1="116.84" y1="139.7" x2="116.84" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="167.64" y1="139.7" x2="129.54" y2="139.7" width="0.1524" layer="91"/>
 <junction x="129.54" y="139.7"/>
-<pinref part="J2" gate="USBA" pin="VBUS"/>
+<pinref part="USBA_3-4" gate="USBA" pin="VBUS"/>
 </segment>
 </net>
 <net name="VBUS_USBA4" class="0">
@@ -19171,7 +19171,7 @@ For 3.3V VTG (VOUT = 3.3V):
 <wire x1="299.72" y1="139.7" x2="299.72" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="350.52" y1="139.7" x2="312.42" y2="139.7" width="0.1524" layer="91"/>
 <junction x="312.42" y="139.7"/>
-<pinref part="J2" gate="USBB" pin="VBUS"/>
+<pinref part="USBA_3-4" gate="USBB" pin="VBUS"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -19737,7 +19737,7 @@ Cumulative Rbottom = 61.75kΩ
 <instance part="+24VA5" gate="G$1" x="50.8" y="172.72" smashed="yes" rot="R90">
 <attribute name="VALUE" x="43.18" y="172.72" size="1.778" layer="96" rot="R180" align="top-center"/>
 </instance>
-<instance part="J4" gate="G$1" x="350.52" y="162.56" smashed="yes" rot="MR0">
+<instance part="PORT1" gate="G$1" x="350.52" y="162.56" smashed="yes" rot="MR0">
 <attribute name="NAME" x="340.36" y="182.88" size="1.778" layer="95" rot="MR180"/>
 </instance>
 </instances>
@@ -19862,8 +19862,8 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="332.74" y1="129.54" x2="332.74" y2="127" width="0.1524" layer="91"/>
 <junction x="332.74" y="129.54"/>
 <pinref part="GND63" gate="1" pin="GND"/>
-<pinref part="J4" gate="G$1" pin="GND2"/>
-<pinref part="J4" gate="G$1" pin="GND1"/>
+<pinref part="PORT1" gate="G$1" pin="GND2"/>
+<pinref part="PORT1" gate="G$1" pin="GND1"/>
 <wire x1="335.28" y1="149.86" x2="332.74" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="332.74" y1="149.86" x2="332.74" y2="147.32" width="0.1524" layer="91"/>
 <junction x="332.74" y="147.32"/>
@@ -20090,7 +20090,7 @@ Cumulative Rbottom = 61.75kΩ
 <segment>
 <wire x1="335.28" y1="162.56" x2="327.66" y2="162.56" width="0.1524" layer="91"/>
 <label x="327.66" y="162.56" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J4" gate="G$1" pin="CC1"/>
+<pinref part="PORT1" gate="G$1" pin="CC1"/>
 </segment>
 </net>
 <net name="CC2_PORT1" class="0">
@@ -20102,7 +20102,7 @@ Cumulative Rbottom = 61.75kΩ
 <segment>
 <wire x1="335.28" y1="160.02" x2="327.66" y2="160.02" width="0.1524" layer="91"/>
 <label x="327.66" y="160.02" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J4" gate="G$1" pin="CC2"/>
+<pinref part="PORT1" gate="G$1" pin="CC2"/>
 </segment>
 </net>
 <net name="N$55" class="0">
@@ -20195,7 +20195,7 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="368.3" y1="129.54" x2="368.3" y2="127" width="0.1524" layer="91"/>
 <junction x="368.3" y="129.54"/>
 <pinref part="AGND6" gate="M" pin="AGND"/>
-<pinref part="J4" gate="G$1" pin="SHIELD1"/>
+<pinref part="PORT1" gate="G$1" pin="SHIELD1"/>
 </segment>
 </net>
 <net name="IN2_PORT1" class="0">
@@ -20208,8 +20208,8 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="327.66" y1="185.42" x2="337.82" y2="185.42" width="0.1524" layer="91"/>
 <junction x="327.66" y="175.26"/>
 <label x="337.82" y="185.42" size="1.27" layer="95" xref="yes"/>
-<pinref part="J4" gate="G$1" pin="VBUS1"/>
-<pinref part="J4" gate="G$1" pin="VBUS2"/>
+<pinref part="PORT1" gate="G$1" pin="VBUS1"/>
+<pinref part="PORT1" gate="G$1" pin="VBUS2"/>
 <wire x1="335.28" y1="172.72" x2="332.74" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="332.74" y1="172.72" x2="332.74" y2="175.26" width="0.1524" layer="91"/>
 <junction x="332.74" y="175.26"/>
@@ -20784,7 +20784,7 @@ Cumulative Rbottom = 61.75kΩ
 <instance part="+24VA9" gate="G$1" x="45.72" y="172.72" smashed="yes" rot="R90">
 <attribute name="VALUE" x="38.1" y="172.72" size="1.778" layer="96" rot="R180" align="top-center"/>
 </instance>
-<instance part="J3" gate="G$1" x="345.44" y="162.56" smashed="yes" rot="MR0">
+<instance part="PORT2" gate="G$1" x="345.44" y="162.56" smashed="yes" rot="MR0">
 <attribute name="NAME" x="335.28" y="182.88" size="1.778" layer="95" rot="MR180"/>
 </instance>
 </instances>
@@ -20909,8 +20909,8 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="327.66" y1="129.54" x2="327.66" y2="127" width="0.1524" layer="91"/>
 <junction x="327.66" y="129.54"/>
 <pinref part="GND85" gate="1" pin="GND"/>
-<pinref part="J3" gate="G$1" pin="GND2"/>
-<pinref part="J3" gate="G$1" pin="GND1"/>
+<pinref part="PORT2" gate="G$1" pin="GND2"/>
+<pinref part="PORT2" gate="G$1" pin="GND1"/>
 <wire x1="330.2" y1="149.86" x2="327.66" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="327.66" y1="149.86" x2="327.66" y2="147.32" width="0.1524" layer="91"/>
 <junction x="327.66" y="147.32"/>
@@ -21137,7 +21137,7 @@ Cumulative Rbottom = 61.75kΩ
 <segment>
 <wire x1="330.2" y1="162.56" x2="322.58" y2="162.56" width="0.1524" layer="91"/>
 <label x="322.58" y="162.56" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J3" gate="G$1" pin="CC1"/>
+<pinref part="PORT2" gate="G$1" pin="CC1"/>
 </segment>
 </net>
 <net name="CC2_PORT2" class="0">
@@ -21149,7 +21149,7 @@ Cumulative Rbottom = 61.75kΩ
 <segment>
 <wire x1="330.2" y1="160.02" x2="322.58" y2="160.02" width="0.1524" layer="91"/>
 <label x="322.58" y="160.02" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J3" gate="G$1" pin="CC2"/>
+<pinref part="PORT2" gate="G$1" pin="CC2"/>
 </segment>
 </net>
 <net name="N$84" class="0">
@@ -21242,7 +21242,7 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="363.22" y1="129.54" x2="363.22" y2="127" width="0.1524" layer="91"/>
 <junction x="363.22" y="129.54"/>
 <pinref part="AGND7" gate="M" pin="AGND"/>
-<pinref part="J3" gate="G$1" pin="SHIELD1"/>
+<pinref part="PORT2" gate="G$1" pin="SHIELD1"/>
 </segment>
 </net>
 <net name="IN2_PORT2" class="0">
@@ -21255,8 +21255,8 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="322.58" y1="185.42" x2="332.74" y2="185.42" width="0.1524" layer="91"/>
 <junction x="322.58" y="175.26"/>
 <label x="332.74" y="185.42" size="1.27" layer="95" xref="yes"/>
-<pinref part="J3" gate="G$1" pin="VBUS1"/>
-<pinref part="J3" gate="G$1" pin="VBUS2"/>
+<pinref part="PORT2" gate="G$1" pin="VBUS1"/>
+<pinref part="PORT2" gate="G$1" pin="VBUS2"/>
 <wire x1="330.2" y1="172.72" x2="327.66" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="327.66" y1="172.72" x2="327.66" y2="175.26" width="0.1524" layer="91"/>
 <junction x="327.66" y="175.26"/>
@@ -21831,7 +21831,7 @@ Cumulative Rbottom = 61.75kΩ
 <instance part="+24VA19" gate="G$1" x="43.18" y="172.72" smashed="yes" rot="R90">
 <attribute name="VALUE" x="35.56" y="172.72" size="1.778" layer="96" rot="R180" align="top-center"/>
 </instance>
-<instance part="J5" gate="G$1" x="342.9" y="162.56" smashed="yes" rot="MR0">
+<instance part="PORT3" gate="G$1" x="342.9" y="162.56" smashed="yes" rot="MR0">
 <attribute name="NAME" x="332.74" y="182.88" size="1.778" layer="95" rot="MR180"/>
 </instance>
 </instances>
@@ -21956,8 +21956,8 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="325.12" y1="129.54" x2="325.12" y2="127" width="0.1524" layer="91"/>
 <junction x="325.12" y="129.54"/>
 <pinref part="GND157" gate="1" pin="GND"/>
-<pinref part="J5" gate="G$1" pin="GND2"/>
-<pinref part="J5" gate="G$1" pin="GND1"/>
+<pinref part="PORT3" gate="G$1" pin="GND2"/>
+<pinref part="PORT3" gate="G$1" pin="GND1"/>
 <wire x1="327.66" y1="149.86" x2="325.12" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="325.12" y1="149.86" x2="325.12" y2="147.32" width="0.1524" layer="91"/>
 <junction x="325.12" y="147.32"/>
@@ -22170,7 +22170,7 @@ Cumulative Rbottom = 61.75kΩ
 <segment>
 <wire x1="327.66" y1="162.56" x2="320.04" y2="162.56" width="0.1524" layer="91"/>
 <label x="320.04" y="162.56" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J5" gate="G$1" pin="CC1"/>
+<pinref part="PORT3" gate="G$1" pin="CC1"/>
 </segment>
 </net>
 <net name="CC2_PORT3" class="0">
@@ -22182,7 +22182,7 @@ Cumulative Rbottom = 61.75kΩ
 <segment>
 <wire x1="327.66" y1="160.02" x2="320.04" y2="160.02" width="0.1524" layer="91"/>
 <label x="320.04" y="160.02" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J5" gate="G$1" pin="CC2"/>
+<pinref part="PORT3" gate="G$1" pin="CC2"/>
 </segment>
 </net>
 <net name="N$171" class="0">
@@ -22275,7 +22275,7 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="360.68" y1="129.54" x2="360.68" y2="127" width="0.1524" layer="91"/>
 <junction x="360.68" y="129.54"/>
 <pinref part="AGND10" gate="M" pin="AGND"/>
-<pinref part="J5" gate="G$1" pin="SHIELD1"/>
+<pinref part="PORT3" gate="G$1" pin="SHIELD1"/>
 </segment>
 </net>
 <net name="IN2_PORT3" class="0">
@@ -22288,8 +22288,8 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="320.04" y1="185.42" x2="330.2" y2="185.42" width="0.1524" layer="91"/>
 <junction x="320.04" y="175.26"/>
 <label x="330.2" y="185.42" size="1.27" layer="95" xref="yes"/>
-<pinref part="J5" gate="G$1" pin="VBUS1"/>
-<pinref part="J5" gate="G$1" pin="VBUS2"/>
+<pinref part="PORT3" gate="G$1" pin="VBUS1"/>
+<pinref part="PORT3" gate="G$1" pin="VBUS2"/>
 <wire x1="327.66" y1="172.72" x2="325.12" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="325.12" y1="172.72" x2="325.12" y2="175.26" width="0.1524" layer="91"/>
 <junction x="325.12" y="175.26"/>
@@ -22878,7 +22878,7 @@ Cumulative Rbottom = 61.75kΩ
 <instance part="+24VA16" gate="G$1" x="50.8" y="172.72" smashed="yes" rot="R90">
 <attribute name="VALUE" x="43.18" y="172.72" size="1.778" layer="96" rot="R180" align="top-center"/>
 </instance>
-<instance part="J6" gate="G$1" x="350.52" y="162.56" smashed="yes" rot="MR0">
+<instance part="PORT4" gate="G$1" x="350.52" y="162.56" smashed="yes" rot="MR0">
 <attribute name="NAME" x="340.36" y="182.88" size="1.778" layer="95" rot="MR180"/>
 </instance>
 </instances>
@@ -23003,8 +23003,8 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="332.74" y1="129.54" x2="332.74" y2="127" width="0.1524" layer="91"/>
 <junction x="332.74" y="129.54"/>
 <pinref part="GND135" gate="1" pin="GND"/>
-<pinref part="J6" gate="G$1" pin="GND2"/>
-<pinref part="J6" gate="G$1" pin="GND1"/>
+<pinref part="PORT4" gate="G$1" pin="GND2"/>
+<pinref part="PORT4" gate="G$1" pin="GND1"/>
 <wire x1="335.28" y1="149.86" x2="332.74" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="332.74" y1="149.86" x2="332.74" y2="147.32" width="0.1524" layer="91"/>
 <junction x="332.74" y="147.32"/>
@@ -23217,7 +23217,7 @@ Cumulative Rbottom = 61.75kΩ
 <segment>
 <wire x1="335.28" y1="162.56" x2="327.66" y2="162.56" width="0.1524" layer="91"/>
 <label x="327.66" y="162.56" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J6" gate="G$1" pin="CC1"/>
+<pinref part="PORT4" gate="G$1" pin="CC1"/>
 </segment>
 </net>
 <net name="CC2_PORT4" class="0">
@@ -23229,7 +23229,7 @@ Cumulative Rbottom = 61.75kΩ
 <segment>
 <wire x1="335.28" y1="160.02" x2="327.66" y2="160.02" width="0.1524" layer="91"/>
 <label x="327.66" y="160.02" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J6" gate="G$1" pin="CC2"/>
+<pinref part="PORT4" gate="G$1" pin="CC2"/>
 </segment>
 </net>
 <net name="N$142" class="0">
@@ -23322,7 +23322,7 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="368.3" y1="129.54" x2="368.3" y2="127" width="0.1524" layer="91"/>
 <junction x="368.3" y="129.54"/>
 <pinref part="AGND9" gate="M" pin="AGND"/>
-<pinref part="J6" gate="G$1" pin="SHIELD1"/>
+<pinref part="PORT4" gate="G$1" pin="SHIELD1"/>
 </segment>
 </net>
 <net name="IN2_PORT4" class="0">
@@ -23335,8 +23335,8 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="327.66" y1="185.42" x2="337.82" y2="185.42" width="0.1524" layer="91"/>
 <junction x="327.66" y="175.26"/>
 <label x="337.82" y="185.42" size="1.27" layer="95" xref="yes"/>
-<pinref part="J6" gate="G$1" pin="VBUS1"/>
-<pinref part="J6" gate="G$1" pin="VBUS2"/>
+<pinref part="PORT4" gate="G$1" pin="VBUS1"/>
+<pinref part="PORT4" gate="G$1" pin="VBUS2"/>
 <wire x1="335.28" y1="172.72" x2="332.74" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="332.74" y1="172.72" x2="332.74" y2="175.26" width="0.1524" layer="91"/>
 <junction x="332.74" y="175.26"/>
@@ -23925,7 +23925,7 @@ Cumulative Rbottom = 61.75kΩ
 <instance part="+24VA12" gate="G$1" x="50.8" y="172.72" smashed="yes" rot="R90">
 <attribute name="VALUE" x="43.18" y="172.72" size="1.778" layer="96" rot="R180" align="top-center"/>
 </instance>
-<instance part="J7" gate="G$1" x="350.52" y="162.56" smashed="yes" rot="MR0">
+<instance part="PORT5" gate="G$1" x="350.52" y="162.56" smashed="yes" rot="MR0">
 <attribute name="NAME" x="340.36" y="182.88" size="1.778" layer="95" rot="MR180"/>
 </instance>
 </instances>
@@ -24050,8 +24050,8 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="332.74" y1="129.54" x2="332.74" y2="127" width="0.1524" layer="91"/>
 <junction x="332.74" y="129.54"/>
 <pinref part="GND107" gate="1" pin="GND"/>
-<pinref part="J7" gate="G$1" pin="GND2"/>
-<pinref part="J7" gate="G$1" pin="GND1"/>
+<pinref part="PORT5" gate="G$1" pin="GND2"/>
+<pinref part="PORT5" gate="G$1" pin="GND1"/>
 <wire x1="335.28" y1="149.86" x2="332.74" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="332.74" y1="149.86" x2="332.74" y2="147.32" width="0.1524" layer="91"/>
 <junction x="332.74" y="147.32"/>
@@ -24264,7 +24264,7 @@ Cumulative Rbottom = 61.75kΩ
 <segment>
 <wire x1="335.28" y1="162.56" x2="327.66" y2="162.56" width="0.1524" layer="91"/>
 <label x="327.66" y="162.56" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J7" gate="G$1" pin="CC1"/>
+<pinref part="PORT5" gate="G$1" pin="CC1"/>
 </segment>
 </net>
 <net name="CC2_PORT5" class="0">
@@ -24276,7 +24276,7 @@ Cumulative Rbottom = 61.75kΩ
 <segment>
 <wire x1="335.28" y1="160.02" x2="327.66" y2="160.02" width="0.1524" layer="91"/>
 <label x="327.66" y="160.02" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J7" gate="G$1" pin="CC2"/>
+<pinref part="PORT5" gate="G$1" pin="CC2"/>
 </segment>
 </net>
 <net name="N$113" class="0">
@@ -24369,7 +24369,7 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="368.3" y1="129.54" x2="368.3" y2="127" width="0.1524" layer="91"/>
 <junction x="368.3" y="129.54"/>
 <pinref part="AGND8" gate="M" pin="AGND"/>
-<pinref part="J7" gate="G$1" pin="SHIELD1"/>
+<pinref part="PORT5" gate="G$1" pin="SHIELD1"/>
 </segment>
 </net>
 <net name="IN2_PORT5" class="0">
@@ -24382,8 +24382,8 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="327.66" y1="185.42" x2="337.82" y2="185.42" width="0.1524" layer="91"/>
 <junction x="327.66" y="175.26"/>
 <label x="337.82" y="185.42" size="1.27" layer="95" xref="yes"/>
-<pinref part="J7" gate="G$1" pin="VBUS1"/>
-<pinref part="J7" gate="G$1" pin="VBUS2"/>
+<pinref part="PORT5" gate="G$1" pin="VBUS1"/>
+<pinref part="PORT5" gate="G$1" pin="VBUS2"/>
 <wire x1="335.28" y1="172.72" x2="332.74" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="332.74" y1="172.72" x2="332.74" y2="175.26" width="0.1524" layer="91"/>
 <junction x="332.74" y="175.26"/>
@@ -24972,7 +24972,7 @@ Cumulative Rbottom = 61.75kΩ
 <instance part="+24VA22" gate="G$1" x="53.34" y="170.18" smashed="yes" rot="R90">
 <attribute name="VALUE" x="45.72" y="170.18" size="1.778" layer="96" rot="R180" align="top-center"/>
 </instance>
-<instance part="J9" gate="G$1" x="353.06" y="160.02" smashed="yes" rot="MR0">
+<instance part="PORT6" gate="G$1" x="353.06" y="160.02" smashed="yes" rot="MR0">
 <attribute name="NAME" x="342.9" y="180.34" size="1.778" layer="95" rot="MR180"/>
 </instance>
 </instances>
@@ -25097,8 +25097,8 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="335.28" y1="127" x2="335.28" y2="124.46" width="0.1524" layer="91"/>
 <junction x="335.28" y="127"/>
 <pinref part="GND179" gate="1" pin="GND"/>
-<pinref part="J9" gate="G$1" pin="GND2"/>
-<pinref part="J9" gate="G$1" pin="GND1"/>
+<pinref part="PORT6" gate="G$1" pin="GND2"/>
+<pinref part="PORT6" gate="G$1" pin="GND1"/>
 <wire x1="337.82" y1="147.32" x2="335.28" y2="147.32" width="0.1524" layer="91"/>
 <wire x1="335.28" y1="147.32" x2="335.28" y2="144.78" width="0.1524" layer="91"/>
 <junction x="335.28" y="144.78"/>
@@ -25311,7 +25311,7 @@ Cumulative Rbottom = 61.75kΩ
 <segment>
 <wire x1="337.82" y1="160.02" x2="330.2" y2="160.02" width="0.1524" layer="91"/>
 <label x="330.2" y="160.02" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J9" gate="G$1" pin="CC1"/>
+<pinref part="PORT6" gate="G$1" pin="CC1"/>
 </segment>
 </net>
 <net name="CC2_PORT6" class="0">
@@ -25323,7 +25323,7 @@ Cumulative Rbottom = 61.75kΩ
 <segment>
 <wire x1="337.82" y1="157.48" x2="330.2" y2="157.48" width="0.1524" layer="91"/>
 <label x="330.2" y="157.48" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J9" gate="G$1" pin="CC2"/>
+<pinref part="PORT6" gate="G$1" pin="CC2"/>
 </segment>
 </net>
 <net name="N$200" class="0">
@@ -25416,7 +25416,7 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="370.84" y1="127" x2="370.84" y2="124.46" width="0.1524" layer="91"/>
 <junction x="370.84" y="127"/>
 <pinref part="AGND11" gate="M" pin="AGND"/>
-<pinref part="J9" gate="G$1" pin="SHIELD1"/>
+<pinref part="PORT6" gate="G$1" pin="SHIELD1"/>
 </segment>
 </net>
 <net name="IN2_PORT6" class="0">
@@ -25429,8 +25429,8 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="330.2" y1="182.88" x2="340.36" y2="182.88" width="0.1524" layer="91"/>
 <junction x="330.2" y="172.72"/>
 <label x="340.36" y="182.88" size="1.27" layer="95" xref="yes"/>
-<pinref part="J9" gate="G$1" pin="VBUS1"/>
-<pinref part="J9" gate="G$1" pin="VBUS2"/>
+<pinref part="PORT6" gate="G$1" pin="VBUS1"/>
+<pinref part="PORT6" gate="G$1" pin="VBUS2"/>
 <wire x1="337.82" y1="170.18" x2="335.28" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="335.28" y1="170.18" x2="335.28" y2="172.72" width="0.1524" layer="91"/>
 <junction x="335.28" y="172.72"/>
@@ -26019,7 +26019,7 @@ Cumulative Rbottom = 61.75kΩ
 <instance part="+24VA25" gate="G$1" x="48.26" y="172.72" smashed="yes" rot="R90">
 <attribute name="VALUE" x="40.64" y="172.72" size="1.778" layer="96" rot="R180" align="top-center"/>
 </instance>
-<instance part="J10" gate="G$1" x="347.98" y="162.56" smashed="yes" rot="MR0">
+<instance part="PORT7" gate="G$1" x="347.98" y="162.56" smashed="yes" rot="MR0">
 <attribute name="NAME" x="337.82" y="182.88" size="1.778" layer="95" rot="MR180"/>
 </instance>
 </instances>
@@ -26144,8 +26144,8 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="330.2" y1="129.54" x2="330.2" y2="127" width="0.1524" layer="91"/>
 <junction x="330.2" y="129.54"/>
 <pinref part="GND201" gate="1" pin="GND"/>
-<pinref part="J10" gate="G$1" pin="GND2"/>
-<pinref part="J10" gate="G$1" pin="GND1"/>
+<pinref part="PORT7" gate="G$1" pin="GND2"/>
+<pinref part="PORT7" gate="G$1" pin="GND1"/>
 <wire x1="332.74" y1="149.86" x2="330.2" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="330.2" y1="149.86" x2="330.2" y2="147.32" width="0.1524" layer="91"/>
 <junction x="330.2" y="147.32"/>
@@ -26358,7 +26358,7 @@ Cumulative Rbottom = 61.75kΩ
 <segment>
 <wire x1="332.74" y1="162.56" x2="325.12" y2="162.56" width="0.1524" layer="91"/>
 <label x="325.12" y="162.56" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J10" gate="G$1" pin="CC1"/>
+<pinref part="PORT7" gate="G$1" pin="CC1"/>
 </segment>
 </net>
 <net name="CC2_PORT7" class="0">
@@ -26370,7 +26370,7 @@ Cumulative Rbottom = 61.75kΩ
 <segment>
 <wire x1="332.74" y1="160.02" x2="325.12" y2="160.02" width="0.1524" layer="91"/>
 <label x="325.12" y="160.02" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J10" gate="G$1" pin="CC2"/>
+<pinref part="PORT7" gate="G$1" pin="CC2"/>
 </segment>
 </net>
 <net name="N$230" class="0">
@@ -26463,7 +26463,7 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="365.76" y1="129.54" x2="365.76" y2="127" width="0.1524" layer="91"/>
 <junction x="365.76" y="129.54"/>
 <pinref part="AGND12" gate="M" pin="AGND"/>
-<pinref part="J10" gate="G$1" pin="SHIELD1"/>
+<pinref part="PORT7" gate="G$1" pin="SHIELD1"/>
 </segment>
 </net>
 <net name="IN2_PORT7" class="0">
@@ -26476,8 +26476,8 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="325.12" y1="185.42" x2="335.28" y2="185.42" width="0.1524" layer="91"/>
 <junction x="325.12" y="175.26"/>
 <label x="335.28" y="185.42" size="1.27" layer="95" xref="yes"/>
-<pinref part="J10" gate="G$1" pin="VBUS1"/>
-<pinref part="J10" gate="G$1" pin="VBUS2"/>
+<pinref part="PORT7" gate="G$1" pin="VBUS1"/>
+<pinref part="PORT7" gate="G$1" pin="VBUS2"/>
 <wire x1="332.74" y1="172.72" x2="330.2" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="330.2" y1="172.72" x2="330.2" y2="175.26" width="0.1524" layer="91"/>
 <junction x="330.2" y="175.26"/>
@@ -27066,7 +27066,7 @@ Cumulative Rbottom = 61.75kΩ
 <instance part="+24VA28" gate="G$1" x="50.8" y="172.72" smashed="yes" rot="R90">
 <attribute name="VALUE" x="43.18" y="172.72" size="1.778" layer="96" rot="R180" align="top-center"/>
 </instance>
-<instance part="J11" gate="G$1" x="350.52" y="162.56" smashed="yes" rot="MR0">
+<instance part="PORT8" gate="G$1" x="350.52" y="162.56" smashed="yes" rot="MR0">
 <attribute name="NAME" x="340.36" y="182.88" size="1.778" layer="95" rot="MR180"/>
 </instance>
 </instances>
@@ -27191,8 +27191,8 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="332.74" y1="129.54" x2="332.74" y2="127" width="0.1524" layer="91"/>
 <junction x="332.74" y="129.54"/>
 <pinref part="GND266" gate="1" pin="GND"/>
-<pinref part="J11" gate="G$1" pin="GND2"/>
-<pinref part="J11" gate="G$1" pin="GND1"/>
+<pinref part="PORT8" gate="G$1" pin="GND2"/>
+<pinref part="PORT8" gate="G$1" pin="GND1"/>
 <wire x1="335.28" y1="149.86" x2="332.74" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="332.74" y1="149.86" x2="332.74" y2="147.32" width="0.1524" layer="91"/>
 <junction x="332.74" y="147.32"/>
@@ -27405,7 +27405,7 @@ Cumulative Rbottom = 61.75kΩ
 <segment>
 <wire x1="335.28" y1="162.56" x2="327.66" y2="162.56" width="0.1524" layer="91"/>
 <label x="327.66" y="162.56" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J11" gate="G$1" pin="CC1"/>
+<pinref part="PORT8" gate="G$1" pin="CC1"/>
 </segment>
 </net>
 <net name="CC2_PORT8" class="0">
@@ -27417,7 +27417,7 @@ Cumulative Rbottom = 61.75kΩ
 <segment>
 <wire x1="335.28" y1="160.02" x2="327.66" y2="160.02" width="0.1524" layer="91"/>
 <label x="327.66" y="160.02" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J11" gate="G$1" pin="CC2"/>
+<pinref part="PORT8" gate="G$1" pin="CC2"/>
 </segment>
 </net>
 <net name="N$265" class="0">
@@ -27510,7 +27510,7 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="368.3" y1="129.54" x2="368.3" y2="127" width="0.1524" layer="91"/>
 <junction x="368.3" y="129.54"/>
 <pinref part="AGND16" gate="M" pin="AGND"/>
-<pinref part="J11" gate="G$1" pin="SHIELD1"/>
+<pinref part="PORT8" gate="G$1" pin="SHIELD1"/>
 </segment>
 </net>
 <net name="IN2_PORT8" class="0">
@@ -27523,8 +27523,8 @@ Cumulative Rbottom = 61.75kΩ
 <wire x1="327.66" y1="185.42" x2="337.82" y2="185.42" width="0.1524" layer="91"/>
 <junction x="327.66" y="175.26"/>
 <label x="337.82" y="185.42" size="1.27" layer="95" xref="yes"/>
-<pinref part="J11" gate="G$1" pin="VBUS1"/>
-<pinref part="J11" gate="G$1" pin="VBUS2"/>
+<pinref part="PORT8" gate="G$1" pin="VBUS1"/>
+<pinref part="PORT8" gate="G$1" pin="VBUS2"/>
 <wire x1="335.28" y1="172.72" x2="332.74" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="332.74" y1="172.72" x2="332.74" y2="175.26" width="0.1524" layer="91"/>
 <junction x="332.74" y="175.26"/>
