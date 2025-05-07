@@ -9,7 +9,7 @@
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="no"/>
-<layer number="2" name="Route2" color="16" fill="1" visible="yes" active="no"/>
+<layer number="2" name="Route2" color="10" fill="1" visible="yes" active="no"/>
 <layer number="3" name="Route3" color="17" fill="1" visible="yes" active="no"/>
 <layer number="4" name="Route4" color="18" fill="1" visible="yes" active="no"/>
 <layer number="5" name="Route5" color="19" fill="1" visible="yes" active="no"/>
@@ -13223,11 +13223,11 @@ Updated by Ella Wu 2023-02-17&lt;br&gt;
 <part name="IC38" library="ds_ic_peripherals" deviceset="TCA9548A" device="RGER" package3d_urn="urn:adsk.eagle:package:48304224/1"/>
 <part name="GND246" library="ds_passive" deviceset="GND" device=""/>
 <part name="+3V52" library="ds_passive" deviceset="+3V3" device=""/>
-<part name="R215" library="Resistor Array" library_urn="urn:adsk.eagle:library:16491332" deviceset="YC164-JR-0733RL" device="" package3d_urn="urn:adsk.eagle:package:16445850/5"/>
+<part name="R215" library="Resistor Array" library_urn="urn:adsk.eagle:library:16491332" deviceset="YC164-JR-0733RL" device="" package3d_urn="urn:adsk.eagle:package:16445850/5" value="4D03WGJ0332T5E"/>
 <part name="+3V53" library="ds_passive" deviceset="+3V3" device=""/>
-<part name="R216" library="Resistor Array" library_urn="urn:adsk.eagle:library:16491332" deviceset="YC164-JR-0733RL" device="" package3d_urn="urn:adsk.eagle:package:16445850/5"/>
+<part name="R216" library="Resistor Array" library_urn="urn:adsk.eagle:library:16491332" deviceset="YC164-JR-0733RL" device="" package3d_urn="urn:adsk.eagle:package:16445850/5" value="4D03WGJ0332T5E"/>
 <part name="+3V54" library="ds_passive" deviceset="+3V3" device=""/>
-<part name="R217" library="Resistor Array" library_urn="urn:adsk.eagle:library:16491332" deviceset="YC164-JR-0733RL" device="" package3d_urn="urn:adsk.eagle:package:16445850/5"/>
+<part name="R217" library="Resistor Array" library_urn="urn:adsk.eagle:library:16491332" deviceset="YC164-JR-0733RL" device="" package3d_urn="urn:adsk.eagle:package:16445850/5" value="4D03WGJ0332T5E"/>
 <part name="+3V55" library="ds_passive" deviceset="+3V3" device=""/>
 <part name="C213" library="ds_passive" deviceset="C" device="-0201" package3d_urn="urn:adsk.eagle:package:47403530/3" value="1uF"/>
 <part name="IC39" library="ds_ic_peripherals" deviceset="W5500" device="" package3d_urn="urn:adsk.eagle:package:46756750/2" value="W5500"/>
@@ -13522,8 +13522,8 @@ Updated by Ella Wu 2023-02-17&lt;br&gt;
 <part name="C54" library="ds_passive" deviceset="C" device="-0805" package3d_urn="urn:adsk.eagle:package:46766483/2" value="22uF 50V"/>
 <part name="GND73" library="ds_passive" deviceset="GND" device=""/>
 <part name="L2" library="Wurth_Power Magnetics_WE-PD" library_urn="urn:adsk.eagle:library:14283684" deviceset="WE-PD_1280" device="" package3d_urn="urn:adsk.eagle:package:22804842/5" technology="_74477004" value="4.7uH 744771004"/>
-<part name="T9" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L"/>
-<part name="T10" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L"/>
+<part name="T9" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L-7R4"/>
+<part name="T10" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L2R8"/>
 <part name="R64" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="1K"/>
 <part name="R65" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="1K"/>
 <part name="GND74" library="ds_passive" deviceset="GND" device=""/>
@@ -13605,8 +13605,8 @@ Updated by Ella Wu 2023-02-17&lt;br&gt;
 <part name="C96" library="ds_passive" deviceset="C" device="-0805" package3d_urn="urn:adsk.eagle:package:46766483/2" value="22uF 50V"/>
 <part name="GND123" library="ds_passive" deviceset="GND" device=""/>
 <part name="L4" library="Wurth_Power Magnetics_WE-PD" library_urn="urn:adsk.eagle:library:14283684" deviceset="WE-PD_1280" device="" package3d_urn="urn:adsk.eagle:package:22804842/5" technology="_74477004" value="4.7uH 744771004"/>
-<part name="T19" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L"/>
-<part name="T20" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L"/>
+<part name="T19" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L-7R4"/>
+<part name="T20" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L2R8"/>
 <part name="R111" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="1K"/>
 <part name="R112" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="1K"/>
 <part name="GND124" library="ds_passive" deviceset="GND" device=""/>
@@ -13688,8 +13688,8 @@ Updated by Ella Wu 2023-02-17&lt;br&gt;
 <part name="C73" library="ds_passive" deviceset="C" device="-0805" package3d_urn="urn:adsk.eagle:package:46766483/2" value="22uF 50V"/>
 <part name="GND95" library="ds_passive" deviceset="GND" device=""/>
 <part name="L3" library="Wurth_Power Magnetics_WE-PD" library_urn="urn:adsk.eagle:library:14283684" deviceset="WE-PD_1280" device="" package3d_urn="urn:adsk.eagle:package:22804842/5" technology="_74477004" value="4.7uH 744771004"/>
-<part name="T14" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L"/>
-<part name="T15" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L"/>
+<part name="T14" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L-7R4"/>
+<part name="T15" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L2R8"/>
 <part name="R88" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="1K"/>
 <part name="R89" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="1K"/>
 <part name="GND96" library="ds_passive" deviceset="GND" device=""/>
@@ -13771,8 +13771,8 @@ Updated by Ella Wu 2023-02-17&lt;br&gt;
 <part name="C134" library="ds_passive" deviceset="C" device="-0805" package3d_urn="urn:adsk.eagle:package:46766483/2" value="22uF 50V"/>
 <part name="GND167" library="ds_passive" deviceset="GND" device=""/>
 <part name="L6" library="Wurth_Power Magnetics_WE-PD" library_urn="urn:adsk.eagle:library:14283684" deviceset="WE-PD_1280" device="" package3d_urn="urn:adsk.eagle:package:22804842/5" technology="_74477004" value="4.7uH 744771004"/>
-<part name="T29" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L"/>
-<part name="T30" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L"/>
+<part name="T29" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L-7R4"/>
+<part name="T30" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L2R8"/>
 <part name="R157" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="1K"/>
 <part name="R158" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="1K"/>
 <part name="GND168" library="ds_passive" deviceset="GND" device=""/>
@@ -13854,8 +13854,8 @@ Updated by Ella Wu 2023-02-17&lt;br&gt;
 <part name="C115" library="ds_passive" deviceset="C" device="-0805" package3d_urn="urn:adsk.eagle:package:46766483/2" value="22uF 50V"/>
 <part name="GND145" library="ds_passive" deviceset="GND" device=""/>
 <part name="L5" library="Wurth_Power Magnetics_WE-PD" library_urn="urn:adsk.eagle:library:14283684" deviceset="WE-PD_1280" device="" package3d_urn="urn:adsk.eagle:package:22804842/5" technology="_74477004" value="4.7uH 744771004"/>
-<part name="T24" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L"/>
-<part name="T25" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L"/>
+<part name="T24" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L-7R4"/>
+<part name="T25" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L2R8"/>
 <part name="R134" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="1K"/>
 <part name="R135" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="1K"/>
 <part name="GND146" library="ds_passive" deviceset="GND" device=""/>
@@ -13937,8 +13937,8 @@ Updated by Ella Wu 2023-02-17&lt;br&gt;
 <part name="C153" library="ds_passive" deviceset="C" device="-0805" package3d_urn="urn:adsk.eagle:package:46766483/2" value="22uF 50V"/>
 <part name="GND189" library="ds_passive" deviceset="GND" device=""/>
 <part name="L7" library="Wurth_Power Magnetics_WE-PD" library_urn="urn:adsk.eagle:library:14283684" deviceset="WE-PD_1280" device="" package3d_urn="urn:adsk.eagle:package:22804842/5" technology="_74477004" value="4.7uH 744771004"/>
-<part name="T34" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L"/>
-<part name="T35" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L"/>
+<part name="T34" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L-7R4"/>
+<part name="T35" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L2R8"/>
 <part name="R180" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="1K"/>
 <part name="R181" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="1K"/>
 <part name="GND190" library="ds_passive" deviceset="GND" device=""/>
@@ -14020,8 +14020,8 @@ Updated by Ella Wu 2023-02-17&lt;br&gt;
 <part name="C172" library="ds_passive" deviceset="C" device="-0805" package3d_urn="urn:adsk.eagle:package:46766483/2" value="22uF 50V"/>
 <part name="GND234" library="ds_passive" deviceset="GND" device=""/>
 <part name="L8" library="Wurth_Power Magnetics_WE-PD" library_urn="urn:adsk.eagle:library:14283684" deviceset="WE-PD_1280" device="" package3d_urn="urn:adsk.eagle:package:22804842/5" technology="_74477004" value="4.7uH 744771004"/>
-<part name="T39" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L"/>
-<part name="T40" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L"/>
+<part name="T39" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L-7R4"/>
+<part name="T40" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L2R8"/>
 <part name="R203" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="1K"/>
 <part name="R204" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="1K"/>
 <part name="GND235" library="ds_passive" deviceset="GND" device=""/>
@@ -14103,8 +14103,8 @@ Updated by Ella Wu 2023-02-17&lt;br&gt;
 <part name="C240" library="ds_passive" deviceset="C" device="-0805" package3d_urn="urn:adsk.eagle:package:46766483/2" value="22uF 50V"/>
 <part name="GND302" library="ds_passive" deviceset="GND" device=""/>
 <part name="L9" library="Wurth_Power Magnetics_WE-PD" library_urn="urn:adsk.eagle:library:14283684" deviceset="WE-PD_1280" device="" package3d_urn="urn:adsk.eagle:package:22804842/5" technology="_74477004" value="4.7uH 744771004"/>
-<part name="T44" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L"/>
-<part name="T45" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L"/>
+<part name="T44" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L-7R4"/>
+<part name="T45" library="ds_active" deviceset="IPZ40N04S5L7R4ATMA1" device="" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L2R8"/>
 <part name="R273" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="1K"/>
 <part name="R274" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="1K"/>
 <part name="GND303" library="ds_passive" deviceset="GND" device=""/>

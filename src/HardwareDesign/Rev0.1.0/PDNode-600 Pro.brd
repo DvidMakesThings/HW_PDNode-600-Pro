@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.01" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.1" altunitdist="mm" altunit="mm"/>
+<grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.1" altunitdist="mm" altunit="mm"/>
 <layers>
 <layer number="1" name="SIG-HS" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="GND" color="10" fill="1" visible="yes" active="yes"/>
@@ -50,7 +50,7 @@
 <layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
-<layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
@@ -277,6 +277,17 @@
 <text x="-30.52" y="13.98" size="8" layer="25" font="vector" ratio="10">PDNode-600 Pro</text>
 <text x="-30.67" y="5.23" size="2.54" layer="25">DvidMakesThings @2025 Wien
 https://github.com/DvidMakesThings</text>
+<text x="45" y="2.5" size="1.778" layer="1">1</text>
+<text x="48" y="2.5" size="1.778" layer="2">2</text>
+<text x="52.35" y="2.5" size="1.778" layer="15" rot="MR0">3</text>
+<text x="55.3" y="2.5" size="1.778" layer="16" rot="MR0">4</text>
+<rectangle x1="44.3" y1="1.6" x2="56.1" y2="5.3" layer="29"/>
+<rectangle x1="44.3" y1="1.6" x2="56.1" y2="5.3" layer="30"/>
+<rectangle x1="44.3" y1="1.6" x2="56.1" y2="5.3" layer="39"/>
+<rectangle x1="44.3" y1="1.6" x2="56.1" y2="5.3" layer="40"/>
+<rectangle x1="44.3" y1="1.6" x2="56.1" y2="5.3" layer="41"/>
+<rectangle x1="44.3" y1="1.6" x2="56.1" y2="5.3" layer="42"/>
+<rectangle x1="44.3" y1="1.6" x2="56.1" y2="5.3" layer="43"/>
 </plain>
 <libraries>
 <library name="ds_passive">
@@ -3772,16 +3783,16 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <clearance class="2" value="0.1905"/>
 </class>
 </classes>
-<designrules name="4layers *">
-<description language="en">&lt;b&gt;JLCPCB design rules (4 layers - minimum settings)&lt;/b&gt;
+<designrules name="JLC04161H-3313">
+<description language="en">&lt;b&gt;JLC04161H-3313 (Finished thickness1.56mm±10%) (4 layers - minimum settings)&lt;/b&gt;
 &lt;ul&gt;
 &lt;li&gt;Board thickness: 1.6mm&lt;/li&gt;
 &lt;li&gt;Copper weight: outer layers: 1oz (35um), inner layers: 0.5oz (16.5um)&lt;/li&gt;
 &lt;li&gt;Minimum settings for high-density designs&lt;/li&gt;
 &lt;/ul&gt;</description>
 <param name="layerSetup" value="(1+2*15+16)"/>
-<param name="mtCopper" value="0.035mm 0.0175mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.0175mm 0.035mm"/>
-<param name="mtIsolate" value="0.15mm 1.265mm 0.15mm 0.0994mm 0.15mm 0.0994mm 0.15mm 0.0994mm 0.15mm 0.0994mm 0.15mm 0.0994mm 0.15mm 0.0994mm 0.15mm"/>
+<param name="mtCopper" value="0.035mm 0.0152mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.0152mm 0.035mm"/>
+<param name="mtIsolate" value="0.0994mm 1.265mm 0.15mm 0.0994mm 0.15mm 0.0994mm 0.15mm 0.0994mm 0.15mm 0.0994mm 0.15mm 0.0994mm 0.15mm 0.0994mm 0.0994mm"/>
 <param name="mdWireWire" value="3.5mil"/>
 <param name="mdWirePad" value="3.5mil"/>
 <param name="mdWireVia" value="3.5mil"/>
@@ -3839,7 +3850,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <param name="slThermalIsolate" value="10mil"/>
 <param name="slThermalsForVias" value="0"/>
 <param name="dpMaxLengthDifference" value="10mm"/>
-<param name="dpGapFactor" value="1"/>
+<param name="dpGapFactor" value="2.5"/>
 <param name="checkAngle" value="0"/>
 <param name="checkFont" value="1"/>
 <param name="checkRestrict" value="1"/>
@@ -4746,7 +4757,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attribute name="NAME" x="90.455" y="12.285" size="0.8128" layer="25" rot="R270"/>
 <attribute name="VALUE" x="93.675" y="10.425" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="R215" library="Resistor Array" library_urn="urn:adsk.eagle:library:16491332" package="YC164-JR-0733RL" package3d_urn="urn:adsk.eagle:package:16445850/5" value="YC164-JR-0733RL" x="84.21" y="40.14" smashed="yes">
+<element name="R215" library="Resistor Array" library_urn="urn:adsk.eagle:library:16491332" package="YC164-JR-0733RL" package3d_urn="urn:adsk.eagle:package:16445850/5" value="4D03WGJ0332T5E" x="84.21" y="40.14" smashed="yes">
 <attribute name="CREATED_BY" value="PCBLayout.com" x="222.64" y="-70.35" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY_PN" value="YC164J-33TR-ND" x="222.64" y="-70.35" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Yageo" x="222.64" y="-70.35" size="1.778" layer="27" display="off"/>
@@ -4755,7 +4766,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attribute name="PACKAGE" value="1206" x="222.64" y="-70.35" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" x="82.308609375" y="37.369390625" size="0.66234375" layer="27"/>
 </element>
-<element name="R216" library="Resistor Array" library_urn="urn:adsk.eagle:library:16491332" package="YC164-JR-0733RL" package3d_urn="urn:adsk.eagle:package:16445850/5" value="YC164-JR-0733RL" x="80.4" y="40.14" smashed="yes">
+<element name="R216" library="Resistor Array" library_urn="urn:adsk.eagle:library:16491332" package="YC164-JR-0733RL" package3d_urn="urn:adsk.eagle:package:16445850/5" value="4D03WGJ0332T5E" x="80.4" y="40.14" smashed="yes">
 <attribute name="CREATED_BY" value="PCBLayout.com" x="227.72" y="-70.35" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY_PN" value="YC164J-33TR-ND" x="227.72" y="-70.35" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Yageo" x="227.72" y="-70.35" size="1.778" layer="27" display="off"/>
@@ -4764,7 +4775,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attribute name="PACKAGE" value="1206" x="227.72" y="-70.35" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" x="78.498609375" y="37.369390625" size="0.66234375" layer="27"/>
 </element>
-<element name="R217" library="Resistor Array" library_urn="urn:adsk.eagle:library:16491332" package="YC164-JR-0733RL" package3d_urn="urn:adsk.eagle:package:16445850/5" value="YC164-JR-0733RL" x="76.59" y="40.14" smashed="yes">
+<element name="R217" library="Resistor Array" library_urn="urn:adsk.eagle:library:16491332" package="YC164-JR-0733RL" package3d_urn="urn:adsk.eagle:package:16445850/5" value="4D03WGJ0332T5E" x="76.59" y="40.14" smashed="yes">
 <attribute name="CREATED_BY" value="PCBLayout.com" x="232.8" y="-70.35" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY_PN" value="YC164J-33TR-ND" x="232.8" y="-70.35" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Yageo" x="232.8" y="-70.35" size="1.778" layer="27" display="off"/>
@@ -5347,13 +5358,13 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attribute name="SIZE" value=" 1280 " x="331.34" y="-2.33" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VERSION" value="Standard" x="331.34" y="-2.33" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="T9" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L" x="147.03" y="68.9" smashed="yes">
+<element name="T9" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L-7R4" x="147.03" y="68.9" smashed="yes">
 <attribute name="COPYRIGHT" value="Copyright (C) 2025 Ultra Librarian. All rights reserved." x="40.35" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="DATASHEET" value="https://www.infineon.com/dgdl/Infineon-IPZ40N04S5L-7R4-DS-v01_00-EN.pdf?fileId=5546d4624cb7f111014d6601321448a0" x="40.35" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER_PART_NUMBER" value="IPZ40N04S5L7R4ATMA1" x="40.35" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="MFR_NAME" value="Infineon" x="40.35" y="-112.71" size="1.778" layer="27" display="off"/>
 </element>
-<element name="T10" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L" x="147.06" y="73" smashed="yes" rot="R180">
+<element name="T10" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L2R8" x="147.06" y="73" smashed="yes" rot="R180">
 <attribute name="COPYRIGHT" value="Copyright (C) 2025 Ultra Librarian. All rights reserved." x="248.66" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="DATASHEET" value="https://www.infineon.com/dgdl/Infineon-IPZ40N04S5L-7R4-DS-v01_00-EN.pdf?fileId=5546d4624cb7f111014d6601321448a0" x="248.66" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MANUFACTURER_PART_NUMBER" value="IPZ40N04S5L7R4ATMA1" x="248.66" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
@@ -5520,13 +5531,13 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attribute name="SIZE" value=" 1280 " x="235.94" y="-2.33" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VERSION" value="Standard" x="235.94" y="-2.33" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="T19" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L" x="51.63" y="68.9" smashed="yes">
+<element name="T19" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L-7R4" x="51.63" y="68.9" smashed="yes">
 <attribute name="COPYRIGHT" value="Copyright (C) 2025 Ultra Librarian. All rights reserved." x="-55.05" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="DATASHEET" value="https://www.infineon.com/dgdl/Infineon-IPZ40N04S5L-7R4-DS-v01_00-EN.pdf?fileId=5546d4624cb7f111014d6601321448a0" x="-55.05" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER_PART_NUMBER" value="IPZ40N04S5L7R4ATMA1" x="-55.05" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="MFR_NAME" value="Infineon" x="-55.05" y="-112.71" size="1.778" layer="27" display="off"/>
 </element>
-<element name="T20" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L" x="51.66" y="73" smashed="yes" rot="R180">
+<element name="T20" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L2R8" x="51.66" y="73" smashed="yes" rot="R180">
 <attribute name="COPYRIGHT" value="Copyright (C) 2025 Ultra Librarian. All rights reserved." x="153.26" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="DATASHEET" value="https://www.infineon.com/dgdl/Infineon-IPZ40N04S5L-7R4-DS-v01_00-EN.pdf?fileId=5546d4624cb7f111014d6601321448a0" x="153.26" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MANUFACTURER_PART_NUMBER" value="IPZ40N04S5L7R4ATMA1" x="153.26" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
@@ -5693,13 +5704,13 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attribute name="SIZE" value=" 1280 " x="307.54" y="-2.33" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VERSION" value="Standard" x="307.54" y="-2.33" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="T14" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L" x="123.23" y="68.9" smashed="yes">
+<element name="T14" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L-7R4" x="123.23" y="68.9" smashed="yes">
 <attribute name="COPYRIGHT" value="Copyright (C) 2025 Ultra Librarian. All rights reserved." x="16.55" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="DATASHEET" value="https://www.infineon.com/dgdl/Infineon-IPZ40N04S5L-7R4-DS-v01_00-EN.pdf?fileId=5546d4624cb7f111014d6601321448a0" x="16.55" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER_PART_NUMBER" value="IPZ40N04S5L7R4ATMA1" x="16.55" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="MFR_NAME" value="Infineon" x="16.55" y="-112.71" size="1.778" layer="27" display="off"/>
 </element>
-<element name="T15" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L" x="123.26" y="73" smashed="yes" rot="R180">
+<element name="T15" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L2R8" x="123.26" y="73" smashed="yes" rot="R180">
 <attribute name="COPYRIGHT" value="Copyright (C) 2025 Ultra Librarian. All rights reserved." x="224.86" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="DATASHEET" value="https://www.infineon.com/dgdl/Infineon-IPZ40N04S5L-7R4-DS-v01_00-EN.pdf?fileId=5546d4624cb7f111014d6601321448a0" x="224.86" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MANUFACTURER_PART_NUMBER" value="IPZ40N04S5L7R4ATMA1" x="224.86" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
@@ -5866,13 +5877,13 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attribute name="SIZE" value=" 1280 " x="283.84" y="-2.33" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VERSION" value="Standard" x="283.84" y="-2.33" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="T29" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L" x="99.53" y="68.9" smashed="yes">
+<element name="T29" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L-7R4" x="99.53" y="68.9" smashed="yes">
 <attribute name="COPYRIGHT" value="Copyright (C) 2025 Ultra Librarian. All rights reserved." x="-7.15" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="DATASHEET" value="https://www.infineon.com/dgdl/Infineon-IPZ40N04S5L-7R4-DS-v01_00-EN.pdf?fileId=5546d4624cb7f111014d6601321448a0" x="-7.15" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER_PART_NUMBER" value="IPZ40N04S5L7R4ATMA1" x="-7.15" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="MFR_NAME" value="Infineon" x="-7.15" y="-112.71" size="1.778" layer="27" display="off"/>
 </element>
-<element name="T30" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L" x="99.56" y="73" smashed="yes" rot="R180">
+<element name="T30" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L2R8" x="99.56" y="73" smashed="yes" rot="R180">
 <attribute name="COPYRIGHT" value="Copyright (C) 2025 Ultra Librarian. All rights reserved." x="201.16" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="DATASHEET" value="https://www.infineon.com/dgdl/Infineon-IPZ40N04S5L-7R4-DS-v01_00-EN.pdf?fileId=5546d4624cb7f111014d6601321448a0" x="201.16" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MANUFACTURER_PART_NUMBER" value="IPZ40N04S5L7R4ATMA1" x="201.16" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
@@ -6039,13 +6050,13 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attribute name="SIZE" value=" 1280 " x="260.04" y="-2.33" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VERSION" value="Standard" x="260.04" y="-2.33" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="T24" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L" x="75.73" y="68.9" smashed="yes">
+<element name="T24" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L-7R4" x="75.73" y="68.9" smashed="yes">
 <attribute name="COPYRIGHT" value="Copyright (C) 2025 Ultra Librarian. All rights reserved." x="-30.95" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="DATASHEET" value="https://www.infineon.com/dgdl/Infineon-IPZ40N04S5L-7R4-DS-v01_00-EN.pdf?fileId=5546d4624cb7f111014d6601321448a0" x="-30.95" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER_PART_NUMBER" value="IPZ40N04S5L7R4ATMA1" x="-30.95" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="MFR_NAME" value="Infineon" x="-30.95" y="-112.71" size="1.778" layer="27" display="off"/>
 </element>
-<element name="T25" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L" x="75.76" y="73" smashed="yes" rot="R180">
+<element name="T25" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L2R8" x="75.76" y="73" smashed="yes" rot="R180">
 <attribute name="COPYRIGHT" value="Copyright (C) 2025 Ultra Librarian. All rights reserved." x="177.36" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="DATASHEET" value="https://www.infineon.com/dgdl/Infineon-IPZ40N04S5L-7R4-DS-v01_00-EN.pdf?fileId=5546d4624cb7f111014d6601321448a0" x="177.36" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MANUFACTURER_PART_NUMBER" value="IPZ40N04S5L7R4ATMA1" x="177.36" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
@@ -6212,13 +6223,13 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attribute name="SIZE" value=" 1280 " x="211.94" y="-2.33" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VERSION" value="Standard" x="211.94" y="-2.33" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="T34" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L" x="27.63" y="68.9" smashed="yes">
+<element name="T34" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L-7R4" x="27.63" y="68.9" smashed="yes">
 <attribute name="COPYRIGHT" value="Copyright (C) 2025 Ultra Librarian. All rights reserved." x="-79.05" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="DATASHEET" value="https://www.infineon.com/dgdl/Infineon-IPZ40N04S5L-7R4-DS-v01_00-EN.pdf?fileId=5546d4624cb7f111014d6601321448a0" x="-79.05" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER_PART_NUMBER" value="IPZ40N04S5L7R4ATMA1" x="-79.05" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="MFR_NAME" value="Infineon" x="-79.05" y="-112.71" size="1.778" layer="27" display="off"/>
 </element>
-<element name="T35" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L" x="27.66" y="73" smashed="yes" rot="R180">
+<element name="T35" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L2R8" x="27.66" y="73" smashed="yes" rot="R180">
 <attribute name="COPYRIGHT" value="Copyright (C) 2025 Ultra Librarian. All rights reserved." x="129.26" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="DATASHEET" value="https://www.infineon.com/dgdl/Infineon-IPZ40N04S5L-7R4-DS-v01_00-EN.pdf?fileId=5546d4624cb7f111014d6601321448a0" x="129.26" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MANUFACTURER_PART_NUMBER" value="IPZ40N04S5L7R4ATMA1" x="129.26" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
@@ -6385,13 +6396,13 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attribute name="SIZE" value=" 1280 " x="187.94" y="-2.33" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VERSION" value="Standard" x="187.94" y="-2.33" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="T39" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L" x="3.63" y="68.9" smashed="yes">
+<element name="T39" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L-7R4" x="3.63" y="68.9" smashed="yes">
 <attribute name="COPYRIGHT" value="Copyright (C) 2025 Ultra Librarian. All rights reserved." x="-103.05" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="DATASHEET" value="https://www.infineon.com/dgdl/Infineon-IPZ40N04S5L-7R4-DS-v01_00-EN.pdf?fileId=5546d4624cb7f111014d6601321448a0" x="-103.05" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER_PART_NUMBER" value="IPZ40N04S5L7R4ATMA1" x="-103.05" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="MFR_NAME" value="Infineon" x="-103.05" y="-112.71" size="1.778" layer="27" display="off"/>
 </element>
-<element name="T40" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L" x="3.66" y="73" smashed="yes" rot="R180">
+<element name="T40" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L2R8" x="3.66" y="73" smashed="yes" rot="R180">
 <attribute name="COPYRIGHT" value="Copyright (C) 2025 Ultra Librarian. All rights reserved." x="105.26" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="DATASHEET" value="https://www.infineon.com/dgdl/Infineon-IPZ40N04S5L-7R4-DS-v01_00-EN.pdf?fileId=5546d4624cb7f111014d6601321448a0" x="105.26" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MANUFACTURER_PART_NUMBER" value="IPZ40N04S5L7R4ATMA1" x="105.26" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
@@ -6558,13 +6569,13 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attribute name="SIZE" value=" 1280 " x="164.84" y="-2.33" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VERSION" value="Standard" x="164.84" y="-2.33" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="T44" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L" x="-19.47" y="68.9" smashed="yes">
+<element name="T44" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L-7R4" x="-19.47" y="68.9" smashed="yes">
 <attribute name="COPYRIGHT" value="Copyright (C) 2025 Ultra Librarian. All rights reserved." x="-126.15" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="DATASHEET" value="https://www.infineon.com/dgdl/Infineon-IPZ40N04S5L-7R4-DS-v01_00-EN.pdf?fileId=5546d4624cb7f111014d6601321448a0" x="-126.15" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER_PART_NUMBER" value="IPZ40N04S5L7R4ATMA1" x="-126.15" y="-112.71" size="1.778" layer="27" display="off"/>
 <attribute name="MFR_NAME" value="Infineon" x="-126.15" y="-112.71" size="1.778" layer="27" display="off"/>
 </element>
-<element name="T45" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L" x="-19.44" y="73" smashed="yes" rot="R180">
+<element name="T45" library="ds_active" package="POWERDI3333-8_UX_DIO-L" package3d_urn="urn:adsk.eagle:package:47392603/2" value="IPZ40N04S5L2R8" x="-19.44" y="73" smashed="yes" rot="R180">
 <attribute name="COPYRIGHT" value="Copyright (C) 2025 Ultra Librarian. All rights reserved." x="82.16" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="DATASHEET" value="https://www.infineon.com/dgdl/Infineon-IPZ40N04S5L-7R4-DS-v01_00-EN.pdf?fileId=5546d4624cb7f111014d6601321448a0" x="82.16" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MANUFACTURER_PART_NUMBER" value="IPZ40N04S5L7R4ATMA1" x="82.16" y="254.61" size="1.778" layer="27" rot="R180" display="off"/>
@@ -21388,6 +21399,66 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <contactref element="PORT8" pad="B5"/>
 <wire x1="-23.76" y1="94.14" x2="-23.76" y2="92.94" width="0.2" layer="1"/>
 </signal>
+<signal name="N$16">
+<wire x1="47.2" y1="5.2" x2="50.2" y2="5.2" width="0.2032" layer="1"/>
+<wire x1="53.1" y1="5.2" x2="56" y2="5.2" width="0.2032" layer="1"/>
+<wire x1="56" y1="5.2" x2="56" y2="1.7" width="0.2032" layer="1"/>
+<wire x1="56" y1="1.7" x2="53.1" y2="1.7" width="0.2032" layer="1"/>
+<wire x1="53.1" y1="1.7" x2="50.2" y2="1.7" width="0.2032" layer="1"/>
+<wire x1="47.2" y1="1.7" x2="44.4" y2="1.7" width="0.2032" layer="1"/>
+<wire x1="44.4" y1="1.7" x2="44.4" y2="5.2" width="0.2032" layer="1"/>
+<wire x1="44.4" y1="5.2" x2="47.2" y2="5.2" width="0.2032" layer="1"/>
+<wire x1="47.2" y1="5.2" x2="47.2" y2="1.7" width="0.2032" layer="1"/>
+<wire x1="47.2" y1="1.7" x2="50.2" y2="1.7" width="0.2032" layer="1"/>
+<wire x1="50.2" y1="1.7" x2="50.2" y2="5.2" width="0.2032" layer="1"/>
+<wire x1="50.2" y1="5.2" x2="53.1" y2="5.2" width="0.2032" layer="1"/>
+<wire x1="53.1" y1="5.2" x2="53.1" y2="1.7" width="0.2032" layer="1"/>
+</signal>
+<signal name="N$17">
+<wire x1="44.4" y1="5.2" x2="44.4" y2="1.7" width="0.2032" layer="2"/>
+<wire x1="44.4" y1="1.7" x2="47.2" y2="1.7" width="0.2032" layer="2"/>
+<wire x1="50.2" y1="1.7" x2="53.1" y2="1.7" width="0.2032" layer="2"/>
+<wire x1="53.1" y1="1.7" x2="56" y2="1.7" width="0.2032" layer="2"/>
+<wire x1="56" y1="1.7" x2="56" y2="5.2" width="0.2032" layer="2"/>
+<wire x1="56" y1="5.2" x2="53.1" y2="5.2" width="0.2032" layer="2"/>
+<wire x1="50.2" y1="5.2" x2="47.2" y2="5.2" width="0.2032" layer="2"/>
+<wire x1="44.4" y1="5.2" x2="47.2" y2="5.2" width="0.2032" layer="2"/>
+<wire x1="47.2" y1="5.2" x2="47.2" y2="1.7" width="0.2032" layer="2"/>
+<wire x1="47.2" y1="1.7" x2="50.2" y2="1.7" width="0.2032" layer="2"/>
+<wire x1="50.2" y1="1.7" x2="50.2" y2="5.2" width="0.2032" layer="2"/>
+<wire x1="50.2" y1="5.2" x2="53.1" y2="5.2" width="0.2032" layer="2"/>
+<wire x1="53.1" y1="5.2" x2="53.1" y2="1.7" width="0.2032" layer="2"/>
+</signal>
+<signal name="N$18">
+<wire x1="47.2" y1="5.2" x2="50.2" y2="5.2" width="0.2032" layer="15"/>
+<wire x1="53.1" y1="5.2" x2="56" y2="5.2" width="0.2032" layer="15"/>
+<wire x1="56" y1="5.2" x2="56" y2="1.7" width="0.2032" layer="15"/>
+<wire x1="56" y1="1.7" x2="53.1" y2="1.7" width="0.2032" layer="15"/>
+<wire x1="53.1" y1="1.7" x2="50.2" y2="1.7" width="0.2032" layer="15"/>
+<wire x1="47.2" y1="1.7" x2="44.4" y2="1.7" width="0.2032" layer="15"/>
+<wire x1="44.4" y1="1.7" x2="44.4" y2="5.2" width="0.2032" layer="15"/>
+<wire x1="44.4" y1="5.2" x2="47.2" y2="5.2" width="0.2032" layer="15"/>
+<wire x1="47.2" y1="5.2" x2="47.2" y2="1.7" width="0.2032" layer="15"/>
+<wire x1="47.2" y1="1.7" x2="50.2" y2="1.7" width="0.2032" layer="15"/>
+<wire x1="50.2" y1="1.7" x2="50.2" y2="5.2" width="0.2032" layer="15"/>
+<wire x1="50.2" y1="5.2" x2="53.1" y2="5.2" width="0.2032" layer="15"/>
+<wire x1="53.1" y1="5.2" x2="53.1" y2="1.7" width="0.2032" layer="15"/>
+</signal>
+<signal name="N$19">
+<wire x1="47.2" y1="5.2" x2="50.2" y2="5.2" width="0.2032" layer="16"/>
+<wire x1="53.1" y1="5.2" x2="56" y2="5.2" width="0.2032" layer="16"/>
+<wire x1="56" y1="5.2" x2="56" y2="1.7" width="0.2032" layer="16"/>
+<wire x1="56" y1="1.7" x2="53.1" y2="1.7" width="0.2032" layer="16"/>
+<wire x1="53.1" y1="1.7" x2="50.2" y2="1.7" width="0.2032" layer="16"/>
+<wire x1="47.2" y1="1.7" x2="44.4" y2="1.7" width="0.2032" layer="16"/>
+<wire x1="44.4" y1="1.7" x2="44.4" y2="5.2" width="0.2032" layer="16"/>
+<wire x1="44.4" y1="5.2" x2="47.2" y2="5.2" width="0.2032" layer="16"/>
+<wire x1="47.2" y1="5.2" x2="47.2" y2="1.7" width="0.2032" layer="16"/>
+<wire x1="47.2" y1="1.7" x2="50.2" y2="1.7" width="0.2032" layer="16"/>
+<wire x1="50.2" y1="1.7" x2="50.2" y2="5.2" width="0.2032" layer="16"/>
+<wire x1="50.2" y1="5.2" x2="53.1" y2="5.2" width="0.2032" layer="16"/>
+<wire x1="53.1" y1="5.2" x2="53.1" y2="1.7" width="0.2032" layer="16"/>
+</signal>
 </signals>
 <mfgpreviewcolors>
 <mfgpreviewcolor name="soldermaskcolor" color="0xC8101010"/>
@@ -21434,90 +21505,18 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <approved hash="7,39,76939e3cce42f991"/>
 <approved hash="7,39,836623ff2eefcf0a"/>
 <approved hash="7,39,9d2b5f3e51c0d2a9"/>
-<approved hash="23,1,82f97a5f6fef15ab"/>
-<approved hash="23,1,a463306c4e61ca82"/>
 <approved hash="23,1,71824c7e4c3d71c1"/>
-<approved hash="23,1,8ae22a9c2a638a1d"/>
-<approved hash="23,1,2a86291a36a585ce"/>
-<approved hash="23,1,1c764e0f0760f535"/>
-<approved hash="23,1,897d21032103897d"/>
-<approved hash="23,1,6ca46fe3ac73ce33"/>
-<approved hash="23,1,1d661fba1f981d44"/>
-<approved hash="23,1,441a89e4880745f9"/>
-<approved hash="23,1,139b1d651d0713f9"/>
-<approved hash="23,1,9cfd37482f5ba56a"/>
-<approved hash="23,1,c7f1a31d705c71e5"/>
-<approved hash="23,1,e6f9059f060ae56c"/>
-<approved hash="23,1,86d23b2e3b6f8693"/>
-<approved hash="23,1,30e21a9c1ae1309f"/>
-<approved hash="23,1,e2dbe095dd679d60"/>
 <approved hash="23,1,05b10f8c6966759b"/>
-<approved hash="23,1,4deaed94eda54ddb"/>
-<approved hash="23,1,df767f0f78e6a4b3"/>
-<approved hash="23,1,1cbd32c332021c7c"/>
-<approved hash="23,1,62ea4e944ea262dc"/>
-<approved hash="23,1,ce77c609c7b9cfc7"/>
-<approved hash="23,1,bfb3834f834fbfb3"/>
-<approved hash="23,1,793d70c37062799c"/>
 <approved hash="23,1,abde0d808ff0cfcb"/>
-<approved hash="23,1,98ea5a945aa298dc"/>
-<approved hash="23,1,960857a949967a86"/>
-<approved hash="23,1,5162ce7c2621e83b"/>
-<approved hash="23,1,ff85bff9bf99ffe5"/>
-<approved hash="23,1,0e113ded3d2c0ed0"/>
-<approved hash="23,1,c55cfdaa7d35c9c9"/>
-<approved hash="23,1,585884a483e35f1f"/>
-<approved hash="23,1,92d470b489fa8cee"/>
-<approved hash="23,1,5131ad4dad0a5176"/>
-<approved hash="23,1,499514e914ea4996"/>
-<approved hash="23,1,59ff278324655a19"/>
-<approved hash="23,1,a2ebde17d876a48a"/>
-<approved hash="23,1,868f474f45508490"/>
-<approved hash="23,1,e673ba0dbab9e6c7"/>
-<approved hash="23,1,274cdf2dc15804f7"/>
 <approved hash="23,1,497bbbbb9a5b988f"/>
-<approved hash="23,1,ed02c2133f98bd8f"/>
 <approved hash="23,1,fb9ac698eeda676f"/>
 <approved hash="23,1,77dd34f3741457f5"/>
 <approved hash="23,1,13df0d9d699da829"/>
 <approved hash="23,1,b545748e95289e48"/>
 <approved hash="23,1,065c002b2a573f51"/>
-<approved hash="23,1,1847611565cb9c03"/>
-<approved hash="23,1,6c840436218629ab"/>
-<approved hash="23,1,598b6039bd89d9a4"/>
-<approved hash="23,1,223e2f7c1ddb727e"/>
-<approved hash="23,1,ae44970998d81c9b"/>
-<approved hash="23,1,dd84ed4ed70f3220"/>
 <approved hash="23,1,1427ea5dd47f863b"/>
-<approved hash="23,1,aecc4db5c944ef65"/>
-<approved hash="23,1,5f95f8c9f8875fdb"/>
-<approved hash="23,1,fef43e283108f1d4"/>
-<approved hash="23,1,7a8cc770c6d07b2c"/>
-<approved hash="23,1,70c27084c0f8cebe"/>
-<approved hash="23,1,4605624ce16722bd"/>
-<approved hash="23,1,7ea47087ec0deed9"/>
-<approved hash="23,1,8cf38df1778c54a9"/>
-<approved hash="23,1,cd47cb6430d62d43"/>
-<approved hash="23,1,7741ebbdeb5f77a3"/>
-<approved hash="23,1,27de9b229ae2261e"/>
-<approved hash="23,1,1ee9e095e0361e4a"/>
-<approved hash="23,1,04401cbe1cea0414"/>
 <approved hash="23,1,1f260767fc9be2d8"/>
-<approved hash="23,1,299e5a6059942a6a"/>
 <approved hash="23,1,05f207f13b0db90f"/>
-<approved hash="23,1,c27c02020203c27d"/>
-<approved hash="23,1,259e61e062ae26d0"/>
-<approved hash="23,1,89882bf62ab988c7"/>
-<approved hash="23,1,5bc6153817775989"/>
-<approved hash="23,1,c16d90938ea2df5c"/>
-<approved hash="23,1,8c76a208a2b98cc7"/>
-<approved hash="23,1,9c7c320232039c7d"/>
-<approved hash="23,1,ebcc83b283e2eb9c"/>
-<approved hash="23,1,92c026be26ea9294"/>
-<approved hash="23,1,59bd654364e2581c"/>
-<approved hash="23,1,9e3d0c430d049f7a"/>
-<approved hash="23,1,bc1e426041afbfd1"/>
-<approved hash="23,1,12feee02ee0212fe"/>
 <approved hash="23,15,cb39bb1920f5e787"/>
 <approved hash="23,15,b0e0bae28618811f"/>
 <approved hash="5,1,c5018e5b8e11c98b"/>
@@ -22333,6 +22332,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <approved hash="19,1,3d40c11eaac2569c"/>
 <approved hash="19,1,fb82fb8c2250225e"/>
 <approved hash="19,1,3d803d86565a565c"/>
+<approved hash="5,1,c560c16693267726"/>
 </errors>
 </board>
 </drawing>
