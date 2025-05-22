@@ -12501,7 +12501,7 @@ Updated by Ella Wu 2023-02-17&lt;br&gt;
 <part name="GND209" library="ds_passive" deviceset="GND" device=""/>
 <part name="R208" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="10K"/>
 <part name="+3V24" library="ds_passive" deviceset="+3V3" device=""/>
-<part name="RESET" library="Wurth_Switch_WS-TASV" library_urn="urn:adsk.eagle:library:18304196" deviceset="430182050816" device="" package3d_urn="urn:adsk.eagle:package:18304299/2" value="430182050816"/>
+<part name="RESET" library="Wurth_Switch_WS-TASV" library_urn="urn:adsk.eagle:library:18304196" deviceset="430182050816" device="" package3d_urn="urn:adsk.eagle:package:18304299/2" value="430182043816"/>
 <part name="IC27" library="ds_ic_memory" deviceset="W25Q128JV" device="P" package3d_urn="urn:adsk.eagle:package:45369668/1" value="W25Q128JVPIQ"/>
 <part name="R209" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="DNI"/>
 <part name="GND210" library="ds_passive" deviceset="GND" device=""/>
@@ -12519,7 +12519,7 @@ Updated by Ella Wu 2023-02-17&lt;br&gt;
 <part name="R211" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="1K"/>
 <part name="GND215" library="ds_passive" deviceset="GND" device=""/>
 <part name="X1" library="Wurth_Quartz Crystals &amp; Oscillators_WE-XTAL" library_urn="urn:adsk.eagle:library:14284023" deviceset="WE-XTAL_CFPX-180" device="" package3d_urn="urn:adsk.eagle:package:13029090/2" technology="_830055295" value="X322512MSB4SI"/>
-<part name="BOOT" library="Wurth_Switch_WS-TASV" library_urn="urn:adsk.eagle:library:18304196" deviceset="430182050816" device="" package3d_urn="urn:adsk.eagle:package:18304299/2" value="430182050816"/>
+<part name="BOOT" library="Wurth_Switch_WS-TASV" library_urn="urn:adsk.eagle:library:18304196" deviceset="430182050816" device="" package3d_urn="urn:adsk.eagle:package:18304299/2" value="430182043816"/>
 <part name="REF1" library="ds_ic_vreg" deviceset="LM4040BXX" device="" package3d_urn="urn:adsk.eagle:package:46684430/3"/>
 <part name="GND216" library="ds_passive" deviceset="GND" device=""/>
 <part name="R212" library="ds_passive" deviceset="R" device="0402" package3d_urn="urn:adsk.eagle:package:46683744/2" value="4.7K"/>

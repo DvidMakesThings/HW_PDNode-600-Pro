@@ -4823,7 +4823,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attribute name="NAME" x="79.145" y="21.595" size="0.8128" layer="25" rot="R180"/>
 <attribute name="VALUE" x="80.735" y="17.135" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="RESET" library="Wurth_Switch_WS-TASV" library_urn="urn:adsk.eagle:library:18304196" package="430182050816" package3d_urn="urn:adsk.eagle:package:18304299/2" value="430182050816" x="71.01" y="16.38" smashed="yes" rot="R270">
+<element name="RESET" library="Wurth_Switch_WS-TASV" library_urn="urn:adsk.eagle:library:18304196" package="430182050816" package3d_urn="urn:adsk.eagle:package:18304299/2" value="430182043816" x="71.01" y="16.38" smashed="yes" rot="R270">
 <attribute name="DATASHEET-URL" value="https://www.we-online.com/redexpert/spec/430182050816?ae" x="20.21" y="-92.84" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="HEIGHT" value="5mm" x="20.21" y="-92.84" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="67.0591" y="16.373" size="1.778" layer="25" rot="R90" align="bottom-center"/>
@@ -4832,7 +4832,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attribute name="QTY" value="1000" x="20.21" y="-92.84" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="VALUE" x="65.9266" y="19.762" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="BOOT" library="Wurth_Switch_WS-TASV" library_urn="urn:adsk.eagle:library:18304196" package="430182050816" package3d_urn="urn:adsk.eagle:package:18304299/2" value="430182050816" x="57.4" y="16.35" smashed="yes" rot="R90">
+<element name="BOOT" library="Wurth_Switch_WS-TASV" library_urn="urn:adsk.eagle:library:18304196" package="430182050816" package3d_urn="urn:adsk.eagle:package:18304299/2" value="430182043816" x="57.4" y="16.35" smashed="yes" rot="R90">
 <attribute name="DATASHEET-URL" value="https://www.we-online.com/redexpert/spec/430182050816?ae" x="108.2" y="140.81" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="HEIGHT" value="5mm" x="108.2" y="140.81" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="53.3591" y="16.203" size="1.778" layer="25" rot="R90" align="bottom-center"/>
