@@ -107,11 +107,11 @@ The full schematics are available:
   <tr>
     <td align="center">
       <img src="images/1.0.0/3D_TOP.png" alt="PDCard 3D Top View" style="width: 100%; min-width: 200px; border-radius: 6px;">
-      <br><b>Main Board Top</b>
+      <br><b>PDCard Top</b>
     </td>
     <td align="center">
       <img src="images/1.0.0/3D_BTM.png" alt="PDCard 3D Bottom View" style="width: 100%; min-width: 200px; border-radius: 6px;">
-      <br><b>Main Board Bottom</b>
+      <br><b>PDCard Bottom</b>
     </td>
   </tr>
 </table>
