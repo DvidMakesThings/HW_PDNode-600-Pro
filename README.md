@@ -1,137 +1,122 @@
-# PDNode 600 / PDNode 600 Pro  
+# PDNode 600 Pro  
 ## High-Performance USB PD Power Distribution Unit – 10" Rackmount
 
+![Hardware Development Status](https://img.shields.io/badge/status-Ongoing-orange)
 
 ## Description  
-The PDNode 600 is a professional-grade, 600W USB Power Delivery Unit designed specifically for compact 10-inch rack systems, targeting embedded developers, homelab enthusiasts, test benches, and smart infrastructure. It delivers precision-regulated, high-current power across 8x independent USB-C PD outputs and 4x fixed 5V USB-A outputs, from a standard 230V AC input.
+[ENERGIS](https://github.com/DvidMakesThings/HW_10-In-Rack_PDU) is the 230V managed PDU project. PDNode-600 Pro is the modular DC/USB-C sibling for setups
+where mains switching is not desired, but controllable, rack-friendly power output is still needed.
 
-At the core of the PDNode platform is a centralized industrial-grade 24V/25A power supply, distributing regulated DC to dedicated per-port buck or buck-boost converters. Each USB-C port is managed by an STUSB4710 PD controller, enabling clean, autonomous negotiation of power profiles up to 20V @ 3A or 5V @ 5A with eMarker cable support. All power conversion, protection, and monitoring are designed to meet high reliability and safety standards.
+The PDNode-600 is a professional-grade, 600W USB Power Delivery Unit designed specifically for compact 10-inch rack systems, targeting embedded developers, homelab enthusiasts, test benches, and smart infrastructure. It delivers regulated, high-current power across 8x independent USB-C PD outputs and 4x fixed 5V USB-A outputs.
 
-The PDNode 600 features local control via physical buttons, LED indicators, and an onboard OLED display.
-The PDNode 600 Pro, by contrast, is built for remote-managed racks and headless environments, featuring Ethernet connectivity, a clean web-based UI, SNMP integration, and firmware updates via USB-C. It omits all physical buttons and indicators in favor of streamlined software-based interaction.
+At the core of the PDNode platform is a centralized industrial-grade 24V/25A power supply, distributing regulated DC to dedicated per-port buck or buck-boost converters. Each USB-C port is managed by an MCP22350T-2I/Q8X PD controller, enabling clean, autonomous negotiation of power profiles up to 20V @ 3A or 5V @ 5A with eMarker cable support. All power conversion, protection, and monitoring are designed to meet high reliability and safety standards.
 
-Both models share the same core electrical platform and mechanical design, ensuring a consistent user experience and upgrade path.
-
----
-
-## Technical Specifications  
-
-### Power Input  
-- **Connector**: IEC C13 inlet with fuse  
-- **Voltage**: 230V AC nominal  
-- **Frequency**: 50/60 Hz  
-- **Protection**:  
-    - Internal fuse  
-    - MOV surge suppression  
-    - Common-mode EMI choke  
-- **Conversion**:  
-    - Mean Well RSP-600-24  
-    - 24V DC @ 25A continuous output  
-    - Efficiency: Up to 90%  
-    - Built-in fan and overload protection  
+The PDNode-600 Pro, by contrast, is built for remote-managed racks and headless environments, featuring Ethernet connectivity, a clean web-based UI, SNMP integration, and firmware updates via USB-C. 
 
 ---
 
-### USB-C Power Delivery Outputs (8x)  
-- **Connector**: USB-C 2.0 receptacles  
-- **Controller**: STUSB4710 (1 per port)  
-- **Negotiated PD Profiles**:  
-    - 5V @ up to 5A (with eMarker cable)  
-    - 9V / 12V / 15V / 20V @ up to 3A (per port)  
-- **Power Regulation**:  
-    - Dedicated buck or buck converter per port  
-    - Programmable PDO selection via resistor or I²C  
-- **Protection**:  
-    - Overvoltage, undervoltage, overcurrent  
-    - Thermal shutdown on converter stage  
-- **Features**:  
-    - Per-port enable/disable control  
-    - Per-port current and voltage monitoring  
+## Specifications 
+
+### Input
+- **Input voltage:** 230 VAC, max 3A 
+- **System topology:** 24V distribution on the baseboard, per-slot conversion on PD cards
+
+### Output (per PD card / per slot)
+- **8x independent USB-C PD source**:
+  - 5V 3A
+  - 9V 3A
+  - 12V 3A
+  - 15V 3A
+  - 20V 3A
+  - 5V 5A (only with 5A e-marked cable)
+  - 20V 5A (only with 5A e-marked cable)
+- **4x USB-A source** up to **5V / 1A** per port (depending on configuration and limits)
 
 ---
 
-### USB-A Outputs (4x)  
-- **Connector**: USB-A 2.0 receptacles  
-- **Output**: Fixed 5V @ 1A per port  
-- **Regulation**: Independent DC-DC converters with current limit  
-- **Protection**:  
-    - Overcurrent  
+## Features
+- **8x independent USB-C PD source ports** (modular PD cards, one port per slot)
+- **Per-port PD profiles**
+- **Total system capability: up to 600W** (shared input power budget)
+- **4x USB-A auxiliary outputs** (5V, 1A per port) for low-power devices
+- **Ethernet connectivity** for control / monitoring
+- **USB service interface** (debug, configuration, firmware update, or log access depending on implementation)
+- **Per-port power monitoring** (current/voltage telemetry via onboard sensing)
+- **Per-port status reporting** (PGOOD / fault indication, and software-readable status)
+- **Hot-swappable slot concept** (cards can be replaced without redesigning the baseboard)
 
 ---
 
-### Microcontroller  
-- **Model**: RP2040 (dual-core ARM Cortex-M0+ @ 133 MHz)  
-- **Role**:  
-    - Monitoring  
-    - Controls power switches  
-    - Handles user input (600 only)  
-    - Serves web UI and SNMP interface (600 Pro only)  
-    - Manages display and status feedback  
+## Hardware architecture
+
+### Baseboard
+- 24V DC input from industrial power supply
+- Power distribution to all slots (high-current bus)
+- Slot connectors + slot management (card detect, enable, status aggregation)
+- I2C fanout per slot (mux) for monitoring and controlling devices
+- Ethernet interface for user interaction
+- USB/service interface for debug/config/updates
+- 4x USB-A outputs
+- 8x USB-C PD outputs
+
+### PD Card
+- 1x USB-C PD source port (one card = one port)
+- Local power conversion to generate VBUS from the 24V bus
+- PD controller + USB-C port control signals (enable, reset, IRQ)
+- Per-port current/voltage measurement
+- Per-port power good / fault status output
+- Optional ID EEPROM footprint (DNI) for traceability/calibration
 
 ---
 
-## Control and Monitoring  
-
-### PDNode 600 (Base Model)  
-- **Physical Control**:  
-    - 3x Button (Left, Right, Toggle)  
-    - 1x Fault LED per port (status feedback)  
-- **Display**:  
-    - 0.96" OLED screen (monochrome)  
-    - Displays port voltage, load current, port state  
-- **Network Features**: None  
-
-### PDNode 600 Pro (Managed Model)  
-- **Physical Control**: None  
-- **Ethernet Interface**: 10/100 Mbps  
-- **Web UI**:  
-    - Per-port status (voltage/current)  
-    - Enable/disable control   
-- **SNMP Support**: Custom SNMP for port monitoring and control  
-- **Firmware Update**: Via USB-C device mode (mass storage or DFU)  
+## Schematics
+The full schematics are available:
+- **[Baseboard Schematics](src/PDF/PDNode-600-Pro_Baseboard_schematics.pdf)** - WORK IN PROGRESS
+- **[PD Card Schematics](src/PDF/SCH_PDCard_101.pdf)**
 
 ---
 
-## PCB and Electrical Design  
-- **PCB**: 4-layer  
-    - Layer 1: Power distribution (1oz)  
-    - Layer 2: Ground plane (0.5oz)  
-    - Layer 3: Control signal routing (0.5oz)  
-    - Layer 4: Power distribution (1oz)  
-- **Current Handling**:  
-    - 2x 13mm power pours (top & bottom) with stitched vias  
-    - Supports up to 25A sustained  
-- **Thermal Design**:  
-    - Optimized for active or passive airflow  
-    - Heat spread via copper pours and converter thermal pads  
+## Development Phases (Hardware + Firmware)
+
+| Hardware Phase                          | Status          | Firmware Phase                         | Status         |
+| --------------------------------------- | --------------- | -------------------------------------- | -------------- |
+| Architecture definition                 | ✅ Completed    | Slot scan concept (TCA9548A)           | 🔵 Planned     |
+| Baseboard PCB Design                    | 🔵 Planned      | I2C driver + mux control               | 🔵 Planned     |
+| PD Card PCB Design                      | ✅ Completed    | INA219 monitoring                      | 🔵 Planned     |
+| Documentation                           | 🔵 Planned      | PD controller interface (SPI + GPIO)   | 🔵 Planned     |
+| PCB ordering                            | 🔵 Planned      | Telemetry + status reporting           | 🔵 Planned     |
+| Prototyping and Hardware Bring-up       | 🔵 Planned      | Bring-up scripts / debug tooling       | 🔵 Planned     |
+| Validation (load, thermal, long-run)    | 🔵 Planned      | Error handling + fault reporting       | 🔵 Planned     |
+| Production optimization                 | 🔵 Planned      | Integration and polishing              | 🔵 Planned     |
 
 ---
 
-## Mechanical  
-- **Form Factor**: 10-inch rack-mountable, 1U height  
-- **Enclosure**: Powder-coated aluminum chassis 
-- **Front-Facing Control Interface, Back-Facing Ports**  
-- **Mounting**: Front flanges with M4 screw holes  
-- **Rear ventilation cutouts**
+## Changelog 
+#### Rev0.1.0:
+- Initial design
+- STUSB4710 controller + TPS552882
+
+#### Rev1.0.0:
+- Full redesign. STUSB4710 became EOL, need to use different PD controller
+- New concept: modular Baseboard + PDCard architecture
+- PDCard power stage (TPS552882-Q1)
+- Baseboard: Per-slot I2C muxing (TCA9548A)
+- Optional per-card EEPROM (not used, but capable)
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="images/1.0.0/3D_TOP.png" alt="PDCard 3D Top View" style="width: 100%; min-width: 200px; border-radius: 6px;">
+      <br><b>Main Board Top</b>
+    </td>
+    <td align="center">
+      <img src="images/1.0.0/3D_BTM.png" alt="PDCard 3D Bottom View" style="width: 100%; min-width: 200px; border-radius: 6px;">
+      <br><b>Main Board Bottom</b>
+    </td>
+  </tr>
+</table>
 
 ---
-
-## Power Budget  
-- **Total Output Capacity**: 600W  
-    - 8x USB-C ports @ max 60W = 480W  
-    - 4x USB-A ports @ 5W = 20W  
-    - 100W reserved headroom for conversion losses and efficiency  
-- **Input Current**: ~2.4–2.6A @ 230V AC (full load)  
-
----
-
-## Applications  
-- Raspberry Pi clusters (up to 8-node)  
-- Homelab power infrastructure  
-- Remote embedded hardware labs  
-- USB-PD powered NAS, SSD, and networking gear  
-- Automated test setups  
-- Data center micro-racks and portable rigs  
 
 ## License
 ### Software Components
@@ -152,7 +137,7 @@ See the [Software License](LICENSE-AGPL) file for details.
 - ❌ **You cannot** use this project in a commercial product without either complying with AGPL or obtaining a different license
 
 ### Hardware Components
-Hardware designs, schematics, and related documentation are licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)**. See the [Hardware License](LICENSE-CC-BY-NC-SA) file for details.
+Hardware designs, schematics, and related documentation are licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0 International License)**. See the [Hardware License](LICENSE-CC-BY-NC-SA) file for details.
 
 #### What CC BY-NC-SA 4.0 means:
 
@@ -178,7 +163,6 @@ Commercial use of this project is prohibited without obtaining a separate commer
 - Any other commercial applications
 
 Please contact me through any of the channels listed in the [Contact](#contact) section to discuss commercial licensing arrangements. Commercial licenses are available with reasonable terms to support ongoing development.
-
 
 ## Contact
 
