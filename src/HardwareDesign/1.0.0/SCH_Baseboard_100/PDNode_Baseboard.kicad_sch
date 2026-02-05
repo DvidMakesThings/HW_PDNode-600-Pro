@@ -5,7 +5,7 @@
 	(uuid "f9e05184-c88b-4a88-ae9c-ab2bdb32be7c")
 	(paper "A3")
 	(title_block
-		(date "2025-01-12")
+		(date "2026-02-05")
 		(rev "1.0.0")
 		(company "DvidMakesThings")
 	)
@@ -1096,7 +1096,7 @@
 	)
 	(polyline
 		(pts
-			(xy 241.3 173.99) (xy 243.84 180.34)
+			(xy 241.4932 175.7723) (xy 244.0332 182.1223)
 		)
 		(stroke
 			(width 1)
@@ -1129,7 +1129,7 @@
 	)
 	(polyline
 		(pts
-			(xy 243.84 173.99) (xy 241.3 180.34)
+			(xy 244.0332 175.7723) (xy 241.4932 182.1223)
 		)
 		(stroke
 			(width 1)
@@ -23788,7 +23788,7 @@
 			)
 		)
 		(instances
-			(project "PDNode-600"
+			(project "PDNode_Baseboard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c"
 					(page "6")
 				)
@@ -23833,7 +23833,7 @@
 			)
 		)
 		(instances
-			(project "PDNode-600"
+			(project "PDNode_Baseboard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c"
 					(page "2")
 				)

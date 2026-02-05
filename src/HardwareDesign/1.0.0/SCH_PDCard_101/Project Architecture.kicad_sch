@@ -7922,7 +7922,7 @@
 			)
 		)
 		(instances
-			(project "PDNode-600"
+			(project "PDNode-PDCard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e"
 					(page "5")
 				)
@@ -7954,7 +7954,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "Section B - TItle B.kicad_sch"
+		(property "Sheetfile" "usb_pd_source_controller.kicad_sch"
 			(at 262.636 224.282 0)
 			(effects
 				(font
@@ -8135,7 +8135,7 @@
 			)
 		)
 		(instances
-			(project "PDNode-600"
+			(project "PDNode-PDCard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e"
 					(page "4")
 				)
@@ -8239,7 +8239,7 @@
 			)
 		)
 		(instances
-			(project "PDNode-600"
+			(project "PDNode-PDCard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e"
 					(page "3")
 				)

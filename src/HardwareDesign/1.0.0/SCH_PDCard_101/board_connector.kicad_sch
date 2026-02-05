@@ -3919,7 +3919,7 @@
 		)
 		(uuid "536d97d1-3b46-456d-b387-c1865f712eba")
 	)
-	(text "Max current: 5.1A per module\n\nPin current capability: 1.1A per Pin (Datasheet)\n\n+24V: 9 Pins = 9.9A capability\nGND: 9 Pins = 9.9A capability\n\n+24V_SYS: Max 100mA, separate supply for peripherals"
+	(text "Max current: 5.1A per module\n\nPin current capability: 1.1A per Pin (Datasheet)\n\n+24V: 8 Pins = 8.8A capability\nGND: 8 Pins = 8.8A capability"
 		(exclude_from_sim no)
 		(at 138.176 236.474 0)
 		(effects
@@ -4229,6 +4229,10 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "fd033dc2-6cff-43f4-8089-f893a5ca82fd")
+	)
+	(no_connect
+		(at 114.3 209.55)
+		(uuid "c5fb991c-a4e5-44ac-8d06-fdf5f09327f6")
 	)
 	(wire
 		(pts
@@ -4542,6 +4546,16 @@
 	)
 	(wire
 		(pts
+			(xy 58.42 207.01) (xy 83.82 207.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41ff1f71-8876-4b25-a238-6a41e55e4435")
+	)
+	(wire
+		(pts
 			(xy 369.57 86.36) (xy 367.03 86.36)
 		)
 		(stroke
@@ -4649,6 +4663,16 @@
 			(type default)
 		)
 		(uuid "51bb4f7c-5d35-4c76-8abe-8589cfa0c106")
+	)
+	(wire
+		(pts
+			(xy 58.42 209.55) (xy 83.82 209.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "54d2ab6d-80fe-4378-8b15-e9852239e16e")
 	)
 	(wire
 		(pts
@@ -5570,7 +5594,7 @@
 		)
 		(uuid "fe12d1ef-d5f8-49eb-9438-8f2b6ca142e0")
 	)
-	(global_label "PGOOD_COMBIMED"
+	(global_label "PGOOD_COMBINED"
 		(shape input)
 		(at 356.87 73.66 0)
 		(fields_autoplaced yes)
@@ -5582,7 +5606,7 @@
 		)
 		(uuid "65f0e363-a1e0-47cb-a597-5887663b1bd0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 377.0909 73.66 0)
+			(at 376.97 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5592,7 +5616,7 @@
 			)
 		)
 	)
-	(global_label "PGOOD_COMBIMED"
+	(global_label "PGOOD_COMBINED"
 		(shape input)
 		(at 58.42 201.93 180)
 		(fields_autoplaced yes)
@@ -5604,7 +5628,7 @@
 		)
 		(uuid "8d0bb465-2310-4d6e-9839-c953d4dcd14a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 38.1991 201.93 0)
+			(at 38.32 201.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5713,6 +5737,17 @@
 		)
 		(uuid "7b35ae22-a784-45df-b7a7-e6060df8ce13")
 	)
+	(hierarchical_label "VBUS_VMON_PORT0"
+		(shape input)
+		(at 58.42 209.55 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "7d8658b3-e4fc-42bb-8640-9daaa7e8fa2e")
+	)
 	(hierarchical_label "PD_ENABLE"
 		(shape output)
 		(at 149.86 204.47 0)
@@ -5745,6 +5780,17 @@
 			(justify left)
 		)
 		(uuid "9d810d5e-512a-4233-8ed1-b1bffd9e9d4a")
+	)
+	(hierarchical_label "PMIC_VMON_PORT0"
+		(shape input)
+		(at 58.42 207.01 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a131aeca-1aa6-4807-a96b-b698d43f2b47")
 	)
 	(hierarchical_label "SPI_CLK"
 		(shape output)
