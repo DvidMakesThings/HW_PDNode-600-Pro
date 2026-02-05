@@ -1066,7 +1066,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" ""
+			(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588919304821202944"
 				(at 3.81 -8.128 0)
 				(show_name)
 				(effects
@@ -1077,7 +1077,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "50V 1uF X7R ±10% 1206 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+			(property "Description" "1uF 50V X7R ±10% 1206 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
 				(at 3.81 -12.192 0)
 				(show_name)
 				(effects
@@ -1119,8 +1119,19 @@
 					(hide yes)
 				)
 			)
-			(property "MFR" ""
+			(property "MFR" "FH "
 				(at 3.81 -10.16 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "MPN" "1206B105K500NT"
+				(at 3.81 -16.256 0)
 				(show_name)
 				(effects
 					(font
@@ -1705,13 +1716,37 @@
 				)
 			)
 			(symbol "BSZ065N06_1_1"
+				(text "5-8"
+					(at -3.556 3.556 0)
+					(effects
+						(font
+							(size 0.001 0.001)
+						)
+					)
+				)
+				(text "5-8"
+					(at -0.762 3.556 900)
+					(effects
+						(font
+							(size 0.635 0.635)
+						)
+					)
+				)
+				(text "1-3"
+					(at -0.762 -3.302 900)
+					(effects
+						(font
+							(size 0.635 0.635)
+						)
+					)
+				)
 				(pin input line
 					(at -5.08 0 0)
 					(length 2.54)
-					(name ""
+					(name "G"
 						(effects
 							(font
-								(size 1.27 1.27)
+								(size 0 0)
 							)
 						)
 					)
@@ -1726,14 +1761,90 @@
 				(pin passive line
 					(at 0 5.08 270)
 					(length 2.54)
-					(name ""
+					(hide yes)
+					(name "D"
 						(effects
 							(font
-								(size 1.27 1.27)
+								(size 0 0)
 							)
 						)
 					)
-					(number "5-8"
+					(number "5"
+						(effects
+							(font
+								(size 0.762 0.762)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 5.08 270)
+					(length 2.54)
+					(hide yes)
+					(name "D"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 0.762 0.762)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 5.08 270)
+					(length 2.54)
+					(hide yes)
+					(name "D"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 0.762 0.762)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(hide yes)
+					(name "S"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "1"
 						(effects
 							(font
 								(size 0.762 0.762)
@@ -1744,17 +1855,36 @@
 				(pin passive line
 					(at 0 -5.08 90)
 					(length 2.54)
-					(name ""
+					(hide yes)
+					(name "S"
 						(effects
 							(font
-								(size 1.27 1.27)
+								(size 0 0)
 							)
 						)
 					)
-					(number "1-3"
+					(number "2"
 						(effects
 							(font
 								(size 0.762 0.762)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0 0)
 							)
 						)
 					)
@@ -9100,7 +9230,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2b653ca4-ac2d-448c-9d0e-3b8a03febb60")
-		(property "Reference" "VOUT"
+		(property "Reference" "VOUT1"
 			(at 235.204 109.22 90)
 			(effects
 				(font
@@ -9149,7 +9279,7 @@
 		(instances
 			(project "PDNode-600"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/f06537ee-772d-44d3-8c50-e0ba41038c9c"
-					(reference "VOUT")
+					(reference "VOUT1")
 					(unit 1)
 				)
 			)
@@ -9411,14 +9541,29 @@
 				(hide yes)
 			)
 		)
-		(pin "5-8"
+		(pin "8"
 			(uuid "b08f77b6-8be6-403a-8d70-604440594b62")
 		)
-		(pin "1-3"
+		(pin "6"
 			(uuid "a85949f9-b111-4c91-9eb0-f43d9d40a070")
 		)
 		(pin "4"
 			(uuid "1a7863a8-85de-478b-a65c-e4ca8ac03e55")
+		)
+		(pin "7"
+			(uuid "86c89094-7f41-4b46-a8cc-958b7bcd986c")
+		)
+		(pin "2"
+			(uuid "3445c802-b288-4991-82f0-ac0b54ab564e")
+		)
+		(pin "5"
+			(uuid "d6ebdcdc-2718-4f45-9434-ebdbc9ed35c6")
+		)
+		(pin "1"
+			(uuid "5bd6cf66-a1a3-4290-b4f5-9eb30607cd1d")
+		)
+		(pin "3"
+			(uuid "b0ffb03e-d614-4bfb-a019-4a773e49a5ce")
 		)
 		(instances
 			(project ""
@@ -9887,7 +10032,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588919304821202944"
 			(at 138.43 140.208 0)
 			(show_name yes)
 			(effects
@@ -9898,7 +10043,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "50V 1uF X7R ±10% 1206 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+		(property "Description" "1uF 50V X7R ±10% 1206 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
 			(at 138.43 144.272 0)
 			(show_name yes)
 			(effects
@@ -9940,9 +10085,19 @@
 				(hide yes)
 			)
 		)
-		(property "MFR" ""
+		(property "MFR" "FH "
 			(at 138.43 142.24 0)
 			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "MPN" "1206B105K500NT"
+			(at 138.43 148.336 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10268,11 +10423,26 @@
 		(pin "4"
 			(uuid "96ecbb9c-fc1d-41bd-893d-6c6e16cefb1d")
 		)
-		(pin "5-8"
+		(pin "1"
 			(uuid "83c5364c-94f4-453c-bc91-27d9ed30524a")
 		)
-		(pin "1-3"
+		(pin "7"
 			(uuid "ca2777e5-c789-4151-96ee-970ebc3269f9")
+		)
+		(pin "5"
+			(uuid "31d6c616-a81f-407c-aa67-0da670278020")
+		)
+		(pin "2"
+			(uuid "2aff1a87-be0c-4354-a3dd-7a516cbdb1b3")
+		)
+		(pin "6"
+			(uuid "cfe89212-88ea-4bf3-a8b9-b827e7c06bb9")
+		)
+		(pin "8"
+			(uuid "fd343baa-3e79-48e0-903a-633f65ec306d")
+		)
+		(pin "3"
+			(uuid "7a4e070c-557c-4842-a30d-f6591648606d")
 		)
 		(instances
 			(project "PDNode-600"
@@ -11437,7 +11607,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7ca59e58-71d8-4eb4-8e82-8217ce25ba60")
-		(property "Reference" "PGY"
+		(property "Reference" "PGY1"
 			(at 315.214 213.36 90)
 			(effects
 				(font
@@ -11486,7 +11656,7 @@
 		(instances
 			(project "PDNode-600"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/f06537ee-772d-44d3-8c50-e0ba41038c9c"
-					(reference "PGY")
+					(reference "PGY1")
 					(unit 1)
 				)
 			)
@@ -13024,7 +13194,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ab9ec355-edad-4604-8513-4a3a6d5bc660")
-		(property "Reference" "PMEN"
+		(property "Reference" "PMEN1"
 			(at 103.886 213.36 90)
 			(effects
 				(font
@@ -13073,7 +13243,7 @@
 		(instances
 			(project "PDNode-600"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/f06537ee-772d-44d3-8c50-e0ba41038c9c"
-					(reference "PMEN")
+					(reference "PMEN1")
 					(unit 1)
 				)
 			)
@@ -13529,7 +13699,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c0cc9271-f0fd-4ca3-9377-2b22d08665f8")
-		(property "Reference" "TP24V"
+		(property "Reference" "TP24V1"
 			(at 76.708 110.49 90)
 			(effects
 				(font
@@ -13578,7 +13748,7 @@
 		(instances
 			(project ""
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/f06537ee-772d-44d3-8c50-e0ba41038c9c"
-					(reference "TP24V")
+					(reference "TP24V1")
 					(unit 1)
 				)
 			)
@@ -13843,7 +14013,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d95c44dd-0276-4c9d-a138-f17f3c0d6831")
-		(property "Reference" "PG"
+		(property "Reference" "PG1"
 			(at 249.936 218.44 90)
 			(effects
 				(font
@@ -13892,7 +14062,7 @@
 		(instances
 			(project "PDNode-600"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/f06537ee-772d-44d3-8c50-e0ba41038c9c"
-					(reference "PG")
+					(reference "PG1")
 					(unit 1)
 				)
 			)

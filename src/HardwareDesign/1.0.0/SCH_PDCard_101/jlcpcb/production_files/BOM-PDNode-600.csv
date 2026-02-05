@@ -43,3 +43,24 @@ SN74LVC1G97QDCKRQ1,"IC4,IC5,IC7",SOT-363_SC-70-6,C179911,3
 TPS552882QRPMRQ1,IC1,PowerVFQFN-26,C2876594,1
 TPS74801DRCT,IC6,VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias,C882845,1
 USB_C_Receptacle_PowerOnly_6P,J1,USB_C_Receptacle_GCT_USB4125-xx-x-0190_6P_TopMnt_Horizontal,C2927029,1
+1R 1%,R8,R_0603_1608Metric,,1
+~,1V8,TestPoint_0.6mm,,1
+~,FB1,TestPoint_0.6mm,,1
+~,PDO2,TestPoint_0.6mm,,1
+~,PG1,TestPoint_0.6mm,,1
+~,PMEN1,TestPoint_0.6mm,,1
+~,PDO3,TestPoint_0.6mm,,1
+~,PGY1,TestPoint_0.6mm,,1
+~,3V3,TestPoint_0.6mm,,1
+~,CC2,TestPoint_0.6mm,,1
+~,VOUT1,TestPoint_0.6mm,,1
+~,PDO4,TestPoint_0.6mm,,1
+~,CC1,TestPoint_0.6mm,,1
+~,CN1,TestPoint_0.6mm,,1
+~,CP1,TestPoint_0.6mm,,1
+~,PDO5,TestPoint_0.6mm,,1
+~,3VA1,TestPoint_0.6mm,,1
+~,3VINT1,TestPoint_0.6mm,,1
+1R 1%,R44,R_0603_1608Metric,,1
+~,VDET1,TestPoint_0.6mm,,1
+~,TP24V1,TestPoint_0.6mm,,1
