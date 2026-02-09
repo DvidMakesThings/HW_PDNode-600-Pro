@@ -49,7 +49,7 @@
       "conflict_shadows",
       "shapes"
     ],
-    "visible_layers": "00000000_00000000_00000000_020001f5",
+    "visible_layers": "00000000_00000000_0000a000_020001f5",
     "zone_display_mode": 0
   },
   "git": {
@@ -58,7 +58,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "PDNode-600.kicad_prl",
+    "filename": "PDNode-PDCard.kicad_prl",
     "version": 5
   },
   "net_inspector_panel": {

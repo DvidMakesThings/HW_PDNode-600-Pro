@@ -3598,6 +3598,16 @@
 	)
 	(wire
 		(pts
+			(xy 151.13 180.34) (xy 262.89 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7f37309c-828f-4f26-bad4-28fa08e3bab2")
+	)
+	(wire
+		(pts
 			(xy 227.33 95.25) (xy 227.33 101.6)
 		)
 		(stroke
@@ -3987,6 +3997,16 @@
 			(type default)
 		)
 		(uuid "d28b3d5b-47ca-4696-bc42-337611c55fc4")
+	)
+	(wire
+		(pts
+			(xy 151.13 182.88) (xy 262.89 182.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d41d6ca9-6846-4dca-bff9-df2a26bf673a")
 	)
 	(wire
 		(pts
@@ -7921,6 +7941,26 @@
 				(justify left)
 			)
 		)
+		(pin "VBUS_VMON_PORT0" input
+			(at 151.13 182.88 0)
+			(uuid "2f839814-4c65-4e06-b74d-caf61e1ed898")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "PMIC_VMON_PORT0" input
+			(at 151.13 180.34 0)
+			(uuid "3c2d0750-547c-414a-8a56-3bc04c010c61")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
 		(instances
 			(project "PDNode-PDCard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e"
@@ -8127,6 +8167,26 @@
 		(pin "I2C_SDA" bidirectional
 			(at 262.89 190.5 180)
 			(uuid "475a4814-d040-4663-8641-73163d4f39e3")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "PMIC_VMON_PORT0" output
+			(at 262.89 180.34 180)
+			(uuid "13d625a0-2fd0-4c0b-badd-e48358969caf")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "VBUS_VMON_PORT0" output
+			(at 262.89 182.88 180)
+			(uuid "e0f87684-9cf3-4339-8b89-15abdc4c0901")
 			(effects
 				(font
 					(size 1.27 1.27)

@@ -3697,6 +3697,12 @@
 		(uuid "1b167fd8-cb13-4eb8-acb3-be8286eac53a")
 	)
 	(junction
+		(at 382.27 66.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "24657baa-d428-423f-afe8-e212d012326c")
+	)
+	(junction
 		(at 93.98 243.84)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3713,6 +3719,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "37b4a83c-bc9a-4179-b982-1b2a386889f6")
+	)
+	(junction
+		(at 248.92 125.73)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4042ede5-5d8f-41c4-9edd-eb83ed1dbdd2")
 	)
 	(junction
 		(at 273.05 158.75)
@@ -4020,6 +4032,16 @@
 	)
 	(wire
 		(pts
+			(xy 382.27 52.07) (xy 382.27 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "16c36cec-e7b2-45e3-8998-db45771c5a8b")
+	)
+	(wire
+		(pts
 			(xy 224.79 168.91) (xy 261.62 168.91)
 		)
 		(stroke
@@ -4097,6 +4119,16 @@
 			(type default)
 		)
 		(uuid "1c66f14f-3c30-4e0b-93c2-cd6673210700")
+	)
+	(wire
+		(pts
+			(xy 248.92 125.73) (xy 256.54 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1cee8521-17d1-4841-9525-7d8671f000a9")
 	)
 	(wire
 		(pts
@@ -4640,6 +4672,16 @@
 	)
 	(wire
 		(pts
+			(xy 241.3 93.98) (xy 248.92 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f7f79a5-de86-48a3-a755-b5bff4e8b50f")
+	)
+	(wire
+		(pts
 			(xy 283.21 121.92) (xy 298.45 121.92)
 		)
 		(stroke
@@ -4860,6 +4902,16 @@
 	)
 	(wire
 		(pts
+			(xy 382.27 66.04) (xy 386.08 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ebb5dd2-799c-4490-9efa-eeaa05a44ba2")
+	)
+	(wire
+		(pts
 			(xy 135.89 161.29) (xy 187.96 161.29)
 		)
 		(stroke
@@ -5060,6 +5112,26 @@
 	)
 	(wire
 		(pts
+			(xy 382.27 66.04) (xy 382.27 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b910f203-8381-4066-bcd6-173587bbaf0b")
+	)
+	(wire
+		(pts
+			(xy 248.92 93.98) (xy 248.92 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ba8b91fd-8fb6-4daf-9c4e-dd937a3734e5")
+	)
+	(wire
+		(pts
 			(xy 256.54 52.07) (xy 256.54 115.57)
 		)
 		(stroke
@@ -5177,6 +5249,16 @@
 			(type default)
 		)
 		(uuid "cd117e8d-9ac4-46a8-bdcd-ba357bfefe02")
+	)
+	(wire
+		(pts
+			(xy 382.27 76.2) (xy 382.27 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ce07d207-0a17-4c7d-94e8-d6f1cb169361")
 	)
 	(wire
 		(pts
@@ -5330,7 +5412,7 @@
 	)
 	(wire
 		(pts
-			(xy 224.79 125.73) (xy 256.54 125.73)
+			(xy 224.79 125.73) (xy 248.92 125.73)
 		)
 		(stroke
 			(width 0)
@@ -5407,6 +5489,16 @@
 			(type default)
 		)
 		(uuid "f6309a3a-ed99-47bf-9a1c-6fa572b3e21b")
+	)
+	(wire
+		(pts
+			(xy 382.27 63.5) (xy 382.27 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6bcd6ea-4221-4588-b0f2-dbcb0dca46ae")
 	)
 	(wire
 		(pts
@@ -5742,6 +5834,17 @@
 		)
 		(uuid "3bfa9f42-93e0-4580-b620-f665bd78868d")
 	)
+	(hierarchical_label "PMIC_VMON_PORT0"
+		(shape output)
+		(at 241.3 93.98 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "453f6625-78e8-4636-821e-3747808a2216")
+	)
 	(hierarchical_label "SPI_MISO"
 		(shape output)
 		(at 135.89 158.75 180)
@@ -5807,6 +5910,17 @@
 			(justify left)
 		)
 		(uuid "944ca947-4b34-4f05-944e-56ad24391685")
+	)
+	(hierarchical_label "VBUS_VMON_PORT0"
+		(shape output)
+		(at 386.08 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "9c832b63-e5f9-4ccd-a2ef-dc400bf3456b")
 	)
 	(hierarchical_label "PDO2"
 		(shape bidirectional)
@@ -6324,6 +6438,72 @@
 			(project "PDNode-PDCard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a"
 					(reference "#PWR45")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DS_Supply:GND")
+		(at 382.27 88.9 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1ca07932-fa9e-47f6-a643-31e1f94adf4d")
+		(property "Reference" "#PWR093"
+			(at 382.27 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 382.27 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 382.27 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 382.27 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 382.27 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ac72b864-36af-4a78-8254-548630fa48f6")
+		)
+		(instances
+			(project "PDNode-PDCard"
+				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a"
+					(reference "#PWR093")
 					(unit 1)
 				)
 			)
@@ -11546,6 +11726,123 @@
 		)
 	)
 	(symbol
+		(lib_id "DS_Resistor_0402:10K 1% 0402")
+		(at 382.27 72.39 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "db7a49df-5db4-448f-8383-c83fcc07cba4")
+		(property "Reference" "R53"
+			(at 384.81 69.8499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10K 1%"
+			(at 384.81 72.3899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 384.302 76.454 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 384.302 87.376 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "62.5mW Thick Film Resistors 50V ±100ppm/℃ ±1% 10kΩ 0402 Chip Resistor - Surface Mount ROHS"
+			(at 384.302 80.772 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "LCSC_PART" "C25744"
+			(at 384.302 85.344 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "ROHS" "YES"
+			(at 384.302 78.74 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "FOOTPRINT_SHORT" "0402"
+			(at 384.81 74.9299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "MFR" "ROHM"
+			(at 384.302 83.058 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "43854f5c-b7eb-4b04-9f61-4a576dfa68a8")
+		)
+		(pin "1"
+			(uuid "aa3abd1b-ef0c-4d44-a83a-794ce501e5e3")
+		)
+		(instances
+			(project "PDNode-PDCard"
+				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a"
+					(reference "R53")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "DS_Supply:GND")
 		(at 110.49 190.5 0)
 		(unit 1)
@@ -11936,6 +12233,135 @@
 			(project "PDNode-PDCard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a"
 					(reference "T4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DS_Resistor_0402:90.9K 1% 0402")
+		(at 382.27 59.69 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e93bc3f3-b6e8-473d-bb36-d161de83a2f8")
+		(property "Reference" "R52"
+			(at 384.81 57.1499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "90.9K 1%"
+			(at 384.81 59.6899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 384.302 63.754 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588907086897537024"
+			(at 384.302 74.676 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "90.9kΩ Thick Film Resistor ±1% ±100ppm/°C 0402 Chip Resistor - Surface Mount ROHS"
+			(at 384.302 68.072 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "LCSC_PART" "C163452"
+			(at 384.302 72.644 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "ROHS" "YES"
+			(at 384.302 66.04 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "FOOTPRINT_SHORT" "0402"
+			(at 384.81 62.2299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "MFR" "YAGEO"
+			(at 384.302 70.358 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0402FR-0790K9L"
+			(at 384.302 76.708 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "ca796a52-7640-4f00-b8ba-1332c9ecab2d")
+		)
+		(pin "1"
+			(uuid "09ff9576-e5fc-4d3e-82ab-f60c0e99a851")
+		)
+		(instances
+			(project "PDNode-PDCard"
+				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a"
+					(reference "R52")
 					(unit 1)
 				)
 			)

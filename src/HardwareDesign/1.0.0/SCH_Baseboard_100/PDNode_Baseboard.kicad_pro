@@ -623,6 +623,46 @@
       {
         "netclass": "Power 5V",
         "pattern": "+5V"
+      },
+      {
+        "netclass": "Chassis",
+        "pattern": "SHIELD"
+      },
+      {
+        "netclass": "Power 5V",
+        "pattern": "VBUS"
+      },
+      {
+        "netclass": "High Power",
+        "pattern": "+24V"
+      },
+      {
+        "netclass": "Power 3V3",
+        "pattern": "+3.3VA"
+      },
+      {
+        "netclass": "Power 5V",
+        "pattern": "+5VA"
+      },
+      {
+        "netclass": "Power 1V1",
+        "pattern": "/Block Diagram/Microcontroller Peripherals/VREG_LX"
+      },
+      {
+        "netclass": "Power 5V",
+        "pattern": "VBUS_PORTA0"
+      },
+      {
+        "netclass": "Power 5V",
+        "pattern": "VBUS_PORTA1"
+      },
+      {
+        "netclass": "Power 5V",
+        "pattern": "VBUS_PORTA2"
+      },
+      {
+        "netclass": "Power 5V",
+        "pattern": "VBUS_PORTA3"
       }
     ]
   },
@@ -638,7 +678,7 @@
       "svg": "",
       "vrml": ""
     },
-    "page_layout_descr_file": "Templates/KDT_Template_PCB_GIT_A4.kicad_wks"
+    "page_layout_descr_file": "kicad-embed://KDT_Template_PCB_A3.kicad_wks"
   },
   "schematic": {
     "annotate_start_num": 0,
@@ -797,10 +837,6 @@
       "Ethernet Interface"
     ],
     [
-      "6e125bd6-2f99-4e5d-b3ea-4899f4540739",
-      "Revision History"
-    ],
-    [
       "2613c462-ed55-40aa-a079-4e429685a0a2",
       "USB Interface"
     ],
@@ -815,6 +851,26 @@
     [
       "c6cf5ea0-94da-4b9b-aed9-bee39f480397",
       "PDCard Connectors 5-8"
+    ],
+    [
+      "fba32a9f-2502-4743-b4ab-f905ef672ffa",
+      "PDC Signals"
+    ],
+    [
+      "c6f702d1-1e7e-431d-ac8b-db3ae1e29d64",
+      "USB-A Outputs"
+    ],
+    [
+      "5eeaa5d3-ec0b-46d1-b379-41c636e66a8e",
+      "USB-A Current Measurement"
+    ],
+    [
+      "7cf334d1-8b51-43f9-89ac-297ce7fac29b",
+      "External Power Connectors"
+    ],
+    [
+      "6e125bd6-2f99-4e5d-b3ea-4899f4540739",
+      "Revision History"
     ]
   ],
   "text_variables": {
@@ -832,8 +888,8 @@
     "RELEASE_BODY_1.0.2": "",
     "RELEASE_BODY_1.1.0": "",
     "RELEASE_BODY_UNRELEASED": "",
-    "RELEASE_DATE": "04.02.2026",
-    "RELEASE_DATE_NUM": "04.02.2026",
+    "RELEASE_DATE": "07.02.2026",
+    "RELEASE_DATE_NUM": "07.02.2026",
     "RELEASE_TITLE_1.0.0": "",
     "RELEASE_TITLE_1.0.1": "",
     "RELEASE_TITLE_1.0.2": "",
