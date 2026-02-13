@@ -18,7 +18,7 @@ The PDNode-600 Pro, by contrast, is built for remote-managed racks and headless 
 ## Specifications 
 
 ### Input
-- **Input voltage:** 230 VAC, max 3A 
+- **Input voltage:** 230 VAC, max 4A 
 - **System topology:** 24V distribution on the baseboard, per-slot conversion on PD cards
 
 ### Output (per PD card / per slot)
