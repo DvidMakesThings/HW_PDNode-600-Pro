@@ -1,0 +1,141 @@
+(version 1)
+
+# ============================================================
+# JLCPCB Minimum Manufacturing Rules (Multilayer) - KiCad 9
+# Source: https://jlcpcb.com/capabilities/pcb-capabilities
+# ============================================================
+
+# -------------------------
+# Tracks: width + spacing
+# -------------------------
+
+(rule "Track width min"
+  (condition "A.Type == 'track'")
+  (constraint track_width (min 0.09mm))
+)
+
+(rule "Track to track clearance (different nets)"
+  (condition "A.Type == 'track' && B.Type == 'track' && A.Net != B.Net")
+  (constraint clearance (min 0.09mm))
+)
+
+(rule "Same-net track spacing"
+  (condition "A.Type == 'track' && B.Type == 'track' && A.Net == B.Net")
+  (constraint clearance (min 0.25mm))
+)
+
+# -------------------------
+# Pads: clearance
+# -------------------------
+
+(rule "Pad to track clearance (different nets)"
+  (condition "A.Type == 'pad' && B.Type == 'track' && A.Net != B.Net")
+  (constraint clearance (min 0.10mm))
+)
+
+(rule "SMD pad to pad clearance (different nets)"
+  (condition "A.Type == 'pad' && B.Type == 'pad' && A.Net != B.Net")
+  (constraint clearance (min 0.15mm))
+)
+
+(rule "Pad to via clearance (different nets)"
+  (condition "A.Type == 'pad' && B.Type == 'via' && A.Net != B.Net")
+  (constraint clearance (min 0.09mm))
+)
+
+# -------------------------
+# Vias: clearance
+# -------------------------
+
+(rule "Via to via clearance (different nets)"
+  (condition "A.Type == 'via' && B.Type == 'via' && A.Net != B.Net")
+  (constraint clearance (min 0.09mm))
+)
+
+(rule "Via to track clearance (different nets)"
+  (condition "A.Type == 'via' && B.Type == 'track' && A.Net != B.Net")
+  (constraint clearance (min 0.20mm))
+)
+
+# -------------------------
+# Holes / drills
+# -------------------------
+
+(rule "Plated hole drill range"
+  (condition "A.isPlated()")
+  (constraint hole_size (min 0.15mm) (max 6.30mm))
+)
+
+(rule "Annular ring min (derived from via 0.15/0.25)"
+  (condition "A.isPlated()")
+  (constraint annular_width (min 0.05mm))
+)
+
+(rule "NPTH hole min"
+  (condition "!A.isPlated()")
+  (constraint hole_size (min 0.50mm))
+)
+
+(rule "NPTH pad annular ring"
+  (condition "A.Type == 'pad' && !A.isPlated()")
+  (constraint annular_width (min 0.45mm))
+)
+
+# -------------------------
+# Hole to hole
+# -------------------------
+
+(rule "Via hole to hole"
+  (condition "A.Type == 'via' && B.Type == 'via'")
+  (constraint hole_to_hole (min 0.20mm))
+)
+
+(rule "Pad hole to hole"
+  (condition "A.Type == 'pad' && B.Type == 'pad'")
+  (constraint hole_to_hole (min 0.45mm))
+)
+
+# -------------------------
+# Hole to track (per PDF)
+# -------------------------
+
+(rule "PTH hole to track clearance (different nets)"
+  (condition "A.Type == 'pad' && A.isPlated() && B.Type == 'track' && A.Net != B.Net")
+  (constraint clearance (min 0.28mm))
+)
+
+(rule "NPTH hole to track clearance (different nets)"
+  (condition "A.Type == 'pad' && !A.isPlated() && B.Type == 'track' && A.Net != B.Net")
+  (constraint clearance (min 0.20mm))
+)
+
+# -------------------------
+# Board edge
+# -------------------------
+
+(rule "Copper to edge clearance (tracks/pads/vias)"
+  (condition "A.Type == 'track' || A.Type == 'pad' || A.Type == 'via'")
+  (constraint edge_clearance (min 0.30mm))
+)
+
+# -------------------------
+# Silkscreen
+# -------------------------
+
+(rule "Silkscreen text"
+  (layer "?.Silkscreen")
+  (condition "A.Type == 'Text' || A.Type == 'Text Box'")
+  (constraint text_thickness (min 0.15mm))
+  (constraint text_height (min 1.00mm))
+)
+
+(rule "Pad to silkscreen"
+  (condition "A.Type == 'pad' && B.Layer == '?.Silkscreen'")
+  (constraint silk_clearance (min 0.15mm))
+)
+
+# -------------------------
+# Slots (documentation only)
+# -------------------------
+# Plated slot >= 0.50mm
+# Non plated slot >= 1.00mm

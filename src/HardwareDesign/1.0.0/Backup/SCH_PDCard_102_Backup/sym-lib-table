@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 0)
+  (lib (name "PDNode-PDCard_102-altium-import")(type "KiCad")(uri "${KIPRJMOD}/PDNode-PDCard_102-altium-import.kicad_sym")(options "")(descr ""))
+)
