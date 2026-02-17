@@ -6,9 +6,9 @@
 	(paper "A3")
 	(title_block
 		(title "PDC Signals")
-		(date "2026-02-05")
-		(rev "1.0.0")
-		(company "DvidMakesThings")
+		(date "2025-01-12")
+		(rev "${REVISION}")
+		(company "${COMPANY}")
 	)
 	(lib_symbols
 		(symbol "DS_Capacitor_0402:100nF 50V 0402"

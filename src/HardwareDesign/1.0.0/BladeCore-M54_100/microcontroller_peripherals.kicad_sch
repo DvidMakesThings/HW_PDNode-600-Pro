@@ -6,204 +6,11 @@
 	(paper "A3")
 	(title_block
 		(title "Microcontroller Peripherals")
-		(date "2026-02-05")
-		(rev "1.0.0")
-		(company "DvidMakesThings")
+		(date "2026-01-31")
+		(rev "${REVISION}")
+		(company "${COMPANY}")
 	)
 	(lib_symbols
-		(symbol "Connector:Conn_ARM_SWD_TagConnect_TC2030"
-			(exclude_from_sim no)
-			(in_bom no)
-			(on_board yes)
-			(property "Reference" "J"
-				(at 2.54 11.43 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "Conn_ARM_SWD_TagConnect_TC2030"
-				(at 5.08 8.89 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "Connector:Tag-Connect_TC2030-IDC-FP_2x03_P1.27mm_Vertical"
-				(at 0 -17.78 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.tag-connect.com/wp-content/uploads/bsk-pdf-manager/TC2030-CTX_1.pdf"
-				(at 0 -15.24 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Tag-Connect ARM Cortex SWD JTAG connector, 6 pin"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "Cortex Debug Connector ARM SWD JTAG"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "*TC2030*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Conn_ARM_SWD_TagConnect_TC2030_0_0"
-				(pin power_in line
-					(at -2.54 10.16 270)
-					(length 2.54)
-					(name "VCC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at -2.54 -10.16 90)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin open_collector line
-					(at 7.62 5.08 180)
-					(length 2.54)
-					(name "~{RESET}"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 7.62 0 180)
-					(length 2.54)
-					(name "SWCLK"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(alternate "TCK" output line)
-				)
-				(pin bidirectional line
-					(at 7.62 -2.54 180)
-					(length 2.54)
-					(name "SWDIO"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(alternate "TMS" bidirectional line)
-				)
-				(pin input line
-					(at 7.62 -5.08 180)
-					(length 2.54)
-					(name "SWO"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(alternate "TDO" input line)
-				)
-			)
-			(symbol "Conn_ARM_SWD_TagConnect_TC2030_0_1"
-				(rectangle
-					(start -5.08 7.62)
-					(end 5.08 -7.62)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "DS_Capacitor_0402:100nF 50V 0402"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -846,6 +653,223 @@
 						)
 					)
 					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DS_Connector:DebugProbe SWD"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at -6.858 11.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "SM03B-SRSS-TB"
+				(at -6.858 -10.668 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DS_Connector:JST_SM03B-SRSS-TB_LF__SN_"
+				(at -6.096 -16.764 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.jst-connector.com/datasheet/jst-connector/BM02B-SRSS-TB.pdf"
+				(at -6.096 -21.336 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "Connector Header Surface Mount, Right Angle 3 position 0.039\" (1.00mm)"
+				(at -6.096 -14.478 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C160403"
+				(at -6.096 -23.622 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "MPN" "SM03B-SRSS-TB"
+				(at -6.096 -28.448 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "MFR" "JST Sales America Inc."
+				(at -6.096 -25.908 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "ROHS" "YES"
+				(at -6.096 -19.05 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "DIST1" "https://www.digikey.de/en/products/detail/jst-sales-america-inc/sm03b-srss-tb/926709"
+				(at -5.842 -31.242 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "DebugProbe SWD_0_1"
+				(rectangle
+					(start -7.62 8.89)
+					(end 6.096 -8.89)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "DebugProbe SWD_1_1"
+				(pin power_in line
+					(at -10.16 6.35 0)
+					(length 2.54)
+					(name "SHIELD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "S1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -10.16 2.54 0)
+					(length 2.54)
+					(name "SWDAT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -10.16 0 0)
+					(length 2.54)
+					(name "SWCLK"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -10.16 -2.54 0)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -10.16 -6.35 0)
+					(length 2.54)
+					(name "SHIELD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "S2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5447,7 +5471,7 @@
 		)
 		(uuid "ec3da253-a014-4362-a102-6a4ec3f65f61")
 	)
-	(text_box "Microcontroller Peripherals"
+	(text_box "[${#}] ${TITLE}"
 		(exclude_from_sim no)
 		(at 13.97 17.78 0)
 		(size 393.7 12.7)
@@ -5465,7 +5489,7 @@
 				(size 8 8)
 				(thickness 1.2)
 				(bold yes)
-				(color 162 22 34 1)
+				(color 43 49 168 1)
 			)
 		)
 		(uuid "f8fe939d-6674-4bb0-8932-d5e09e646624")
@@ -5543,6 +5567,12 @@
 		(uuid "34a32372-dfc3-4aa4-b981-aed68cc41f9a")
 	)
 	(junction
+		(at 336.55 72.39)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3df386fe-446a-4292-8754-61a24246dfc1")
+	)
+	(junction
 		(at 105.41 63.5)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5559,6 +5589,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4b4fc586-c006-49df-a1e6-e11290f5e0d3")
+	)
+	(junction
+		(at 336.55 76.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4f2a6955-86a4-4c53-82ae-b7d42d4e0193")
 	)
 	(junction
 		(at 186.69 127)
@@ -5764,10 +5800,6 @@
 		(color 0 0 0 0)
 		(uuid "fe845d91-6f2a-49eb-b409-a658a8f91a6a")
 	)
-	(no_connect
-		(at 339.09 72.39)
-		(uuid "18c5912a-6bc6-4951-b5b5-ea3ae8d297cf")
-	)
 	(wire
 		(pts
 			(xy 307.34 133.35) (xy 307.34 130.81)
@@ -5807,6 +5839,16 @@
 			(type default)
 		)
 		(uuid "05d95e8b-19ac-469c-bdf8-10d62ac9ec06")
+	)
+	(wire
+		(pts
+			(xy 336.55 72.39) (xy 339.09 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "07da210c-30a5-40d5-a050-5575082e32df")
 	)
 	(wire
 		(pts
@@ -5867,6 +5909,16 @@
 			(type default)
 		)
 		(uuid "0e494ac6-44aa-48f1-b963-40e149f19749")
+	)
+	(wire
+		(pts
+			(xy 336.55 63.5) (xy 336.55 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0ede0223-b284-4d76-aebf-23db17f0493a")
 	)
 	(wire
 		(pts
@@ -6090,6 +6142,16 @@
 	)
 	(wire
 		(pts
+			(xy 339.09 63.5) (xy 336.55 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "252fce4f-2d4b-4a82-9f6b-0d4ccad5f3a5")
+	)
+	(wire
+		(pts
 			(xy 312.42 195.58) (xy 312.42 208.28)
 		)
 		(stroke
@@ -6230,7 +6292,7 @@
 	)
 	(wire
 		(pts
-			(xy 349.25 80.01) (xy 349.25 77.47)
+			(xy 336.55 76.2) (xy 336.55 80.01)
 		)
 		(stroke
 			(width 0)
@@ -7390,6 +7452,16 @@
 	)
 	(wire
 		(pts
+			(xy 336.55 72.39) (xy 336.55 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c242900c-c520-4d0d-b146-19e4ed928d23")
+	)
+	(wire
+		(pts
 			(xy 87.63 102.87) (xy 87.63 100.33)
 		)
 		(stroke
@@ -7457,16 +7529,6 @@
 			(type default)
 		)
 		(uuid "ce234b28-b4a6-457b-bb57-854f6dc4b531")
-	)
-	(wire
-		(pts
-			(xy 328.93 62.23) (xy 339.09 62.23)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ce4b03a9-f6f3-448f-b24a-6ca8e243f9d7")
 	)
 	(wire
 		(pts
@@ -7570,6 +7632,16 @@
 	)
 	(wire
 		(pts
+			(xy 339.09 76.2) (xy 336.55 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dd1302dd-6f67-46af-81e9-7eac6c21e758")
+	)
+	(wire
+		(pts
 			(xy 184.15 66.04) (xy 184.15 63.5)
 		)
 		(stroke
@@ -7627,16 +7699,6 @@
 			(type default)
 		)
 		(uuid "e329126c-891a-43c8-9307-c8db5fad564e")
-	)
-	(wire
-		(pts
-			(xy 349.25 54.61) (xy 349.25 57.15)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e4555676-71d2-4fd3-884a-3e7323982c10")
 	)
 	(wire
 		(pts
@@ -8038,28 +8100,6 @@
 		)
 		(uuid "ff63399c-3964-4c11-88d2-1c2545c91f4d")
 	)
-	(global_label "RESET"
-		(shape input)
-		(at 328.93 62.23 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "0c1f2fdd-19e2-4987-b3cb-59c057a1edb2")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 320.1997 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "VREF_OUT"
 		(shape input)
 		(at 162.56 241.3 0)
@@ -8192,28 +8232,6 @@
 			)
 		)
 	)
-	(global_label "USB_RP_D+"
-		(shape bidirectional)
-		(at 269.24 78.74 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "645aa439-9d76-4b8a-98d4-2d049ac992cd")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 283.3528 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "QSPI_SD1"
 		(shape bidirectional)
 		(at 246.38 121.92 0)
@@ -8254,28 +8272,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "USB_RP_D-"
-		(shape bidirectional)
-		(at 269.24 76.2 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "94795caf-1607-4b59-b52a-88638139fe04")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 283.3528 76.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 				(hide yes)
 			)
 		)
@@ -8500,6 +8496,17 @@
 			)
 		)
 	)
+	(hierarchical_label "USB_RP_D+"
+		(shape bidirectional)
+		(at 269.24 78.74 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "70bb3a7a-5d49-46f2-9996-8b21afcd4f85")
+	)
 	(hierarchical_label "ADC_VREF"
 		(shape output)
 		(at 198.12 241.3 0)
@@ -8510,6 +8517,17 @@
 			(justify left)
 		)
 		(uuid "7928b83a-297f-4d23-84d1-c2671d5453c0")
+	)
+	(hierarchical_label "USB_RP_D-"
+		(shape bidirectional)
+		(at 269.24 76.2 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "956c836a-8675-4484-aa50-0ddf28f5b092")
 	)
 	(hierarchical_label "I2C0_SDA"
 		(shape bidirectional)
@@ -8969,7 +8987,7 @@
 	)
 	(symbol
 		(lib_id "DS_Supply:GND")
-		(at 349.25 80.01 0)
+		(at 336.55 80.01 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8978,7 +8996,7 @@
 		(fields_autoplaced yes)
 		(uuid "0a068612-7445-4267-bdea-d6d62675eec3")
 		(property "Reference" "#PWR09"
-			(at 349.25 86.36 0)
+			(at 336.55 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8987,7 +9005,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 349.25 85.09 0)
+			(at 336.55 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8995,7 +9013,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 349.25 80.01 0)
+			(at 336.55 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9004,7 +9022,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 349.25 80.01 0)
+			(at 336.55 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9013,7 +9031,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 349.25 80.01 0)
+			(at 336.55 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12364,6 +12382,146 @@
 		)
 	)
 	(symbol
+		(lib_id "DS_Connector:DebugProbe SWD")
+		(at 349.25 69.85 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "963083f6-9a98-45c4-bcf7-2646a1d9ce8e")
+		(property "Reference" "J2"
+			(at 356.87 68.5799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SM03B-SRSS-TB"
+			(at 356.87 71.1199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DS_Connector:JST_SM03B-SRSS-TB_LF__SN_"
+			(at 343.154 86.614 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.jst-connector.com/datasheet/jst-connector/BM02B-SRSS-TB.pdf"
+			(at 343.154 91.186 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "Connector Header Surface Mount, Right Angle 3 position 0.039\" (1.00mm)"
+			(at 343.154 84.328 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "LCSC_PART" "C160403"
+			(at 343.154 93.472 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "MPN" "SM03B-SRSS-TB"
+			(at 343.154 98.298 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "MFR" "JST Sales America Inc."
+			(at 343.154 95.758 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "ROHS" "YES"
+			(at 343.154 88.9 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "DIST1" "https://www.digikey.de/en/products/detail/jst-sales-america-inc/sm03b-srss-tb/926709"
+			(at 343.408 101.092 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "b1676b8f-4e7e-4715-afc3-8db977d5ca9f")
+		)
+		(pin "1"
+			(uuid "c0d6d9b8-38dc-44c5-823a-e58888dff460")
+		)
+		(pin "S2"
+			(uuid "dc56977f-f71f-4914-b670-eee69e8b9f66")
+		)
+		(pin "S1"
+			(uuid "e79312c5-f57a-4280-9467-0082fbba0727")
+		)
+		(pin "2"
+			(uuid "f4fa71d3-cdc4-4b03-9295-7cba73855187")
+		)
+		(instances
+			(project ""
+				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/f7b2be89-429e-4d2e-8374-4bafaede0ad1"
+					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:PWR_FLAG")
 		(at 111.76 218.44 0)
 		(unit 1)
@@ -14024,155 +14182,6 @@
 			(project "PDNode_Baseboard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/f7b2be89-429e-4d2e-8374-4bafaede0ad1"
 					(reference "#PWR01")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 349.25 54.61 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "b8860c29-32cd-4b66-affd-845d30808783")
-		(property "Reference" "#PWR02"
-			(at 349.25 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 349.25 49.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 349.25 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 349.25 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 349.25 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5d2c426c-e77d-47e2-832d-cef55913d2a3")
-		)
-		(instances
-			(project "PDNode_Baseboard"
-				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/f7b2be89-429e-4d2e-8374-4bafaede0ad1"
-					(reference "#PWR02")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:Conn_ARM_SWD_TagConnect_TC2030")
-		(at 346.71 67.31 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "b956c17c-88c7-4621-8275-96f068353614")
-		(property "Reference" "J2"
-			(at 353.06 66.0399 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "Conn_ARM_SWD_TagConnect_TC2030"
-			(at 353.06 68.5799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Connector:Tag-Connect_TC2030-IDC-FP_2x03_P1.27mm_Vertical"
-			(at 346.71 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.tag-connect.com/wp-content/uploads/bsk-pdf-manager/TC2030-CTX_1.pdf"
-			(at 346.71 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Tag-Connect ARM Cortex SWD JTAG connector, 6 pin"
-			(at 346.71 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "5"
-			(uuid "33491d79-ecc1-4afc-861d-4db74221079f")
-		)
-		(pin "1"
-			(uuid "6948d51e-4470-4ace-ab5f-4b9275047864")
-		)
-		(pin "4"
-			(uuid "e46c3362-8463-4818-b5f2-7a7fa7ed7e77")
-		)
-		(pin "6"
-			(uuid "48f129c8-9469-4484-bafd-80951404efd3")
-		)
-		(pin "3"
-			(uuid "11ec3507-80aa-43a0-bec6-1f4aadd1493c")
-		)
-		(pin "2"
-			(uuid "0c9c29ee-a164-4ee0-be18-e36efb10b81d")
-		)
-		(instances
-			(project ""
-				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/f7b2be89-429e-4d2e-8374-4bafaede0ad1"
-					(reference "J2")
 					(unit 1)
 				)
 			)

@@ -6,12 +6,12 @@
 	(paper "A3")
 	(title_block
 		(title "Revision History")
-		(date "2026-02-05")
-		(rev "1.0.0")
-		(company "DvidMakesThings")
+		(date "2026-01-31")
+		(rev "${REVISION}")
+		(company "${COMPANY}")
 	)
 	(lib_symbols)
-	(text_box "Revision History"
+	(text_box "[${#}] ${TITLE}"
 		(exclude_from_sim no)
 		(at 12.7 15.24 0)
 		(size 393.7 12.7)
@@ -26,10 +26,10 @@
 		(effects
 			(font
 				(face "Times New Roman")
-				(size 6 6)
+				(size 8 8)
 				(thickness 1.2)
 				(bold yes)
-				(color 162 22 34 1)
+				(color 43 49 168 1)
 			)
 		)
 		(uuid "20a0a094-ac98-46df-bdac-21d5721f7697")
@@ -65,7 +65,7 @@
 			(stroke
 				(width 0)
 				(type solid)
-				(color 162 22 34 1)
+				(color 43 49 168 1)
 			)
 		)
 		(separators
@@ -74,7 +74,7 @@
 			(stroke
 				(width 0)
 				(type solid)
-				(color 162 22 34 1)
+				(color 43 49 168 1)
 			)
 		)
 		(column_widths 29.21 31.75 33.02 59.69)
@@ -94,7 +94,7 @@
 						(size 2.54 2.54)
 						(thickness 0.254)
 						(bold yes)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 				)
 				(uuid "16d3312a-dd6f-4b7b-9fa6-38979e59d98e")
@@ -113,7 +113,7 @@
 						(size 2.54 2.54)
 						(thickness 0.254)
 						(bold yes)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 				)
 				(uuid "6cc6e718-7cfc-4fff-a1bf-3657f4bf5fd3")
@@ -132,7 +132,7 @@
 						(size 2.54 2.54)
 						(thickness 0.254)
 						(bold yes)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 				)
 				(uuid "693f57fd-a39f-4138-abba-78c321743fcc")
@@ -151,12 +151,12 @@
 						(size 2.54 2.54)
 						(thickness 0.254)
 						(bold yes)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 				)
 				(uuid "2c374fd7-404f-4487-a550-6559a77409ac")
 			)
-			(table_cell "07.02.2026"
+			(table_cell "31.01.2026"
 				(exclude_from_sim no)
 				(at 134.62 73.66 0)
 				(size 29.21 6.35)
@@ -168,7 +168,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -186,7 +186,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -204,7 +204,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -222,7 +222,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -240,7 +240,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -258,7 +258,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -276,7 +276,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -294,7 +294,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -312,7 +312,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -330,7 +330,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -348,7 +348,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -366,7 +366,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -384,7 +384,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -402,7 +402,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -420,7 +420,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -438,7 +438,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -456,7 +456,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -474,7 +474,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -492,7 +492,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -510,7 +510,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -528,7 +528,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -546,7 +546,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -564,7 +564,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -582,7 +582,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -600,7 +600,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -618,7 +618,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -636,7 +636,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -654,7 +654,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -672,7 +672,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -690,7 +690,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -708,7 +708,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -726,7 +726,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -744,7 +744,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -762,7 +762,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -780,7 +780,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)
@@ -798,7 +798,7 @@
 				(effects
 					(font
 						(size 1.524 1.524)
-						(color 162 22 34 1)
+						(color 43 49 168 1)
 					)
 					(justify left)
 				)

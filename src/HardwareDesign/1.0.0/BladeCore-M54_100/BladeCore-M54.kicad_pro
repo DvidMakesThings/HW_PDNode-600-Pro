@@ -484,6 +484,7 @@
       "single_global_label": "ignore",
       "unannotated": "error",
       "unconnected_wire_endpoint": "warning",
+      "undefined_netclass": "error",
       "unit_value_mismatch": "error",
       "unresolved_variable": "error",
       "wire_dangling": "error"
@@ -715,6 +716,50 @@
       {
         "netclass": "90R_DP_Coplanar",
         "pattern": "/Project Architecture/Microcontroller Peripherals/RP_D+"
+      },
+      {
+        "netclass": "100R_DP_Coplanar",
+        "pattern": "/Project Architecture/Microcontroller Peripherals/USB_RP_D-"
+      },
+      {
+        "netclass": "90R_DP_Coplanar",
+        "pattern": "/Project Architecture/Microcontroller Peripherals/USB_RP_D-"
+      },
+      {
+        "netclass": "90R_DP_Coplanar",
+        "pattern": "/Project Architecture/Microcontroller Peripherals/USB_RP_D+"
+      },
+      {
+        "netclass": "90R_DP_Coplanar",
+        "pattern": "/Project Architecture/USB Interface and Power/USB_RP_D+"
+      },
+      {
+        "netclass": "90R_DP_Coplanar",
+        "pattern": "/Project Architecture/USB Interface and Power/USB_RP_D-"
+      },
+      {
+        "netclass": "90R_DP_Coplanar",
+        "pattern": "USB_ONB_D-"
+      },
+      {
+        "netclass": "90R_DP_Coplanar",
+        "pattern": "USB_ONB_D+"
+      },
+      {
+        "netclass": "90R_DP_Coplanar",
+        "pattern": "/Project Architecture/USB Interface and Power/USB_D+"
+      },
+      {
+        "netclass": "90R_DP_Coplanar",
+        "pattern": "/Project Architecture/USB Interface and Power/USB_D-"
+      },
+      {
+        "netclass": "90R_DP_Coplanar",
+        "pattern": "USB_D+"
+      },
+      {
+        "netclass": "90R_DP_Coplanar",
+        "pattern": "USB_D-"
       }
     ]
   },
@@ -851,7 +896,7 @@
       "version": 1
     },
     "net_format_name": "KiCad",
-    "page_layout_descr_file": "G:\\_GitHub\\LIB_KiCad-Libraries\\Template_PCB_JLC\\KiCad_Template_Files\\Template_SCH_GIT_A3.kicad_wks",
+    "page_layout_descr_file": "kicad-embed://KDT_Template_PCB_GIT_A3.kicad_wks",
     "plot_directory": "Schematic/",
     "space_save_all_events": true,
     "spice_current_sheet_as_root": false,

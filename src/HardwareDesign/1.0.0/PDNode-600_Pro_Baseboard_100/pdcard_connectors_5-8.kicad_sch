@@ -6,9 +6,9 @@
 	(paper "A3")
 	(title_block
 		(title "PDCard Connectors 5-8")
-		(date "2026-02-05")
-		(rev "1.0.0")
-		(company "DvidMakesThings")
+		(date "2025-01-12")
+		(rev "${REVISION}")
+		(company "${COMPANY}")
 	)
 	(lib_symbols
 		(symbol "DS_Connector:PCIe 1x Connector"

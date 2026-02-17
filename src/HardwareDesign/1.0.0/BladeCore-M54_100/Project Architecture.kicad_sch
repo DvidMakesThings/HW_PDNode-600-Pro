@@ -6,9 +6,9 @@
 	(paper "A3")
 	(title_block
 		(title "Project Architecture")
-		(date "2026-02-05")
-		(rev "1.0.0")
-		(company "DvidMakesThings")
+		(date "2026-01-31")
+		(rev "${REVISION}")
+		(company "${COMPANY}")
 	)
 	(lib_symbols
 		(symbol "DS_Connector:PCIe M.2 M-Key Card"
@@ -1748,6 +1748,155 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "DS_Resistor_1206:0R 1% 1206"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "0R 1%"
+				(at 2.032 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+				(at 2.032 -4.064 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 2.032 -14.986 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "250mW Thick Film Resistors ±100ppm/℃ ±1% 30.9kΩ 1206 Chip Resistor - Surface Mount ROHS"
+				(at 2.032 -8.382 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C205296"
+				(at 2.032 -12.954 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 2.032 -6.35 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "1206"
+				(at 2.032 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "MFR" "RALEC"
+				(at 2.032 -10.668 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "0R 1% 1206_0_1"
+				(rectangle
+					(start -1.016 2.54)
+					(end 1.016 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "0R 1% 1206_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "DS_Supply:GND"
 			(power)
 			(pin_numbers
@@ -2704,6 +2853,17 @@
 		)
 		(uuid f03c46cf-07fa-41c4-9d75-0769724b2736)
 	)
+	(text "Only populate R51 when \nUSB powering is needed"
+		(exclude_from_sim no)
+		(at 206.756 174.244 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1edee343-7e8a-4d59-b0cb-520b7eb2d4c1")
+	)
 	(text "R37 + R38 (5.1 kΩ) + C21 (100 nF): \nVBUS voltage sense divider and RC \nfiltering for the ADC input; with \nequal resistors the ADC sees VBUS/2.\nOnly USB-Attached detection"
 		(exclude_from_sim no)
 		(at 531.876 140.208 0)
@@ -2715,10 +2875,10 @@
 		)
 		(uuid "20b11884-89ce-4414-a5d1-bd64e720894c")
 	)
-	(text_box "Block Diagram"
+	(text_box "[${#}] ${TITLE}"
 		(exclude_from_sim no)
-		(at 144.78 21.59 0)
-		(size 130.81 12.7)
+		(at 12.7 13.97 0)
+		(size 394.97 12.7)
 		(margins 5.9999 5.9999 5.9999 5.9999)
 		(stroke
 			(width -0.0001)
@@ -2733,7 +2893,7 @@
 				(size 8 8)
 				(thickness 1.2)
 				(bold yes)
-				(color 162 22 34 1)
+				(color 43 49 168 1)
 			)
 		)
 		(uuid "f4789478-c68e-4cee-9edd-5d11b744f94d")
@@ -2841,6 +3001,12 @@
 		(uuid "abb0dd98-2808-47a3-ab5d-603309fbd256")
 	)
 	(junction
+		(at 226.06 168.91)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b50a3db1-2598-41d7-ac44-9369ca939771")
+	)
+	(junction
 		(at 317.5 158.75)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2916,6 +3082,16 @@
 	)
 	(wire
 		(pts
+			(xy 109.22 123.19) (xy 72.39 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "05088f04-e2e3-4f72-b79f-0260d5d4601c")
+	)
+	(wire
+		(pts
 			(xy 184.15 222.25) (xy 382.27 222.25)
 		)
 		(stroke
@@ -2973,6 +3149,16 @@
 			(type default)
 		)
 		(uuid "0dfce69d-b786-4f56-aa60-997698fbe010")
+	)
+	(wire
+		(pts
+			(xy 214.63 168.91) (xy 205.74 168.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0e357833-0ecb-4617-9e1d-f1a3621355d4")
 	)
 	(wire
 		(pts
@@ -3113,6 +3299,16 @@
 			(type default)
 		)
 		(uuid "1fe8d3ec-2c61-4e42-8c1e-517f7acadc1a")
+	)
+	(wire
+		(pts
+			(xy 109.22 53.34) (xy 109.22 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "204d6e6b-9a71-428c-aa15-b093c3e4a48e")
 	)
 	(wire
 		(pts
@@ -4106,6 +4302,16 @@
 	)
 	(wire
 		(pts
+			(xy 205.74 162.56) (xy 205.74 168.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a2604e07-0ff9-4624-8810-3c698fcf83b2")
+	)
+	(wire
+		(pts
 			(xy 284.48 166.37) (xy 284.48 173.99)
 		)
 		(stroke
@@ -4253,6 +4459,16 @@
 			(type default)
 		)
 		(uuid "b6996a34-6f9c-4561-b216-181834c61d49")
+	)
+	(wire
+		(pts
+			(xy 106.68 50.8) (xy 143.51 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b73c1ff2-7a2d-4c85-8fdd-e16a2ff5f49b")
 	)
 	(wire
 		(pts
@@ -4446,6 +4662,16 @@
 	)
 	(wire
 		(pts
+			(xy 106.68 120.65) (xy 106.68 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d0f7d37a-2945-4591-a355-cc390976ef6d")
+	)
+	(wire
+		(pts
 			(xy 284.48 82.55) (xy 284.48 95.25)
 		)
 		(stroke
@@ -4463,6 +4689,16 @@
 			(type default)
 		)
 		(uuid "d3c8d754-4c61-4ed2-b5e0-b634e092b168")
+	)
+	(wire
+		(pts
+			(xy 72.39 120.65) (xy 106.68 120.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d4053403-5ae5-4d74-8af2-6450ecad138e")
 	)
 	(wire
 		(pts
@@ -4573,6 +4809,16 @@
 			(type default)
 		)
 		(uuid "dc544d05-9a5a-4a71-a917-eeb0f1bdfba2")
+	)
+	(wire
+		(pts
+			(xy 143.51 53.34) (xy 109.22 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dce598d8-a707-44c2-8b4c-9fe646558ee2")
 	)
 	(wire
 		(pts
@@ -4763,6 +5009,16 @@
 			(type default)
 		)
 		(uuid "f6c78e4b-2a4e-40b3-910a-8b45220e8da6")
+	)
+	(wire
+		(pts
+			(xy 222.25 168.91) (xy 226.06 168.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f8e173c2-ebd6-40cc-8b10-18bf7af1a42e")
 	)
 	(wire
 		(pts
@@ -5404,29 +5660,7 @@
 		)
 		(uuid "f5bd5ccf-b62e-41a3-b550-3f02c7e37f3f")
 	)
-	(global_label "USB_RP_D-"
-		(shape bidirectional)
-		(at 242.57 166.37 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "710b420a-f4d7-4dbc-b963-b572e25e4a35")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 227.3459 166.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "USB_RP_D+"
+	(global_label "USB_D+"
 		(shape bidirectional)
 		(at 242.57 163.83 180)
 		(fields_autoplaced yes)
@@ -5436,9 +5670,31 @@
 			)
 			(justify right)
 		)
-		(uuid "91e9327c-3e9d-43bc-9fcb-434f3ec6a62c")
+		(uuid "01897ef2-fff4-42fe-88ea-98df8ded0a4c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 227.3459 163.83 0)
+			(at 230.8535 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "USB_D-"
+		(shape bidirectional)
+		(at 242.57 166.37 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c0ce32c1-59df-40d5-8334-8f91b64bc010")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 230.8535 166.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5510,6 +5766,72 @@
 			(project "BladeCore-M54"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e"
 					(reference "#PWR093")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VBUS")
+		(at 205.74 162.56 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3789b16e-4063-4d02-af3d-832fa13ca887")
+		(property "Reference" "#PWR083"
+			(at 205.74 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VBUS_ISO"
+			(at 205.74 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 205.74 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 205.74 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VBUS\""
+			(at 205.74 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5f7e1c50-26a5-4576-b024-23e6aa267a91")
+		)
+		(instances
+			(project "BladeCore-M54"
+				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e"
+					(reference "#PWR083")
 					(unit 1)
 				)
 			)
@@ -5781,6 +6103,120 @@
 			(project "BladeCore-M54"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e"
 					(reference "#PWR0103")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DS_Resistor_1206:0R 1% 1206")
+		(at 218.44 168.91 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp yes)
+		(fields_autoplaced yes)
+		(uuid "7d1670e8-0876-4971-81a5-f16f3da13dc7")
+		(property "Reference" "R51"
+			(at 218.44 160.02 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "0R 1%"
+			(at 218.44 162.56 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+			(at 222.504 166.878 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 233.426 166.878 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "250mW Thick Film Resistors ±100ppm/℃ ±1% 30.9kΩ 1206 Chip Resistor - Surface Mount ROHS"
+			(at 226.822 166.878 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "LCSC_PART" "C205296"
+			(at 231.394 166.878 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "ROHS" "YES"
+			(at 224.79 166.878 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "FOOTPRINT_SHORT" "1206"
+			(at 218.44 165.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFR" "RALEC"
+			(at 229.108 166.878 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6524e524-d8af-4005-8aa7-8f6da2d404a7")
+		)
+		(pin "2"
+			(uuid "c3ea697f-2e73-456b-91d6-f7f80c19614d")
+		)
+		(instances
+			(project "BladeCore-M54"
+				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e"
+					(reference "R51")
 					(unit 1)
 				)
 			)
@@ -6684,6 +7120,26 @@
 				(justify right)
 			)
 		)
+		(pin "USB_RP_D-" bidirectional
+			(at 72.39 123.19 0)
+			(uuid "d70cb4d3-7eab-47a5-b84d-499aa9e53d98")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "USB_RP_D+" bidirectional
+			(at 72.39 120.65 0)
+			(uuid "20ffa31c-76db-4df9-939b-78a80bc433e1")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
 		(instances
 			(project "BladeCore-M54"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e"
@@ -7386,8 +7842,8 @@
 		)
 	)
 	(sheet
-		(at 143.51 54.61)
-		(size 36.83 19.05)
+		(at 143.51 46.99)
+		(size 36.83 26.67)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -7401,7 +7857,7 @@
 		)
 		(uuid "f7b2be89-429e-4d2e-8374-4bafaede0ad1")
 		(property "Sheetname" "Microcontroller Peripherals"
-			(at 143.51 49.53 0)
+			(at 143.51 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7410,7 +7866,7 @@
 			)
 		)
 		(property "Sheetfile" "microcontroller_peripherals.kicad_sch"
-			(at 143.256 51.308 0)
+			(at 143.256 43.688 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7441,6 +7897,26 @@
 		(pin "ADC_VREF" output
 			(at 143.51 58.42 180)
 			(uuid "d94c56d2-0cda-4abf-95b1-a62f762450a4")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "USB_RP_D-" bidirectional
+			(at 143.51 53.34 180)
+			(uuid "b8895387-79b4-4ea8-be1b-6f77f653e7fd")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "USB_RP_D+" bidirectional
+			(at 143.51 50.8 180)
+			(uuid "ffa9e366-9c44-47b3-a39a-155ba59a7986")
 			(effects
 				(font
 					(size 1.27 1.27)
