@@ -26,10 +26,10 @@
 		(effects
 			(font
 				(face "Times New Roman")
-				(size 6 6)
+				(size 8 8)
 				(thickness 1.2)
 				(bold yes)
-				(color 162 22 34 1)
+				(color 43 49 168 1)
 			)
 		)
 		(uuid "20a0a094-ac98-46df-bdac-21d5721f7697")

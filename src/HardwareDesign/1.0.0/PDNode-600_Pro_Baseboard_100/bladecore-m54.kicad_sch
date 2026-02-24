@@ -337,29 +337,27 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "DS_Connector:BladeCore-M54"
+		(symbol "DS_Connector:BladeCore-M54E"
 			(exclude_from_sim yes)
 			(in_bom no)
 			(on_board yes)
-			(property "Reference" "J"
-				(at -12.7 50.8 0)
+			(property "Reference" "J2"
+				(at 0 53.34 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left)
 				)
 			)
-			(property "Value" "MDT320M03001"
-				(at -9.398 -53.594 0)
+			(property "Value" "MDT580M01001"
+				(at 0 50.8 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left)
 				)
 			)
-			(property "Footprint" "DS_Connector:BladeCore-M54"
+			(property "Footprint" "DS_Connector:BladeCore-M54E-5.8mm"
 				(at -9.652 -58.42 0)
 				(show_name)
 				(effects
@@ -381,7 +379,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "67 Position Female Connector M.2 (NGFF) Mini Card Gold 0.020\" (0.50mm) Black M-Key"
+			(property "Description" "67 Position Female Connector M.2 (NGFF) Mini Card Gold 0.020\" (0.50mm) Black 5.8mm height"
 				(at -9.652 -56.134 0)
 				(show_name)
 				(effects
@@ -392,7 +390,7 @@
 					(hide yes)
 				)
 			)
-			(property "LCSC_PART" "C5086252"
+			(property "LCSC_PART" "C5177196"
 				(at -9.652 -65.278 0)
 				(show_name)
 				(effects
@@ -403,7 +401,7 @@
 					(hide yes)
 				)
 			)
-			(property "MPN" "MDT320M03001"
+			(property "MPN" "MDT580M01001"
 				(at -9.652 -70.104 0)
 				(show_name)
 				(effects
@@ -436,7 +434,7 @@
 					(hide yes)
 				)
 			)
-			(property "DIST1" "https://www.digikey.at/en/products/detail/amphenol-icc-fci/mdt320m03001/5810349"
+			(property "DIST1" "https://www.digikey.at/en/products/detail/amphenol-cs-fci/MDT580M01001/22525925"
 				(at -9.398 -72.898 0)
 				(show_name)
 				(effects
@@ -447,7 +445,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "BladeCore-M54_0_0"
+			(symbol "BladeCore-M54E_0_0"
 				(rectangle
 					(start -21.59 48.895)
 					(end 21.59 -47.625)
@@ -578,43 +576,6 @@
 						)
 					)
 					(number "75"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at -26.67 -45.72 0)
-					(length 5.08)
-					(name "SHIELD"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "S1"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -26.67 -45.72 0)
-					(length 5.08)
-					(hide yes)
-					(name "SHIELD"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "S2"
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -911,7 +872,7 @@
 					)
 				)
 			)
-			(symbol "BladeCore-M54_0_1"
+			(symbol "BladeCore-M54E_0_1"
 				(polyline
 					(pts
 						(xy -13.97 44.45) (xy -2.54 44.45)
@@ -1246,6 +1207,17 @@
 					)
 				)
 				(rectangle
+					(start 4.445 45.72)
+					(end 11.43 39.37)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
 					(start 4.445 20.955)
 					(end 6.985 22.225)
 					(stroke
@@ -1267,28 +1239,6 @@
 						(type outline)
 					)
 				)
-				(circle
-					(center 7.239 42.037)
-					(radius 0.508)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 7.239 40.132)
-					(radius 0.508)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
 				(rectangle
 					(start 7.62 -31.75)
 					(end 10.16 -35.56)
@@ -1298,50 +1248,6 @@
 					)
 					(fill
 						(type outline)
-					)
-				)
-				(circle
-					(center 8.0067 39.2781)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 8.1956 41.4088)
-					(radius 0.0762)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 8.1956 40.9008)
-					(radius 0.0762)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 8.1956 40.3928)
-					(radius 0.0762)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
 					)
 				)
 				(rectangle
@@ -1388,72 +1294,6 @@
 						(type outline)
 					)
 				)
-				(circle
-					(center 8.7036 41.4088)
-					(radius 0.0762)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 8.7036 40.9008)
-					(radius 0.0762)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 8.7036 40.3928)
-					(radius 0.0762)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 8.9086 39.2763)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 9.5986 42.046)
-					(radius 0.508)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 9.5986 40.141)
-					(radius 0.508)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
 				(polyline
 					(pts
 						(xy 12.7 44.45) (xy 12.7 -41.91)
@@ -1467,8 +1307,8 @@
 					)
 				)
 			)
-			(symbol "BladeCore-M54_1_0"
-				(pin passive line
+			(symbol "BladeCore-M54E_1_0"
+				(pin bidirectional line
 					(at -26.67 43.18 0)
 					(length 5.08)
 					(name "GPIO24"
@@ -1486,7 +1326,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 40.64 0)
 					(length 5.08)
 					(name "GPIO23"
@@ -1504,7 +1344,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 38.1 0)
 					(length 5.08)
 					(name "GPIO22"
@@ -1522,7 +1362,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 35.56 0)
 					(length 5.08)
 					(name "GPIO21"
@@ -1540,7 +1380,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 30.48 0)
 					(length 5.08)
 					(name "GPIO20"
@@ -1558,7 +1398,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 27.94 0)
 					(length 5.08)
 					(name "GPIO19"
@@ -1576,7 +1416,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 25.4 0)
 					(length 5.08)
 					(name "GPIO18"
@@ -1594,7 +1434,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 22.86 0)
 					(length 5.08)
 					(name "GPIO17"
@@ -1612,7 +1452,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 20.32 0)
 					(length 5.08)
 					(name "GPIO16"
@@ -1630,7 +1470,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 15.24 0)
 					(length 5.08)
 					(name "GPIO15"
@@ -1648,7 +1488,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 12.7 0)
 					(length 5.08)
 					(name "GPIO14"
@@ -1666,7 +1506,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 10.16 0)
 					(length 5.08)
 					(name "GPIO13"
@@ -1684,7 +1524,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 7.62 0)
 					(length 5.08)
 					(name "GPIO12"
@@ -1702,7 +1542,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 5.08 0)
 					(length 5.08)
 					(name "GPIO11"
@@ -1720,7 +1560,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 2.54 0)
 					(length 5.08)
 					(name "GPIO10"
@@ -1738,7 +1578,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 0 0)
 					(length 5.08)
 					(name "GPIO9"
@@ -1756,7 +1596,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 -2.54 0)
 					(length 5.08)
 					(name "GPIO8"
@@ -1774,7 +1614,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 -7.62 0)
 					(length 5.08)
 					(name "GPIO7"
@@ -1792,7 +1632,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 -10.16 0)
 					(length 5.08)
 					(name "GPIO6"
@@ -1810,7 +1650,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 -12.7 0)
 					(length 5.08)
 					(name "GPIO5"
@@ -1828,7 +1668,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 -15.24 0)
 					(length 5.08)
 					(name "GPIO4"
@@ -1846,7 +1686,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 -17.78 0)
 					(length 5.08)
 					(name "GPIO3"
@@ -1864,7 +1704,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 -20.32 0)
 					(length 5.08)
 					(name "GPIO2"
@@ -1882,7 +1722,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 -22.86 0)
 					(length 5.08)
 					(name "GPIO1"
@@ -1900,7 +1740,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 -25.4 0)
 					(length 5.08)
 					(name "GPIO0"
@@ -1918,7 +1758,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 -33.02 0)
 					(length 5.08)
 					(name "USB_D+"
@@ -1936,7 +1776,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -26.67 -35.56 0)
 					(length 5.08)
 					(name "USB_D-"
@@ -1954,7 +1794,25 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin power_in line
+					(at -26.67 -45.72 0)
+					(length 5.08)
+					(name "SHIELD"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "SH1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
 					(at 26.67 43.18 180)
 					(length 5.08)
 					(name "GPIO27"
@@ -1972,7 +1830,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at 26.67 40.64 180)
 					(length 5.08)
 					(name "GPIO26"
@@ -1990,7 +1848,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at 26.67 38.1 180)
 					(length 5.08)
 					(name "GPIO25"
@@ -2008,7 +1866,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin output line
 					(at 26.67 25.4 180)
 					(length 5.08)
 					(name "LINKLED"
@@ -2026,7 +1884,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin output line
 					(at 26.67 22.86 180)
 					(length 5.08)
 					(name "ACTLED"
@@ -2062,7 +1920,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin input line
 					(at 26.67 12.7 180)
 					(length 5.08)
 					(name "ETH_RD+"
@@ -2080,7 +1938,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin input line
 					(at 26.67 10.16 180)
 					(length 5.08)
 					(name "ETH_RD-"
@@ -2098,7 +1956,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin output line
 					(at 26.67 5.08 180)
 					(length 5.08)
 					(name "ETH_TD+"
@@ -2116,7 +1974,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin output line
 					(at 26.67 2.54 180)
 					(length 5.08)
 					(name "ETH_TD-"
@@ -2152,7 +2010,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin input line
 					(at 26.67 -10.16 180)
 					(length 5.08)
 					(name "ADC0"
@@ -2170,7 +2028,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin input line
 					(at 26.67 -12.7 180)
 					(length 5.08)
 					(name "ADC1"
@@ -2188,7 +2046,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin input line
 					(at 26.67 -15.24 180)
 					(length 5.08)
 					(name "ADC2"
@@ -2206,7 +2064,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin input line
 					(at 26.67 -17.78 180)
 					(length 5.08)
 					(name "ADC3"
@@ -2224,7 +2082,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin input line
 					(at 26.67 -20.32 180)
 					(length 5.08)
 					(name "ADC4"
@@ -2242,7 +2100,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin input line
 					(at 26.67 -22.86 180)
 					(length 5.08)
 					(name "ADC5"
@@ -2261,7 +2119,7 @@
 					)
 				)
 			)
-			(symbol "BladeCore-M54_1_1"
+			(symbol "BladeCore-M54E_1_1"
 				(text "PGOOD"
 					(at -12.7 40.64 900)
 					(effects
@@ -2302,7 +2160,7 @@
 						)
 					)
 				)
-				(text "BLADECORE-M54"
+				(text "BLADECORE-M54E"
 					(at 10.668 -17.018 900)
 					(effects
 						(font
@@ -4412,6 +4270,149 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "DS_Test:PCIe Hole M2.5 4.5mm"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "ST"
+				(at 0 4.064 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "M2.5"
+				(at 3.81 0.762 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "DS_Test:Round Standoff Threaded M2.5 Steel"
+				(at 0.762 -9.398 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.we-online.com/components/products/datasheet/9774045151R.pdf"
+				(at 0.762 -15.494 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "Round Standoff Threaded M2.5 Steel"
+				(at 0.762 -13.462 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C7435234"
+				(at 0.762 -17.526 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "MFR" "Würth Elektronik"
+				(at 0.762 -11.43 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "MPN" "9774045151R"
+				(at 0.762 -7.62 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 0.762 -21.844 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "DIST1" "https://www.digikey.at/en/products/detail/w%C3%BCrth-elektronik/9774045151R/5320636"
+				(at 0.762 -19.812 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "PCIe Hole M2.5 4.5mm_0_1"
+				(circle
+					(center 0 2.032)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "PCIe Hole M2.5 4.5mm_1_1"
+				(pin passive line
+					(at 0 -1.27 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "power:+3.3V"
 			(power)
 			(pin_numbers
@@ -4718,7 +4719,7 @@
 				(size 8 8)
 				(thickness 1.2)
 				(bold yes)
-				(color 162 22 34 1)
+				(color 43 49 168 1)
 			)
 		)
 		(uuid "a0c66026-5729-4b72-aa45-99dd27c95e24")
@@ -4992,6 +4993,16 @@
 			(type default)
 		)
 		(uuid "14d1dd71-d675-487c-9c06-85305836cd6b")
+	)
+	(wire
+		(pts
+			(xy 294.64 78.74) (xy 294.64 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "15337258-f8a8-44c0-85ca-ecc68bacc236")
 	)
 	(wire
 		(pts
@@ -6022,6 +6033,16 @@
 			(type default)
 		)
 		(uuid "cf3aa074-85cd-4659-9914-37611a953f67")
+	)
+	(wire
+		(pts
+			(xy 288.29 78.74) (xy 294.64 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cf9cfad6-5e36-49fe-aaf3-6730de5e204d")
 	)
 	(wire
 		(pts
@@ -7253,7 +7274,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "035f43df-ead7-47d3-b515-931dcb9472ec")
-		(property "Reference" "#PWR047"
+		(property "Reference" "#PWR47"
 			(at 58.42 224.79 0)
 			(effects
 				(font
@@ -7303,7 +7324,7 @@
 		(instances
 			(project "PDNode_Baseboard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/6df5bbd1-7c97-44e5-a9c5-61a24f108041"
-					(reference "#PWR047")
+					(reference "#PWR47")
 					(unit 1)
 				)
 			)
@@ -7554,6 +7575,333 @@
 		)
 	)
 	(symbol
+		(lib_id "DS_Connector:BladeCore-M54E")
+		(at 199.39 123.19 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "25d31118-7612-44e4-b47e-9df176510ef9")
+		(property "Reference" "J2"
+			(at 199.39 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MDT580M01001"
+			(at 199.39 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "DS_Connector:BladeCore-M54E-5.8mm"
+			(at 189.738 181.61 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://cdn.amphenol-cs.com/media/wysiwyg/files/documentation/datasheet/ssio/ssio_pcie_m2.pdf"
+			(at 189.738 186.182 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "67 Position Female Connector M.2 (NGFF) Mini Card Gold 0.020\" (0.50mm) Black 5.8mm height"
+			(at 189.738 179.324 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "LCSC_PART" "C5177196"
+			(at 189.738 188.468 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "MPN" "MDT580M01001"
+			(at 189.738 193.294 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "MFR" "Amphenol ICC (FCI)"
+			(at 189.738 190.754 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "ROHS" "YES"
+			(at 189.738 183.896 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "DIST1" "https://www.digikey.at/en/products/detail/amphenol-cs-fci/MDT580M01001/22525925"
+			(at 189.992 196.088 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "11"
+			(uuid "7a59ae65-9598-4408-bd78-d16c77debf1f")
+		)
+		(pin "1"
+			(uuid "cc3a8938-257b-46b7-8a7c-4a7c3242a62f")
+		)
+		(pin "41"
+			(uuid "c2e4212a-dcc2-4d5a-9bbb-b93b98de4428")
+		)
+		(pin "23"
+			(uuid "4bb9defc-1456-462c-86f6-7c6d465f9480")
+		)
+		(pin "16"
+			(uuid "570dfd4a-ebb7-4592-84c3-1dd2d5689bd3")
+		)
+		(pin "42"
+			(uuid "bc914a21-62dc-4d6e-a3a4-4921a007ee9b")
+		)
+		(pin "67"
+			(uuid "605fad28-9b3b-48fa-aa39-47a5324eee4d")
+		)
+		(pin "10"
+			(uuid "8cd25a85-1bfa-4758-8cad-8e8b2ff4d6ea")
+		)
+		(pin "73"
+			(uuid "89cca1e8-634b-428a-b2b0-f017004b53fe")
+		)
+		(pin "75"
+			(uuid "590c535e-f7a2-4f75-99b8-dd25e9caf6c5")
+		)
+		(pin "12"
+			(uuid "0f687086-3b3b-4189-8f8d-0ad3c7bfcefb")
+		)
+		(pin "22"
+			(uuid "cde318a8-bcb1-4ec9-94a5-439ea06a0db9")
+		)
+		(pin "14"
+			(uuid "69809aa3-0059-4ea5-b69e-560e91bfaa54")
+		)
+		(pin "32"
+			(uuid "b13373ce-2b98-4e8a-87d5-284736ad64e2")
+		)
+		(pin "38"
+			(uuid "b96f33aa-12ad-4ba2-bb52-727145a08406")
+		)
+		(pin "2"
+			(uuid "980053ca-62a3-439a-94a5-72960c752505")
+		)
+		(pin "26"
+			(uuid "04c523b2-3a85-4ef8-a714-bec854aa21b8")
+		)
+		(pin "58"
+			(uuid "d32aa7b0-2e6c-4497-8799-12921ac82bd4")
+		)
+		(pin "44"
+			(uuid "28e57dcc-449f-4ff4-ae2b-fea4af673d15")
+		)
+		(pin "68"
+			(uuid "a1c3dd7b-3694-43a0-a580-7aac8a637fa3")
+		)
+		(pin "70"
+			(uuid "dc01d420-f8f6-4cd0-9787-d5415ea1680e")
+		)
+		(pin "72"
+			(uuid "4acbaff0-1127-4a57-ad01-37e2006660b4")
+		)
+		(pin "74"
+			(uuid "7dc7ed46-3e2c-40c9-a807-d95140169c9f")
+		)
+		(pin "3"
+			(uuid "31585e9d-ef08-490b-bce2-bdce6c85b5bb")
+		)
+		(pin "5"
+			(uuid "e7431b8e-12e6-49e8-86ab-1ffb66067079")
+		)
+		(pin "33"
+			(uuid "9dc10050-0b23-416d-b1ac-2e6b42e31893")
+		)
+		(pin "27"
+			(uuid "7b8bdd92-2c23-44a5-99c2-e25045df8d46")
+		)
+		(pin "31"
+			(uuid "abfac5ac-3dfe-4e96-8964-5615e0f5c35b")
+		)
+		(pin "37"
+			(uuid "7ec1dd97-d580-4144-bfb3-1995994e7208")
+		)
+		(pin "47"
+			(uuid "dc2f4dfb-b7f1-41f5-9d46-7762ae28c790")
+		)
+		(pin "45"
+			(uuid "b7a75a4f-2809-4e40-9954-d59a34f09c8d")
+		)
+		(pin "8"
+			(uuid "4f837ede-3f68-4241-8a5c-18da2acf0a9c")
+		)
+		(pin "25"
+			(uuid "72a813d2-a834-4519-a992-696fc7e81ded")
+		)
+		(pin "24"
+			(uuid "6e0c090f-c0be-43fd-963c-ca1785d47002")
+		)
+		(pin "17"
+			(uuid "ad36ec74-396e-4cd5-a77e-b6597e9b0fbd")
+		)
+		(pin "9"
+			(uuid "261423e3-879d-4742-bfba-ccee4eb8950d")
+		)
+		(pin "57"
+			(uuid "cfdc11e9-6872-4ba3-8d15-8185275be37e")
+		)
+		(pin "40"
+			(uuid "5d6652c8-c770-445a-a7b7-f7989c5d9f31")
+		)
+		(pin "7"
+			(uuid "bcd824fd-f163-4543-bdc4-67a407a1f92e")
+		)
+		(pin "21"
+			(uuid "d4700aa5-1b5b-4555-aeb0-b759cf44d406")
+		)
+		(pin "39"
+			(uuid "51eb0abe-11a2-4cbb-8e54-d263049b912b")
+		)
+		(pin "49"
+			(uuid "46afdc6b-8e55-49c3-9050-e518c0439e85")
+		)
+		(pin "51"
+			(uuid "ee01681e-9ee9-4206-9572-64dc7d848662")
+		)
+		(pin "13"
+			(uuid "3d193720-4e54-4112-8239-a4990fd91f2f")
+		)
+		(pin "SH1"
+			(uuid "31e826db-aa44-4f9d-98bf-0bd51b43b573")
+		)
+		(pin "71"
+			(uuid "a92bae49-4abb-4038-8366-a4e118be7f9c")
+		)
+		(pin "19"
+			(uuid "1510da6a-c1c8-4c21-b587-dc1af4a6362e")
+		)
+		(pin "29"
+			(uuid "f8c76f7b-fadd-4ebf-b6f9-763ba35b3501")
+		)
+		(pin "43"
+			(uuid "2db6a0af-e2df-4bdf-b4a5-47c99e76a5e2")
+		)
+		(pin "15"
+			(uuid "75b37835-ffc5-4d2a-9382-626aa6e424a8")
+		)
+		(pin "55"
+			(uuid "59c9b9cc-8a00-4ecb-98c5-e6c5cc45c87a")
+		)
+		(pin "35"
+			(uuid "15494b5c-4927-45e4-8774-f3e0c3e20156")
+		)
+		(pin "69"
+			(uuid "cd499a0d-2e60-460a-b9a9-e45e602476de")
+		)
+		(pin "53"
+			(uuid "4ff09c5a-3af3-45a9-a8e0-8b18ded513ff")
+		)
+		(pin "4"
+			(uuid "38a2d1e6-bbba-4cdc-8de5-04f1d8da12e3")
+		)
+		(pin "6"
+			(uuid "6d4f78e6-d8d6-48d0-b877-9f9cbd603efa")
+		)
+		(pin "18"
+			(uuid "79f72db0-82bc-425a-bed4-2a23d9db30ab")
+		)
+		(pin "20"
+			(uuid "01124714-0ad2-4cb5-aa7e-29bd7910ed85")
+		)
+		(pin "28"
+			(uuid "6f07ddeb-6696-4eea-9954-6f121de32b6d")
+		)
+		(pin "30"
+			(uuid "1a7b2396-a1b3-4735-ad9d-76cd9f21fb3f")
+		)
+		(pin "34"
+			(uuid "cdb2ca0e-7c19-4692-8041-f860aabcac87")
+		)
+		(pin "36"
+			(uuid "873af3e6-fd92-4651-878d-c5a329e2437b")
+		)
+		(pin "46"
+			(uuid "ba9cabef-865e-475c-98ed-88c265c31c91")
+		)
+		(pin "48"
+			(uuid "936630e0-3eb0-4aa6-ac52-22a01c32b679")
+		)
+		(pin "50"
+			(uuid "be5861b5-f40e-49d5-b143-71b1bb1413a7")
+		)
+		(pin "52"
+			(uuid "0e07cb57-32a8-45dc-9e25-0f3535588a36")
+		)
+		(pin "56"
+			(uuid "9e71fcaf-edce-4e38-8034-10610a43d7ec")
+		)
+		(pin "54"
+			(uuid "b1770cbc-082d-4b64-9241-653d8f1e07bd")
+		)
+		(instances
+			(project ""
+				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/6df5bbd1-7c97-44e5-a9c5-61a24f108041"
+					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "DS_Supply:GND")
 		(at 232.41 179.07 0)
 		(unit 1)
@@ -7562,7 +7910,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3a369580-4048-40f3-a452-0bef3021f0ac")
-		(property "Reference" "#PWR046"
+		(property "Reference" "#PWR46"
 			(at 232.41 185.42 0)
 			(effects
 				(font
@@ -7612,7 +7960,7 @@
 		(instances
 			(project "PDNode_Baseboard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/6df5bbd1-7c97-44e5-a9c5-61a24f108041"
-					(reference "#PWR046")
+					(reference "#PWR46")
 					(unit 1)
 				)
 			)
@@ -7628,7 +7976,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "473c5774-96a4-49fd-a720-7e33ede5726b")
-		(property "Reference" "#PWR041"
+		(property "Reference" "#PWR41"
 			(at 161.29 73.66 0)
 			(effects
 				(font
@@ -7678,7 +8026,7 @@
 		(instances
 			(project "PDNode_Baseboard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/6df5bbd1-7c97-44e5-a9c5-61a24f108041"
-					(reference "#PWR041")
+					(reference "#PWR41")
 					(unit 1)
 				)
 			)
@@ -7693,7 +8041,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "797915a4-e6f1-4e21-a78e-324acfdc21ee")
-		(property "Reference" "#PWR049"
+		(property "Reference" "#PWR49"
 			(at 58.42 274.32 0)
 			(effects
 				(font
@@ -7743,7 +8091,7 @@
 		(instances
 			(project "PDNode_Baseboard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/6df5bbd1-7c97-44e5-a9c5-61a24f108041"
-					(reference "#PWR049")
+					(reference "#PWR49")
 					(unit 1)
 				)
 			)
@@ -7758,7 +8106,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8775a935-6dc3-48c4-85be-b0dd44e22eb6")
-		(property "Reference" "#PWR043"
+		(property "Reference" "#PWR43"
 			(at 302.26 149.86 0)
 			(effects
 				(font
@@ -7808,7 +8156,7 @@
 		(instances
 			(project "PDNode_Baseboard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/6df5bbd1-7c97-44e5-a9c5-61a24f108041"
-					(reference "#PWR043")
+					(reference "#PWR43")
 					(unit 1)
 				)
 			)
@@ -8021,7 +8369,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8ea22adc-f115-4000-abac-5f094aa71e48")
-		(property "Reference" "#PWR050"
+		(property "Reference" "#PWR50"
 			(at 85.09 274.32 0)
 			(effects
 				(font
@@ -8071,337 +8419,7 @@
 		(instances
 			(project "PDNode_Baseboard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/6df5bbd1-7c97-44e5-a9c5-61a24f108041"
-					(reference "#PWR050")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "DS_Connector:BladeCore-M54")
-		(at 199.39 123.19 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "97e550bb-ebbe-4668-b2fa-bcb9d265e054")
-		(property "Reference" "J2"
-			(at 199.39 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MDT320M03001"
-			(at 199.39 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "DS_Connector:BladeCore-M54"
-			(at 189.738 181.61 0)
-			(show_name yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://cdn.amphenol-cs.com/media/wysiwyg/files/documentation/datasheet/ssio/ssio_pcie_m2.pdf"
-			(at 189.738 186.182 0)
-			(show_name yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" "67 Position Female Connector M.2 (NGFF) Mini Card Gold 0.020\" (0.50mm) Black M-Key"
-			(at 189.738 179.324 0)
-			(show_name yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "LCSC_PART" "C5086252"
-			(at 189.738 188.468 0)
-			(show_name yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "MPN" "MDT320M03001"
-			(at 189.738 193.294 0)
-			(show_name yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "MFR" "Amphenol ICC (FCI)"
-			(at 189.738 190.754 0)
-			(show_name yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "ROHS" "YES"
-			(at 189.738 183.896 0)
-			(show_name yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "DIST1" "https://www.digikey.at/en/products/detail/amphenol-icc-fci/mdt320m03001/5810349"
-			(at 189.992 196.088 0)
-			(show_name yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(pin "12"
-			(uuid "940e9156-218f-44a7-aedb-73f3494889c3")
-		)
-		(pin "22"
-			(uuid "adfbbdcb-0b59-4ce9-b52a-f88ce5bc656f")
-		)
-		(pin "72"
-			(uuid "b0410a8b-d50d-4f4d-aac7-5d941d41b52c")
-		)
-		(pin "74"
-			(uuid "a984e546-7cf0-4040-b7e4-d976b28cbc0a")
-		)
-		(pin "3"
-			(uuid "de9ed8c1-f1b3-448b-ad14-6ae9a84a59b5")
-		)
-		(pin "1"
-			(uuid "e8cf70c9-c0f8-40d7-9299-45d6293e152c")
-		)
-		(pin "38"
-			(uuid "b7209f20-b6b6-4c56-a82c-6a48afbc788b")
-		)
-		(pin "5"
-			(uuid "09913acb-95eb-4ab8-a2ed-27197e6d21bb")
-		)
-		(pin "67"
-			(uuid "ed44cb01-f7ef-45aa-a2b3-c7f3773c7d00")
-		)
-		(pin "2"
-			(uuid "cadd9838-b5c3-47d9-be44-d521892d64ba")
-		)
-		(pin "S2"
-			(uuid "4bbeeb1d-4254-453f-9fcb-523bbd02b34f")
-		)
-		(pin "14"
-			(uuid "82840f96-6c16-4998-bec4-689db17b4f11")
-		)
-		(pin "26"
-			(uuid "f51ea55f-6bf3-4c2e-aff9-33b25c4fed5f")
-		)
-		(pin "75"
-			(uuid "7f06bd04-d7af-4fb0-a46a-091d7660b2da")
-		)
-		(pin "10"
-			(uuid "470a18db-d28b-41a6-934f-0dae80196122")
-		)
-		(pin "32"
-			(uuid "31cccca7-de23-49b5-a7a1-7616374e34cf")
-		)
-		(pin "44"
-			(uuid "23657294-0b27-4715-a8e1-10abd85900ea")
-		)
-		(pin "41"
-			(uuid "02aed392-9c0f-4e76-8010-9fea8a992737")
-		)
-		(pin "58"
-			(uuid "2cf01705-4580-4d16-8958-c95594671b46")
-		)
-		(pin "68"
-			(uuid "2527e056-ca0c-41e9-a1be-84be1a36c12f")
-		)
-		(pin "70"
-			(uuid "7c4c15de-afa1-4483-9b93-db925ca52ff5")
-		)
-		(pin "73"
-			(uuid "57b26483-3fe2-40f9-925c-c74831b23292")
-		)
-		(pin "11"
-			(uuid "f2380f5c-2805-4808-be61-f9c68498d7bb")
-		)
-		(pin "23"
-			(uuid "8b20fa85-219d-42c3-b144-bf3f8cc08b5f")
-		)
-		(pin "S1"
-			(uuid "0759ff34-9371-4197-8c31-6d45a4a4569f")
-		)
-		(pin "16"
-			(uuid "a6d3cef6-7b06-42dd-86e3-dacf4ad4c694")
-		)
-		(pin "42"
-			(uuid "861a7da2-8df8-485d-a129-28cd43fda7ad")
-		)
-		(pin "13"
-			(uuid "b2d7f24a-b95d-4029-8ce1-52c1a1549aa0")
-		)
-		(pin "31"
-			(uuid "8a910ad9-a2d5-4b74-925f-e24f0883d564")
-		)
-		(pin "49"
-			(uuid "e876da36-8025-48d5-8bb1-c2be96748fe6")
-		)
-		(pin "8"
-			(uuid "0322e649-3ff0-4fa5-8c48-887fa9c3cbef")
-		)
-		(pin "53"
-			(uuid "7bf51b5d-9856-4423-b23a-a58fe180ee0a")
-		)
-		(pin "15"
-			(uuid "e903b4cf-3ea0-42c7-8cb3-e1e6a7419a5a")
-		)
-		(pin "21"
-			(uuid "24c7f7ca-b08a-43dd-ac5f-144192ab760c")
-		)
-		(pin "33"
-			(uuid "24ba03fc-71f7-4d8a-bec5-c78ad7e8a699")
-		)
-		(pin "19"
-			(uuid "595e0303-9765-49a9-93de-a4f0dfded60e")
-		)
-		(pin "35"
-			(uuid "f6ff51de-65a0-4b1a-b242-6b66694cc98b")
-		)
-		(pin "39"
-			(uuid "abe2a1ab-f7b0-4485-880a-e603d4cd54f9")
-		)
-		(pin "7"
-			(uuid "7040194a-141f-4dc4-8480-dbd7d8fc0489")
-		)
-		(pin "43"
-			(uuid "3a6bba30-f895-4890-9b03-85d4bfe9e37e")
-		)
-		(pin "37"
-			(uuid "96a3b7fc-1b8e-4496-afda-57fc7563718e")
-		)
-		(pin "45"
-			(uuid "23a61b41-103f-4a07-9ce2-57124fbc9da3")
-		)
-		(pin "25"
-			(uuid "907016f5-dc16-496e-b4e0-6f7c880c0d8b")
-		)
-		(pin "27"
-			(uuid "cd8cd583-87cd-4959-b79b-c0c7f3204eec")
-		)
-		(pin "51"
-			(uuid "17a33961-532d-4ff4-a5c3-94d2f5931de9")
-		)
-		(pin "29"
-			(uuid "90fd3dcf-0a4f-46ce-a4a5-e3289b855748")
-		)
-		(pin "57"
-			(uuid "11ee1b25-0df3-4b0f-9b01-3b9785fc64ec")
-		)
-		(pin "69"
-			(uuid "467736d5-3786-42a1-bb69-260ea7e519f4")
-		)
-		(pin "71"
-			(uuid "63ef6f58-341d-474c-84bc-81025c3f7e1f")
-		)
-		(pin "55"
-			(uuid "2dae1935-1f74-4f00-8ee0-a021180d8b97")
-		)
-		(pin "4"
-			(uuid "efccb2a3-e65a-4cf6-abf4-8a893ba097f8")
-		)
-		(pin "9"
-			(uuid "1caa6fce-0b0d-4345-beeb-41ad176459c3")
-		)
-		(pin "17"
-			(uuid "90142a35-8c75-4360-adeb-d8fd11c840ba")
-		)
-		(pin "47"
-			(uuid "16481b99-e498-4ebe-a197-dd540f9a13c5")
-		)
-		(pin "6"
-			(uuid "7a926754-6d87-4e1c-a511-e9b980ba129e")
-		)
-		(pin "18"
-			(uuid "5b3cfb37-3da7-4f60-8fc1-9028614c6e56")
-		)
-		(pin "36"
-			(uuid "1e33feb1-2583-4a3c-8153-8049c1edbbee")
-		)
-		(pin "50"
-			(uuid "28bc9a64-233f-40a2-a605-a9ba1e13dcee")
-		)
-		(pin "54"
-			(uuid "c054c944-c021-4785-a974-9884e283dbf3")
-		)
-		(pin "52"
-			(uuid "1a3d07d5-98c6-4dc3-8326-ef7d7702248a")
-		)
-		(pin "20"
-			(uuid "3fd802ea-fe7b-4f44-a6ec-e8c3712535a3")
-		)
-		(pin "48"
-			(uuid "bfa36b6d-56cc-4fd8-aefa-e4007083aa9b")
-		)
-		(pin "56"
-			(uuid "00f014fb-ccbb-4d36-9318-57bd7335c227")
-		)
-		(pin "28"
-			(uuid "872a679d-7dcb-482b-a322-060ded874b3d")
-		)
-		(pin "40"
-			(uuid "9a5b8715-3265-4348-bf8c-de5a4595a08d")
-		)
-		(pin "30"
-			(uuid "eff71f0c-18f6-400e-8340-7b53b10c6e5c")
-		)
-		(pin "34"
-			(uuid "742ff147-bb28-4270-8792-d25444b4ea58")
-		)
-		(pin "46"
-			(uuid "d66a1223-f60a-4385-bc29-a89688d5ec8a")
-		)
-		(pin "24"
-			(uuid "bd5a41f1-0426-440a-84e1-2451d514ffee")
-		)
-		(instances
-			(project "PDNode_Baseboard"
-				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/6df5bbd1-7c97-44e5-a9c5-61a24f108041"
-					(reference "J2")
+					(reference "#PWR50")
 					(unit 1)
 				)
 			)
@@ -8526,6 +8544,71 @@
 		)
 	)
 	(symbol
+		(lib_id "DS_Supply:GND")
+		(at 294.64 87.63 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b00132ff-e4e8-4608-b087-f965b201db96")
+		(property "Reference" "#PWR052"
+			(at 294.64 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 294.64 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 294.64 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 294.64 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 294.64 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "20c1c9f5-1e71-438f-a9a3-05b610828669")
+		)
+		(instances
+			(project "PDNode_Baseboard"
+				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/6df5bbd1-7c97-44e5-a9c5-61a24f108041"
+					(reference "#PWR052")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+3.3V")
 		(at 240.03 69.85 0)
 		(mirror y)
@@ -8536,7 +8619,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c05af09e-3964-4681-8089-e98ac1ab0ee7")
-		(property "Reference" "#PWR042"
+		(property "Reference" "#PWR42"
 			(at 240.03 73.66 0)
 			(effects
 				(font
@@ -8586,7 +8669,7 @@
 		(instances
 			(project "PDNode_Baseboard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/6df5bbd1-7c97-44e5-a9c5-61a24f108041"
-					(reference "#PWR042")
+					(reference "#PWR42")
 					(unit 1)
 				)
 			)
@@ -8602,7 +8685,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c5ef3961-fe66-4d4b-b659-bbbabe7cda13")
-		(property "Reference" "#PWR044"
+		(property "Reference" "#PWR44"
 			(at 240.03 157.48 0)
 			(effects
 				(font
@@ -8652,7 +8735,133 @@
 		(instances
 			(project "PDNode_Baseboard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/6df5bbd1-7c97-44e5-a9c5-61a24f108041"
-					(reference "#PWR044")
+					(reference "#PWR44")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DS_Test:PCIe Hole M2.5 4.5mm")
+		(at 287.02 78.74 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d86e235b-c101-42a4-914b-7c7f03ccb935")
+		(property "Reference" "ST1"
+			(at 284.988 73.66 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "M2.5"
+			(at 284.988 76.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "DS_Test:Round Standoff Threaded M2.5 Steel"
+			(at 296.418 77.978 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.we-online.com/components/products/datasheet/9774045151R.pdf"
+			(at 302.514 77.978 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "Round Standoff Threaded M2.5 Steel"
+			(at 300.482 77.978 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "LCSC_PART" "C7435234"
+			(at 304.546 77.978 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "MFR" "Würth Elektronik"
+			(at 298.45 77.978 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "MPN" "9774045151R"
+			(at 294.64 77.978 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "ROHS" "YES"
+			(at 308.864 77.978 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "DIST1" "https://www.digikey.at/en/products/detail/w%C3%BCrth-elektronik/9774045151R/5320636"
+			(at 306.832 77.978 0)
+			(show_name yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e30cc2f7-911d-4ab9-870f-c782715b1493")
+		)
+		(instances
+			(project ""
+				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/6df5bbd1-7c97-44e5-a9c5-61a24f108041"
+					(reference "ST1")
 					(unit 1)
 				)
 			)
@@ -8667,7 +8876,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ea213bf8-2f7d-4fa8-be8d-d4995ea8148c")
-		(property "Reference" "#PWR045"
+		(property "Reference" "#PWR45"
 			(at 166.37 185.42 0)
 			(effects
 				(font
@@ -8717,7 +8926,7 @@
 		(instances
 			(project "PDNode_Baseboard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/6df5bbd1-7c97-44e5-a9c5-61a24f108041"
-					(reference "#PWR045")
+					(reference "#PWR45")
 					(unit 1)
 				)
 			)
@@ -8732,7 +8941,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f5e9b627-11b5-4f03-a913-2f656c48e526")
-		(property "Reference" "#PWR048"
+		(property "Reference" "#PWR48"
 			(at 39.37 274.32 0)
 			(effects
 				(font
@@ -8782,7 +8991,7 @@
 		(instances
 			(project "PDNode_Baseboard"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/6df5bbd1-7c97-44e5-a9c5-61a24f108041"
-					(reference "#PWR048")
+					(reference "#PWR48")
 					(unit 1)
 				)
 			)

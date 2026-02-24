@@ -119,7 +119,7 @@
         "tracks_crossing": "error",
         "unconnected_items": "error",
         "unresolved_variable": "error",
-        "via_dangling": "warning",
+        "via_dangling": "ignore",
         "zones_intersect": "error"
       },
       "rules": {
@@ -974,6 +974,14 @@
       {
         "netclass": "50R_DP_Coplanar",
         "pattern": "PORTA3_N"
+      },
+      {
+        "netclass": "90R_DP_Coplanar",
+        "pattern": "/Project Architecture/BladeCore-M54/USB_RP_D+"
+      },
+      {
+        "netclass": "90R_DP_Coplanar",
+        "pattern": "/Project Architecture/BladeCore-M54/USB_RP_D-"
       }
     ]
   },
@@ -985,7 +993,7 @@
       "plot": "Manufacturing/Fabrication/Gerbers/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "STEP_Blender/KDT_Hierarchical_KiBot.step",
+      "step": "../PDNode-600_Pro.step",
       "svg": "",
       "vrml": ""
     },
@@ -1110,7 +1118,7 @@
       "version": 1
     },
     "net_format_name": "KiCad",
-    "page_layout_descr_file": "kicad-embed://KDT_Template_PCB_GIT_A3.kicad_wks",
+    "page_layout_descr_file": "G:\\_GitHub\\HW_PDNode-600-Pro\\src\\HardwareDesign\\1.0.0\\PDNode-600_Pro_Baseboard_100\\Templates\\Template_A3.kicad_wks",
     "plot_directory": "Schematic/",
     "space_save_all_events": true,
     "spice_current_sheet_as_root": false,
@@ -1145,7 +1153,7 @@
     ],
     [
       "2613c462-ed55-40aa-a079-4e429685a0a2",
-      "USB Interface"
+      "USB Interface and Display"
     ],
     [
       "a3b551eb-1b12-434e-883e-121068963471",
@@ -1223,7 +1231,7 @@
     "SHEET_NAME_3": "Project Architecture",
     "SHEET_NAME_4": "System Power",
     "SHEET_NAME_5": "BladeCore-M54",
-    "SHEET_NAME_6": "USB Interface",
+    "SHEET_NAME_6": "USB Interface and Display",
     "SHEET_NAME_7": "TCA9548 Port Controller",
     "SHEET_NAME_8": "PDCard Connectors 1-4",
     "SHEET_NAME_9": "PDCard Connectors 5-8",

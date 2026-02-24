@@ -1,4 +1,4 @@
-26892690076610682
+26928124569486827
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -58142,6 +58142,27 @@ capacitor electrolytic
 2
 2
 DS_Capacitor
+C_0402_1005Metric
+Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
+capacitor
+0
+2
+2
+DS_Capacitor
+C_0805_2012Metric
+Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf, https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator
+capacitor
+0
+2
+2
+DS_Capacitor
+C_1206_3216Metric
+Capacitor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
+capacitor
+0
+2
+2
+DS_Capacitor
 C_Disc_D10mm_W5.0mm
 C, Disc series, Radial, pin pitch=10.00mm, diameter*width=10.5*5.0mm^2, Capacitor, http://www.vishay.com/docs/28535/vy2series.pdf
 C Disc series Radial pin pitch 10.00mm diameter 10.5mm width 5.0mm Capacitor
@@ -58205,12 +58226,47 @@ PCIe
 36
 36
 DS_Connector
-BladeCore-M54
+BladeCore-M54C
 
 
 0
 70
 69
+DS_Connector
+BladeCore-M54E
+
+
+0
+70
+68
+DS_Connector
+BladeCore-M54E-5.8mm
+
+
+0
+69
+68
+DS_Connector
+DF40C(2.0)-20DS-0.4V(51)
+
+DF40C2.0-20DS-0.4V51 
+0
+20
+20
+DS_Connector
+DF40C-20DP-0.4V(51)
+
+
+0
+24
+24
+DS_Connector
+JST_SM03B-SRSS-TB_LF__SN_
+
+
+0
+5
+5
 DS_Connector
 M.2 E-Key
 
@@ -58233,12 +58289,33 @@ M.2-M-KEY_Card
 68
 68
 DS_Connector
+M.2-M-KEY_Card_2260
+
+
+0
+68
+68
+DS_Connector
 M.2-M-KEY_Card_2280
 
 
 0
 68
 68
+DS_Connector
+MOLEX_0455580003
+
+
+0
+6
+6
+DS_Connector
+MOLEX_1724470208
+
+
+0
+8
+8
 DS_Connector
 PDC
 PCI EXPRESS CARD CONNECTOR ,64 PINS.
@@ -58338,6 +58415,20 @@ Diode SMB (DO-214AA)
 2
 2
 DS_Diode
+SMC
+Diode SMC (DO-214AB)
+Diode SMC (DO-214AB)
+0
+2
+2
+DS_Diode
+SOT-323_SC-70
+SOT-323, SC-70
+SOT-323 SC-70
+0
+3
+3
+DS_Diode
 SOT-416
 SOT-416, https://www.nxp.com/docs/en/package-information/SOT416.pdf
 SOT-416
@@ -58407,6 +58498,20 @@ WSON6_2x2
 0
 8
 3
+DS_Fuse
+178.6165.0001-Littelfuse
+
+178.6165.0001 
+0
+8
+8
+DS_Fuse
+Fuse_1206_3216Metric
+Fuse SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+fuse
+0
+2
+2
 DS_Inductor
 7443551470
 
@@ -58435,6 +58540,13 @@ DS_Inductor
 0
 2
 2
+DS_Inductor
+ACT1210D-101-2P-TL00
+WE-CNSW SMT Common Mode Line Filter, https://www.we-online.com/components/products/datasheet/744232090.pdf
+common mode choke 1206 cnsw
+0
+4
+4
 DS_Inductor
 L_11.5x10.0mm
 Bourns SRP1038C series SMD inductor http://www.bourns.com/docs/Product-Datasheets/SRP1038C.pdf
@@ -58583,6 +58695,13 @@ LQFP48_7x7
 48
 48
 DS_Peripherals
+MSOP-8_3x3mm_P0.65mm
+MSOP, 8 Pin (https://www.jedec.org/system/files/docs/mo-187F.pdf variant AA), generated with kicad-footprint-generator ipc_gullwing_generator.py
+MSOP SO
+0
+8
+8
+DS_Peripherals
 MSOP-10_3x3mm_P0.5mm
 MSOP, 10 Pin (https://www.jedec.org/system/files/docs/mo-187F.pdf variant BA), generated with kicad-footprint-generator ipc_gullwing_generator.py
 MSOP SO Texas_DGS0010A
@@ -58701,6 +58820,20 @@ QFN NoLead
 0
 36
 25
+DS_Peripherals
+UQFN-20-1EP_3x3mm_P0.4mm_EP1.7x1.7mm_ThermalVias
+UQFN, 20 Pin (https://www.kinet-ic.com/uploads/web/KTD2058,%20KTD2059,%20KTD2060,%20KTD2061/KTD2061-58-59-60-04e.pdf#page=25), generated with kicad-footprint-generator ipc_noLead_generator.py
+UQFN NoLead
+0
+30
+21
+DS_Resistor
+R_0402_1005Metric
+Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
+resistor
+0
+2
+2
 DS_Switch
 Relay_SPST
 Omron Relay, SPST, High Capacity,  https://omronfs.omron.com/en_US/ecb/products/pdf/en-g2rl.pdf
@@ -58722,6 +58855,13 @@ SW_TS04-66-43-BK-160-SMT
 0
 4
 2
+DS_Test
+Round Standoff Threaded M2.5 Steel
+
+
+0
+1
+1
 DS_Test
 TestPoint_0.6mm
 

@@ -1134,7 +1134,7 @@
 		(effects
 			(font
 				(face "Times New Roman")
-				(size 6 6)
+				(size 8 8)
 				(thickness 1.2)
 				(bold yes)
 				(color 43 49 168 1)
