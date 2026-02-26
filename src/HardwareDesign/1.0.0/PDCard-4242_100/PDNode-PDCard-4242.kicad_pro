@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.15,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.0
+          "min_clearance": 0.2032
         }
       },
       "diff_pair_dimensions": [
@@ -495,14 +495,14 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "PDNode-PDCard-5031.kicad_pro",
+    "filename": "PDNode-PDCard-4242.kicad_pro",
     "version": 3
   },
   "net_settings": {
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.15,
+        "clearance": 0.2,
         "diff_pair_gap": 0.0,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.0,
@@ -513,7 +513,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.1486,
+        "track_width": 0.174,
         "via_diameter": 0.45,
         "via_drill": 0.2,
         "wire_width": 6
@@ -522,7 +522,7 @@
         "bus_width": 12,
         "clearance": 0.2,
         "diff_pair_gap": 0.1524,
-        "diff_pair_width": 0.1069,
+        "diff_pair_width": 0.1201,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
@@ -530,7 +530,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 7,
         "schematic_color": "rgb(144, 123, 182)",
-        "track_width": 0.1069,
+        "track_width": 0.1201,
         "via_diameter": 0.45,
         "via_drill": 0.2,
         "wire_width": 6
@@ -539,7 +539,7 @@
         "bus_width": 12,
         "clearance": 0.2,
         "diff_pair_gap": 0.1524,
-        "diff_pair_width": 0.109,
+        "diff_pair_width": 0.1232,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
@@ -547,7 +547,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 3,
         "schematic_color": "rgb(144, 123, 182)",
-        "track_width": 0.109,
+        "track_width": 0.1232,
         "via_diameter": 0.45,
         "via_drill": 0.2,
         "wire_width": 6
@@ -556,7 +556,7 @@
         "bus_width": 12,
         "clearance": 0.2,
         "diff_pair_gap": 0.1524,
-        "diff_pair_width": 0.426,
+        "diff_pair_width": 0.4879,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
@@ -564,7 +564,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 5,
         "schematic_color": "rgb(111, 110, 255)",
-        "track_width": 0.426,
+        "track_width": 0.4879,
         "via_diameter": 0.45,
         "via_drill": 0.2,
         "wire_width": 6
@@ -573,7 +573,7 @@
         "bus_width": 12,
         "clearance": 0.2,
         "diff_pair_gap": 0.1524,
-        "diff_pair_width": 0.4298,
+        "diff_pair_width": 0.494,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
@@ -581,7 +581,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 1,
         "schematic_color": "rgb(111, 110, 255)",
-        "track_width": 0.4298,
+        "track_width": 0.494,
         "via_diameter": 0.45,
         "via_drill": 0.2,
         "wire_width": 6
@@ -598,7 +598,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 4,
         "schematic_color": "rgb(77, 82, 240)",
-        "track_width": 0.1486,
+        "track_width": 0.174,
         "via_diameter": 0.45,
         "via_drill": 0.2,
         "wire_width": 6
@@ -615,7 +615,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 0,
         "schematic_color": "rgb(77, 82, 240)",
-        "track_width": 0.1565,
+        "track_width": 0.1862,
         "via_diameter": 0.45,
         "via_drill": 0.2,
         "wire_width": 6
@@ -624,7 +624,7 @@
         "bus_width": 12,
         "clearance": 0.2,
         "diff_pair_gap": 0.1524,
-        "diff_pair_width": 0.1397,
+        "diff_pair_width": 0.1577,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
@@ -632,7 +632,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 6,
         "schematic_color": "rgb(197, 65, 205)",
-        "track_width": 0.1397,
+        "track_width": 0.1577,
         "via_diameter": 0.45,
         "via_drill": 0.2,
         "wire_width": 6
@@ -641,7 +641,7 @@
         "bus_width": 12,
         "clearance": 0.2,
         "diff_pair_gap": 0.1524,
-        "diff_pair_width": 0.142,
+        "diff_pair_width": 0.1613,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
@@ -649,7 +649,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2,
         "schematic_color": "rgb(197, 65, 205)",
-        "track_width": 0.142,
+        "track_width": 0.1613,
         "via_diameter": 0.45,
         "via_drill": 0.2,
         "wire_width": 6
@@ -662,12 +662,12 @@
     "netclass_assignments": null,
     "netclass_patterns": [
       {
-        "netclass": "90R_DP_Coplanar",
-        "pattern": "/Project Architecture/USB-PD Source Controller/USB_D-"
+        "netclass": "50R_DP_Coplanar",
+        "pattern": "/Project Architecture/USB-PD Source Controller/ISEN+"
       },
       {
-        "netclass": "90R_DP_Coplanar",
-        "pattern": "/Project Architecture/USB-PD Source Controller/USB_D+"
+        "netclass": "50R_DP_Coplanar",
+        "pattern": "/Project Architecture/USB-PD Source Controller/ISEN-"
       }
     ]
   },
@@ -683,7 +683,7 @@
       "svg": "",
       "vrml": ""
     },
-    "page_layout_descr_file": "G:/_GitHub/LIB_KiCad-Libraries/Template_PCB_JLC/KiCad_Template_Files/Template_PCB_GIT_A3.kicad_wks"
+    "page_layout_descr_file": "kicad-embed://Template_PCB_GIT_A3.kicad_wks"
   },
   "schematic": {
     "annotate_start_num": 0,
@@ -804,7 +804,7 @@
       "version": 1
     },
     "net_format_name": "KiCad",
-    "page_layout_descr_file": "kicad-embed://KDT_Template_PCB_GIT_A3.kicad_wks",
+    "page_layout_descr_file": "kicad-embed://Template_SCH_GIT_A3.kicad_wks",
     "plot_directory": "Schematic/",
     "space_save_all_events": true,
     "spice_current_sheet_as_root": false,
@@ -830,10 +830,6 @@
       "Project Architecture"
     ],
     [
-      "f06537ee-772d-44d3-8c50-e0ba41038c9c",
-      "Adjustable 5A Buck Converter"
-    ],
-    [
       "e744f3ce-03a6-44a6-8792-1447ef232b9a",
       "USB-PD Source Controller"
     ],
@@ -852,7 +848,7 @@
   ],
   "text_variables": {
     "ASSEMBLY_NOTES": "ASSEMBLY NOTES",
-    "BOARD_NAME": "PDCard-5031",
+    "BOARD_NAME": "PDCard-4242",
     "COMPANY": "DvidMakesThings",
     "DESIGNER": "David Sipos",
     "FABRICATION_NOTES": "FABRICATION NOTES",
@@ -865,7 +861,7 @@
     "RELEASE_BODY_1.0.2": "",
     "RELEASE_BODY_1.1.0": "",
     "RELEASE_BODY_UNRELEASED": "",
-    "RELEASE_DATE_NUM": "2026-02-05",
+    "RELEASE_DATE_NUM": "2026-02-25",
     "RELEASE_TITLE_1.0.0": "",
     "RELEASE_TITLE_1.0.1": "",
     "RELEASE_TITLE_1.0.2": "",
@@ -887,11 +883,11 @@
     "SHEET_NAME_2": "Block Diagram",
     "SHEET_NAME_20": "......................................",
     "SHEET_NAME_3": "Project Architecture",
-    "SHEET_NAME_4": "Adjustable 5A Buck Converter",
-    "SHEET_NAME_5": "USB-PD Source Controller",
-    "SHEET_NAME_6": "Board Connector and Supplies",
-    "SHEET_NAME_7": "Power - Sequencing",
-    "SHEET_NAME_8": "Revision History",
+    "SHEET_NAME_4": "USB-PD Source Controller",
+    "SHEET_NAME_5": "Board Connector and Supplies",
+    "SHEET_NAME_6": "Power - Sequencing",
+    "SHEET_NAME_7": "Revision History",
+    "SHEET_NAME_8": "......................................",
     "SHEET_NAME_9": "......................................",
     "VARIANT": "Pro"
   }
