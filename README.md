@@ -125,12 +125,12 @@ The full schematics are available:
     </td>
   </tr>
   <tr>
-    <td align="center" style="padding: 6px 8px;">
-      <img src="images/1.0.0/BladeCore-M54E_Top.png" alt="BladeCore-M54E Top View" style="width: min(78%, 240px); max-width: 100%; height: auto; border-radius: 6px; transform: rotate(90deg); transform-origin: center; display: block; margin: 6px auto;">
+    <td align="center" width="50%">
+      <img src="images/1.0.0/BladeCore-M54E_Top_rotR90.png" alt="BladeCore-M54E Top View" style="width: 100%; max-width: 520px; height: auto; border-radius: 6px; display: block; margin: 0 auto;">
       <br><b>BladeCore-M54E Top</b>
     </td>
-    <td align="center" style="padding: 6px 8px;">
-      <img src="images/1.0.0/BladeCore-M54E_Bottom.png" alt="BladeCore-M54E Top View" style="width: min(78%, 240px); max-width: 100%; height: auto; border-radius: 6px; transform: rotate(90deg); transform-origin: center; display: block; margin: 6px auto;">
+    <td align="center" width="50%">
+      <img src="images/1.0.0/BladeCore-M54E_Bottom_rotR90.png" alt="BladeCore-M54E Bottom View" style="width: 100%; max-width: 520px; height: auto; border-radius: 6px; display: block; margin: 0 auto;">
       <br><b>BladeCore-M54E Bottom</b>
     </td>
   </tr>
