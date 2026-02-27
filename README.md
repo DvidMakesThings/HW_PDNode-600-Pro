@@ -125,12 +125,12 @@ The full schematics are available:
     </td>
   </tr>
   <tr>
-    <td align="center">
-      <img src="images/1.0.0/BladeCore-M54E_Top.png" alt="PDCard 3D Top View" style="width: 100%; min-width: 200px; border-radius: 6px;">
+    <td align="center" style="padding: 6px 8px;">
+      <img src="images/1.0.0/BladeCore-M54E_Top.png" alt="BladeCore-M54E Top View" style="width: min(78%, 240px); max-width: 100%; height: auto; border-radius: 6px; transform: rotate(90deg); transform-origin: center; display: block; margin: 6px auto;">
       <br><b>BladeCore-M54E Top</b>
     </td>
-    <td align="center">
-      <img src="images/1.0.0/BladeCore-M54E_Bottom.png" alt="PDCard 3D Bottom View" style="width: 100%; min-width: 200px; border-radius: 6px;">
+    <td align="center" style="padding: 6px 8px;">
+      <img src="images/1.0.0/BladeCore-M54E_Bottom.png" alt="BladeCore-M54E Top View" style="width: min(78%, 240px); max-width: 100%; height: auto; border-radius: 6px; transform: rotate(90deg); transform-origin: center; display: block; margin: 6px auto;">
       <br><b>BladeCore-M54E Bottom</b>
     </td>
   </tr>
