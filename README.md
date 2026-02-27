@@ -23,13 +23,12 @@ The PDNode-600 Pro, by contrast, is built for remote-managed racks and headless 
 
 ### Output (per PD card / per slot)
 - **8x independent USB-C PD source**:
-  - 5V 3A
-  - 9V 3A
-  - 12V 3A
-  - 15V 3A
-  - 20V 3A
-  - 5V 5A (only with 5A e-marked cable)
-  - 20V 5A (only with 5A e-marked cable)
+  - 5V 3A (5A only with 5A e-marked cable)
+  - 9V 3A (5A only with 5A e-marked cable)
+  - 12V 3A (5A only with 5A e-marked cable)
+  - 15V 3A (5A only with 5A e-marked cable)
+  - 20V 3A (5A only with 5A e-marked cable)
+  - (Total power output cannot exceed 600W)
 - **4x USB-A source** up to **5V / 1A** per port (depending on configuration and limits)
 
 ---
