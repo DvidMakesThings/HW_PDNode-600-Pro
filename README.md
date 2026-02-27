@@ -13,6 +13,13 @@ At the core of the PDNode platform is a centralized industrial-grade 24V/25A pow
 
 The PDNode-600 Pro, by contrast, is built for remote-managed racks and headless environments, featuring Ethernet connectivity, a clean web-based UI, SNMP integration, and firmware updates via USB-C. Doing this by using [BladeCore-M54E](https://github.com/DvidMakesThings/HW_BladeCore-M54E)
 
+## Web UI sneak peek
+
+Interactive playground (dummy UI):
+- https://dvidmakesthings.github.io/HW_PDNode-600-Pro/playground/
+
+<img src="images\UI_dummy.png" alt="Try out the UI" width="700">
+
 
 ## Project timeline estimation
 

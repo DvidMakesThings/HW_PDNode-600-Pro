@@ -1,0 +1,1440 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PDNode-600 Pro | Power Dashboard</title>
+    <meta name="color-scheme" content="dark" />
+    <style>
+        :root {
+            --bg0: #070A12;
+            --bg1: #0B1020;
+            --bg2: rgba(255, 255, 255, .06);
+            --bg3: rgba(255, 255, 255, .10);
+            --txt: #EAF0FF;
+            --muted: rgba(234, 240, 255, .65);
+            --muted2: rgba(234, 240, 255, .42);
+            --good: #3EF59A;
+            --warn: #FFC857;
+            --bad: #FF4D6D;
+            --info: #64D2FF;
+            --accent: #8B5CF6;
+            --accent2: #22D3EE;
+            --ring: rgba(139, 92, 246, .35);
+            --shadow: 0 20px 60px rgba(0, 0, 0, .55);
+            --shadow2: 0 10px 30px rgba(0, 0, 0, .45);
+            --r: 18px;
+            --r2: 14px;
+            --pad: 18px;
+            --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--sans);
+            color: var(--txt);
+            background:
+                radial-gradient(1100px 700px at 20% -10%, rgba(139, 92, 246, .35), transparent 55%),
+                radial-gradient(900px 600px at 100% 20%, rgba(34, 211, 238, .22), transparent 52%),
+                radial-gradient(700px 500px at 40% 110%, rgba(62, 245, 154, .12), transparent 55%),
+                linear-gradient(180deg, var(--bg0), var(--bg1) 40%, #050611);
+            overflow-x: hidden;
+        }
+
+        /* Subtle animated noise */
+        .noise {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            opacity: .12;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="180" height="180" filter="url(%23n)" opacity=".55"/></svg>');
+            mix-blend-mode: overlay;
+            animation: drift 14s linear infinite;
+        }
+
+        @keyframes drift {
+            from {
+                transform: translate3d(0, 0, 0);
+            }
+
+            to {
+                transform: translate3d(-180px, -180px, 0);
+            }
+        }
+
+        /* Layout */
+        .app {
+            display: grid;
+            grid-template-columns: 290px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            padding: 18px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02));
+            border-right: 1px solid rgba(255, 255, 255, .08);
+            backdrop-filter: blur(14px);
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding: 14px 18px;
+            background: linear-gradient(180deg, rgba(10, 14, 28, .75), rgba(10, 14, 28, .48));
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+            backdrop-filter: blur(14px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .content {
+            min-width: 0;
+        }
+
+        .main {
+            padding: 18px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Brand header */
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 10px 16px;
+        }
+
+        .logo {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background:
+                radial-gradient(circle at 30% 30%, rgba(255, 255, 255, .45), transparent 55%),
+                linear-gradient(135deg, rgba(139, 92, 246, .95), rgba(34, 211, 238, .85));
+            box-shadow: 0 10px 30px rgba(139, 92, 246, .22), 0 10px 30px rgba(34, 211, 238, .12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo:before {
+            content: "";
+            position: absolute;
+            inset: -40%;
+            background: conic-gradient(from 90deg, transparent 0 55%, rgba(255, 255, 255, .18) 65%, transparent 75%);
+            animation: spin 6.5s linear infinite;
+            opacity: .7;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .brand h1 {
+            font-size: 16px;
+            margin: 0;
+            letter-spacing: .2px;
+            line-height: 1.1;
+        }
+
+        .brand .sub {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        /* Nav */
+        .nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 8px;
+            border-radius: var(--r);
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .08);
+            box-shadow: var(--shadow2);
+        }
+
+        .nav button {
+            appearance: none;
+            border: 0;
+            background: transparent;
+            color: var(--txt);
+            text-align: left;
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            cursor: pointer;
+            transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
+        }
+
+        .nav button:hover {
+            background: rgba(255, 255, 255, .06);
+            transform: translateY(-1px);
+        }
+
+        .nav button.active {
+            background: linear-gradient(135deg, rgba(139, 92, 246, .25), rgba(34, 211, 238, .18));
+            box-shadow: 0 0 0 1px rgba(139, 92, 246, .25) inset, 0 0 0 6px rgba(139, 92, 246, .08);
+        }
+
+        .nav .meta {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .pill {
+            font-size: 11px;
+            padding: 6px 9px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .10);
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        /* Topbar content */
+        .titleblock {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 0;
+        }
+
+        .titleblock .title {
+            font-size: 14px;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .titleblock .crumb {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .toolbar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            appearance: none;
+            border: 1px solid rgba(255, 255, 255, .10);
+            background: rgba(255, 255, 255, .06);
+            color: var(--txt);
+            padding: 10px 12px;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            user-select: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            background: rgba(255, 255, 255, .08);
+        }
+
+        .btn.primary {
+            border-color: rgba(139, 92, 246, .35);
+            background: linear-gradient(135deg, rgba(139, 92, 246, .35), rgba(34, 211, 238, .18));
+            box-shadow: 0 0 0 6px rgba(139, 92, 246, .08);
+        }
+
+        .btn.danger {
+            border-color: rgba(255, 77, 109, .35);
+            background: linear-gradient(135deg, rgba(255, 77, 109, .22), rgba(255, 200, 87, .10));
+        }
+
+        .toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 10px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, .10);
+            background: rgba(255, 255, 255, .05);
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .switch {
+            width: 44px;
+            height: 24px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .10);
+            border: 1px solid rgba(255, 255, 255, .12);
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 0 0 6px transparent;
+            transition: box-shadow .15s ease, background .15s ease;
+        }
+
+        .switch::after {
+            content: "";
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            top: 2px;
+            left: 2px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .85);
+            transition: transform .18s ease;
+        }
+
+        .switch.on {
+            background: rgba(62, 245, 154, .18);
+            box-shadow: 0 0 0 6px rgba(62, 245, 154, .08);
+        }
+
+        .switch.on::after {
+            transform: translateX(20px);
+        }
+
+        /* Cards / grids */
+        .grid {
+            display: grid;
+            gap: 14px;
+        }
+
+        .grid.kpis {
+            grid-template-columns: repeat(12, 1fr);
+        }
+
+        .grid.two {
+            grid-template-columns: repeat(12, 1fr);
+        }
+
+        .card {
+            border-radius: var(--r);
+            background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .03));
+            border: 1px solid rgba(255, 255, 255, .10);
+            box-shadow: var(--shadow2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(600px 220px at 12% 0%, rgba(139, 92, 246, .16), transparent 55%),
+                radial-gradient(500px 220px at 85% 0%, rgba(34, 211, 238, .10), transparent 52%);
+            opacity: .8;
+            pointer-events: none;
+        }
+
+        .card .inner {
+            position: relative;
+            padding: var(--pad);
+        }
+
+        .kpi {
+            grid-column: span 3;
+            min-height: 96px;
+        }
+
+        .kpi .label {
+            color: var(--muted);
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .kpi .value {
+            font-size: 24px;
+            margin-top: 8px;
+            letter-spacing: .2px;
+        }
+
+        .kpi .hint {
+            color: var(--muted2);
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: var(--muted2);
+            box-shadow: 0 0 0 6px rgba(255, 255, 255, .04);
+        }
+
+        .dot.good {
+            background: var(--good);
+            box-shadow: 0 0 0 6px rgba(62, 245, 154, .09);
+        }
+
+        .dot.warn {
+            background: var(--warn);
+            box-shadow: 0 0 0 6px rgba(255, 200, 87, .10);
+        }
+
+        .dot.bad {
+            background: var(--bad);
+            box-shadow: 0 0 0 6px rgba(255, 77, 109, .10);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 18px 2px 10px;
+        }
+
+        .section-title h2 {
+            margin: 0;
+            font-size: 14px;
+            letter-spacing: .3px;
+            color: rgba(234, 240, 255, .86);
+        }
+
+        .section-title .right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .channels {
+            grid-template-columns: repeat(12, 1fr);
+        }
+
+        details.channel {
+            grid-column: span 12;
+            border-radius: var(--r);
+            background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02));
+            border: 1px solid rgba(255, 255, 255, .10);
+            box-shadow: var(--shadow2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        details.channel[open] {
+            box-shadow: var(--shadow);
+            border-color: rgba(139, 92, 246, .22);
+        }
+
+        summary {
+            list-style: none;
+            cursor: pointer;
+            user-select: none;
+            outline: none;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .ch-summary {
+            padding: 14px 14px 12px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr 1fr auto;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .ch-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+        }
+
+        .ch-name .title {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 0;
+        }
+
+        .ch-name .title strong {
+            font-size: 13px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .ch-name .title span {
+            font-size: 11px;
+            color: var(--muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .metric {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
+        }
+
+        .metric .m-label {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .metric .m-value {
+            font-family: var(--mono);
+            font-size: 13px;
+            letter-spacing: .2px;
+        }
+
+        .chev {
+            width: 32px;
+            height: 32px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, .10);
+            background: rgba(255, 255, 255, .05);
+            transition: transform .18s ease;
+        }
+
+        details[open] .chev {
+            transform: rotate(180deg);
+        }
+
+        .ch-details {
+            padding: 0 14px 14px;
+            border-top: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, .10);
+            background: rgba(255, 255, 255, .04);
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .chip b {
+            color: rgba(234, 240, 255, .86);
+            font-weight: 600;
+        }
+
+        .chip .tag {
+            font-family: var(--mono);
+            color: rgba(234, 240, 255, .82);
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .mini {
+            grid-column: span 4;
+            border-radius: var(--r2);
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .08);
+            padding: 12px;
+            min-height: 78px;
+        }
+
+        .mini .k {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .mini .v {
+            font-size: 12px;
+            margin-top: 6px;
+            font-family: var(--mono);
+            color: rgba(234, 240, 255, .88);
+        }
+
+        .mini .v.mono {
+            font-family: var(--mono);
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .divider {
+            height: 1px;
+            background: rgba(255, 255, 255, .08);
+            margin: 14px 0;
+        }
+
+        .note {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.45;
+        }
+
+        .panel {
+            display: none;
+            animation: fade .18s ease;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: .0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Settings */
+        .form {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 14px;
+        }
+
+        .field {
+            grid-column: span 6;
+            border-radius: var(--r);
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .10);
+            padding: 14px;
+        }
+
+        .field label {
+            display: block;
+            color: var(--muted);
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, .12);
+            background: rgba(7, 10, 18, .55);
+            color: var(--txt);
+            padding: 10px 12px;
+            outline: none;
+            box-shadow: 0 0 0 0 rgba(139, 92, 246, .0);
+            transition: box-shadow .12s ease, border-color .12s ease;
+        }
+
+        .field textarea {
+            min-height: 96px;
+            resize: vertical;
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            border-color: rgba(139, 92, 246, .38);
+            box-shadow: 0 0 0 6px var(--ring);
+        }
+
+        .field .help {
+            color: var(--muted2);
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        /* Manuals */
+        .manuals {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 14px;
+        }
+
+        .doc {
+            grid-column: span 6;
+            border-radius: var(--r);
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .10);
+            padding: 14px;
+        }
+
+        .doc h3 {
+            margin: 0 0 6px;
+            font-size: 13px;
+            letter-spacing: .2px;
+        }
+
+        .doc p {
+            margin: 0 0 12px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.45;
+        }
+
+        /* Mobile */
+        .hamb {
+            display: none;
+            border: 1px solid rgba(255, 255, 255, .10);
+            background: rgba(255, 255, 255, .06);
+            color: var(--txt);
+            width: 44px;
+            height: 40px;
+            border-radius: 14px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 980px) {
+            .app {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: fixed;
+                inset: 0 auto 0 0;
+                width: 290px;
+                transform: translateX(-110%);
+                transition: transform .18s ease;
+                z-index: 80;
+                box-shadow: var(--shadow);
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .hamb {
+                display: inline-grid;
+                place-items: center;
+            }
+
+            .main {
+                padding: 14px;
+            }
+
+            details.channel {
+                grid-column: span 12;
+            }
+
+            .kpi {
+                grid-column: span 6;
+            }
+
+            .field {
+                grid-column: span 12;
+            }
+
+            .doc {
+                grid-column: span 12;
+            }
+
+            .ch-summary {
+                grid-template-columns: 1.2fr 1fr 1fr auto;
+            }
+
+            .ch-summary .metric:nth-child(4) {
+                display: none;
+            }
+
+            .mini {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .kpi {
+                grid-column: span 12;
+            }
+
+            .mini {
+                grid-column: span 12;
+            }
+
+            .toolbar {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="noise"></div>
+
+    <div class="app" id="app">
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <div class="logo" aria-hidden="true"></div>
+                <div>
+                    <h1>PDNode-600 Pro</h1>
+                    <div class="sub">PDNode-600 Pro dashboard</div>
+                </div>
+            </div>
+
+            <div class="nav" role="navigation" aria-label="Primary">
+                <button class="active" data-route="outputs">
+                    <span>
+                        <div style="font-weight:600; font-size:13px;">Outputs</div>
+                        <div class="meta">PD + USB-A channels</div>
+                    </span>
+                    <span class="pill" id="pillStatus">LIVE</span>
+                </button>
+
+                <button data-route="settings">
+                    <span>
+                        <div style="font-weight:600; font-size:13px;">Settings</div>
+                        <div class="meta">Network, safety, UX</div>
+                    </span>
+                    <span class="pill">CFG</span>
+                </button>
+
+                <button data-route="manuals">
+                    <span>
+                        <div style="font-weight:600; font-size:13px;">Manuals</div>
+                        <div class="meta">Docs + quick reference</div>
+                    </span>
+                    <span class="pill">PDF</span>
+                </button>
+            </div>
+
+            <div style="height:14px;"></div>
+
+            <div class="card">
+                <div class="inner">
+                    <div style="display:flex; align-items:flex-start; justify-content:space-between; gap: 12px;">
+                        <div>
+                            <div style="font-size:12px; color: var(--muted);">System</div>
+                            <div style="margin-top:6px; font-size:14px;">Controller: <span
+                                    style="font-family:var(--mono); color: rgba(234,240,255,.88);">RP2354B</span></div>
+                            <div style="margin-top:6px; font-size:14px;">Firmware: <span
+                                    style="font-family:var(--mono); color: rgba(234,240,255,.88);">v0.9.3-dev</span>
+                            </div>
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:8px; align-items:flex-end;">
+                            <div class="pill"
+                                style="border-color: rgba(62,245,154,.25); background: rgba(62,245,154,.08); color: rgba(234,240,255,.82);">
+                                No faults</div>
+                            <div class="pill" style="border-color: rgba(255,255,255,.12);">Uptime <span
+                                    style="font-family:var(--mono);">12:48:09</span></div>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="note">
+                        Everything important is visible. Everything interesting is expandable.
+                        Start here for status. Expand a channel when you need the “why”, not just the “what”.
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="content">
+            <header class="topbar">
+                <div style="display:flex; align-items:center; gap: 10px; min-width:0;">
+                    <button class="hamb" id="hamb" aria-label="Open menu">☰</button>
+                    <div class="titleblock">
+                        <p class="title" id="pageTitle" style="margin:0;">Outputs</p>
+                        <div class="crumb" id="pageCrumb">PDNode-600 Pro / Outputs</div>
+                    </div>
+                </div>
+
+                <div class="toolbar"> <button class="btn danger" id="btnAllOff">All outputs OFF</button>
+                </div>
+            </header>
+
+            <main class="main">
+                <!-- Outputs -->
+                <section class="panel active" id="panel-outputs">
+                    <div class="grid kpis">
+                        <div class="card kpi">
+                            <div class="inner">
+                                <div class="label"><span class="dot good" id="dotSys"></span> System status</div>
+                                <div class="value" id="sysState">Stable</div>
+                                <div class="hint" id="sysHint">No active faults detected</div>
+                            </div>
+                        </div>
+
+                        <div class="card kpi">
+                            <div class="inner">
+                                <div class="label"><span class="dot" id="dotPd"></span> PD channels ON</div>
+                                <div class="value" id="kpiPdOn">0 / 8</div>
+                                <div class="hint">Total PD power: <span style="font-family:var(--mono);"
+                                        id="kpiPdPwr">0.0 W</span></div>
+                            </div>
+                        </div>
+
+                        <div class="card kpi">
+                            <div class="inner">
+                                <div class="label"><span class="dot" id="dotUsb"></span> USB-A ON</div>
+                                <div class="value" id="kpiUsbOn">0 / 4</div>
+                                <div class="hint">Total USB-A power: <span style="font-family:var(--mono);"
+                                        id="kpiUsbPwr">0.0 W</span></div>
+                            </div>
+                        </div>
+
+                        <div class="card kpi">
+                            <div class="inner">
+                                <div class="label"><span class="dot" id="dotNet"></span> Network</div>
+                                <div class="value" id="kpiIp">10.10.10.50</div>
+                                <div class="hint">Link: <span style="font-family:var(--mono);" id="kpiLink">100M
+                                        Full</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-title">
+                        <h2>USB-C PD Outputs (8)</h2>
+                        <div class="right">
+                            <span class="pill">Dropdown = debug depth</span>
+                            <span class="pill">Main row = essentials</span>
+                        </div>
+                    </div>
+
+                    <div class="grid channels" id="pdGrid"></div>
+
+                    <div class="section-title">
+                        <h2>USB-A Outputs (4)</h2>
+                        <div class="right">
+                            <span class="pill">AP22653W6 style pins</span>
+                            <span class="pill">INA219 measurement</span>
+                        </div>
+                    </div>
+
+                    <div class="grid channels" id="usbGrid"></div>
+                </section>
+
+                <!-- Settings -->
+                <section class="panel" id="panel-settings">
+                    <div class="card">
+                        <div class="inner">
+                            <div
+                                style="display:flex; align-items:flex-start; justify-content:space-between; gap: 12px;">
+                                <div>
+                                    <div style="font-size:12px; color: var(--muted);">Settings</div>
+                                    <div style="margin-top:6px; font-size:16px; letter-spacing:.2px;">Make it feel like
+                                        a real instrument.</div>
+                                </div>
+                                <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
+                                    <button class="btn">Export config</button>
+                                    <button class="btn primary">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="height:14px;"></div>
+
+                    <div class="form">
+                        <div class="field">
+                            <label>Device name</label>
+                            <input value="PDNode-600 Pro" />
+                            <div class="help">Shown in header, mDNS, logs, and discovery tools.</div>
+                        </div>
+
+                        <div class="field">
+                            <label>Update rate</label>
+                            <select>
+                                <option>250 ms (snappy)</option>
+                                <option selected>500 ms (balanced)</option>
+                                <option>1000 ms (quiet)</option>
+                            </select>
+                            <div class="help">Client refresh period. Server can still publish faster.</div>
+                        </div>
+
+                        <div class="field">
+                            <label>Network mode</label>
+                            <select>
+                                <option selected>Static</option>
+                                <option>DHCP</option>
+                            </select>
+                            <div class="help">Static is nicer for lab gear. DHCP is easier for casual users.</div>
+                        </div>
+
+                        <div class="field">
+                            <label>IPv4</label>
+                            <input value="10.10.10.50" />
+                            <div class="help">Example only. Replace with your actual config model.</div>
+                        </div>
+
+                        <div class="field">
+                            <label>Safety policy</label>
+                            <select>
+                                <option selected>Trip on overcurrent, latch fault</option>
+                                <option>Trip then auto-retry (limited)</option>
+                                <option>Warn only (dev mode)</option>
+                            </select>
+                            <div class="help">A sane default is latch faults and require user acknowledgement.</div>
+                        </div>
+
+                        <div class="field">
+                            <label>Notes / install log</label>
+                            <textarea placeholder="Rack position, customer, test notes, etc."></textarea>
+                            <div class="help">This is where the UI feels like a real product, not a demo.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Manuals -->
+                <section class="panel" id="panel-manuals">
+                    <div class="card">
+                        <div class="inner">
+                            <div
+                                style="display:flex; align-items:flex-start; justify-content:space-between; gap: 12px;">
+                                <div>
+                                    <div style="font-size:12px; color: var(--muted);">Manuals</div>
+                                    <div style="margin-top:6px; font-size:16px; letter-spacing:.2px;">Docs that don’t
+                                        look like 2008.</div>
+                                </div>
+                                <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
+                                    <button class="btn">Open docs folder</button>
+                                    <button class="btn primary">Download bundle</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="height:14px;"></div>
+
+                    <div class="manuals">
+                        <div class="doc">
+                            <h3>Quick Start</h3>
+                            <p>Power, network, first login, and getting the first PD contract up.</p>
+                            <button class="btn">Open</button>
+                        </div>
+                        <div class="doc">
+                            <h3>User Manual</h3>
+                            <p>Outputs, naming, presets, safety logic, and common workflows.</p>
+                            <button class="btn">Open</button>
+                        </div>
+                        <div class="doc">
+                            <h3>Debug Reference</h3>
+                            <p>RX/TX counters, GoodCRC timing, retry logic, and fault reasons.</p>
+                            <button class="btn">Open</button>
+                        </div>
+                        <div class="doc">
+                            <h3>Electrical Specs</h3>
+                            <p>Per-port limits, USB-A 1A policy, and measurement accuracy notes.</p>
+                            <button class="btn">Open</button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Static UI script (no jitter simulation, no top nav). Sidebar navigation only.
+        const $ = (sel, root = document) => root.querySelector(sel);
+        const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+        const fmt = (n, d = 2) => Number(n).toFixed(d);
+        const pad2 = (n) => String(n).padStart(2, '0');
+
+        function uptimeStr(sec) {
+            sec = Math.max(0, Math.floor(sec));
+            const h = Math.floor(sec / 3600);
+            const m = Math.floor((sec % 3600) / 60);
+            const s = sec % 60;
+            return `${pad2(h)}:${pad2(m)}:${pad2(s)}`;
+        }
+
+        // Fake but stable data. Replace with your backend later.
+        const model = {
+            sys: { ip: '10.10.10.50', link: '100M Full', uptime: 12 * 3600 + 48 * 60 + 9 },
+            pd: Array.from({ length: 8 }, (_, i) => ({
+                id: i + 1,
+                name: `PD ${i + 1}`,
+                alias: i === 0 ? 'Main SBC' : (i === 1 ? 'USB-C Hub' : (i === 2 ? 'Laptop' : 'Spare')),
+                enabled: i < 2,
+                voltage: i === 0 ? 20.07 : (i === 1 ? 15.09 : 0),
+                current: i === 0 ? 1.68 : (i === 1 ? 0.65 : 0),
+                uptime: i === 0 ? (1 * 3600 + 30 * 60 + 20) : (i === 1 ? (1 * 3600 + 45 * 60 + 20) : 0),
+                portState: i < 2 ? 'Ready' : 'Disconnected',
+                contract: i < 2 ? (i === 0 ? '20 V 3 A (60 W)' : '15 V 3 A (45 W)') : 'None',
+                role: 'Source',
+                dataRole: i < 2 ? 'DFP' : 'N/A',
+                cablePresent: i < 2,
+                emarked: i === 0,
+                cableCap: i < 2 ? '3 A allowed' : 'N/A',
+                vbusPresent: i < 2,
+                vbusMatch: i < 2,
+                discharge: false,
+                vconnOn: i < 2,
+                vconnFault: false,
+                fault: 'None',
+                ocShort: false,
+                vbusErr: false,
+                wdtReset: false,
+                retries: 0,
+                lastFault: 'None',
+                rxBadCrc: 0,
+                rxDup: i < 2 ? 1 : 0,
+                lastMsgSec: i < 2 ? 3 + i : null,
+                lastGoodCrcSec: i < 2 ? 2 + i : null,
+                lastPdoList: i < 2 ? '5V/3A, 9V/3A, 15V/3A, 20V/3A' : 'N/A',
+            })),
+            usbA: Array.from({ length: 4 }, (_, i) => ({
+                id: i + 1,
+                name: `USB-A ${i + 1}`,
+                enabled: i < 2,
+                voltage: i < 2 ? 5.06 : 0,
+                current: i === 0 ? 0.42 : (i === 1 ? 0.96 : 0),
+                uptime: i === 0 ? 8600 : (i === 1 ? 9700 : 0),
+                enablePin: i < 2,
+                faultPin: false,
+                currentLimit: '1.0 A',
+                ina: {
+                    busV: i < 2 ? 5.06 : 0,
+                    shuntmV: i < 2 ? (i === 1 ? 2.3 : 1.0) : 0,
+                    powerW: i < 2 ? (i === 1 ? 4.85 : 2.12) : 0
+                }
+            }))
+        };
+
+        function chevron() {
+            return `<div class="chev" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 9l6 6 6-6" stroke="rgba(234,240,255,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>`;
+        }
+
+        function channelSummaryMetrics(ch) {
+            const pwr = ch.voltage * ch.current;
+            const v = ch.enabled ? `${fmt(ch.voltage, 2)} V` : '0.00 V';
+            const c = ch.enabled ? `${fmt(ch.current, 2)} A` : '0.00 A';
+            const w = ch.enabled ? `${fmt(pwr, 1)} W` : '0.0 W';
+            const up = ch.enabled ? uptimeStr(ch.uptime) : '00:00:00';
+            return { v, c, w, up };
+        }
+
+        function pdCard(ch) {
+            const m = channelSummaryMetrics(ch);
+            const stateDot = ch.enabled ? (ch.portState === 'Ready' ? 'good' : (ch.portState === 'Fault' ? 'bad' : 'warn')) : '';
+            return `
+        <details class="channel" data-kind="pd" data-id="${ch.id}">
+          <summary>
+            <div class="ch-summary">
+              <div class="ch-name">
+                <span class="dot ${stateDot}"></span>
+                <div class="title">
+                  <strong>${ch.name}</strong>
+                  <span>${ch.alias}</span>
+                </div>
+              </div>
+              <div class="metric"><div class="m-label">State</div><div class="m-value">${ch.portState}</div></div>
+              <div class="metric"><div class="m-label">V / I / P</div><div class="m-value">${m.v} • ${m.c} • ${m.w}</div></div>
+              <div class="metric"><div class="m-label">Uptime</div><div class="m-value">${m.up}</div></div>
+              ${chevron()}
+            </div>
+          </summary>
+          <div class="ch-details">
+            <div class="actions">
+              <button class="btn primary" data-action="toggle">${ch.enabled ? 'Turn OFF' : 'Turn ON'}</button>
+              <button class="btn" data-action="rename">Rename</button>
+              <button class="btn danger" data-action="clearfault">Clear fault</button>
+            </div>
+            <div class="chips">
+              <span class="chip"><b>Port</b> <span class="tag">${ch.portState}</span></span>
+              <span class="chip"><b>Contract</b> <span class="tag">${ch.contract}</span></span>
+              <span class="chip"><b>Role</b> <span class="tag">${ch.role}</span></span>
+              <span class="chip"><b>Data</b> <span class="tag">${ch.dataRole}</span></span>
+            </div>
+            <div class="detail-grid">
+              <div class="mini"><div class="k">Cable status</div><div class="v">present=${ch.cablePresent ? 'yes' : 'no'} • e-marked=${ch.emarked ? 'yes' : 'no'} • ${ch.cableCap}</div></div>
+              <div class="mini"><div class="k">VBUS</div><div class="v">present=${ch.vbusPresent ? 'yes' : 'no'} • in-range=${ch.vbusMatch ? 'yes' : 'no'} • discharge=${ch.discharge ? 'active' : 'off'}</div></div>
+              <div class="mini"><div class="k">VCONN</div><div class="v">on=${ch.vconnOn ? 'yes' : 'no'} • fault=${ch.vconnFault ? 'yes' : 'no'}</div></div>
+              <div class="mini"><div class="k">Fault summary</div><div class="v">oc/short=${ch.ocShort ? 'yes' : 'no'} • vbus_err=${ch.vbusErr ? 'yes' : 'no'} • wdt=${ch.wdtReset ? 'yes' : 'no'} • retries=${ch.retries}</div></div>
+              <div class="mini"><div class="k">Last fault reason</div><div class="v">${ch.lastFault}</div></div>
+              <div class="mini"><div class="k">RX/TX counters</div><div class="v">badcrc=${ch.rxBadCrc} • dup=${ch.rxDup}</div></div>
+              <div class="mini"><div class="k">Last message</div><div class="v">${ch.lastMsgSec == null ? 'n/a' : `${ch.lastMsgSec}s ago`} • GoodCRC: ${ch.lastGoodCrcSec == null ? 'n/a' : `${ch.lastGoodCrcSec}s ago`}</div></div>
+              <div class="mini"><div class="k">Last negotiated PDO list</div><div class="v">${ch.lastPdoList}</div></div>
+              <div class="mini"><div class="k">Notes</div><div class="v">${ch.fault === 'None' ? 'All good.' : ch.fault}</div></div>
+            </div>
+          </div>
+        </details>`;
+        }
+
+        function usbACard(ch) {
+            const pwr = ch.voltage * ch.current;
+            const v = ch.enabled ? `${fmt(ch.voltage, 2)} V` : '0.00 V';
+            const c = ch.enabled ? `${fmt(ch.current, 2)} A` : '0.00 A';
+            const w = ch.enabled ? `${fmt(pwr, 1)} W` : '0.0 W';
+            const up = ch.enabled ? uptimeStr(ch.uptime) : '00:00:00';
+            const stateDot = ch.enabled ? (ch.faultPin ? 'bad' : 'good') : '';
+            const stateText = ch.enabled ? (ch.faultPin ? 'Fault' : 'On') : 'Off';
+
+            return `
+        <details class="channel" data-kind="usb" data-id="${ch.id}">
+          <summary>
+            <div class="ch-summary">
+              <div class="ch-name">
+                <span class="dot ${stateDot}"></span>
+                <div class="title">
+                  <strong>${ch.name}</strong>
+                  <span>Limit: ${ch.currentLimit}</span>
+                </div>
+              </div>
+              <div class="metric"><div class="m-label">State</div><div class="m-value">${stateText}</div></div>
+              <div class="metric"><div class="m-label">V / I / P</div><div class="m-value">${v} • ${c} • ${w}</div></div>
+              <div class="metric"><div class="m-label">Uptime</div><div class="m-value">${up}</div></div>
+              ${chevron()}
+            </div>
+          </summary>
+          <div class="ch-details">
+            <div class="actions">
+              <button class="btn primary" data-action="toggle">${ch.enabled ? 'Turn OFF' : 'Turn ON'}</button>
+              <button class="btn" data-action="rename">Rename</button>
+              <button class="btn danger" data-action="clearfault">Clear fault</button>
+            </div>
+            <div class="chips">
+              <span class="chip"><b>Enable pin</b> <span class="tag">${ch.enablePin ? 'HIGH' : 'LOW'}</span></span>
+              <span class="chip"><b>Fault pin</b> <span class="tag">${ch.faultPin ? 'FAULT' : 'OK'}</span></span>
+              <span class="chip"><b>INA219</b> <span class="tag">bus=${fmt(ch.ina.busV, 2)}V</span></span>
+              <span class="chip"><b>INA219</b> <span class="tag">shunt=${fmt(ch.ina.shuntmV, 2)}mV</span></span>
+            </div>
+            <div class="detail-grid">
+              <div class="mini"><div class="k">Power</div><div class="v">${fmt(ch.ina.powerW, 2)} W (INA estimate)</div></div>
+              <div class="mini"><div class="k">Current limit</div><div class="v">${ch.currentLimit}</div></div>
+              <div class="mini"><div class="k">Diagnostics</div><div class="v">Clean switch + measurement (no PD stack).</div></div>
+            </div>
+          </div>
+        </details>`;
+        }
+
+        function renderOutputs() {
+            const pdGrid = $('#pdGrid');
+            const usbGrid = $('#usbGrid');
+            if (pdGrid) pdGrid.innerHTML = model.pd.map(pdCard).join('');
+            if (usbGrid) usbGrid.innerHTML = model.usbA.map(usbACard).join('');
+
+            // Bind actions
+            $$('.channel').forEach(d => {
+                d.addEventListener('click', (e) => {
+                    const btn = e.target.closest('button[data-action]');
+                    if (!btn) return;
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const kind = d.getAttribute('data-kind');
+                    const id = Number(d.getAttribute('data-id'));
+                    const arr = kind === 'pd' ? model.pd : model.usbA;
+                    const ch = arr.find(x => x.id === id);
+                    const action = btn.getAttribute('data-action');
+
+                    if (action === 'toggle') {
+                        ch.enabled = !ch.enabled;
+                        if (!ch.enabled) {
+                            ch.voltage = 0; ch.current = 0; ch.uptime = 0;
+                            if (kind === 'pd') {
+                                ch.portState = 'Disconnected';
+                                ch.contract = 'None';
+                                ch.cablePresent = false;
+                                ch.vbusPresent = false;
+                                ch.vbusMatch = false;
+                                ch.vconnOn = false;
+                            } else {
+                                ch.enablePin = false;
+                                ch.ina.busV = 0; ch.ina.shuntmV = 0; ch.ina.powerW = 0;
+                            }
+                        } else {
+                            if (kind === 'pd') {
+                                ch.voltage = 20.00;
+                                ch.current = 0.25;
+                                ch.uptime = 1;
+                                ch.portState = 'Ready';
+                                ch.contract = '20 V 3 A (60 W)';
+                                ch.cablePresent = true;
+                                ch.vconnOn = true;
+                                ch.vbusPresent = true;
+                                ch.vbusMatch = true;
+                            } else {
+                                ch.voltage = 5.07;
+                                ch.current = 0.12;
+                                ch.uptime = 1;
+                                ch.enablePin = true;
+                                ch.ina.busV = ch.voltage;
+                                ch.ina.shuntmV = 0.34;
+                                ch.ina.powerW = ch.voltage * ch.current;
+                            }
+                        }
+                        const openState = new Map($$('details.channel').map(x => [`${x.dataset.kind}:${x.dataset.id}`, x.open]));
+                        renderOutputs();
+                        for (const x of $$('details.channel')) x.open = Boolean(openState.get(`${x.dataset.kind}:${x.dataset.id}`));
+                        renderKpis();
+                    }
+
+                    if (action === 'rename') {
+                        const newName = prompt('Enter display name', kind === 'pd' ? ch.alias : ch.name);
+                        if (newName != null) {
+                            if (kind === 'pd') ch.alias = newName.trim() || ch.alias;
+                            else ch.name = newName.trim() || ch.name;
+                            const openState = new Map($$('details.channel').map(x => [`${x.dataset.kind}:${x.dataset.id}`, x.open]));
+                            renderOutputs();
+                            for (const x of $$('details.channel')) x.open = Boolean(openState.get(`${x.dataset.kind}:${x.dataset.id}`));
+                        }
+                    }
+
+                    if (action === 'clearfault') {
+                        if (kind === 'pd') {
+                            ch.fault = 'None'; ch.ocShort = false; ch.vbusErr = false; ch.wdtReset = false; ch.retries = 0; ch.lastFault = 'None';
+                            if (ch.enabled) ch.portState = 'Ready';
+                        } else {
+                            ch.faultPin = false;
+                        }
+                        const openState = new Map($$('details.channel').map(x => [`${x.dataset.kind}:${x.dataset.id}`, x.open]));
+                        renderOutputs();
+                        for (const x of $$('details.channel')) x.open = Boolean(openState.get(`${x.dataset.kind}:${x.dataset.id}`));
+                        renderKpis();
+                    }
+                });
+            });
+        }
+
+        function renderKpis() {
+            const pdOn = model.pd.filter(x => x.enabled).length;
+            const usbOn = model.usbA.filter(x => x.enabled).length;
+            const pdP = model.pd.reduce((s, x) => s + (x.enabled ? x.voltage * x.current : 0), 0);
+            const usbP = model.usbA.reduce((s, x) => s + (x.enabled ? x.voltage * x.current : 0), 0);
+
+            const set = (id, txt) => { const el = $(id); if (el) el.textContent = txt; };
+            set('#kpiPdOn', `${pdOn} / 8`);
+            set('#kpiUsbOn', `${usbOn} / 4`);
+            set('#kpiPdPwr', `${fmt(pdP, 1)} W`);
+            set('#kpiUsbPwr', `${fmt(usbP, 1)} W`);
+            set('#kpiIp', model.sys.ip);
+            set('#kpiLink', model.sys.link);
+
+            const anyFault = model.pd.some(x => x.portState === 'Fault' || x.fault !== 'None' || x.ocShort || x.vbusErr || x.wdtReset) || model.usbA.some(x => x.faultPin);
+            const sysDot = $('#dotSys');
+            const sysState = $('#sysState');
+            const sysHint = $('#sysHint');
+            if (sysDot) sysDot.classList.remove('good', 'warn', 'bad');
+
+            if (anyFault) {
+                if (sysDot) sysDot.classList.add('warn');
+                if (sysState) sysState.textContent = 'Attention';
+                if (sysHint) sysHint.textContent = 'One or more channels reporting non-OK status';
+            } else {
+                if (sysDot) sysDot.classList.add('good');
+                if (sysState) sysState.textContent = 'Stable';
+                if (sysHint) sysHint.textContent = 'No active faults detected';
+            }
+
+            const dotPd = $('#dotPd');
+            const dotUsb = $('#dotUsb');
+            const dotNet = $('#dotNet');
+            if (dotPd) { dotPd.classList.remove('good', 'warn', 'bad'); if (pdOn) dotPd.classList.add('good'); }
+            if (dotUsb) { dotUsb.classList.remove('good', 'warn', 'bad'); if (usbOn) dotUsb.classList.add('good'); }
+            if (dotNet) { dotNet.classList.remove('good', 'warn', 'bad'); dotNet.classList.add('good'); }
+
+            const pill = $('#pillStatus');
+            if (pill) pill.textContent = 'LIVE';
+        }
+
+        const routes = {
+            outputs: { title: 'Outputs', crumb: 'PDNode-600 Pro / Outputs' },
+            settings: { title: 'Settings', crumb: 'PDNode-600 Pro / Settings' },
+            manuals: { title: 'Manuals', crumb: 'PDNode-600 Pro / Manuals' },
+        };
+
+        function setRoute(route) {
+            $$('.nav button').forEach(b => b.classList.toggle('active', b.getAttribute('data-route') === route));
+            $$('.panel').forEach(p => p.classList.toggle('active', p.id === `panel-${route}`));
+            const t = $('#pageTitle');
+            const c = $('#pageCrumb');
+            if (t) t.textContent = routes[route].title;
+            if (c) c.textContent = routes[route].crumb;
+            const sb = $('#sidebar');
+            if (sb) sb.classList.remove('open');
+        }
+
+        function allOff() {
+            for (const ch of model.pd) {
+                ch.enabled = false;
+                ch.voltage = 0; ch.current = 0; ch.uptime = 0;
+                ch.portState = 'Disconnected';
+                ch.contract = 'None';
+                ch.cablePresent = false;
+                ch.vbusPresent = false;
+                ch.vbusMatch = false;
+                ch.vconnOn = false;
+                ch.retries = 0;
+                ch.lastFault = 'None';
+            }
+            for (const ch of model.usbA) {
+                ch.enabled = false;
+                ch.voltage = 0; ch.current = 0; ch.uptime = 0;
+                ch.enablePin = false;
+                ch.faultPin = false;
+                ch.ina.busV = 0; ch.ina.shuntmV = 0; ch.ina.powerW = 0;
+            }
+            renderOutputs();
+            renderKpis();
+        }
+
+        (function init() {
+            // sidebar nav
+            $$('.nav button').forEach(b => b.addEventListener('click', () => setRoute(b.getAttribute('data-route'))));
+
+            // hamburger
+            const hamb = $('#hamb');
+            if (hamb) hamb.addEventListener('click', () => $('#sidebar').classList.toggle('open'));
+
+            // all off
+            const btnAllOff = $('#btnAllOff');
+            if (btnAllOff) btnAllOff.addEventListener('click', allOff);
+
+            renderOutputs();
+            renderKpis();
+        })();
+    </script>
+</body>
+
+</html>
