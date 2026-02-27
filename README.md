@@ -9,7 +9,7 @@ where mains switching is not desired, but controllable, rack-friendly power outp
 
 The PDNode-600 is a professional-grade, 600W USB Power Delivery Unit designed specifically for compact 10-inch rack systems, targeting embedded developers, homelab enthusiasts, test benches, and smart infrastructure. It delivers regulated, high-current power across 8x independent USB-C PD outputs and 4x fixed 5V USB-A outputs.
 
-At the core of the PDNode platform is a centralized industrial-grade 24V/25A power supply, distributing regulated DC to dedicated per-port buck or buck-boost converters. Each USB-C port is managed by an MCP22350T-2I/Q8X PD controller, enabling clean, autonomous negotiation of power profiles up to 20V @ 3A or 5V @ 5A with eMarker cable support. All power conversion, protection, and monitoring are designed to meet high reliability and safety standards.
+At the core of the PDNode platform is a centralized industrial-grade 24V/25A power supply, distributing regulated DC to dedicated per-port buck or buck-boost converters. Each USB-C port is managed by an MPQ4242-AEC1 PD controller, enabling clean, autonomous negotiation of power profiles up to 20V @ 3A or 5V @ 5A with eMarker cable support. All power conversion, protection, and monitoring are designed to meet high reliability and safety standards.
 
 The PDNode-600 Pro, by contrast, is built for remote-managed racks and headless environments, featuring Ethernet connectivity, a clean web-based UI, SNMP integration, and firmware updates via USB-C. 
 
@@ -59,6 +59,15 @@ The PDNode-600 Pro, by contrast, is built for remote-managed racks and headless 
 - 4x USB-A outputs
 - 8x USB-C PD outputs
 
+### [BladeCore-M54E](https://github.com/DvidMakesThings/HW_BladeCore-M54E)
+- RP2354B microcontroller
+- External QSPI flash memory
+- External I²C EEPROM
+- 100BASE Ethernet via W5500
+- Dual‑path USB connectivity with automatic source selection
+- Onboard power regulation and defined power‑up sequencing
+- Compact M.2 M-key form factor
+
 ### PD Card
 - 1x USB-C PD source port (one card = one port)
 - Local power conversion to generate VBUS from the 24V bus
@@ -71,8 +80,9 @@ The PDNode-600 Pro, by contrast, is built for remote-managed racks and headless 
 
 ## Schematics
 The full schematics are available:
-- **[Baseboard Schematics](src/PDF/PDNode-600-Pro_Baseboard_schematics.pdf)** - WORK IN PROGRESS
-- **[PD Card Schematics](src/PDF/SCH_PDCard_101.pdf)**
+- **[Baseboard Schematics](src/PDF/SCH_BladeCore-M54_100.pdf)** 
+- **[PDCard-4242 Schematics](src/PDF/SCH_PDCard-4242_100.pdf)**
+- **[BladeCore-M54E Schematics](src/PDF/SCH_PDCard-4242_100.pdf)**
 
 ---
 
@@ -81,11 +91,11 @@ The full schematics are available:
 | Hardware Phase                          | Status          | Firmware Phase                         | Status         |
 | --------------------------------------- | --------------- | -------------------------------------- | -------------- |
 | Architecture definition                 | ✅ Completed    | Slot scan concept (TCA9548A)           | 🔵 Planned     |
-| Baseboard PCB Design                    | 🔵 Planned      | I2C driver + mux control               | 🔵 Planned     |
+| Baseboard PCB Design                    | ✅ Completed    | I2C driver + mux control               | 🔵 Planned     |
 | PD Card PCB Design                      | ✅ Completed    | INA219 monitoring                      | 🔵 Planned     |
-| Documentation                           | 🔵 Planned      | PD controller interface (SPI + GPIO)   | 🔵 Planned     |
-| PCB ordering                            | 🔵 Planned      | Telemetry + status reporting           | 🔵 Planned     |
-| Prototyping and Hardware Bring-up       | 🔵 Planned      | Bring-up scripts / debug tooling       | 🔵 Planned     |
+| Documentation                           | 🟠 Ongoing      | PD controller interface (SPI + GPIO)   | 🔵 Planned     |
+| PCB ordering                            | 🟠 Ongoing      | Telemetry + status reporting           | 🔵 Planned     |
+| Prototyping and Hardware Bring-up       | 🟠 Ongoing      | Bring-up scripts / debug tooling       | 🔵 Planned     |
 | Validation (load, thermal, long-run)    | 🔵 Planned      | Error handling + fault reporting       | 🔵 Planned     |
 | Production optimization                 | 🔵 Planned      | Integration and polishing              | 🔵 Planned     |
 
@@ -99,19 +109,39 @@ The full schematics are available:
 #### Rev1.0.0:
 - Full redesign. STUSB4710 became EOL, need to use different PD controller
 - New concept: modular Baseboard + PDCard architecture
-- PDCard power stage (TPS552882-Q1)
+- PDCard power stage (MPQ4242-AEC1)
 - Baseboard: Per-slot I2C muxing (TCA9548A)
 - Optional per-card EEPROM (not used, but capable)
 
 <table>
   <tr>
     <td align="center">
-      <img src="images/1.0.0/3D_TOP.png" alt="PDCard 3D Top View" style="width: 100%; min-width: 200px; border-radius: 6px;">
+      <img src="images/1.0.0/PDNode-PDCard-4242_TOP.png" alt="PDCard 3D Top View" style="width: 100%; min-width: 200px; border-radius: 6px;">
       <br><b>PDCard Top</b>
     </td>
     <td align="center">
-      <img src="images/1.0.0/3D_BTM.png" alt="PDCard 3D Bottom View" style="width: 100%; min-width: 200px; border-radius: 6px;">
+      <img src="images/1.0.0/PDNode-PDCard-4242_BOTTOM.png" alt="PDCard 3D Bottom View" style="width: 100%; min-width: 200px; border-radius: 6px;">
       <br><b>PDCard Bottom</b>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="images/1.0.0/BladeCore-M54E_Top.png" alt="PDCard 3D Top View" style="width: 100%; min-width: 200px; border-radius: 6px;">
+      <br><b>BladeCore-M54E Top</b>
+    </td>
+    <td align="center">
+      <img src="images/1.0.0/BladeCore-M54E_Bottom.png" alt="PDCard 3D Bottom View" style="width: 100%; min-width: 200px; border-radius: 6px;">
+      <br><b>BladeCore-M54E Bottom</b>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="images/1.0.0/PDNode_Baseboard-Top.png" alt="BaseBoard 3D Top View" style="width: 100%; min-width: 200px; border-radius: 6px;">
+      <br><b>BladeCore-M54E Top</b>
+    </td>
+    <td align="center">
+      <img src="images/1.0.0/PDNode_Baseboard-Bottom.png" alt="BaseBoard 3D Bottom View" style="width: 100%; min-width: 200px; border-radius: 6px;">
+      <br><b>BladeCore-M54E Bottom</b>
     </td>
   </tr>
 </table>

@@ -7141,7 +7141,7 @@
 			)
 		)
 		(instances
-			(project "BladeCore-M54"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e"
 					(page "7")
 				)
@@ -7652,7 +7652,7 @@
 			)
 		)
 		(instances
-			(project "BladeCore-M54"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e"
 					(page "5")
 				)
@@ -7834,7 +7834,7 @@
 			)
 		)
 		(instances
-			(project "BladeCore-M54"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e"
 					(page "6")
 				)
@@ -7925,7 +7925,7 @@
 			)
 		)
 		(instances
-			(project "BladeCore-M54"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e"
 					(page "4")
 				)
