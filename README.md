@@ -9,11 +9,29 @@ where mains switching is not desired, but controllable, rack-friendly power outp
 
 The PDNode-600 is a professional-grade, 600W USB Power Delivery Unit designed specifically for compact 10-inch rack systems, targeting embedded developers, homelab enthusiasts, test benches, and smart infrastructure. It delivers regulated, high-current power across 8x independent USB-C PD outputs and 4x fixed 5V USB-A outputs.
 
-At the core of the PDNode platform is a centralized industrial-grade 24V/25A power supply, distributing regulated DC to dedicated per-port buck or buck-boost converters. Each USB-C port is managed by an MPQ4242-AEC1 PD controller, enabling clean, autonomous negotiation of power profiles up to 20V @ 3A or 5V @ 5A with eMarker cable support. All power conversion, protection, and monitoring are designed to meet high reliability and safety standards.
+At the core of the PDNode platform is a centralized industrial-grade 24V/25A power supply, distributing regulated DC to dedicated per-port buck or buck-boost converters. Each USB-C port is managed by an MPQ4242-AEC1 PD controller, enabling clean, autonomous negotiation of power profiles up to 20V @ 3A or 5A with eMarker cable support. All power conversion, protection, and monitoring are designed to meet high reliability and safety standards.
 
-The PDNode-600 Pro, by contrast, is built for remote-managed racks and headless environments, featuring Ethernet connectivity, a clean web-based UI, SNMP integration, and firmware updates via USB-C. 
+The PDNode-600 Pro, by contrast, is built for remote-managed racks and headless environments, featuring Ethernet connectivity, a clean web-based UI, SNMP integration, and firmware updates via USB-C. Doing this by using [BladeCore-M54E](https://github.com/DvidMakesThings/HW_BladeCore-M54E)
 
----
+
+## Project timeline estimation
+
+Status legend: ✅ Completed · 🟠 Ongoing · 🔵 Planned
+
+| #  | Milestone                                      | Planned Start | Planned End | Status       | Notes |
+|:--:|------------------------------------------------|---------------|-------------|--------------|-------|
+| 1  | Architecture definition                        | 12-2025       | 01-2026     | ✅ Completed |       |
+| 2  | Baseboard PCB design                           | 15-02-2026    | TBD         | ✅ Completed |       |
+| 3  | PD card PCB design                             | 25-02-2026    | TBD         | ✅ Completed |       |
+| 4  | Documentation                                  | 12-2025       | 2026.12     | 🟠 Ongoing   |       |
+| 5  | PCB ordering                                   | 01-03-2026    | 31-03-2026  | 🟠 Ongoing   |       |
+| 6  | Prototyping and hardware bring-up              | 03-2026       | 30-04-2026  | 🟠 Ongoing   |       |
+| 7  | Firmware bring-up (slot scan, mux, PD iface)   | 06-2026       | 11-2026     | 🔵 Planned   |       |
+| 8  | Telemetry and status reporting                 | 06-2026       | 11-2026     | 🔵 Planned   |       |
+| 9  | Validation (load, thermal, long-run)           | 06-2026       | 11-2026     | 🔵 Planned   |       |
+| 10 | Integration and polishing                      | 06-2026       | 11-2026     | 🔵 Planned   |       |
+| 11 | Release package and final docs                 | 11-2026       | 12-2026     | 🔵 Planned   |       |
+
 
 ## Specifications 
 
@@ -75,7 +93,10 @@ The PDNode-600 Pro, by contrast, is built for remote-managed racks and headless 
 - Per-port power good / fault status output
 - Optional ID EEPROM footprint (DNI) for traceability/calibration
 
----
+
+<img src="images/PDNode-600%20Pro_in-Enclosure.png" alt="PDNode-600 Pro in Enclosure" width="700">
+<img src="images/PDNode-600%20Pro_in-Enclosure2.png" alt="PDNode-600 Pro in Enclosure" width="700">
+
 
 ## Schematics
 The full schematics are available:
@@ -145,7 +166,6 @@ The full schematics are available:
   </tr>
 </table>
 
----
 
 ## License
 ### Software Components
