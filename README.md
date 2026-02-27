@@ -1,4 +1,4 @@
-# PDNode 600 Pro  
+# PDNode-600 Pro  
 ## High-Performance USB PD Power Distribution Unit – 10" Rackmount
 
 ![Hardware Development Status](https://img.shields.io/badge/status-Ongoing-orange)
