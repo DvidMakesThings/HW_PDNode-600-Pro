@@ -44,15 +44,24 @@
             margin: 0;
             font-family: var(--sans);
             color: var(--txt);
+            background-color: #050611;
+            overflow-x: hidden;
+            position: relative;
+            z-index: 0;
+        }
+
+        .bg {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            z-index: -2;
             background:
                 radial-gradient(1100px 700px at 20% -10%, rgba(139, 92, 246, .35), transparent 55%),
                 radial-gradient(900px 600px at 100% 20%, rgba(34, 211, 238, .22), transparent 52%),
                 radial-gradient(700px 500px at 40% 110%, rgba(62, 245, 154, .12), transparent 55%),
                 linear-gradient(180deg, var(--bg0), var(--bg1) 40%, #050611);
             background-repeat: no-repeat;
-            background-size: 160% 120%, 150% 120%, 140% 120%, 100% 100%;
-            background-color: #050611;
-            overflow-x: hidden;
+            background-size: cover, cover, cover, cover;
         }
 
         /* Subtle animated noise */
@@ -64,6 +73,7 @@
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="180" height="180" filter="url(%23n)" opacity=".55"/></svg>');
             mix-blend-mode: overlay;
             animation: drift 18s ease-in-out infinite alternate;
+            z-index: -1;
         }
 
         @keyframes drift {
@@ -808,6 +818,7 @@
 </head>
 
 <body>
+    <div class="bg"></div>
     <div class="noise"></div>
 
     <div class="app" id="app">
