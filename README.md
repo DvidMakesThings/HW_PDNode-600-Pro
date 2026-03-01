@@ -18,7 +18,7 @@ The PDNode-600 Pro, by contrast, is built for remote-managed racks and headless 
 Interactive playground (dummy UI):
 - https://dvidmakesthings.github.io/HW_PDNode-600-Pro/playground/
 
-<img src="images\UI_dummy.png" alt="Try out the UI" width="700">
+<img src="images/UI_dummy.png" alt="Try out the UI" width="700">
 
 
 ## Project timeline estimation
@@ -107,9 +107,14 @@ Status legend: ✅ Completed · 🟠 Ongoing · 🔵 Planned
 
 ## Schematics
 The full schematics are available:
-- **[Baseboard Schematics](src/PDF/SCH_BladeCore-M54_100.pdf)** 
+- **[Baseboard Schematics](src/PDF/SCH_PDNode_Baseboard_100.pdf)** 
 - **[PDCard-4242 Schematics](src/PDF/SCH_PDCard-4242_100.pdf)**
-- **[BladeCore-M54E Schematics](src/PDF/SCH_PDCard-4242_100.pdf)**
+- **[BladeCore-M54E Schematics](src/PDF/SCH_BladeCore-M54_100.pdf)**
+
+PCB Documentation:
+- **[Baseboard PCB](src/PDF/PCB_PDNode_Baseboard_100.pdf)** 
+- **[PDCard-4242 PCB](src/PDF/PCB_PDCard-4242_100.pdf)**
+ **[]()**
 
 ---
 

@@ -432,6 +432,19 @@
 	)
 	(text "INTEGRATED\nBUCK-BOOST"
 		(exclude_from_sim no)
+		(at 213.36 91.948 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+				(thickness 0.508)
+				(bold yes)
+				(color 0 0 0 1)
+			)
+		)
+		(uuid "5881aec8-a853-40d6-b204-489adfbb1999")
+	)
+	(text "INTEGRATED\nBUCK-BOOST"
+		(exclude_from_sim no)
 		(at 215.9 168.148 0)
 		(effects
 			(font
@@ -507,6 +520,19 @@
 			)
 		)
 		(uuid "94f292cf-7a78-4256-b3da-f0743d8f9f89")
+	)
+	(text "USB-C"
+		(exclude_from_sim no)
+		(at 289.56 133.35 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+				(thickness 0.508)
+				(bold yes)
+				(color 0 0 0 1)
+			)
+		)
+		(uuid "a75fb487-0381-433e-9a47-ed039de99891")
 	)
 	(text "+5V"
 		(exclude_from_sim no)

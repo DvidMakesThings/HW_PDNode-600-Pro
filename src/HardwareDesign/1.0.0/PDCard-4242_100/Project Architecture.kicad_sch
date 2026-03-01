@@ -3164,7 +3164,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b0508cd0-7433-4d56-887f-f59a359356b1")
-		(property "Reference" "#PWR014"
+		(property "Reference" "#PWR14"
 			(at 274.32 158.75 0)
 			(effects
 				(font
@@ -3214,7 +3214,7 @@
 		(instances
 			(project "PDNode-PDCard-4242"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e"
-					(reference "#PWR014")
+					(reference "#PWR14")
 					(unit 1)
 				)
 			)
@@ -3295,7 +3295,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ecc85297-8f6a-4063-bd25-cf5e9d1cbc2f")
-		(property "Reference" "#PWR048"
+		(property "Reference" "#PWR48"
 			(at 97.79 189.23 0)
 			(effects
 				(font
@@ -3345,7 +3345,7 @@
 		(instances
 			(project "PDNode-PDCard_102"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e"
-					(reference "#PWR048")
+					(reference "#PWR48")
 					(unit 1)
 				)
 			)

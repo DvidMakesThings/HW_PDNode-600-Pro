@@ -102,10 +102,10 @@
         "pth_inside_courtyard": "ignore",
         "shorting_items": "error",
         "silk_edge_clearance": "warning",
-        "silk_over_copper": "warning",
+        "silk_over_copper": "ignore",
         "silk_overlap": "ignore",
         "skew_out_of_range": "error",
-        "solder_mask_bridge": "warning",
+        "solder_mask_bridge": "ignore",
         "starved_thermal": "error",
         "text_height": "ignore",
         "text_on_edge_cuts": "error",
@@ -120,7 +120,7 @@
         "unconnected_items": "error",
         "unresolved_variable": "error",
         "via_dangling": "warning",
-        "zones_intersect": "error"
+        "zones_intersect": "warning"
       },
       "rules": {
         "max_error": 0.005,
@@ -513,7 +513,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.174,
+        "track_width": 0.1486,
         "via_diameter": 0.45,
         "via_drill": 0.2,
         "wire_width": 6
@@ -522,7 +522,7 @@
         "bus_width": 12,
         "clearance": 0.2,
         "diff_pair_gap": 0.1524,
-        "diff_pair_width": 0.1201,
+        "diff_pair_width": 0.1069,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
@@ -530,7 +530,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 7,
         "schematic_color": "rgb(144, 123, 182)",
-        "track_width": 0.1201,
+        "track_width": 0.1069,
         "via_diameter": 0.45,
         "via_drill": 0.2,
         "wire_width": 6
@@ -539,7 +539,7 @@
         "bus_width": 12,
         "clearance": 0.2,
         "diff_pair_gap": 0.1524,
-        "diff_pair_width": 0.1232,
+        "diff_pair_width": 0.109,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
@@ -547,7 +547,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 3,
         "schematic_color": "rgb(144, 123, 182)",
-        "track_width": 0.1232,
+        "track_width": 0.109,
         "via_diameter": 0.45,
         "via_drill": 0.2,
         "wire_width": 6
@@ -556,7 +556,7 @@
         "bus_width": 12,
         "clearance": 0.2,
         "diff_pair_gap": 0.1524,
-        "diff_pair_width": 0.4879,
+        "diff_pair_width": 0.426,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
@@ -564,7 +564,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 5,
         "schematic_color": "rgb(111, 110, 255)",
-        "track_width": 0.4879,
+        "track_width": 0.426,
         "via_diameter": 0.45,
         "via_drill": 0.2,
         "wire_width": 6
@@ -573,7 +573,7 @@
         "bus_width": 12,
         "clearance": 0.2,
         "diff_pair_gap": 0.1524,
-        "diff_pair_width": 0.494,
+        "diff_pair_width": 0.4298,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
@@ -581,7 +581,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 1,
         "schematic_color": "rgb(111, 110, 255)",
-        "track_width": 0.494,
+        "track_width": 0.4298,
         "via_diameter": 0.45,
         "via_drill": 0.2,
         "wire_width": 6
@@ -598,7 +598,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 4,
         "schematic_color": "rgb(77, 82, 240)",
-        "track_width": 0.174,
+        "track_width": 0.1486,
         "via_diameter": 0.45,
         "via_drill": 0.2,
         "wire_width": 6
@@ -624,7 +624,7 @@
         "bus_width": 12,
         "clearance": 0.2,
         "diff_pair_gap": 0.1524,
-        "diff_pair_width": 0.1577,
+        "diff_pair_width": 0.1397,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
@@ -632,7 +632,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 6,
         "schematic_color": "rgb(197, 65, 205)",
-        "track_width": 0.1577,
+        "track_width": 0.1397,
         "via_diameter": 0.45,
         "via_drill": 0.2,
         "wire_width": 6
@@ -641,7 +641,7 @@
         "bus_width": 12,
         "clearance": 0.2,
         "diff_pair_gap": 0.1524,
-        "diff_pair_width": 0.1613,
+        "diff_pair_width": 0.142,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
@@ -649,7 +649,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2,
         "schematic_color": "rgb(197, 65, 205)",
-        "track_width": 0.1613,
+        "track_width": 0.142,
         "via_diameter": 0.45,
         "via_drill": 0.2,
         "wire_width": 6
@@ -668,6 +668,14 @@
       {
         "netclass": "50R_DP_Coplanar",
         "pattern": "/Project Architecture/USB-PD Source Controller/ISEN-"
+      },
+      {
+        "netclass": "90R_DP_Coplanar",
+        "pattern": "/Project Architecture/USB-PD Source Controller/USB_D+"
+      },
+      {
+        "netclass": "90R_DP_Coplanar",
+        "pattern": "/Project Architecture/USB-PD Source Controller/USB_D-"
       }
     ]
   },
@@ -679,11 +687,11 @@
       "plot": "Manufacturing/Fabrication/Gerbers/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "Images/PDNode-PDCard-4242.step",
+      "step": "../PDNode-PDCard-4242.step",
       "svg": "",
       "vrml": ""
     },
-    "page_layout_descr_file": "kicad-embed://Template_PCB_GIT_A3.kicad_wks"
+    "page_layout_descr_file": "kicad-embed://Template_A3.kicad_wks"
   },
   "schematic": {
     "annotate_start_num": 0,
@@ -766,6 +774,78 @@
           "group_by": false,
           "label": "Config",
           "name": "Config",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "LCSC_PART",
+          "name": "LCSC_PART",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "LCSC_PRICE",
+          "name": "LCSC_PRICE",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "MFR",
+          "name": "MFR",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "MPN",
+          "name": "MPN",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "DIST2",
+          "name": "DIST2",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "PPU1",
+          "name": "PPU1",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "PPU2",
+          "name": "PPU2",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "ROHS",
+          "name": "ROHS",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Size",
+          "name": "Size",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "DIST1",
+          "name": "DIST1",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "DMTUID",
+          "name": "DMTUID",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "FOOTPRINT_SHORT",
+          "name": "FOOTPRINT_SHORT",
           "show": false
         }
       ],

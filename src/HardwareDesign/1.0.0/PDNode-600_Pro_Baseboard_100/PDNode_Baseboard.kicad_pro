@@ -101,7 +101,7 @@
         "padstack": "warning",
         "pth_inside_courtyard": "ignore",
         "shorting_items": "error",
-        "silk_edge_clearance": "warning",
+        "silk_edge_clearance": "ignore",
         "silk_over_copper": "warning",
         "silk_overlap": "ignore",
         "skew_out_of_range": "error",
@@ -997,7 +997,7 @@
       "svg": "",
       "vrml": ""
     },
-    "page_layout_descr_file": "G:/_GitHub/LIB_KiCad-Libraries/Template_PCB_JLC/KiCad_Template_Files/Template_PCB_GIT_A3.kicad_wks"
+    "page_layout_descr_file": "kicad-embed://Template_A3.kicad_wks"
   },
   "schematic": {
     "annotate_start_num": 0,

@@ -431,7 +431,7 @@
 	)
 	(tbtext "${LAYER}"
 		(name "")
-		(pos 200.632 220.607)
+		(pos 387.7 293.0272)
 		(font
 			(face "Times New Roman")
 			(size 3.226 3.226) bold
