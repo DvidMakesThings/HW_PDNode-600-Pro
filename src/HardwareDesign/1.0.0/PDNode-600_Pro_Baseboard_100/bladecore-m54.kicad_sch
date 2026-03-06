@@ -33,7 +33,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(property "Footprint" "DS_Capacitor:C_0402_1005Metric"
 				(at 3.81 -4.064 0)
 				(show_name)
 				(effects
@@ -196,7 +196,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(property "Footprint" "DS_Capacitor:C_0402_1005Metric"
 				(at 3.81 -4.064 0)
 				(show_name)
 				(effects
@@ -5456,6 +5456,16 @@
 	)
 	(wire
 		(pts
+			(xy 151.13 135.89) (xy 172.72 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5b351836-1120-4516-8967-d54b1bed24e0")
+	)
+	(wire
+		(pts
 			(xy 166.37 168.91) (xy 172.72 168.91)
 		)
 		(stroke
@@ -7131,6 +7141,17 @@
 		)
 		(uuid "9e47b5b5-89db-4545-9b7d-31f06d736a74")
 	)
+	(hierarchical_label "SPI_CS"
+		(shape output)
+		(at 151.13 135.89 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a443fcee-e238-40a3-bfbd-a25fc04d4e93")
+	)
 	(hierarchical_label "PD_IRQ_EVENT_A"
 		(shape input)
 		(at 242.57 82.55 0)
@@ -7484,7 +7505,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+		(property "Footprint" "DS_Capacitor:C_0402_1005Metric"
 			(at 35.56 249.174 0)
 			(show_name yes)
 			(effects
@@ -7579,7 +7600,7 @@
 		(at 199.39 123.19 0)
 		(unit 1)
 		(exclude_from_sim yes)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -8453,7 +8474,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+		(property "Footprint" "DS_Capacitor:C_0402_1005Metric"
 			(at 54.61 249.174 0)
 			(show_name yes)
 			(effects

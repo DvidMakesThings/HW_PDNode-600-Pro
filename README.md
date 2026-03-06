@@ -31,7 +31,7 @@ Status legend: ✅ Completed · 🟠 Ongoing · 🔵 Planned
 | 2  | Baseboard PCB design                           | 15-02-2026    | TBD         | ✅ Completed |       |
 | 3  | PD card PCB design                             | 25-02-2026    | TBD         | ✅ Completed |       |
 | 4  | Documentation                                  | 12-2025       | 2026.12     | 🟠 Ongoing   |       |
-| 5  | PCB ordering                                   | 01-03-2026    | 31-03-2026  | 🟠 Ongoing   |       |
+| 5  | PCB ordering                                   | 01-03-2026    | 31-03-2026  | ✅ Completed | Waiting for arrival |
 | 6  | Prototyping and hardware bring-up              | 03-2026       | 30-04-2026  | 🟠 Ongoing   |       |
 | 7  | Firmware bring-up (slot scan, mux, PD iface)   | 06-2026       | 11-2026     | 🔵 Planned   |       |
 | 8  | Telemetry and status reporting                 | 06-2026       | 11-2026     | 🔵 Planned   |       |
@@ -126,7 +126,7 @@ PCB Documentation:
 | Baseboard PCB Design                    | ✅ Completed    | I2C driver + mux control               | 🔵 Planned     |
 | PD Card PCB Design                      | ✅ Completed    | INA219 monitoring                      | 🔵 Planned     |
 | Documentation                           | 🟠 Ongoing      | PD controller interface (SPI + GPIO)   | 🔵 Planned     |
-| PCB ordering                            | 🟠 Ongoing      | Telemetry + status reporting           | 🔵 Planned     |
+| PCB ordering                            | ✅ Completed    | Telemetry + status reporting           | 🔵 Planned     |
 | Prototyping and Hardware Bring-up       | 🟠 Ongoing      | Bring-up scripts / debug tooling       | 🔵 Planned     |
 | Validation (load, thermal, long-run)    | 🔵 Planned      | Error handling + fault reporting       | 🔵 Planned     |
 | Production optimization                 | 🔵 Planned      | Integration and polishing              | 🔵 Planned     |

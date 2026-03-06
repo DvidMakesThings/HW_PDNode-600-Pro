@@ -33,7 +33,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(property "Footprint" "DS_Capacitor:C_0402_1005Metric"
 				(at 3.81 -4.064 0)
 				(show_name)
 				(effects
@@ -789,7 +789,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(property "Footprint" "DS_Resistor:R_0402_1005Metric"
 				(at 2.032 -4.064 0)
 				(effects
 					(font
@@ -938,7 +938,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(property "Footprint" "DS_Resistor:R_0402_1005Metric"
 				(at 2.032 -4.064 0)
 				(effects
 					(font
@@ -1087,7 +1087,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "Resistor_SMD:R_Array_Convex_4x0603"
+			(property "Footprint" "DS_Resistor:R_Array_Convex_4x0603"
 				(at 6.35 -3.81 0)
 				(show_name)
 				(effects
@@ -1459,7 +1459,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "Resistor_SMD:R_Array_Convex_4x0603"
+			(property "Footprint" "DS_Resistor:R_Array_Convex_4x0603"
 				(at 6.35 -3.81 0)
 				(show_name)
 				(effects
@@ -2137,12 +2137,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "39fa0867-beb1-42a7-b6b9-e3df9094ae36")
-	)
-	(junction
-		(at 236.22 95.25)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "3f73f962-3ed6-4601-83e6-75a8268dda3a")
 	)
 	(junction
 		(at 189.23 95.25)
@@ -3916,16 +3910,6 @@
 	)
 	(wire
 		(pts
-			(xy 236.22 95.25) (xy 290.83 95.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e5bb68fe-cfa6-4289-a234-c87a3d245a76")
-	)
-	(wire
-		(pts
 			(xy 127 160.02) (xy 138.43 160.02)
 		)
 		(stroke
@@ -4388,7 +4372,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "DS_Resistor:R_0402_1005Metric"
 			(at 70.104 133.858 0)
 			(effects
 				(font
@@ -4570,7 +4554,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_Array_Convex_4x0603"
+		(property "Footprint" "DS_Resistor:R_Array_Convex_4x0603"
 			(at 201.93 107.95 0)
 			(show_name yes)
 			(effects
@@ -4726,7 +4710,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_Array_Convex_4x0603"
+		(property "Footprint" "DS_Resistor:R_Array_Convex_4x0603"
 			(at 137.16 124.46 0)
 			(show_name yes)
 			(effects
@@ -5080,7 +5064,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_Array_Convex_4x0603"
+		(property "Footprint" "DS_Resistor:R_Array_Convex_4x0603"
 			(at 147.32 139.7 0)
 			(show_name yes)
 			(effects
@@ -5235,7 +5219,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "DS_Resistor:R_0402_1005Metric"
 			(at 61.976 136.398 0)
 			(effects
 				(font
@@ -5351,7 +5335,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_Array_Convex_4x0603"
+		(property "Footprint" "DS_Resistor:R_Array_Convex_4x0603"
 			(at 154.94 107.95 0)
 			(show_name yes)
 			(effects
@@ -5574,7 +5558,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+		(property "Footprint" "DS_Capacitor:C_0402_1005Metric"
 			(at 29.21 142.494 0)
 			(show_name yes)
 			(effects
@@ -5692,7 +5676,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_Array_Convex_4x0603"
+		(property "Footprint" "DS_Resistor:R_Array_Convex_4x0603"
 			(at 179.07 107.95 0)
 			(show_name yes)
 			(effects
@@ -6046,7 +6030,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_Array_Convex_4x0603"
+		(property "Footprint" "DS_Resistor:R_Array_Convex_4x0603"
 			(at 147.32 170.18 0)
 			(show_name yes)
 			(effects
@@ -6203,7 +6187,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_Array_Convex_4x0603"
+		(property "Footprint" "DS_Resistor:R_Array_Convex_4x0603"
 			(at 226.06 107.95 0)
 			(show_name yes)
 			(effects
@@ -6425,7 +6409,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_Array_Convex_4x0603"
+		(property "Footprint" "DS_Resistor:R_Array_Convex_4x0603"
 			(at 137.16 154.94 0)
 			(show_name yes)
 			(effects
@@ -6583,7 +6567,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "DS_Resistor:R_0402_1005Metric"
 			(at 77.978 109.474 0)
 			(effects
 				(font

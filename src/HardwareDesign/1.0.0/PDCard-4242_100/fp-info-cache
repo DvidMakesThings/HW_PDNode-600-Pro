@@ -1,4 +1,4 @@
-27032858256356142
+27045269107452978
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -58688,6 +58688,13 @@ DO-221AD
 2
 2
 DS_Diode
+D_SOD-523
+http://www.diodes.com/datasheets/ap02001.pdf p.144
+Diode SOD523
+0
+2
+2
+DS_Diode
 SMA
 Diode SMA (DO-214AC)
 Diode SMA (DO-214AC)
@@ -58807,6 +58814,13 @@ DS_Inductor
 2
 2
 DS_Inductor
+5.3x5.0mm
+Inductor, APV, ANR5045, 5.0x5.0x4.5mm, (http://en.apvind.com/public/upload/20240407/3375c395e460caa8519b4d637d9113ce.pdf), generated with kicad-footprint-generator gen_inductor.py
+Inductor wirewound power shielded
+0
+2
+2
+DS_Inductor
 5.5x5.3mm_XAL5030-222MEC
 Inductor, APV, ANR5045, 5.0x5.0x4.5mm, (http://en.apvind.com/public/upload/20240407/3375c395e460caa8519b4d637d9113ce.pdf), generated with kicad-footprint-generator gen_inductor.py
 Inductor wirewound power shielded
@@ -58897,6 +58911,13 @@ WSON8_6x5
 0
 9
 9
+DS_Microcontroller
+BGA289C80P17X17_1400X1400X152N
+
+
+0
+289
+289
 DS_Microcontroller
 QFN48_7x7
 
@@ -59240,6 +59261,13 @@ resistor
 0
 2
 2
+DS_Resistor
+R_2512_6332Metric-4P
+Resistor SMD 2512 (6332 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
+resistor
+0
+4
+4
 DS_Switch
 Relay_SPST
 Omron Relay, SPST, High Capacity,  https://omronfs.omron.com/en_US/ecb/products/pdf/en-g2rl.pdf
@@ -59262,6 +59290,13 @@ SW_TS04-66-43-BK-160-SMT
 4
 2
 DS_Test
+NPTH 0.5mm
+
+
+0
+0
+0
+DS_Test
 Round Standoff Threaded M2.5 Steel
 
 
@@ -59282,6 +59317,13 @@ TestPoint_Rect_1x1
 0
 1
 1
+DS_Test
+WP-SMRA_7466313
+<b>WP-SMRA SMT Right Angled w. Pins<BR></B>Thread M3<br>Height = 7mm
+
+0
+1
+1
 DS_Vreg
 HTSSOP-14-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask3x3.1mm
 HTSSOP, 14 Pin (http://www.ti.com/lit/ds/symlink/lm5161.pdf#page=34), generated with kicad-footprint-generator ipc_gullwing_generator.py
@@ -59289,6 +59331,13 @@ HTSSOP SO TI-PWP0014A
 0
 20
 15
+DS_Vreg
+HVQFN-40-1EP_6x6mm_P0.5mm_EP4.1x4.1mm_ThermalVias
+HVQFN, 40 Pin (https://www.nxp.com/docs/en/package-information/SOT618-1.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
+HVQFN NoLead
+0
+67
+41
 DS_Vreg
 PowerVFQFN-26
 

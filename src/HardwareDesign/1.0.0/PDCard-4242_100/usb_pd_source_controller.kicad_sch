@@ -5220,7 +5220,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" ""
+			(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8590208205541711872"
 				(at 2.032 -14.986 0)
 				(show_name)
 				(effects
@@ -5242,7 +5242,7 @@
 					(hide yes)
 				)
 			)
-			(property "LCSC_PART" "C25101"
+			(property "LCSC_PART" "C2909330"
 				(at 2.032 -12.954 0)
 				(show_name)
 				(effects
@@ -11481,7 +11481,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8590208205541711872"
 			(at 280.416 168.148 0)
 			(show_name yes)
 			(effects
@@ -11503,7 +11503,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC_PART" "C25101"
+		(property "LCSC_PART" "C2909330"
 			(at 278.384 168.148 0)
 			(show_name yes)
 			(effects
@@ -16553,7 +16553,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8590208205541711872"
 			(at 280.416 178.308 0)
 			(show_name yes)
 			(effects
@@ -16575,7 +16575,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC_PART" "C25101"
+		(property "LCSC_PART" "C2909330"
 			(at 278.384 178.308 0)
 			(show_name yes)
 			(effects
