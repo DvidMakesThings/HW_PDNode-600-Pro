@@ -1,7 +1,7 @@
 (kicad_sch
-	(version 20250114)
+	(version 20260306)
 	(generator "eeschema")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(uuid "f9e05184-c88b-4a88-ae9c-ab2bdb32be7c")
 	(paper "A3")
 	(title_block
@@ -10669,11 +10669,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "5fb05893-0da3-4f58-a52b-cb6d6f4cb80b")
 		(property "Sheetname" "Power - Sequencing"
 			(at 340.36 312.6609 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(face "Times New Roman")
@@ -10686,6 +10688,8 @@
 		)
 		(property "Sheetfile" "Power - Sequencing.kicad_sch"
 			(at 341.63 314.96 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(face "Arial")
@@ -10714,11 +10718,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "6e125bd6-2f99-4e5d-b3ea-4899f4540739")
 		(property "Sheetname" "Revision History"
 			(at 340.36 300.99 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(face "Times New Roman")
@@ -10731,6 +10737,8 @@
 		)
 		(property "Sheetfile" "Revision History.kicad_sch"
 			(at 340.995 303.53 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(face "Arial")
@@ -10759,11 +10767,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "82da9dbf-ba38-4d08-ba35-a220fa2963b1")
 		(property "Sheetname" "Block Diagram"
 			(at 299.72 301.2309 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(face "Times New Roman")
@@ -10776,6 +10786,8 @@
 		)
 		(property "Sheetfile" "Block Diagram.kicad_sch"
 			(at 300.99 303.53 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(face "Arial")
@@ -10804,11 +10816,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "c5103ceb-5325-4a84-a025-9638a412984e")
 		(property "Sheetname" "Project Architecture"
 			(at 299.72 312.6609 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(face "Times New Roman")
@@ -10821,6 +10835,8 @@
 		)
 		(property "Sheetfile" "Project Architecture.kicad_sch"
 			(at 300.99 314.96 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(face "Arial")

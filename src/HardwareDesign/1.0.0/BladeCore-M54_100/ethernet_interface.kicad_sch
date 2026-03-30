@@ -11,6 +11,3303 @@
 		(company "${COMPANY}")
 	)
 	(lib_symbols
+		(symbol "0R 1% 0402_1"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "0R 1%"
+				(at 2.032 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+				(at 2.032 -4.064 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 2.032 -14.986 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "62.5mW Thick Film Resistors 50V ±800ppm/℃ ±1% 0Ω 0402 Chip Resistor - Surface Mount ROHS"
+				(at 2.032 -8.382 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C17168"
+				(at 2.032 -12.954 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 2.032 -6.35 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 2.032 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "MFR" "YAGEO"
+				(at 2.032 -10.668 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "0R 1% 0402_1_0_1"
+				(rectangle
+					(start -1.016 2.54)
+					(end 1.016 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "0R 1% 0402_1_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "100nF 50V 0402_1"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 3.81 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "100nF 50V"
+				(at 3.81 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+				(at 3.81 -4.064 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 3.81 -8.128 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "50V 100nF X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+				(at 3.81 -12.192 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 3.81 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 3.81 -14.224 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C307331"
+				(at 3.81 -6.096 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "MFR" ""
+				(at 3.81 -10.16 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "100nF 50V 0402_1_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "100nF 50V 0402_1_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "100nF 50V 0402_10"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 3.81 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "100nF 50V"
+				(at 3.81 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+				(at 3.81 -4.064 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 3.81 -8.128 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "50V 100nF X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+				(at 3.81 -12.192 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 3.81 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 3.81 -14.224 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C307331"
+				(at 3.81 -6.096 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "MFR" ""
+				(at 3.81 -10.16 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "100nF 50V 0402_10_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "100nF 50V 0402_10_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "100nF 50V 0402_2"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 3.81 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "100nF 50V"
+				(at 3.81 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+				(at 3.81 -4.064 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 3.81 -8.128 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "50V 100nF X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+				(at 3.81 -12.192 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 3.81 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 3.81 -14.224 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C307331"
+				(at 3.81 -6.096 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "MFR" ""
+				(at 3.81 -10.16 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "100nF 50V 0402_2_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "100nF 50V 0402_2_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "100nF 50V 0402_3"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 3.81 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "100nF 50V"
+				(at 3.81 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+				(at 3.81 -4.064 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 3.81 -8.128 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "50V 100nF X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+				(at 3.81 -12.192 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 3.81 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 3.81 -14.224 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C307331"
+				(at 3.81 -6.096 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "MFR" ""
+				(at 3.81 -10.16 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "100nF 50V 0402_3_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "100nF 50V 0402_3_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "100nF 50V 0402_4"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 3.81 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "100nF 50V"
+				(at 3.81 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+				(at 3.81 -4.064 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 3.81 -8.128 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "50V 100nF X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+				(at 3.81 -12.192 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 3.81 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 3.81 -14.224 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C307331"
+				(at 3.81 -6.096 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "MFR" ""
+				(at 3.81 -10.16 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "100nF 50V 0402_4_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "100nF 50V 0402_4_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "100nF 50V 0402_5"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 3.81 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "100nF 50V"
+				(at 3.81 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+				(at 3.81 -4.064 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 3.81 -8.128 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "50V 100nF X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+				(at 3.81 -12.192 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 3.81 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 3.81 -14.224 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C307331"
+				(at 3.81 -6.096 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "MFR" ""
+				(at 3.81 -10.16 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "100nF 50V 0402_5_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "100nF 50V 0402_5_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "100nF 50V 0402_6"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 3.81 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "100nF 50V"
+				(at 3.81 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+				(at 3.81 -4.064 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 3.81 -8.128 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "50V 100nF X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+				(at 3.81 -12.192 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 3.81 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 3.81 -14.224 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C307331"
+				(at 3.81 -6.096 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "MFR" ""
+				(at 3.81 -10.16 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "100nF 50V 0402_6_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "100nF 50V 0402_6_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "100nF 50V 0402_7"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 3.81 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "100nF 50V"
+				(at 3.81 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+				(at 3.81 -4.064 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 3.81 -8.128 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "50V 100nF X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+				(at 3.81 -12.192 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 3.81 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 3.81 -14.224 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C307331"
+				(at 3.81 -6.096 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "MFR" ""
+				(at 3.81 -10.16 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "100nF 50V 0402_7_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "100nF 50V 0402_7_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "100nF 50V 0402_8"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 3.81 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "100nF 50V"
+				(at 3.81 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+				(at 3.81 -4.064 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 3.81 -8.128 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "50V 100nF X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+				(at 3.81 -12.192 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 3.81 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 3.81 -14.224 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C307331"
+				(at 3.81 -6.096 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "MFR" ""
+				(at 3.81 -10.16 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "100nF 50V 0402_8_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "100nF 50V 0402_8_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "100nF 50V 0402_9"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 3.81 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "100nF 50V"
+				(at 3.81 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+				(at 3.81 -4.064 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 3.81 -8.128 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "50V 100nF X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+				(at 3.81 -12.192 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 3.81 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 3.81 -14.224 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C307331"
+				(at 3.81 -6.096 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "MFR" ""
+				(at 3.81 -10.16 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "100nF 50V 0402_9_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "100nF 50V 0402_9_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "15pF 50V 0402_1"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 3.81 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "15pF 50V"
+				(at 3.81 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+				(at 3.81 -4.064 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 3.81 -8.128 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "50V 15pF C0G ±5% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+				(at 3.81 -12.192 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 3.81 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 3.81 -14.224 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C1548"
+				(at 3.81 -6.096 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "MFR" ""
+				(at 3.81 -10.16 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "15pF 50V 0402_1_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "15pF 50V 0402_1_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "3.3R 1% 0402_1"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "3.3R 1%"
+				(at 2.032 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+				(at 2.032 -4.064 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 2.032 -14.986 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "62.5mW Thick Film Resistors 50V ±1% ±400ppm/℃ 3.3Ω 0402 Chip Resistor - Surface Mount ROHS"
+				(at 2.032 -8.382 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C270612"
+				(at 2.032 -12.954 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 2.032 -6.35 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 2.032 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "MFR" ""
+				(at 2.032 -10.668 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "3.3R 1% 0402_1_0_1"
+				(rectangle
+					(start -1.016 2.54)
+					(end 1.016 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "3.3R 1% 0402_1_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "3.3R 1% 0402_2"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "3.3R 1%"
+				(at 2.032 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+				(at 2.032 -4.064 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 2.032 -14.986 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "62.5mW Thick Film Resistors 50V ±1% ±400ppm/℃ 3.3Ω 0402 Chip Resistor - Surface Mount ROHS"
+				(at 2.032 -8.382 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C270612"
+				(at 2.032 -12.954 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 2.032 -6.35 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 2.032 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "MFR" ""
+				(at 2.032 -10.668 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "3.3R 1% 0402_2_0_1"
+				(rectangle
+					(start -1.016 2.54)
+					(end 1.016 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "3.3R 1% 0402_2_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "3.3R 1% 0402_3"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "3.3R 1%"
+				(at 2.032 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+				(at 2.032 -4.064 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 2.032 -14.986 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "62.5mW Thick Film Resistors 50V ±1% ±400ppm/℃ 3.3Ω 0402 Chip Resistor - Surface Mount ROHS"
+				(at 2.032 -8.382 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C270612"
+				(at 2.032 -12.954 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 2.032 -6.35 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 2.032 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "MFR" ""
+				(at 2.032 -10.668 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "3.3R 1% 0402_3_0_1"
+				(rectangle
+					(start -1.016 2.54)
+					(end 1.016 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "3.3R 1% 0402_3_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "470R 1% 0402_1"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "470R 1%"
+				(at 2.032 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+				(at 2.032 -4.064 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 2.032 -14.986 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "62.5mW Thick Film Resistors 50V ±100ppm/℃ ±1% 470Ω 0402 Chip Resistor - Surface Mount ROHS"
+				(at 2.032 -8.382 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C25117"
+				(at 2.032 -12.954 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 2.032 -6.35 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 2.032 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "MFR" "Panasonic"
+				(at 2.032 -10.668 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "470R 1% 0402_1_0_1"
+				(rectangle
+					(start -1.016 2.54)
+					(end 1.016 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "470R 1% 0402_1_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "470R 1% 0402_2"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "470R 1%"
+				(at 2.032 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+				(at 2.032 -4.064 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 2.032 -14.986 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "62.5mW Thick Film Resistors 50V ±100ppm/℃ ±1% 470Ω 0402 Chip Resistor - Surface Mount ROHS"
+				(at 2.032 -8.382 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C25117"
+				(at 2.032 -12.954 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 2.032 -6.35 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 2.032 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "MFR" "Panasonic"
+				(at 2.032 -10.668 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "470R 1% 0402_2_0_1"
+				(rectangle
+					(start -1.016 2.54)
+					(end 1.016 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "470R 1% 0402_2_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "49.9R 1% 0402_1"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "49.9R 1%"
+				(at 2.032 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+				(at 2.032 -4.064 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 2.032 -14.986 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "62.5mW Thick Film Resistors 50V ±100ppm/℃ ±1% 49.9Ω 0402 Chip Resistor - Surface Mount ROHS"
+				(at 2.032 -8.382 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C25120"
+				(at 2.032 -12.954 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 2.032 -6.35 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 2.032 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "MFR" ""
+				(at 2.032 -10.668 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "49.9R 1% 0402_1_0_1"
+				(rectangle
+					(start -1.016 2.54)
+					(end 1.016 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "49.9R 1% 0402_1_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "49.9R 1% 0402_2"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "49.9R 1%"
+				(at 2.032 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+				(at 2.032 -4.064 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 2.032 -14.986 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "62.5mW Thick Film Resistors 50V ±100ppm/℃ ±1% 49.9Ω 0402 Chip Resistor - Surface Mount ROHS"
+				(at 2.032 -8.382 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C25120"
+				(at 2.032 -12.954 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 2.032 -6.35 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 2.032 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "MFR" ""
+				(at 2.032 -10.668 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "49.9R 1% 0402_2_0_1"
+				(rectangle
+					(start -1.016 2.54)
+					(end 1.016 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "49.9R 1% 0402_2_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "49.9R 1% 0402_3"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "49.9R 1%"
+				(at 2.032 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+				(at 2.032 -4.064 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 2.032 -14.986 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "62.5mW Thick Film Resistors 50V ±100ppm/℃ ±1% 49.9Ω 0402 Chip Resistor - Surface Mount ROHS"
+				(at 2.032 -8.382 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C25120"
+				(at 2.032 -12.954 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 2.032 -6.35 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 2.032 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "MFR" ""
+				(at 2.032 -10.668 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "49.9R 1% 0402_3_0_1"
+				(rectangle
+					(start -1.016 2.54)
+					(end 1.016 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "49.9R 1% 0402_3_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "6.8nF 50V 0402_1"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 3.81 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "6.8nF 50V"
+				(at 3.81 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+				(at 3.81 -4.064 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 3.81 -8.128 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "50V 6.8nF X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+				(at 3.81 -12.192 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "FOOTPRINT_SHORT" "0402"
+				(at 3.81 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ROHS" "YES"
+				(at 3.81 -14.224 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "LCSC_PART" "C1542"
+				(at 3.81 -6.096 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "MFR" ""
+				(at 3.81 -10.16 0)
+				(show_name)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(symbol "6.8nF 50V 0402_1_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "6.8nF 50V 0402_1_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "DS_Capacitor_0402:100nF 50V 0402"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -5583,6 +8880,7 @@
 		(uuid "d8811785-6122-4c4a-b662-0737774f2467")
 	)
 	(symbol
+		(lib_name "15pF 50V 0402_1")
 		(lib_id "DS_Capacitor_0402:15pF 50V 0402")
 		(at 97.79 151.13 0)
 		(mirror y)
@@ -5692,7 +8990,7 @@
 			(uuid "9c75dd2d-ff20-4db5-b7da-4dda7c3aedff")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "C35")
 					(unit 1)
@@ -5701,6 +8999,7 @@
 		)
 	)
 	(symbol
+		(lib_name "100nF 50V 0402_3")
 		(lib_id "DS_Capacitor_0402:100nF 50V 0402")
 		(at 163.83 248.92 0)
 		(mirror y)
@@ -5807,7 +9106,7 @@
 			(uuid "f1197975-a2ce-452c-b126-19be7ba06250")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "C46")
 					(unit 1)
@@ -5816,6 +9115,7 @@
 		)
 	)
 	(symbol
+		(lib_name "470R 1% 0402_2")
 		(lib_id "DS_Resistor_0402:470R 1% 0402")
 		(at 187.96 139.7 90)
 		(unit 1)
@@ -5920,7 +9220,7 @@
 			(uuid "1bb7d72c-2e49-40ed-9ac4-cd0af0b2f848")
 		)
 		(instances
-			(project "BladeCore-M54"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "R45")
 					(unit 1)
@@ -5985,7 +9285,7 @@
 			(uuid "8daf8872-eebd-471b-bea1-0e63d5497ef0")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR066")
 					(unit 1)
@@ -6100,7 +9400,7 @@
 			(uuid "17fbb4ac-aefd-4e41-90ab-a5912d62e51a")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "L2")
 					(unit 1)
@@ -6165,7 +9465,7 @@
 			(uuid "3b812365-75c8-4181-8d89-c637c079ff4e")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR063")
 					(unit 1)
@@ -6230,7 +9530,7 @@
 			(uuid "ff78361d-9985-4345-99d6-0a3f2756e493")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR064")
 					(unit 1)
@@ -6239,6 +9539,7 @@
 		)
 	)
 	(symbol
+		(lib_name "100nF 50V 0402_4")
 		(lib_id "DS_Capacitor_0402:100nF 50V 0402")
 		(at 146.05 248.92 0)
 		(mirror y)
@@ -6345,7 +9646,7 @@
 			(uuid "b42e8ac5-2602-48f8-b66e-8d563f3d23f1")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "C45")
 					(unit 1)
@@ -6410,7 +9711,7 @@
 			(uuid "5c79f8d9-4f78-4323-91f0-fc528f62661d")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR073")
 					(unit 1)
@@ -6528,7 +9829,7 @@
 			(uuid "b59074fe-4847-427a-a0a7-14931b935ddf")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "C39")
 					(unit 1)
@@ -6594,7 +9895,7 @@
 			(uuid "6b6f42ff-4651-438e-a505-c64c6934f523")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR071")
 					(unit 1)
@@ -6660,7 +9961,7 @@
 			(uuid "ad7da0c1-f8e2-469a-b91b-e3d7bf8fcddd")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR059")
 					(unit 1)
@@ -6669,6 +9970,7 @@
 		)
 	)
 	(symbol
+		(lib_name "3.3R 1% 0402_1")
 		(lib_id "DS_Resistor_0402:3.3R 1% 0402")
 		(at 241.3 138.43 90)
 		(unit 1)
@@ -6774,7 +10076,7 @@
 			(uuid "124a9c61-a7a8-48b2-8c20-79eaadaee0bf")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "R44")
 					(unit 1)
@@ -6783,6 +10085,7 @@
 		)
 	)
 	(symbol
+		(lib_name "100nF 50V 0402_2")
 		(lib_id "DS_Capacitor_0402:100nF 50V 0402")
 		(at 181.61 248.92 0)
 		(mirror y)
@@ -6889,7 +10192,7 @@
 			(uuid "820216c6-b575-48fc-9af3-5d9415925c88")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "C47")
 					(unit 1)
@@ -6954,7 +10257,7 @@
 			(uuid "c6d75e61-0740-4d6b-95f9-3973ebcfcd61")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR065")
 					(unit 1)
@@ -6963,6 +10266,7 @@
 		)
 	)
 	(symbol
+		(lib_name "49.9R 1% 0402_1")
 		(lib_id "DS_Resistor_0402:49.9R 1% 0402")
 		(at 266.7 149.86 0)
 		(mirror y)
@@ -7071,7 +10375,7 @@
 			(uuid "6423130d-3af5-41ad-853e-fafbf1564417")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "R49")
 					(unit 1)
@@ -7080,6 +10384,7 @@
 		)
 	)
 	(symbol
+		(lib_name "470R 1% 0402_1")
 		(lib_id "DS_Resistor_0402:470R 1% 0402")
 		(at 187.96 144.78 90)
 		(unit 1)
@@ -7184,7 +10489,7 @@
 			(uuid "bc98547e-d3a7-4405-a998-ad09f59551ef")
 		)
 		(instances
-			(project "BladeCore-M54"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "R47")
 					(unit 1)
@@ -7249,7 +10554,7 @@
 			(uuid "999913aa-de92-4020-baa2-26642f571f09")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR076")
 					(unit 1)
@@ -7258,6 +10563,7 @@
 		)
 	)
 	(symbol
+		(lib_name "100nF 50V 0402_1")
 		(lib_id "DS_Capacitor_0402:100nF 50V 0402")
 		(at 199.39 248.92 0)
 		(mirror y)
@@ -7364,7 +10670,7 @@
 			(uuid "0516ff9f-4d89-4e70-a424-010e73ed1c82")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "C48")
 					(unit 1)
@@ -7429,7 +10735,7 @@
 			(uuid "7803e785-1ee2-4ea5-8e36-93afc59c2c1b")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR080")
 					(unit 1)
@@ -7673,7 +10979,7 @@
 			(uuid "382e6684-961d-4648-b454-8d676f9ac8ba")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "IC6")
 					(unit 1)
@@ -7738,7 +11044,7 @@
 			(uuid "50c5408d-f6e4-47a8-acbd-5afc35b66ca4")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR078")
 					(unit 1)
@@ -7804,7 +11110,7 @@
 			(uuid "37c6119e-ba4e-4546-bf90-21d758980c19")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR061")
 					(unit 1)
@@ -7813,6 +11119,7 @@
 		)
 	)
 	(symbol
+		(lib_name "49.9R 1% 0402_2")
 		(lib_id "DS_Resistor_0402:49.9R 1% 0402")
 		(at 262.89 149.86 0)
 		(unit 1)
@@ -7920,7 +11227,7 @@
 			(uuid "de6322bf-5f34-412c-af07-1074ea35b448")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "R48")
 					(unit 1)
@@ -7929,6 +11236,7 @@
 		)
 	)
 	(symbol
+		(lib_name "0R 1% 0402_1")
 		(lib_id "DS_Resistor_0402:0R 1% 0402")
 		(at 284.48 113.03 90)
 		(unit 1)
@@ -8034,7 +11342,7 @@
 			(uuid "d1c058ae-15dc-46a7-85dc-d7694dc41d50")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "R40")
 					(unit 1)
@@ -8152,7 +11460,7 @@
 			(uuid "27064758-935e-4868-8272-c41f85986779")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "C36")
 					(unit 1)
@@ -8161,6 +11469,7 @@
 		)
 	)
 	(symbol
+		(lib_name "49.9R 1% 0402_3")
 		(lib_id "DS_Resistor_0402:49.9R 1% 0402")
 		(at 266.7 104.14 0)
 		(mirror y)
@@ -8269,7 +11578,7 @@
 			(uuid "20763e1b-c345-499c-8514-fc7e94b9adfa")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "R38")
 					(unit 1)
@@ -8335,7 +11644,7 @@
 			(uuid "30199acf-08a2-4c9b-a1ca-ebbc30926e4c")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR070")
 					(unit 1)
@@ -8401,7 +11710,7 @@
 			(uuid "f68fd233-478d-46b2-8f5d-bc112a3ba18a")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR058")
 					(unit 1)
@@ -8410,6 +11719,7 @@
 		)
 	)
 	(symbol
+		(lib_name "3.3R 1% 0402_2")
 		(lib_id "DS_Resistor_0402:3.3R 1% 0402")
 		(at 241.3 142.24 90)
 		(mirror x)
@@ -8515,7 +11825,7 @@
 			(uuid "48e85909-7aa4-44c7-86a7-cf084fbf974a")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "R46")
 					(unit 1)
@@ -8629,7 +11939,7 @@
 			(uuid "f459264b-d842-4a88-85e1-b95e9fceb0c4")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "R41")
 					(unit 1)
@@ -8694,7 +12004,7 @@
 			(uuid "8ad14fd1-a98e-4d58-9a68-e351fa42fa3f")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR077")
 					(unit 1)
@@ -8703,6 +12013,7 @@
 		)
 	)
 	(symbol
+		(lib_name "100nF 50V 0402_9")
 		(lib_id "DS_Capacitor_0402:100nF 50V 0402")
 		(at 110.49 248.92 0)
 		(mirror y)
@@ -8809,7 +12120,7 @@
 			(uuid "5e313f00-678e-43f4-96fc-e33c17e3804f")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "C43")
 					(unit 1)
@@ -8874,7 +12185,7 @@
 			(uuid "4b409ff6-9529-448b-aae0-117e2e38e0b8")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR072")
 					(unit 1)
@@ -8939,7 +12250,7 @@
 			(uuid "13992e09-8d15-4dbf-a625-bba8c2a74032")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR069")
 					(unit 1)
@@ -8948,6 +12259,7 @@
 		)
 	)
 	(symbol
+		(lib_name "100nF 50V 0402_10")
 		(lib_id "DS_Capacitor_0402:100nF 50V 0402")
 		(at 195.58 170.18 0)
 		(mirror y)
@@ -9054,7 +12366,7 @@
 			(uuid "99557656-6093-45a9-ab28-96ef60e23317")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "C38")
 					(unit 1)
@@ -9120,7 +12432,7 @@
 			(uuid "ed943bbe-b1c4-486b-a46c-db2c60dce6af")
 		)
 		(instances
-			(project "BladeCore-M54"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR060")
 					(unit 1)
@@ -9235,7 +12547,7 @@
 			(uuid "7c2f0ffe-700f-444b-b3ef-f4e334c251d4")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "C34")
 					(unit 1)
@@ -9352,7 +12664,7 @@
 			(uuid "fb5f524c-9c71-48d6-b14d-6efe7d4f7cca")
 		)
 		(instances
-			(project "BladeCore-M54"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "R36")
 					(unit 1)
@@ -9418,7 +12730,7 @@
 			(uuid "eb23506f-0b72-4b97-96fc-c6fb185635d3")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#FLG02")
 					(unit 1)
@@ -9427,6 +12739,7 @@
 		)
 	)
 	(symbol
+		(lib_name "3.3R 1% 0402_3")
 		(lib_id "DS_Resistor_0402:3.3R 1% 0402")
 		(at 241.3 113.03 90)
 		(unit 1)
@@ -9532,7 +12845,7 @@
 			(uuid "fc905464-cbdd-480c-b529-ca19ec586b58")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "R39")
 					(unit 1)
@@ -9541,6 +12854,7 @@
 		)
 	)
 	(symbol
+		(lib_name "100nF 50V 0402_8")
 		(lib_id "DS_Capacitor_0402:100nF 50V 0402")
 		(at 74.93 248.92 0)
 		(mirror y)
@@ -9647,7 +12961,7 @@
 			(uuid "e83c63f5-6842-49e0-9a06-c6a276cb338e")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "C42")
 					(unit 1)
@@ -9763,7 +13077,7 @@
 			(uuid "5719d9dd-14ea-4ea7-84ac-b4f5c128d49a")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "R35")
 					(unit 1)
@@ -9828,7 +13142,7 @@
 			(uuid "dafd1912-526b-413b-93b8-2b0c27461620")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR075")
 					(unit 1)
@@ -9893,7 +13207,7 @@
 			(uuid "a9a74e07-0622-42e6-9797-f67763b9aa07")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR062")
 					(unit 1)
@@ -9959,7 +13273,7 @@
 			(uuid "5f716214-5694-4bb4-a72b-f8be0b5aace7")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR057")
 					(unit 1)
@@ -10080,7 +13394,7 @@
 			(uuid "9fa711fa-01f7-4d8d-b863-2d71bde8c7a0")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "X2")
 					(unit 1)
@@ -10197,7 +13511,7 @@
 			(uuid "0ff86781-414e-41e5-a922-df2bbecafd1d")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "R50")
 					(unit 1)
@@ -10262,7 +13576,7 @@
 			(uuid "6421691e-90ff-4067-853a-9bafeb8eaf06")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR074")
 					(unit 1)
@@ -10271,6 +13585,7 @@
 		)
 	)
 	(symbol
+		(lib_name "100nF 50V 0402_7")
 		(lib_id "DS_Capacitor_0402:100nF 50V 0402")
 		(at 57.15 248.92 0)
 		(mirror y)
@@ -10377,7 +13692,7 @@
 			(uuid "aa2c559a-0b88-428a-8b88-4470e703dff0")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "C41")
 					(unit 1)
@@ -10493,7 +13808,7 @@
 			(uuid "0f03b905-2801-45e0-acbd-3fe5b66db2b3")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "R37")
 					(unit 1)
@@ -10502,6 +13817,7 @@
 		)
 	)
 	(symbol
+		(lib_name "6.8nF 50V 0402_1")
 		(lib_id "DS_Capacitor_0402:6.8nF 50V 0402")
 		(at 284.48 138.43 90)
 		(unit 1)
@@ -10607,7 +13923,7 @@
 			(uuid "c319d92f-7bb2-4d9b-95b6-02400b82e7fd")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "C33")
 					(unit 1)
@@ -10720,7 +14036,7 @@
 			(uuid "fd0c5442-1944-476d-adc9-0fd3f52307c7")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "R42")
 					(unit 1)
@@ -10785,7 +14101,7 @@
 			(uuid "f78c1340-ddb4-46aa-a97a-e016e618e319")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR079")
 					(unit 1)
@@ -10850,7 +14166,7 @@
 			(uuid "d56dce9f-2eee-4a98-94a2-07f02b095788")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR067")
 					(unit 1)
@@ -10859,6 +14175,7 @@
 		)
 	)
 	(symbol
+		(lib_name "100nF 50V 0402_6")
 		(lib_id "DS_Capacitor_0402:100nF 50V 0402")
 		(at 39.37 248.92 0)
 		(mirror y)
@@ -10965,7 +14282,7 @@
 			(uuid "6d3b9dc4-00df-47e7-98d8-1a404c735608")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "C40")
 					(unit 1)
@@ -10974,6 +14291,7 @@
 		)
 	)
 	(symbol
+		(lib_name "100nF 50V 0402_5")
 		(lib_id "DS_Capacitor_0402:100nF 50V 0402")
 		(at 266.7 166.37 0)
 		(mirror y)
@@ -11080,7 +14398,7 @@
 			(uuid "1e2ecf7d-1bb3-4fde-afba-b5cf9fcfcaba")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "C37")
 					(unit 1)
@@ -11195,7 +14513,7 @@
 			(uuid "0a3a3793-f820-4aea-a4bd-6e686be2fc2e")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "C44")
 					(unit 1)
@@ -11260,7 +14578,7 @@
 			(uuid "f7b4b99c-3b0a-4a9b-893b-f4362163d677")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "#PWR068")
 					(unit 1)
@@ -11374,7 +14692,7 @@
 			(uuid "17e01572-32ed-4b28-923f-f845edf4f4df")
 		)
 		(instances
-			(project "PDNode_Baseboard"
+			(project "BladeCore-M54E"
 				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e/95dbce03-f6ae-4759-a74f-d844ccfad803"
 					(reference "R43")
 					(unit 1)

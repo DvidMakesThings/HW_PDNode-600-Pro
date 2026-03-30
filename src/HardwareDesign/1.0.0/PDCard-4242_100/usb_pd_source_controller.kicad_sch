@@ -696,7 +696,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588898749053063168"
+			(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8590919194240503808"
 				(at 3.81 -8.128 0)
 				(show_name)
 				(effects
@@ -707,7 +707,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "390pF 50V NP0 ±5% 0603 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+			(property "Description" "390pF 50V C0G ±5% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
 				(at 3.81 -12.192 0)
 				(show_name)
 				(effects
@@ -738,7 +738,7 @@
 					(hide yes)
 				)
 			)
-			(property "LCSC_PART" "C107050"
+			(property "LCSC_PART" "C20069334"
 				(at 3.81 -6.096 0)
 				(show_name)
 				(effects
@@ -749,7 +749,7 @@
 					(hide yes)
 				)
 			)
-			(property "MFR" "YAGEO"
+			(property "MFR" "HRE"
 				(at 3.81 -10.16 0)
 				(show_name)
 				(effects
@@ -760,7 +760,7 @@
 					(hide yes)
 				)
 			)
-			(property "MPN" "CC0603JRNPO9BN391"
+			(property "MPN" "CGA0402C0G391J500GT"
 				(at 3.81 -16.256 0)
 				(show_name)
 				(effects
@@ -1381,7 +1381,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://content.kemet.com/datasheets/kem_t2076_t52x-530.pdf"
+			(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8590224151765426176"
 				(at 1.27 -12.446 0)
 				(show_name)
 				(effects
@@ -1403,7 +1403,7 @@
 					(hide yes)
 				)
 			)
-			(property "LCSC_PART" "C696814"
+			(property "LCSC_PART" "C215892"
 				(at 1.27 -8.382 0)
 				(show_name)
 				(effects
@@ -1425,7 +1425,7 @@
 					(hide yes)
 				)
 			)
-			(property "MPN" "T521D107M025ATE040"
+			(property "MPN" "T55D107M025C0060"
 				(at 1.27 -4.318 0)
 				(show_name)
 				(effects
@@ -1436,7 +1436,7 @@
 					(hide yes)
 				)
 			)
-			(property "MFR" "KEMET"
+			(property "MFR" "Vishay "
 				(at 1.27 -16.764 0)
 				(show_name)
 				(effects
@@ -13267,7 +13267,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://content.kemet.com/datasheets/kem_t2076_t52x-530.pdf"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8590224151765426176"
 			(at 311.15 143.256 0)
 			(show_name yes)
 			(effects
@@ -13289,7 +13289,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC_PART" "C696814"
+		(property "LCSC_PART" "C215892"
 			(at 311.15 139.192 0)
 			(show_name yes)
 			(effects
@@ -13311,7 +13311,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "T521D107M025ATE040"
+		(property "MPN" "T55D107M025C0060"
 			(at 311.15 135.128 0)
 			(show_name yes)
 			(effects
@@ -13322,7 +13322,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR" "KEMET"
+		(property "MFR" "Vishay "
 			(at 311.15 147.574 0)
 			(show_name yes)
 			(effects
@@ -15588,7 +15588,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588898749053063168"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8590919194240503808"
 			(at 279.4 201.168 0)
 			(show_name yes)
 			(effects
@@ -15599,7 +15599,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "390pF 50V NP0 ±5% 0603 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+		(property "Description" "390pF 50V C0G ±5% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
 			(at 279.4 205.232 0)
 			(show_name yes)
 			(effects
@@ -15630,7 +15630,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC_PART" "C107050"
+		(property "LCSC_PART" "C20069334"
 			(at 279.4 199.136 0)
 			(show_name yes)
 			(effects
@@ -15641,7 +15641,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR" "YAGEO"
+		(property "MFR" "HRE"
 			(at 279.4 203.2 0)
 			(show_name yes)
 			(effects
@@ -15652,7 +15652,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CC0603JRNPO9BN391"
+		(property "MPN" "CGA0402C0G391J500GT"
 			(at 279.4 209.296 0)
 			(show_name yes)
 			(effects
@@ -16428,7 +16428,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588898749053063168"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8590919194240503808"
 			(at 297.18 201.168 0)
 			(show_name yes)
 			(effects
@@ -16439,7 +16439,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "390pF 50V NP0 ±5% 0603 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+		(property "Description" "390pF 50V C0G ±5% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
 			(at 297.18 205.232 0)
 			(show_name yes)
 			(effects
@@ -16470,7 +16470,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC_PART" "C107050"
+		(property "LCSC_PART" "C20069334"
 			(at 297.18 199.136 0)
 			(show_name yes)
 			(effects
@@ -16481,7 +16481,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR" "YAGEO"
+		(property "MFR" "HRE"
 			(at 297.18 203.2 0)
 			(show_name yes)
 			(effects
@@ -16492,7 +16492,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CC0603JRNPO9BN391"
+		(property "MPN" "CGA0402C0G391J500GT"
 			(at 297.18 209.296 0)
 			(show_name yes)
 			(effects
@@ -16982,7 +16982,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://content.kemet.com/datasheets/kem_t2076_t52x-530.pdf"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8590224151765426176"
 			(at 33.02 145.796 0)
 			(show_name yes)
 			(effects
@@ -17004,7 +17004,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC_PART" "C696814"
+		(property "LCSC_PART" "C215892"
 			(at 33.02 141.732 0)
 			(show_name yes)
 			(effects
@@ -17026,7 +17026,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "T521D107M025ATE040"
+		(property "MPN" "T55D107M025C0060"
 			(at 33.02 137.668 0)
 			(show_name yes)
 			(effects
@@ -17037,7 +17037,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR" "KEMET"
+		(property "MFR" "Vishay "
 			(at 33.02 150.114 0)
 			(show_name yes)
 			(effects

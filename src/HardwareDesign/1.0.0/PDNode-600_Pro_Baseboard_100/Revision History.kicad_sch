@@ -1,7 +1,7 @@
 (kicad_sch
-	(version 20250114)
+	(version 20260306)
 	(generator "eeschema")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(uuid "ea8c4f5e-7a49-4faf-a994-dbc85ed86b0a")
 	(paper "A3")
 	(title_block
@@ -77,12 +77,13 @@
 				(color 162 22 34 1)
 			)
 		)
-		(column_widths 29.21 31.75 33.02 59.69)
-		(row_heights 5.08 6.35 6.35 6.35 6.35 6.35 6.35 6.35 6.35 6.35)
+		(column_widths 29.21 31.75 33.02 92.075)
+		(row_heights 5.08 6.35 13.97 6.35 6.35 6.35 6.35 6.35 6.35 6.35)
+		(uuid "df88eede-8b10-4dec-aafc-92698509ef09")
 		(cells
 			(table_cell "DATE"
 				(exclude_from_sim no)
-				(at 134.62 68.58 0)
+				(at 115.57 83.185 0)
 				(size 29.21 5.08)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -101,7 +102,7 @@
 			)
 			(table_cell "REVISION"
 				(exclude_from_sim no)
-				(at 163.83 68.58 0)
+				(at 144.78 83.185 0)
 				(size 31.75 5.08)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -120,7 +121,7 @@
 			)
 			(table_cell "RESPONSIBLE"
 				(exclude_from_sim no)
-				(at 195.58 68.58 0)
+				(at 176.53 83.185 0)
 				(size 33.02 5.08)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -139,8 +140,8 @@
 			)
 			(table_cell "CHANGE"
 				(exclude_from_sim no)
-				(at 228.6 68.58 0)
-				(size 59.69 5.08)
+				(at 209.55 83.185 0)
+				(size 92.075 5.08)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
 				(fill
@@ -158,7 +159,7 @@
 			)
 			(table_cell "15.02.2026"
 				(exclude_from_sim no)
-				(at 134.62 73.66 0)
+				(at 115.57 88.265 0)
 				(size 29.21 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -174,9 +175,9 @@
 				)
 				(uuid "dfc021c2-fd96-4e49-8a52-8d8665dc49f2")
 			)
-			(table_cell "1.0.0"
+			(table_cell "0.0.1"
 				(exclude_from_sim no)
-				(at 163.83 73.66 0)
+				(at 144.78 88.265 0)
 				(size 31.75 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -194,7 +195,7 @@
 			)
 			(table_cell "DMT"
 				(exclude_from_sim no)
-				(at 195.58 73.66 0)
+				(at 176.53 88.265 0)
 				(size 33.02 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -212,8 +213,8 @@
 			)
 			(table_cell "INITIAL CREATION"
 				(exclude_from_sim no)
-				(at 228.6 73.66 0)
-				(size 59.69 6.35)
+				(at 209.55 88.265 0)
+				(size 92.075 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
 				(fill
@@ -228,10 +229,10 @@
 				)
 				(uuid "fa542104-d51f-4d7a-88f9-cec2d6fb4108")
 			)
-			(table_cell ""
+			(table_cell "29.03.2026"
 				(exclude_from_sim no)
-				(at 134.62 80.01 0)
-				(size 29.21 6.35)
+				(at 115.57 94.615 0)
+				(size 29.21 13.97)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
 				(fill
@@ -246,10 +247,10 @@
 				)
 				(uuid "e42ffa47-4e45-4c87-98ea-1e4560e65b0c")
 			)
-			(table_cell ""
+			(table_cell "1.0.0"
 				(exclude_from_sim no)
-				(at 163.83 80.01 0)
-				(size 31.75 6.35)
+				(at 144.78 94.615 0)
+				(size 31.75 13.97)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
 				(fill
@@ -264,10 +265,10 @@
 				)
 				(uuid "c5eb51ab-37c1-40b1-bbc4-968bdf5c2767")
 			)
-			(table_cell ""
+			(table_cell "DMT"
 				(exclude_from_sim no)
-				(at 195.58 80.01 0)
-				(size 33.02 6.35)
+				(at 176.53 94.615 0)
+				(size 33.02 13.97)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
 				(fill
@@ -282,10 +283,10 @@
 				)
 				(uuid "f6810b22-ac18-4310-9d50-005e705f77c4")
 			)
-			(table_cell ""
+			(table_cell "Fix wiring issues: \nMCP23017 SDA/SCL swapped\nPAC1720 addressing was wrong\nMCP23017 USB-A duplicated addressing\nTPS51225 LDO undersized cap changed from 1nF to 2.2uF"
 				(exclude_from_sim no)
-				(at 228.6 80.01 0)
-				(size 59.69 6.35)
+				(at 209.55 94.615 0)
+				(size 92.075 13.97)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
 				(fill
@@ -302,7 +303,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 134.62 86.36 0)
+				(at 115.57 108.585 0)
 				(size 29.21 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -320,7 +321,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 163.83 86.36 0)
+				(at 144.78 108.585 0)
 				(size 31.75 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -338,7 +339,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 195.58 86.36 0)
+				(at 176.53 108.585 0)
 				(size 33.02 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -356,8 +357,8 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 228.6 86.36 0)
-				(size 59.69 6.35)
+				(at 209.55 108.585 0)
+				(size 92.075 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
 				(fill
@@ -374,7 +375,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 134.62 92.71 0)
+				(at 115.57 114.935 0)
 				(size 29.21 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -392,7 +393,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 163.83 92.71 0)
+				(at 144.78 114.935 0)
 				(size 31.75 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -410,7 +411,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 195.58 92.71 0)
+				(at 176.53 114.935 0)
 				(size 33.02 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -428,8 +429,8 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 228.6 92.71 0)
-				(size 59.69 6.35)
+				(at 209.55 114.935 0)
+				(size 92.075 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
 				(fill
@@ -446,7 +447,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 134.62 99.06 0)
+				(at 115.57 121.285 0)
 				(size 29.21 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -464,7 +465,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 163.83 99.06 0)
+				(at 144.78 121.285 0)
 				(size 31.75 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -482,7 +483,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 195.58 99.06 0)
+				(at 176.53 121.285 0)
 				(size 33.02 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -500,8 +501,8 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 228.6 99.06 0)
-				(size 59.69 6.35)
+				(at 209.55 121.285 0)
+				(size 92.075 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
 				(fill
@@ -518,7 +519,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 134.62 105.41 0)
+				(at 115.57 127.635 0)
 				(size 29.21 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -536,7 +537,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 163.83 105.41 0)
+				(at 144.78 127.635 0)
 				(size 31.75 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -554,7 +555,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 195.58 105.41 0)
+				(at 176.53 127.635 0)
 				(size 33.02 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -572,8 +573,8 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 228.6 105.41 0)
-				(size 59.69 6.35)
+				(at 209.55 127.635 0)
+				(size 92.075 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
 				(fill
@@ -590,7 +591,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 134.62 111.76 0)
+				(at 115.57 133.985 0)
 				(size 29.21 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -608,7 +609,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 163.83 111.76 0)
+				(at 144.78 133.985 0)
 				(size 31.75 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -626,7 +627,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 195.58 111.76 0)
+				(at 176.53 133.985 0)
 				(size 33.02 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -644,8 +645,8 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 228.6 111.76 0)
-				(size 59.69 6.35)
+				(at 209.55 133.985 0)
+				(size 92.075 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
 				(fill
@@ -662,7 +663,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 134.62 118.11 0)
+				(at 115.57 140.335 0)
 				(size 29.21 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -680,7 +681,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 163.83 118.11 0)
+				(at 144.78 140.335 0)
 				(size 31.75 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -698,7 +699,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 195.58 118.11 0)
+				(at 176.53 140.335 0)
 				(size 33.02 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -716,8 +717,8 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 228.6 118.11 0)
-				(size 59.69 6.35)
+				(at 209.55 140.335 0)
+				(size 92.075 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
 				(fill
@@ -734,7 +735,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 134.62 124.46 0)
+				(at 115.57 146.685 0)
 				(size 29.21 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -752,7 +753,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 163.83 124.46 0)
+				(at 144.78 146.685 0)
 				(size 31.75 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -770,7 +771,7 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 195.58 124.46 0)
+				(at 176.53 146.685 0)
 				(size 33.02 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
@@ -788,8 +789,8 @@
 			)
 			(table_cell ""
 				(exclude_from_sim no)
-				(at 228.6 124.46 0)
-				(size 59.69 6.35)
+				(at 209.55 146.685 0)
+				(size 92.075 6.35)
 				(margins 0.9525 0.9525 0.9525 0.9525)
 				(span 1 1)
 				(fill
