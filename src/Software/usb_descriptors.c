@@ -1,4 +1,5 @@
 #include "tusb.h"
+#include "pico/unique_id.h"
 #include <string.h>
 
 /* -------------------------------------------------------------------------- */
@@ -22,7 +23,7 @@ static const tusb_desc_device_t s_desc_device = {
     .bDeviceProtocol    = MISC_PROTOCOL_IAD,
     .bMaxPacketSize0    = CFG_TUD_ENDPOINT0_SIZE,
     .idVendor           = 0x2E8Au,
-    .idProduct          = 0x000Au,
+    .idProduct          = 0x6001u,  /* custom PID — avoids Windows overriding name via Pico INF */
     .bcdDevice          = 0x0100u,
     .iManufacturer      = 1u,
     .iProduct           = 2u,
@@ -50,18 +51,36 @@ uint8_t const *tud_descriptor_configuration_cb(uint8_t index) {
 /* -------------------------------------------------------------------------- */
 /*  String descriptors                                                         */
 /* -------------------------------------------------------------------------- */
+
+/* Serial number built once from the RP2354B flash unique ID (8 bytes → 16 hex chars). */
+static char s_serial_str[17] = {0};
+
+static void build_serial_str(void) {
+    pico_unique_board_id_t uid;
+    pico_get_unique_board_id(&uid);
+    const char *hex = "0123456789ABCDEF";
+    for (int i = 0; i < PICO_UNIQUE_BOARD_ID_SIZE_BYTES; i++) {
+        s_serial_str[i * 2]     = hex[uid.id[i] >> 4];
+        s_serial_str[i * 2 + 1] = hex[uid.id[i] & 0x0Fu];
+    }
+    s_serial_str[16] = '\0';
+}
+
 static const char *const s_string_desc[] = {
-    (const char[]){0x09u, 0x04u},
-    "PDNode",
-    "PDNode-600 Pro",
-    "000001",
-    "PDNode CDC Port",
+    (const char[]){0x09u, 0x04u},  /* 0: Language ID (English) */
+    "PDNode",                       /* 1: Manufacturer */
+    "PDNode-600 Pro",               /* 2: Product — shown in Device Manager */
+    s_serial_str,                   /* 3: Serial number (flash UID, stable COM port) */
+    "PDNode CDC Port",              /* 4: CDC interface */
 };
 
 static uint16_t s_desc_str[32];
 
 uint16_t const *tud_descriptor_string_cb(uint8_t index, uint16_t langid) {
     (void)langid;
+
+    /* Build serial string lazily on first call */
+    if (s_serial_str[0] == '\0') build_serial_str();
 
     uint8_t chr_count;
 

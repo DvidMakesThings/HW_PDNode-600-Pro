@@ -1,0 +1,2582 @@
+﻿PAC1710/20
+Single and Dual High-Side Current-Sense Monitor with 
+
+Power Calculation
+
+Features Description
+• Single and Dual High-Side Current Sensor The PAC1710/20 are single and dual high-side
+
+- Current measurement is integrated over 2.5 ms bidirectional current sensing monitors with precision
+to 2.6 seconds with up to 11-bit resolution voltage measurement capabilities. Each sensor
+
+- 1% current measurement accuracy in measures the voltage developed across an external
+positive range sense resistor to represent the high-side current of a
+
+- Measures V battery or voltage regulator. The PAC1710/20 also
+SOURCE voltages measures the SENSE+ pin voltage and calculates
+
+• Calculates Power average power over the integration period. The
+• VSOURCE Voltage Range 0V to 40V PAC1710/20 can be programmed to assert the ALERT
+• Bidirectional Current Sensing pin when high and low limits are exceeded for Current
+• Auto-Zero Input Offset Voltage Sense and Bus Voltage.
+• Digital Averaging The PAC1710/20 device is good for measuring
+
+- Adjustable sampling time and resolution dynamic power. The long integration time allows for
+• 5 µA Typical Standby Current extending system polling cycles without losing any
+
+power consumption information. In addition the alert
+• Programmable Sense Voltage Range ensures that transient events are captured between the
+
+- ±10 mV, ±20 mV, ±40 mV, and ±80 mV polling cycles.
+• Power Supply Range 3.0V to 5.5V Available in a RoHS compliant 3 x 3 mm 10-pin VDFN
+• Wide Temperature Operating Range: 0°C to package.
+
++85°C
+• ALERT Output for Voltage and Current out of Package Types
+
+Limit Transients Between Sampling Interval
+• SMBus 2.0 Communications Interface PAC1710/20
+
+3x3 VDFN*
+- Block Read and Block Write
+- Address selectable by resistor decode SENSE1+ 1 10 VDD
+
+• Sample Time Configurable from 2.5 ms to 320 ms SENSE1- 2 9 SMCLK
+- With averaging effective sampling times up to 
+
+2.6 seconds SENSE2+† EP
+3 11 8 SMDATA
+
+• 10-Lead 3 x 3 mm VDFN package SENSE2-† 4 7 ALERT
+GND 5 6 ADDR_SEL
+
+Applications
+• Notebook and Desktop Computers *Includes Exposed Thermal Pad (EP), see Table 3-1
+• Industrial †PAC1720 only.
+• Power Management Systems
+• Embedded Applications
+• Servers
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 1
+
+
+
+PAC1710/20
+
+Device Block Diagram
+
+PAC1720 only
+
+Power
+Management
+
+ADDR_SEL
+Current Limits
+
+Current Current
+Measurement Measurement
+
+Current Registers SMBus SMCLK
+Interface
+
+SMDATA
+Analog
+MUX
+
+Configuration Configuration Power Register
+ALERT
+
+Voltage
+Registers
+
+Voltage Voltage
+Measurement Measurement Voltage Limits
+
+GND
+
+SENSE1+
+
+SENSE1-
+
+SENSE2+
+
+SENSE2-
+
+VDD
+DS20005386C-page 2    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+1.0 ELECTRICAL CHARACTERISTICS 
+1.1 Electrical Specifications
+
+Absolute Maximum Ratings(†)
+
+VDD pin..........................................................................................................................................................-0.3 to +6.0V
+Voltage on SENSE- and SENSE+ pins..........................................................................................................-0.3 to +42V
+Voltage on any other pin to GND ..................................................................................................-GND-0.3 to VDD+0.3V
+Voltage between Sense pins (|(SENSE+ – SENSE-)|)..............................................................................................+40V
+Input current to any pin except VDD ......................................................................................................................+10 mA
+Output short-circuit current.............................................................................................................................. Continuous
+Package Power Dissipation (Note 1) ....................................................................................... 0.5W up to TA = +85°C/W
+Junction to Ambient (J-A) ...................................................................................................................................+78°C/W
+Operating Ambient Temperature Range........................................................................................................... 0 to +85°C
+Storage Temperature Range....................................................................................................................... -55 to +150°C
+ESD Rating – SMCLK, SMDATA, and ALERT pins – HBM ...................................................................................+8000V
+SD Rating – all other pins – HBM..........................................................................................................................+2000V
+† Notice: Stresses above those listed under “Absolute Maximum Ratings” may cause permanent damage to the device.
+This is a stress rating only and functional operation of the device at those or any other conditions above those indicated
+in the operation listings of this specification is not implied. Exposure above maximum rating conditions for extended
+periods may affect device reliability. The 0 - 85°C operating ambient temperature range change corresponds to materi-
+als with a date code of 2243 and later. 
+
+Note 1: The Package Power Dissipation specification assumes a recommended thermal via design consisting of
+a 2 x 3 matrix of 0.3 mm (12 mil) vias at 0.9 mm pitch connected to the ground plane with a
+1.6 mm x 2.3 mm thermal landing.
+
+2: The VDD pin must be biased before applying voltage to the SENSE± pins. Failure to do so results in
+damage to the device. See Figure 4-1 for optional circuitry in case load circuit is applied before VDD is
+biased.
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 3
+
+
+
+PAC1710/20
+
+TABLE 1-1: DC CHARACTERISTICS
+Electrical Characteristics: Unless otherwise specified, maximum values are at TA = 0°C to +85°C, 
+VDD = 3V to 5.5V, VSOURCE = 0V to 40V; typical values are at TA = +25°C, VDD = 3.3V, VSOURCE = 24V, 
+VSENSE = (SENSE+ – SENSE-) = 0V; Current Sense Full Scale Range = 80 mV unless otherwise noted. The VDD pin 
+must be biased before applying voltage to the SENSE± pins. Failure to do so results in damage to the device.
+
+Characteristic Symbol Min. Typ. Max. Unit Conditions
+Power Supply
+Voltage on SENSE+ VSOURCE 0 — 40 V
+VDD Range VDD 3.0 — 5.5 V
+VDD Pin Supply IDD — 0.525 1.3 mA Both measurement channels 
+Current (PAC1720) enabled. Continuous conversions 
+
+(see Table 4-1)
+— 13 50 µA Both measurement channels 
+
+enabled. One conversion per 
+second (see Table 4-1).
+VSRC_SAMP_TIME = 2.5 ms
+CS_SAMP_TIME = 2.5 ms
+No SMBus communications
+
+VDD Pin Supply IDD — 360 900 µA Continuous Conversions 
+Current (PAC1710) (see Table 4-1)
+
+— 10 35 µA One conversion per second 
+(see Table 4-1).
+VSRC_SAMP_TIME = 2.5 ms
+CS_SAMP_TIME = 2.5 ms
+No SMBus communications
+
+VDD Rise Rate VDD_RISE 0.03 V/ms 0 to 3V in 100 ms
+VDD Standby Current IDD_STBY — 5.5 15 µA Standby state
+Analog Input Characteristics
+SENSE+/SENSE- VCM 0 — 40 V Common-mode voltage on SENSE 
+Pins Common-Mode pins, referenced to ground
+Voltage Range
+VSENSE Differential VDIFF -80 — +80 mV Voltage between SENSE+ and 
+Input Voltage Range SENSE- pins
+Current-Sense Power PSRR_CS — 10 — µV/V 3.0V < VDD < 5.5V
+Supply Rejection 
+Ratio
+Full-Scale Range (±) FSR -10 — 10 mV 1 LSB = 4.885 µV
+(see Section 4.4 11-bit data resolution
+“Current -20 — 20 mV 1 LSB = 9.77 µV
+Measurement”) 11-bit data resolution
+
+-40 — 40 mV 1 LSB = 19.54 µV
+11-bit data resolution
+
+-80 — 80 mV 1 LSB = 39.08 µV
+11-bit data resolution
+
+Common-Mode VSENSE _CMRR 80 100 — dB Common-Mode Rejection, 
+Rejection 0V < VSOURCE < 40V
+SENSE+/SENSE- VCM 0 — 40 V Common-mode voltage on SENSE 
+Pins Common-Mode pins, referenced to ground
+Voltage Range
+VBUS Gain Accuracy VBUS_GAIN_ERR — — ±0.4 % Measured at ADC output, Gain = 1
+DS20005386C-page 4    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+TABLE 1-1: DC CHARACTERISTICS (CONTINUED) 
+Electrical Characteristics: Unless otherwise specified, maximum values are at TA = 0°C to +85°C, 
+VDD = 3V to 5.5V, VSOURCE = 0V to 40V; typical values are at TA = +25°C, VDD = 3.3V, VSOURCE = 24V, 
+VSENSE = (SENSE+ – SENSE-) = 0V; Current Sense Full Scale Range = 80 mV unless otherwise noted. The VDD pin 
+must be biased before applying voltage to the SENSE± pins. Failure to do so results in damage to the device.
+
+Characteristic Symbol Min. Typ. Max. Unit Conditions
+SENSE+, SENSE- Pin ISENSE +, ISENSE- — — 1.0 µA VBUS = 24V, VSENSE = 0V
+Leakage Current Sleep state
+SENSE+, SENSE- Pin ISENSE +, ISENSE- — — 1.0 µA VDD = 0V
+Leakage Current
+SENSE+ Pin Bias ISENSE + — 100 150 µA -80 mV < VSENSE < 80 mV
+Current Active state
+SENSE- Pin Bias ISENSE- — 0.1 1 µA -80 mV < VSENSE < 80 mV
+Current Active state
+Current-Sense Offset Error Voltage
+Offset Error Voltage VOS — ±15 — µV FSR = ±10 mV
+(referred to input) — ±15 — µV FSR = ±20 mV
+
+— ±20 — µV FSR = ±40 mV
+— ±40 — µV FSR = ±80 mV
+
+Current-Sense Total Measurement Error 
+Total Error VSENSE _TOT_ERR — ±0.5 ±1 % FSR = 0 to +10 mV
+(positive range) FSR
+(see Section 4.4 — ±0.3 ±0.6 % FSR = 0 to +20 mV
+“Current FSR
+Measurement”) — ±0.2 ±0.4 % FSR = 0 to +40 mV
+
+FSR
+— ±0.2 ±0.4 % FSR = 0 to +80 mV
+
+FSR
+Total Error VSENSE _TOT_ERR -1 -1.3 -1.6 % FSR = -10 mV to 0
+(negative range) FSR
+(see Section 4.4 -1 -1.3 -1.6 % FSR = -20 mV to 0
+“Current FSR
+Measurement”) -1 -1.3 -1.6 % FSR = -40 mV to 0
+
+FSR
+-1.6 -2 -2.4 % FSR = -80 mV to 0
+
+FSR
+VSOURCE Voltage Measurement
+Power Supply PSRR — 10 — mV/V 3.0V < VDD < 5.5V
+Rejection Ratio
+VSOURCE Error (±) VSOURCE_ ERR — 0.15 0.3 % 
+
+FSV
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 5
+
+
+
+PAC1710/20
+
+TABLE 1-1: DC CHARACTERISTICS (CONTINUED) 
+Electrical Characteristics: Unless otherwise specified, maximum values are at TA = 0°C to +85°C, 
+VDD = 3V to 5.5V, VSOURCE = 0V to 40V; typical values are at TA = +25°C, VDD = 3.3V, VSOURCE = 24V, 
+VSENSE = (SENSE+ – SENSE-) = 0V; Current Sense Full Scale Range = 80 mV unless otherwise noted. The VDD pin 
+must be biased before applying voltage to the SENSE± pins. Failure to do so results in damage to the device.
+
+Characteristic Symbol Min. Typ. Max. Unit Conditions
+Power Ratio
+Total Power Ratio PRATIO _ERR — — 1 % FSR = 0 to +10 mV, 0 to +20 mV, 
+Measurement Error FSR 0 to +40 mV, or 0 to +80 mV
+(±)
+(positive range)
+Total Power Ratio PRATIO _ERR — — 2 % FSR = -10 mV to 0, -20 mV to 0, 
+Measurement Error FSR -40 mV to 0, or -80 mV to 0
+(±)
+(negative range)
+First Power Ratio tCONV_P — — 220 ms Time after power-up before PRATIO 
+Ready updated
+Digital I/O Pins (SMCLK, SMDATA, ALERT)
+Pull-up Voltage Range VPULLUP 3.0 — 5.5 V Pull-up voltage for SMBus and 
+
+ALERT pins
+Time to First tCOMM — — 25 ms
+Communications
+Input High Voltage VIH 2.0 — — V SMCLK, SMDATA
+
+OD pins pulled up to VPULLUP
+Input Low Voltage VIL — — 0.8 V
+Output Low Voltage VOL — — 0.4 V OD pin pulled to VPULLUP
+
+3 mA current sink
+Leakage Current (±) ILEAK — — 5 µA Powered or unpowered
+
+TA < +85°C
+DS20005386C-page 6    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+TABLE 1-2: SMBUS MODULE SPECIFICATIONS
+Electrical Characteristics: Unless otherwise specified, maximum values are at TA = 0°C to +85°C, 
+VDD = 3V to 5.5V, VBUS = 0V to 32V; Typical values are at TA = +25°C, VDD = 3.3V, VBUS = 24V, 
+VSENSE = (SENSE+ – SENSE-) = 0V
+
+Characteristic Sym. Min. Typ. Max. Units Conditions
+SMBus Interface
+Input Capacitance CIN — 4 10 pF
+SMBus Timing
+Clock Frequency fSMB 10 — 400 kHz
+Spike Suppression tSP — — 100 ns
+Bus Free Time Stop to tBUF 1.3 — — µs
+Start
+Start Setup Time tSU:STA 0.6 — — µs
+Start Hold Time tHD:STA 0.6 — — µs
+Stop Setup Time tSU:STO 0.6 — — µs
+Data Hold Time tHD:DAT 0 — —  µs When transmitting to the master
+Data Hold Time tHD:DAT 0.3 — —  µs When receiving from the master
+Data Setup Time tSU:DAT 0.6 — — µs
+Clock Low Period tLOW 1.3 — — µs
+Clock High Period tHIGH 0.6 — — µs
+Clock/Data Fall Time tFALL — — 300 ns Min = 20 + 0.1 CLOAD ns
+Clock/Data Rise Time tRISE — — 300 ns Min = 20 + 0.1 CLOAD ns
+Capacitive Load CLOAD — — 400 pF Total per bus line
+
+TLOW THIGH THD:STA TSU:STO
+
+T T
+SMCLK RISE FALL
+
+T THD:DAT TSU:DA
+HD:STA TSU:STA
+
+T
+
+SMDATA
+TBUF
+
+P S S - Start Condition S P - Stop Condition P
+
+FIGURE 1-1: SMBus Timing.
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 7
+
+
+
+PAC1710/20
+
+NOTES:
+DS20005386C-page 8    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+2.0 TYPICAL OPERATING CURVES
+
+Note: The graphs and tables provided following this note are a statistical summary based on a limited number of
+samples and are provided for informational purposes only. The performance characteristics listed herein
+are not tested or guaranteed. In some graphs or tables, the data presented may be outside the specified
+operating range (e.g., outside specified power supply range) and therefore outside the warranted range.
+
+Note: Unless otherwise indicated, maximum values are at TA = 0°C to +85°C, VDD = 3V to 5.5V, VSOURCE = 0V to 40V;
+typical values are at TA = +25°C, VDD = 3.3V, VSOURCE = 24V, VSENSE = (SENSE+ – SENSE-) = 0V.
+
+440.0 120.000
+
+420.0 100.000
+80.000
+
+400.0
+60.000
+
+380.0
+40.000
+
+360.0 20.000
+T = +85˚C 
+
+340.0 T = +25˚C 0.000
+T = -40˚C 
+
+320.0 -20.000
+3.0 3.3 3.6 4.5 5.0 5.5 0 10 20 30 40 50
+
+VDD (V) VBUS (V) 
+
+FIGURE 2-1: IDD vs. VDD, Continuous FIGURE 2-4: ISENSE+ Pin Current vs. 
+Conversions (PAC1710). VBUS (TA = 0°C to +85°C).
+
+20.0 102.0
+101.5
+
+18.0 101.0
+16.0 100.5
+
+100.0
+14.0 99.5
+
+99.0
+12.0 98.5 T = +85˚C 
+
+T = +85˚C 
+98.0 T = +25˚C 
+
+10.0 T = +25˚C T = -40˚C 
+T = -40˚C 97.5
+
+8.0
+3.0 3.3 3.6 4.5 5.0 5.5
+
+VDD (V) VSENSE (% of full scale) 
+
+FIGURE 2-2: IDD vs. VDD, One FIGURE 2-5: ISENSE+ Pin Bias Current 
+Conversion per Second, Lowest Resolution (80 mV Range).
+(PAC1710).
+
+13.000 0.20
+12.000 0.15
+11.000 0.10
+10.000 0.05
+
+9.000
+8.000 0.00
+7.000 -0.05
+6.000 -0.10
+5.000 -0.15
+
+T = +85˚C 
+4.000 T = +25˚C -0.20
+3.000 T = -40˚C 
+
+3.0 3.3 3.6 4.5 5.0 5.5
+VDD (V) VSENSE (% of full scale) 
+
+FIGURE 2-3: IDD vs. VDD, Standby Mode FIGURE 2-6: ISENSE- Pin Bias Current 
+(PAC1710) (80 mV Range, TA = 0°C to +85°C).
+
+IDD (μA) IDD (μA) Idd (μA) 
+
+ISENSE- Current (μA) ISENSE+ Current (μA) ISENSE+ Current (μA) 
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 9
+
+
+
+PAC1710/20
+600.0 0.010
+580.0 0.005
+560.0 0.000
+540.0 -0.005
+520.0 -0.010
+500.0
+
+T = +85˚C -0.015
+480.0 T = +25˚C 
+
+T = -40˚C -0.020
+460.0
+
+3.0 3.3 3.6 4.5 5.0 5.5
+VDD (V) VSENSE (% of full scale) 
+
+FIGURE 2-7: IDD vs. VDD, Continuous FIGURE 2-10: ISENSE+ Pin Leakage 
+Conversions (PAC1720). Current, TA = 0°C to +85°C.
+
+22.000 0.010
+
+20.000 0.005
+
+18.000 0.000
+
+-0.005
+16.000
+
+-0.010
+14.000
+
+-0.015
+T = +85˚C 
+
+12.000 T = +25˚C -0.020
+T = -40˚C 
+
+10.000
+3.0 3.3 3.6 4.5 5.0 5.5
+
+VDD (V) VSENSE (% of full scale) 
+
+FIGURE 2-8: IDD vs. VDD, One FIGURE 2-11: ISENSE- Pin Leakage 
+Conversion per Second, Lowest Resolution Current, TA = 0°C to +85°C.
+(PAC1720).
+
+13.000
+12.000
+11.000
+10.000
+
+9.000
+8.000
+7.000
+6.000
+5.000 T = +85˚C 
+4.000 T = +25˚C 
+
+T = -40˚C 
+3.000
+
+3.0 3.3 3.6 4.5 5.0 5.5
+VDD (V) 
+
+FIGURE 2-9: IDD vs. VDD, Standby Mode 
+(PAC1720).
+
+IDD (μA) IDD (μA) IDD (μA) 
+
+ISENSE+ Current (μA) ISENSE+ Current [μA] 
+DS20005386C-page 10    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+3.0 PIN DESCRIPTIONS
+The descriptions of the pins are listed in Table 3-1.
+
+TABLE 3-1: PIN DESCRIPTIONS
+PAC1710/20
+3x3 VDFN Symbol Type
+
+(See Table 3-2) Description
+
+1 SENSE1+ AIO40 VBUS1/VSENSE1+ input 
+2 SENSE1- AIO40 VSENSE1- input
+3 SENSE2+ AIO40 VBUS2/VSENSE2+ input 
+4 SENSE2- AIO40 VSENSE2- input
+5 GND Power Ground
+6 ADDR_SEL AIO Selects SMBus/I2C™ address
+7 ALERT DO SMBus Alert Pin
+8 SMDATA DIOD SMDATA: SMBus - requires pull-up resistor
+9 SMCLK DI SMCLK: SMBus - requires pull-up resistor
+
+10 VDD Power Positive power supply voltage
+11 EP  — Not internally connected, but recommend grounding.
+
+TABLE 3-2: PIN TYPES DESCRIPTION 3.5 SMBus ALERT (ALERT)
+Pin Type Description This pin is the SMBus ALERT pin that is asserted under
+
+fault conditions.
+Power This pin is used to power the device
+AIO40 Analog Input/Output – this pin is used as 3.6 SMBus Data (SMDATA)
+
+an I/O for analog signals. 
+Maximum voltage is 40V. This is the bidirectional SMBus data pin. This pin is
+
+AIO5 Analog Input/Output – this pin is used as open drain, and requires a pull-up resistor.
+an I/O for analog signals. 
+Maximum voltage is 5V. 3.7 SMBus Clock (SMCLK)
+
+DI Digital Input – this pin is used for digital This is the SMBus clock pin. This pin is open drain, and
+inputs requires a pull-up resistor.
+
+DIOD Digital Input/Output Open Drain – this pin 
+is used for digital I/O and is open drain 3.8 Positive Power Supply Voltage 
+
+3.1 Sense1+/Sense1- (VDD)
+Power supply input pin for the device.
+
+These two pins form the differential input for measuring
+voltage across a sense resistor in the application. The
+positive input (Sense1+) also acts as the input pin for 3.9 Exposed Thermal Pad (EP)
+bus voltage. This pad should be connected to ground for noise
+
+immunity.
+3.2 Sense2+/Sense2- (PAC1720 only)
+These two pins form the differential input for measuring
+voltage across a sense resistor in the application. The
+positive input (Sense2 +) also acts as the input pin for
+bus voltage.
+
+3.3 Ground (GND)
+System ground.
+
+3.4 Address Selection (ADDR_SEL)
+Address selection for the SMBus Slave address, based
+on the pull-down resistor.
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 11
+
+
+
+PAC1710/20
+
+NOTES:
+DS20005386C-page 12    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+4.0 GENERAL DESCRIPTION The PAC1710/20 measures the differential voltage
+
+across an external sense resistor, digitizes it with a
+The PAC1710/20 is a bidirectional high-side current- variable resolution (6-bit to 11-bit plus sign) Sigma-
+sensing device with precision voltage measurement Delta ADC, and transmits via the SMBus or the I2C™
+capabilities. It measures the voltage developed across protocol. The current range allows for large variations
+an external sense resistor to represent the high-side in measured current with high accuracy and low
+current of a battery or voltage regulator. The PAC1710/ voltage drop across the resistor. 
+20 also measures the SENSE1+ and SENSE2+ pin
+voltages (VSOURCE) and calculates average power The PAC1710/20 has programmable high and low
+over the integration period. limits for current sense and bus voltage with a
+
+maskable ALERT signal to the host when an out-of-
+limit measurement occurs.
+A system diagram is shown in Figure 4-1. 
+
+V Sense 
+SOURCE Resistors
+
+0V – 40V
+
+3.0V to 5.5V
+
+100k – 1M
+
+3.0V to SMCLK Host
+MCU
+
+5.0V SMDATA
+VDD ALERT
+
+5.2V Zener GND
+ADDR_SEL
+
+PAC1710/20
+
+Note 1: The VDD pin must be biased before applying voltage to the SENSE± pins. Failure to do so results in
+damage to the device. 
+
+*PAC1720 only.
+
+FIGURE 4-1: PAC1710/20 System Diagram.
+
+SENSE1+
+
+SENSE1-
+
+SENSE2+*
+
+SENSE2-*
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 13
+
+
+
+PAC1710/20
+
+4.1 Power States 4.4 Current Measurement
+The PAC1710/20 has three states of operation: The PAC1710/20 includes one or two high-side current
+• Active – The PAC1710/20 initiates conversion sensing circuits. These circuits measure the voltage
+
+cycles for the programmed conversion rate. (VSENSE) induced across a fixed external current sense
+• Standby – This is the lowest power state. There resistor (RSENSE) and stores the voltage as a signed 11-
+
+are no conversion cycles. The majority of circuitry bit (by default) number in the Sense Voltage registers.
+is powered-down to reduce supply current to a The PAC1710/20 current sensing operates in one of
+minimum. The SMBus is active and the part will four bipolar Full-Scale Ranges (FSR): ±10 mV,
+return requested data. To enter the Standby state, ±20 mV, ±40 mV, or ±80 mV (see Section 4.4
+disable all measurements (see Register 6-1). “Current Measurement”). The default FSR is ±80 mV.
+
+• One-Shot – While the device is in the Standby Full-Scale Current (FSC) can be calculated from
+state, the host can initiate a conversion cycle on Equation 4-1. 
+demand (see Register 6-3). After the conversion 
+cycle is complete, the device will return to the EQUATION 4-1: FULL-SCALE CURRENT
+Standby state. 
+
+FSC = ------F----S----R--------
+R
+
+4.2 Conversion Cycle SENSE
+Where:
+
+The conversion cycle is the period of time in which the
+measurements are taken and the data is updated. In the FSC = Full-scale current
+Active state, individual measurement can be disabled. FSR = ±10 mV, ±20 mV, ±40 mV, or ±80 mV 
+In the Standby state, all measurements are updated. (see Table 4-6)
+During the conversion cycle, both channels on the RSENSE = External sense resistor value
+PAC1720 begin taking measurements at the same time.
+In both devices, the VSENSE sample is taken first for its The actual current through RSENSE can then be
+programmed sample time. Then, the VSOURCE sample calculated using Equation 4-2.
+is taken for its programmed sample time. Digital
+averaging may be applied to average the last 2-8
+samples. Sample time and digital averaging have EQUATION 4-2: BUS CURRENT
+separate controls for VSENSE and VSOURCE as well as V
+for each channel, in the case of PAC1720. (see IBUS = FSC  -----------S---E----N-----S---E--------
+
+Denominator
+Register 6-7 and Register 6-8).
+At the end of the conversion cycle, the enabled Where:
+measurements are updated. The Power Ratio, High
+Limit Status (which includes a CONV_DONE status bit), IBUS = Actual bus current
+and Low Limit Status registers are always updated. The FSC = Full-scale current value (from 
+ALERT pin will be asserted, by default, if any out-of-limit Equation 4-1)
+conditions exist (see Section 4.7 “ALERT Output”). VSENSE = The value read from the Sense 
+
+Voltage Registers (in decimal), 
+4.3 Conversion Rate ignoring the four lowest bits 
+For power management in the Active state, a conversion which are always zero (see 
+rate can be programmed. Conversion rate specifies how Register 6-10 and Register 6-
+often measurement data should be updated. Once per 11 for PAC1720)
+second is the lowest setting (see Register 6-2). Denominator = Determined by the sample time, 
+
+as shown in Table 4-5.
+If the actual sampling time for both measurements
+(VSOURCE and VSENSE) is greater than 1/conversion
+rate for either channel, the PAC1710/20 will override As an example, suppose the system is drawing 1.65A
+the programmed conversion rate and operate in through a 10 mΩ resistor, the FSR is set for ±20 mV,
+continuous mode. and sample time is 80 ms. Using Equation 4-1, the FSC
+
+is 2A. The measured VSENSE is 1.65A  10 mΩ =
+16.5 mV. This value of VSENSE is represented in the
+Sense Voltage Registers as 69_8h
+(0110_1001_1000b or 1688d) ignoring the 4 lower
+bits of the low byte as these are always 0. This value,
+when applied to Equation 4-2, results in an IBUS current
+of 1.649A. 
+DS20005386C-page 14    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+For a negative voltage, the Sense Voltage Registers As an example using 10-bit resolution, suppose that
+are read as 96_0h (again ignoring the lower 4 bits of the the actual pin voltage is 24V. The VSOURCE Voltage
+low byte as these are always 0). To calculate current, Registers will report a value of 99_80h
+the binary value is first converted from two’s (1001_1001_10XX_XXXXb) in 10-bit resolution
+complement by inverting the bits and adding one: (default). When reading the data, the lower 5 bits are
+96_80h = 1001_0110_1000b. Inverting equals always ignored. Because the default operation is to
+0110_1001_0111b (69_7h) and adding one gives measure the VSOURCE voltage with 10-bit resolution,
+0110_1001_1000b (69_8h). the sixth bit is likewise ignored. Therefore, decoding
+
+the upper 10 bits results in a decimal value of 614. This
+This results in the same calculated value as in the value, when applied in Equation 4-3, results in
+positive voltage case. VSOURCE_PIN equal to 23.98V. 
+
+4.5 Voltage Measurement As an example using 11-bit resolution, suppose that the
+actual pin voltage is 10.65V. The VSOURCE Voltage
+
+The pin voltage is measured on the supply side of the Registers will report a value of 44_10h
+appropriate SENSE+ pin and stored as an unsigned (0100_0100_001X_XXXXb). Because the lower 5 bits
+11-bit number in the VSOURCE Voltage Registers as are ignored, the decimal result is 545d. This value,
+VSOURCE (see Register 6-12). when applied in Equation 4-4, results in VSOURCE_PIN
+
+Full-Scale Voltage (FSV) is given by the maximum equal to 10.64V.
+value of the VSENSE Voltage Registers: The VSOURCE voltage may also be determined by
+
+scaling each bit set by the indicated bit weighting as
+EQUATION 4-3: FULL-SCALE VOLTAGE described in Section 4.11 “VSOURCE Data
+
+representation”.
+FSV = 40 – ---------------4---0----------------
+
+Denominator 4.6 Power Calculation
+Where:
+
+The PAC1710/20 may be used to determine the
+FSV = Full scale voltage average power provided at the source side of SENSE+
+
+(SENSE1+ and SENSE2+) using the value P
+Denominator = determined by the sample time, RATIO,
+
+contained in the Power Ratio Registers (see
+as shown in Table 4-2 Register 6-14). The value represents the percentage of
+
+maximum calculable power. 
+Actual voltage at SENSE+ can be calculated using P
+Equation 4-4. RATIO is mathematically generated by multiplying the
+
+absolute values of VSENSE and VSOURCE (see
+Section 4.4 “Current Measurement” and
+
+EQUATION 4-4: BUS VOLTAGE Section 4.5 “Voltage Measurement”) and is stored
+V
+
+VSOURCE_PIN = FSV  --------S---O-----U-----R----C----E
+as a 16-bit number. PRATIO is updated whenever either
+
+-----
+Denominator VSENSE or VSOURCE is updated.
+
+Where: Full-scale power can be calculated from Equation 4-5.
+
+VSOURCE_PIN = The actual voltage on the EQUATION 4-5: FULL-SCALE POWER
+SENSE1+/SENSE2+ pin FSP = FSC  FSV
+
+FSV = The full-scale voltage (from Where:
+Equation 4-3)
+
+VSOURCE = The value read from the FSP = The full-scale power
+VSOURCE Voltage Registers (in FSC = The full-scale current (from Equation 4-1)
+decimal), ignoring the lowest FSV = The full-scale voltage (from Equation 4-3)
+five bits which are always zero 
+(see Section 4.11 “VSOURCE 
+Data representation”).
+
+Denominator = Determined by the sample time, 
+as shown in Table 4-2
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 15
+
+
+
+PAC1710/20
+
+Actual power drawn from the source can be calculated 4.8 Conversion Rate
+using Equation 4-6.
+
+The Conversion Rate controls how often VSENSE,
+EQUATION 4-6: BUS POWER VSOURCE, PRATIO and the status bits are updated in the
+
+Active state (see Table 4-1). The conversion rate
+P
+
+PBUS = FSP  ----R----A----T----I--O--- should only be updated when the PAC1710/20 is in the
+65 535 Standby state. To do this, disable the measurements in
+
+Where: the Configuration Register 00h, wait for the conversion
+cycle to complete by monitoring the XMEAS_DIS bits in
+
+PBUS = The actual power provided by the 00h until they stay set to ‘1’, change the conversion
+source measured at SENSE+ rate, and then enable the desired measurements.
+
+FSP = the full-scale power (from Equation 4-
+5) TABLE 4-1: CONVERSION RATE FOR 
+
+MEASUREMENT
+PRATIO = the value read from the Power Ratio 
+
+Registers (in decimal). See CONV_RATE<2:0>
+Register 6-14 and Register 6-15 Conversion Rate
+
+1 0
+0 0 1 per sec
+
+As an example, suppose that the actual pin voltage is
+10.65V, the current through a 10 mΩ resistor is 1.65A, 0 1 2 per sec
+the FSR is set for ±20 mV, and the sample times are 1 0 4 per sec
+the defaults. The FSC value is 2A per Equation 4-1. 1 1 Continuous (default)
+The FSV value is 39.96V per Equation 4-4. Using
+Equation 4-5, the FSP value is 79.92W. Applying P = V 4.9 Sampling Time and Resolution
+I, the expected power is 17.57W which is 21.98% of
+the FSP value. The PAC1710/20 sampling interval and resolution for
+
+measuring VSOURCE and VSENSE are register
+Reading the Power Ratio Registers will report PRATIO
+as 38_47h (0011_1000_0100_0111b controlled. The VSOURCE settings based on register
+
+ or 14,407d). values are shown in Table 4-2 and Table 4-3. The
+Using Equation 4-6, this value results in a calculated VSENSE measurements have an additional parameter:
+bus power of 17.57W which is ~21.98% of the FSP Full-Scale Resolution of the differential input. The
+value. VSENSE settings based on register values are shown in
+
+Table 4-4, Table 4-5 and Table 4-6.
+4.7 ALERT Output
+
+TABLE 4-2: VOLTAGE SOURCE 
+The ALERT pin is an open-drain output and requires a
+pull-up resistor to V SAMPLING TIME SETTINGS
+
+PULLUP. 
+The ALERT pin is used as an interrupt signal or as an
+SMBus Alert signal that allows an SMBus slave to
+communicate an error condition to the master. One or
+more SMBus Alert outputs can be hardwired together.
+The ALERT pin will be asserted (by default) if the mea-
+sured VSOURCE voltage or VSENSE voltage are out of
+limit (≥ high limit or < low limit). The ALERT pin will
+remain asserted as long as an out-of-limit condition 0 0 2.5 ms (data = 8 bits) 256 255
+remains. Once the out-of-limit condition has been 0 1 5 ms (data = 9 bits) 512 511
+removed, the ALERT pin will remain asserted until the
+appropriate status bits are cleared. 1 0 10 ms (data = 10 bits) 1024 1023
+
+(Default)
+The ALERT pin can be masked for all out-of-limit
+measurements by setting the MASK_ALL bit (see 1 1 20 ms (data = 11 bits) 2048 2047
+Register 6-1) or for an individual out-of-limit
+measurement (see Register 6-5). Once the ALERT pin TABLE 4-3: VOLTAGE SOURCE 
+has been masked, it will be de-asserted if no unmasked AVERAGING SETTINGS
+out-of-limit conditions exist. Any interrupt conditions VSRC_AVG Samples to Average
+that occur while the ALERT pin is masked will update
+the status registers normally. 0 0 Disabled (default)
+The ALERT pin can be asserted for 5 μs when all 0 1 2
+measurements are finished (if enabled by setting 1 0 4
+CONV_DONE_EN, see Register 6-1). 1 1 8
+
+VSRC_SAMP_TIME
+
+VSOURCE 
+Sample Time
+
+ Equation 4-3 
+Denominator 
+
+ Equation 4-4 
+Denominator
+DS20005386C-page 16    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+TABLE 4-4: CURRENT-SENSING 4.10 Sense Voltage measurement 
+
+AVERAGING SETTINGS Resolution
+CS_SAMP_AVG<1:0> Samples to Average The Sense Voltage Registers store the measured
+
+0 0 Disabled (default) VSENSE value (see Section 4.4 “Current
+Measurement”). Note that the bit weighting values are
+
+0 1 2 for representation of the voltage relative to full scale.
+1 0 4 There is no internal scaling of data and all normal
+1 1 8 binary bit weightings still apply.
+
+The Sense Voltage Registers data format is standard
+TABLE 4-5: CURRENT-SENSING two’s complement format with the positive full-scale
+
+SAMPLING TIME SETTINGS value (7F_Fh) and negative full-scale value (80_0h)
+equal to the programmed FSR. 
+The Sign bit indicates the direction of current flow. If the
+Sign bit is ‘0’, the current is flowing through RSENSE
+from the SENSE+ pin to the SENSE- pin. If the Sign bit
+is ‘1’, the current is flowing through RSENSE from the
+SENSE- pin to the SENSE+ pin.
+Data resolution is dependent upon sampling time as
+shown in Table 4-8. The data format (assuming 11-bit
+resolution) is shown in Table 4-7. This data will scale
+
+0 0 0 2.5 ms (Data = sign + 6 bits) 63 directly with the sampling time.
+0 0 1 5 ms (Data = sign + 7 bits) 127 TABLE 4-7: V
+0 1 0 10 ms (Data = sign + 8 bits) 255 SENSE DATA FORMAT
+
+0 1 1 20 ms (Data = sign + 9 bits) 511 Hex
+V
+
+1 0 0 SENSE Binary (as read by 
+40 ms (Data = sign + 10 bits) 1023 registers)
+
+1 0 1 80 ms (Data = sign + 11 bits) 2047 - Full-Scale 1000_0000_0000 80_0h
+(default)
+
+1 1 0 -2 LSB 1111_1111_1110 FF_Eh
+160 ms (Data = sign + 11 bits) 2047
+
+1 1 1 -1 LSB 1111_1111_1111 FF_Fh 
+320 ms (Data = sign + 11 bits) 2047
+
+0 0000_0000_0000 00_0h
+Note 1: 160 ms sampling time has built-in 2X 
+
+analog oversampling using ADC at 12-bit +1 LSB 0000_0000_0001 00_1h
+resolution. +2 LSB 0000_0000_0010 00_2h
+
+2: 320 mx sampling time has built-in 4X +Full-Scale 0111_1111_1111 7F_Fh
+analog oversampling using ADC at 13-bit -1 LSB
+resolution.
+
+TABLE 4-8: VSENSE DATA RESOLUTION
+TABLE 4-6: CURRENT-SENSING RANGE 
+
+SETTINGS Sampling Resolution (±)
+Time ±10 mV ±20 mV ±40 mV ±80 mV
+
+CS_RNG<1:0> Full Scale Range
+0 0 2.5 ms 156.3 µV 312.5 µV 625.0 µV 1.250 mV
+
+-10 mV to 10 mV 5 ms 78.13 µV 156.3 µV 312.5 µV 625.0 µV
+0 1 -20 mV to 20 mV 10 ms 39.06 µV 78.13 µV 156.3 µV 312.5 µV
+1 0 -40 mV to 40 mV 20 ms 19.53 µV 39.06 µV 78.13 µV 156.3 µV
+1 1 -80 mV to 80 mV (default) 40 ms 9.76 µV 19.53 µV 39.06 µV 78.13 µV
+
+≥ 80 ms 4.88 µV 9.76 µV 19.53 µV 39.06 µV
+
+CS_SAMP_TIME<2:0>
+
+Current Sensor 
+Sample Time
+
+Equation 4-2 
+Denominator
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 17
+
+
+
+PAC1710/20
+
+4.11 VSOURCE Data representation 4.13 Limit Registers
+The VSOURCE Voltage Registers store the measured These registers are used in concordance with the
+VSOURCE value (see Section 4.5 “Voltage ALERT pin to indicate when high or low limits have
+Measurement”). The measured voltage is determined been exceeded.
+by summing the bit weights of each bit set. For
+example, if VSOURCE was 7.4V, the V 4.13.1 VSENSE LIMITS
+
+SOURCE Voltage
+Registers would read 0010_1111 for the high byte and The VSENSE Limit Registers store a high and low limit
+0100_0000b for the low byte corresponding to for VSENSE. VSENSE is compared against both limits
+5V + 1.25V + 0.625V + 0.3125V + 0.1563V + 0.0390V after each conversion cycle. 
+= 7.3828V. The data format for the limit is a raw binary form that is
+The bit weightings are assigned for human relative to the maximum VSENSE that has been
+interpretation. They should be disregarded when programmed. 
+translating the information via a computing system, as If the measured sense voltage meets or exceeds the
+shown in Section 4.5 “Voltage Measurement”. high limit or drops below the low limit, the ALERT pin is
+The VSOURCE Voltage Registers cannot support asserted (by default, see Section 4.7 “ALERT
+negative values, so all values less than 0V will be Output”) and the VSENSE_HIGH or VSENSE_LOW
+recorded as 0V. status bits are set in the High Limit Status or Low Limit
+
+Status registers (see Register 6-16 and Register 6-18). 
+
+4.12 Power Ratio Data Representation 4.13.2 VSOURCE LIMITS
+The Power Ratio Registers store a power factor value, The VSOURCE Voltage Limit registers store the high and
+PRATIO, that is used to determine the final average low limits for VSOURCE. VSOURCE is compared against
+power delivered to the system (see Section 4.6 both limits after each conversion cycle.
+“Power Calculation”). PRATIO is the result of the If VSOURCE meets or exceeds the corresponding high
+multiplication of the VSENSE reading and the VSOURCE limit or drops below the low limit, the ALERT pin is
+reading values shifted to a 16-bit number. It represents asserted (by default, see Section 4.7 “ALERT
+the ratio of delivered power with respect to maximum Output”) and the VSRC_HIGH or VSRC_LOW status
+power. bits are set in the High Limit Status or Low Limit Status
+
+registers (see Register 6-20 and Register 6-22). 
+DS20005386C-page 18    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+5.0 SMBUS COMMUNICATION 5.0.5 SMBus TIMEOUT
+
+The PAC1710/20 includes an SMBus timeout feature.
+5.0.1 SMBus START BIT Following a 30 ms period of inactivity on the SMBus,
+The SMBus Start bit is defined as a transition of the the device will time out and reset the SMBus interface.
+SMBus Data line from a logic ‘1’ state to a logic ‘0’ state The time-out functionality defaults to disabled and can
+while the SMBus Clock line is in a logic ‘1’ state. be enabled by writing to the TIMEOUT bit (see
+5.0.2 SMBus ADDRESS AND RD/WR BIT Register 6-1).
+
+The SMBus Address Byte consists of the 7-bit client 5.1 SMBus and I2C Compliance
+address followed by a 1-bit RD/WR indicator. If this RD/
+WR bit is a logic ‘0’, the SMBus host is writing data to The major differences between SMBus and I2C
+the client device. If this RD/WR bit is a logic ‘1’, the devices are highlighted below. For more information,
+SMBus host is reading data from the client device. refer to the SMBus 2.0 and I2C specifications. 
+
+• PAC1710/20 supports I2C fast mode at 400 kHz. 
+The PAC1710/20 SMBus address is determined by a
+single resistor connected between ground and the This covers the SMBus maximum time of 100 kHz.
+ADDR_SEL pin as shown in Table 5-1. • Minimum frequency for SMBus communications 
+
+is 10 kHz.
+TABLE 5-1: ADDR_SEL RESISTOR • The SMBus client protocol will reset if the clock is 
+
+SETTING held at a logic ‘0’ for longer than 30 ms. This time-
+RES
+(5%) SMBus Address RES
+
+ (5%) SMBus Address out functionality is disabled by default in the 
+PAC1710/20 and can be enabled by writing to the 
+
+0 1001_100(r/w) 1600 0101_000(r/w) TIMEOUT bit. I2C does not have a timeout.
+100 1001_101(r/w) 2000 0101_001(r/w) • The SMBus client protocol will reset if both the 
+180 1001_110(r/w) 2700 0101_010(r/w) clock and data lines are held at a logic ‘1’ for 
+300 1001_111(r/w) 3600 0101_011(r/w) longer than 200 μs (idle condition). This function 
+430 1001_000(r/w) 5600 0101_100(r/w) is disabled by default in the PAC1710/20 and can 
+560 1001_001(r/w) 9100 0101_101(r/w) be enabled by setting the TIMEOUT bit. I2C does 
+750 1001_010(r/w) 20000 0101_110(r/w) not have an idle condition.
+
+1270 1001_011(r/w) Open 0011_000(r/w) • I2C devices do not support the Alert Response 
+Address functionality (which is optional for SMBus).
+
+All SMBus Data bytes are sent most significant bit first
+and composed of 8 bits of information. • I2C devices support Block Read and Block Write 
+
+differently. I2C protocol allows for unlimited 
+5.0.3 SMBus ACK AND NACK BITS number of bytes to be sent in either direction. The 
+The SMBus client will acknowledge all data bytes that it SMBus protocol requires that an additional data 
+receives (as well as the client address if it matches and byte indicating number of bytes to read/write is 
+the ARA address if the ALERT pin is asserted). This is transmitted. The PAC1710/20 supports I2C 
+done by the client device pulling the SMBus Data line formatting only. 
+low after the eigth bit of each byte that is transmitted. 
+The host will not acknowledge (NACK) the data
+received from the client by holding the SMBus data line
+high after the eigth data bit has been sent. 
+
+5.0.4 SMBus STOP BIT
+The SMBus Stop bit is defined as a transition of the
+SMBus Data line from a logic ‘0’ state to a logic ‘1’ state
+while the SMBus clock line is in a logic ‘1’ state. When
+the PAC1710/20 detects an SMBus Stop bit, and it has
+been communicating with the SMBus protocol, it will
+reset its client interface and prepare to receive further
+communications. 
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 19
+
+
+
+PAC1710/20
+
+5.2 SMBUS PROTOCOLS
+The PAC1710/20 communicates with a host controller
+through the SMBus. The SMBus is a two-wire serial
+communication protocol between a computer host and
+its peripheral devices. A detailed timing diagram is
+shown in Figure 1-1. Stretching of the SMCLK signal is
+supported; however, the PAC1710/20 will not stretch
+the clock signal.
+All of the below protocols use the convention in
+Table 5-2.
+
+TABLE 5-2: PROTOCOL FORMAT
+Data Sent to Device Data Sent to the Host
+
+# of bits sent # of bits sent
+5.2.1 WRITE BYTE
+The Write Byte is used to write one byte of data to the
+registers, as shown in Table 5-3.
+
+TABLE 5-3: WRITE BYTE PROTOCOL
+START Slave Address WR ACK Register Address ACK Register Data ACK STOP
+1  0 YYYY_YYY 0 0 XXh 0 XXh 0 0  1
+
+5.2.2 READ BYTE
+The Read Byte protocol is used to read one byte of data
+from the registers as shown in Table 5-4.
+
+TABLE 5-4: READ BYTE PROTOCOL
+START Slave
+
+Address WR ACK Register
+Address ACK START Slave
+
+Address RD ACK Register
+Data NACK STOP
+
+1  0 YYYY_YYY 0 0 XXh 0 1  0 YYYY_YYY 1 0 XXh 1 0  1
+
+5.2.3 SEND BYTE
+The Send Byte protocol is used to set the internal
+address register pointer to the correct address location.
+No data is transferred during the Send Byte protocol as
+shown in Table 5-5.
+
+TABLE 5-5: SEND BYTE PROTOCOL
+START Slave Address WR ACK Register Address ACK STOP
+1  0 YYYY_YYY 0 0 XXh 0 0  1
+
+5.2.4 RECEIVE BYTE
+The Receive Byte protocol is used to read data from a
+register when the internal register address pointer is
+known to be at the right location (e.g. set via Send
+Byte). This is used for consecutive reads of the same
+register as shown in Table 5-6.
+
+TABLE 5-6: RECEIVE BYTE PROTOCOL
+START Slave Address RD ACK Register Address NACK STOP
+1  0 YYYY_YYY 1 0 XXh 1 0  1
+DS20005386C-page 20    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+5.2.5 ALERT RESPONSE ADDRESS
+The ALERT output can be used as a processor
+interrupt or as an SMBus Alert when configured to
+operate as an interrupt. 
+When it detects that the ALERT pin is asserted, the
+host will send the Alert Response Address (ARA) to the
+general address of 0001_100xb. All devices with
+active interrupts will respond with their client address,
+as shown in Table 5-7.
+ 
+TABLE 5-7: ALERT RESPONSE ADDRESS PROTOCOL
+
+START Alert Response Address RD ACK Device Address NACK STOP
+1  0 0001_100 1 0 YYYY_YYY 1 0  1
+
+The PAC1710/20 will respond to the ARA in the
+following way if the ALERT pin is asserted: 
+• Send Slave Address and verify that full slave 
+
+address was sent (i.e. the SMBus communication 
+from the device was not prematurely stopped due 
+to a bus contention event).
+
+• Set the MASK bit to clear the ALERT pin.
+
+5.3 I2C Protocols
+The PAC1710/20 supports I2C Block Read and Block
+Write. 
+The protocols listed below use the convention in
+Table 5-1. 
+
+5.3.1 BLOCK WRITE
+The Block Write is used to write multiple data bytes to
+a group of contiguous registers, as shown in Table 5-8.
+
+TABLE 5-8: BLOCK WRITE PROTOCOL
+
+START Slave 
+Address WR ACK Register 
+
+Address ACK Register Data ACK
+
+1 0 YYYY_YYY 0 0 XXh 0 XXh 0
+Register 
+
+Data ACK Register 
+Data ACK Register Register 
+
+Address Data ACK STOP
+
+XXh 0 XXh 0 XXh 0 0  1
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 21
+
+
+
+PAC1710/20
+
+5.3.2 BLOCK READ
+The Block Read is used to read multiple data bytes
+from a group of contiguous registers, as shown in
+Table 5-9. 
+
+TABLE 5-9: BLOCK READ PROTOCOL
+START Slave
+
+Address WR ACK Register
+Address ACK START Slave
+
+Address RD ACK Register
+Data
+
+10 YYYY_YYY 0 0 XXh 0 1 0 YYYY_YYY 1 0 XXh
+
+ACK Register
+Data ACK Register
+
+Data ACK Register
+Data ACK ... Register
+
+Data NACK STOP
+
+0 XXh 0 XXh 0 XXh 0 ... XXh 1 0  1
+DS20005386C-page 22    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+ 2015-2022 Microchip Technology Inc.  DS20005386C-page 23
+
+6.
+Th
+ind
+us
+
+TA
+
+Bit1 Bit0 Default 
+Value
+
+C1IDS C1VDS 00h
+CONV1 CONV0 03h
+
+OS1 OS0 00h
+C1VS C1VSR 00h
+
+C1VSH C1VRH 00h
+C1VSL C1VRL 00h
+C1RA1 C1RA0 88h
+
+C1SR1 C1SR0 53h
+
+C2SR1 C2SR0 53h
+
+C1SR5 C1SR4 00h
+
+— — 00h
+
+C2SR5 C2SR4 00h
+
+— — 00h
+
+C1VR4 C1VR3 00h
+
+— — 00h
+
+C2VR4 C2VR3 00h
+
+— — 00h
+0 REGISTERS IN HEXADECIMAL ORDER
+e registers shown in Table 6-1 are accessible through the SMBus. In the
+ividual register tables that follow, an entry of ‘—’ indicates that the bit is not
+
+ed and will always read ‘0’.
+
+BLE 6-1: REGISTER SET IN HEXADECIMAL ORDER
+Register Register 
+Address Name Bit7 Bit6 Bit5 Bit4 Bit3 Bit2
+
+00h Configuration — CDEN MSKAL C2IDS C2VDS TOUT
+01h Conversion Rate — — — — — —
+02h One-Shot OS7 OS6 OS5 OS4 OS3 OS2
+03h Channel Mask Register — — — — C2VS C2VSR
+04h High-Limit Status CVDN — — — C2VSH C2VRH
+05h Low-Limit Status — — — — C2VSL C2VRL
+0Ah VSOURCE Sampling C2RS1 C2RS0 C2RA1 C2RA0 C1RS1 C1RS0
+
+Configuration
+0Bh CH1 VSENSE Sampling — C1SS2 C1SS1 C1SS0 C1SA1 C1SA0
+
+Configuration
+0Ch CH2 VSENSE Sampling — C2SS2 C2SS1 C2SS0 C2SA1 C2SA0
+
+Configuration 
+0Dh CH1 Sense Voltage C1SR11 C1SR10 C1SR9 C1SR8 C1SR7 C1SR6
+
+High Byte 
+0Eh CH1 Sense Voltage C1SR3 C1SR2 C1SR1 C1SR0 — —
+
+Low Byte
+0Fh CH2 Sense Voltage C2SR11 C2SR10 C2SR9 C2SR8 C2SR7 C2SR6
+
+High Byte 
+10h CH2 Sense Voltage C2SR3 C2SR2 C2SR1 C2SR0 — —
+
+Low Byte
+11 CH1 VSOURCE Voltage C1VR10 C1VR9 C1VR8 C1VR7 C1VR6 C1VR5
+
+High Byte
+12 CH1 VSOURCE Voltage C1VR2 C1VR1 C1VR0 — — —
+
+Low Byte
+13h CH2 VSOURCE Voltage C2VR10 C1VR9 C2VR8 C2VR7 C2VR6 C2VR5
+
+High Byte
+14h CH2 VSOURCE Voltage C2VR2 C2VR1 C2VR0 — — —
+
+Low Byte
+
+
+
+PAC1710/20
+
+DS20005386C-page 24   2015-2022 Microchip Technology Inc. and its subsidiaries
+
+t2 Bit1 Bit0 Default 
+Value
+
+10 C1P8 C1P7 00h
+
+P2 C1P1 C1P0 00h
+
+10 C2P8 C2P7 00h
+
+P2 C2P1 C2P0 00h
+
+H2 C1SH1 C1SH0 7Fh
+
+H2 C2SH1 C2SH0 7Fh
+
+L2 C1SL1 C1SL0 80h
+
+L2 C2SL1 C2SL0 80h
+
+H2 C1VH1 C1VH0 FFh
+
+H2 C2VH1 C2VH0 FFh
+
+L2 C1VL1 C1VL0 00h
+
+L2 C2VL1 C2VL0 00h
+
+2 PID1 PID0 57h/58h
+2 MID1 MID0 5Dh
+
+V2 REV1 REV0 81h
+TABLE 6-1: REGISTER SET IN HEXADECIMAL ORDER (CONTINUED) 
+Register Register 
+Address Name Bit7 Bit6 Bit5 Bit4 Bit3 Bi
+
+15h CH1 Power Ratio C1P15 C1P14 C1P13 C1P12 C1P11 C1P
+High Byte
+
+16h CH1 Power Ratio C1P7 C1P6 C1P5 C1P4 C1P3 C1
+Low Byte
+
+17h CH2 Power Ratio C2P15 C2P14 C2P13 C2P12 C2P11 C2P
+High Byte
+
+18h CH2 Power Ratio C2P7 C2P6 C2P5 C2P4 C2P3 C2
+Low Byte
+
+19h CH1 Sense Voltage C1SH7 C1SH6 C1SH5 C1SH4 C1SH3 C1S
+High Limit 
+
+1Ah CH2 Sense Voltage C2SH7 C2SH6 C2SH5 C2SH4 C2SH3 C2S
+High Limit 
+
+1Bh CH1 Sense Voltage C1SL7 C1SL6 C1SL5 C1SL4 C1SL3 C1S
+Low Limit
+
+1Ch CH2 Sense Voltage C2SL7 C2SL6 C2SL5 C2SL4 C2SL3 C2S
+Low Limit
+
+1Dh CH1 VSOURCE Voltage C1VH7 C1VH6 C1VH5 C1VH4 C1VH3 C1V
+High Limit 
+
+1Eh CH2 VSOURCE Voltage C2VH7 C2VH6 C2VH5 C2VH4 C2VH3 C2V
+High Limit 
+
+1Fh CH1 VSOURCEVoltage C1VL7 C1VL6 C1VL5 C1VL4 C1VL3 C1V
+Low Limit 
+
+20h CH2 VSOURCE Voltage C2VL7 C2VL6 C2VL5 C2VL4 C2VL3 C2V
+Low Limit 
+
+FDh Product ID PID7 PID6 PID5 PID4 PID3 PID
+FEh Manufacturer ID MID7 MID6 MID5 MID4 MID3 MID
+FFh Revision REV7 REV6 REV5 REV4 REV3 RE
+
+
+
+PAC1710/20
+
+6.1 Read Multiple Data Bytes
+When any measurement high-byte register is read
+(VSOURCE or VSENSE), the corresponding low byte is
+copied into an internal “shadow” register. The user is
+free to read the low byte at any time and be guaranteed
+that it will correspond to the previously read high byte.
+Regardless if the low byte is read or not, reading from
+the same high byte register again will automatically
+refresh this stored low byte data.
+
+6.2 Detailed Register Description
+REGISTER 6-1: CONFIGURATION REGISTER (ADDRESS 00H)
+
+R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0
+— CDEN MSKAL C2IDS C2VDS TOUT C1IDS C1VDS
+
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7 Unimplemented: Read as ‘0’
+bit 6 CDEN: Enables the ALERT pin to be asserted when the conversion cycle is finished.
+
+1 = ALERT pin will be asserted for 5 μs when the conversion cycle is finished.
+0 = ALERT pin is not masked. If any of the appropriate status bits are set, the ALERT pin will be asserted.
+
+bit 5 MSKAL: Masks the ALERT pin from asserting due to out-of-limit conditions.
+1 = ALERT pin is masked. It will not be asserted for any interrupt condition. The Status Registers will 
+be updated normally.
+0 = ALERT pin is not masked. It will be asserted for any interrupt condition not masked by Register 6-
+4. The Status Registers will be updated normally.
+
+bit 4 C2IDS: Disables the VSENSE measurement for channel 2 (PAC1720)
+1 = The device is not measuring the sense voltage. It will update CH2 Sense Voltage Registers when 
+a One-Shot command is given.
+0 = The device is measuring sense voltage for CH2
+Unimplemented: Read as ‘0’ (PAC1710)
+
+bit 3 C2VDS: Disables the VSOURCE measurement for channel 2 (PAC1720)
+1 = The device is not measuring the Source voltage. It will update CH2 Source Voltage Registers 
+when a One-Shot command is given.
+0 = The device is measuring Source voltage for CH2
+Unimplemented: Read as ‘0’ (PAC1710)
+
+bit 2 TOUT: Enables the time-out and idle reset functionality of the communications protocol (see 
+Section 5.0.5 “SMBus Timeout”).
+1 = Time out enabled
+0 = Time out disabled
+
+bit 1 C1IDS: Disables the VSENSE measurement for channel 1
+1 = The device is not measuring the sense voltage. It will update CH1 Sense Voltage Registers when 
+a One-Shot command is given.
+0 = The device is measuring sense voltage for CH1
+
+bit 0 C1VDS: Disables the VSOURCE measurement for channel 1
+1 = The device is not measuring the Source voltage. It will update CH1 Source Voltage Registers 
+when a One-Shot command is given.
+0 = The device is measuring source voltage for CH1
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 25
+
+
+
+PAC1710/20
+
+REGISTER 6-2: CONVERSION RATE REGISTER (ADDRESS 01H)
+
+U-0 U-0 U-0 U-0 U-0 U-0 R/W-1 R/W-1
+— — — — — — CONV<1:0>
+
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7-2 Unimplemented: Read as ‘0’
+bit 1-0 CONV<1:0>: Determines the conversion rate as shown in Table 4-1.
+
+00b = 1 Sample/Second
+01b = 2 Samples/Second
+01b = 4 Samples/Second
+11b = Continuous
+
+REGISTER 6-3: ONE-SHOT REGISTER (ADDRESS 02H)
+R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0
+
+OS<7:0>
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7-0 OS<7:0>: When the device is in the Standby state, writing to the One-Shot Register will initiate a 
+conversion cycle and update all measurements.
+
+REGISTER 6-4: CHANNEL MASK REGISTER (ADDRESS 03H)
+U-0 U-0 U-0 U-0 R/W-0 R/W-0 R/W-0 R/W-0
+— — — — C2VS C2VSR C1VS C1VSR
+
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7-4 Unimplemented: Read as ‘0’
+bit 3 C2VS: Masks the ALERT pin from asserting when the channel 2 VSENSE value meets or exceeds the 
+
+high limit or drops below the low limit (PAC1720).
+1 = The channel 2 VSENSE voltage measurement cannot cause the ALERT pin to be asserted (if enabled).
+0 = The channel 2 VSENSE voltage measurement can cause the ALERT pin to be asserted (if enabled).
+Unimplemented: Read as ‘0’ (PAC1710)
+
+bit 2 C2VSR: Masks the ALERT pin from asserting when the channel 2 VSOURCE value meets or exceeds 
+the high limit or drops below the low limit (PAC1720).
+1 = The channel 2 VSOURCE voltage measurement cannot cause the ALERT pin to be asserted 
+(if enabled).
+0 = The channel 2 VSOURCE voltage measurement can cause the ALERT pin to be asserted (if enabled).
+Unimplemented: Read as ‘0’ (PAC1710)
+DS20005386C-page 26    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+REGISTER 6-4: CHANNEL MASK REGISTER (ADDRESS 03H) (CONTINUED) 
+bit 1 C1VS: Masks the ALERT pin from asserting when the channel 1 VSENSE value meets or exceeds the 
+
+high limit or drops below the low limit.
+1 = The channel 1 VSENSE voltage measurement cannot cause the ALERT pin to be asserted 
+(if enabled).
+0 = The channel 1 VSENSE voltage measurement can cause the ALERT pin to be asserted 
+(if enabled).
+
+bit 0 C1VSR: Masks the ALERT pin from asserting when the channel 1 VSOURCE value meets or exceeds 
+the high limit or drops below the low limit.
+1 = The channel 1 VSOURCE voltage measurement cannot cause the ALERT pin to be asserted 
+(if enabled).
+0 = The channel 1 VSOURCE voltage measurement can cause the ALERT pin to be asserted 
+(if enabled).
+
+REGISTER 6-5: HIGH-LIMIT STATUS REGISTER (ADDRESS 04H)
+RC-0 U-0 U-0 U-0 RC-0 RC-0 RC-0 RC-0
+CVDN — — — C2VSH C2VRH C1VSH C1VRH
+
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7 CVDN: Indicates that the conversion cycle (see Section 4.2 “Conversion Cycle”) is complete. This 
+bit is cleared when read.
+1 = Conversion complete
+0 = Conversion not complete
+
+bit 6-4 Unimplemented: Read as ‘0’
+bit 3 C2VSH: This bit is set when the channel 2 VSENSE value meets or exceeds its programmed high limit 
+
+(PAC1720).
+1 = The channel 2 VSOURCE voltage measurement caused the ALERT pin to be asserted (if enabled).
+0 = Normal operation 
+Unimplemented: Read as ‘0’ (PAC1710) 
+
+bit 2 C2VRH: This bit is set when the channel 2 VSOURCE value meets or exceeds its programmed high limit 
+(PAC1720).
+1 = The channel 2 VSOURCE voltage measurement caused the ALERT pin to be asserted (if enabled).
+0 = Normal Operation 
+Unimplemented: Read as ‘0’ (PAC1710) 
+
+bit 1 C1VSH: This bit is set when the channel 1 VSENSE value meets or exceeds its programmed high limit.
+1 = The channel 1 VSENSE voltage measurement caused the ALERT pin to be asserted (if enabled).
+0 = Normal Operation 
+
+bit 0 C1VRH: This bit is set when the channel 1 VSOURCE value meets or exceeds its programmed high limit.
+1 = The channel 1 VSOURCE voltage measurement caused the ALERT pin to be asserted (if enabled).
+0 = Normal Operation
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 27
+
+
+
+PAC1710/20
+
+REGISTER 6-6: LOW-LIMIT STATUS REGISTER (ADDRESS 05H)
+
+U-0 U-0 U-0 U-0 RC-0 RC-0 RC-0 RC-0
+— — — — C2VSL C2VRL C1VSL C1VRL
+
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7-4 Unimplemented: Read as ‘0’
+bit 3 C2VSL: This bit is set when the channel 2 VSENSE falls below its programmed low limit (PAC1720)
+
+1 = The channel 2 VSENSE voltage measurement caused the ALERT pin to be asserted (if enabled).
+0 = Normal operation 
+Unimplemented: Read as ‘0’ (PAC1710)
+
+bit 2 C2VRL: This bit is set when the channel 2 VSOURCE value falls below its programmed low limit.
+1 = The channel 2 VSOURCE voltage measurement caused the ALERT pin to be asserted (if enabled).
+0 = Normal Operation 
+Unimplemented: Read as ‘0’ (PAC1710)
+
+bit 1 C1VSL: This bit is set when the channel 1 VSENSE value falls below its programmed low limit.
+1 = The channel 1 VSENSE voltage measurement caused the ALERT pin to be asserted (if enabled).
+0 = Normal Operation 
+
+bit 0 C1VRL: This bit is set when the channel 1 VSOURCE value falls below its programmed low limit.
+1 = The channel 1 VSOURCE voltage measurement caused the ALERT pin to be asserted (if enabled).
+0 = Normal Operation
+
+REGISTER 6-7: VSOURCE SAMPLING CONFIGURATION REGISTER (ADDRESS 0AH)
+R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0
+
+C2RS<1:0> C2RA<1:0> C1RS<1:0> C1RA<1:0>
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7-6 C2RS<1:0>: Determines the channel 2 VSOURCE measurement sample time, as shown in Table 4-2 
+(PAC1720). This will affect the resolution of the data presented in the VSOURCE Voltage Registers. 
+Unimplemented: Read as ‘0’ (PAC1710)
+
+bit 5-4 C2RA<1:0>: Controls the digital averaging that is applied to the channel 2 VSOURCE measurement, as 
+shown in Table 4-3 (PAC1720). This determines the number of consecutive samples that are 
+averaged.
+Unimplemented: Read as ‘0’ (PAC1710)
+
+bit 3-2 C1RS<1:0>: Determines the channel 1 VSOURCE measurement sample time, as shown in Table 4-2. 
+This will affect the resolution of the data presented in the VSOURCE Voltage Registers.
+
+bit 1-0 C1RA<1:0>: Controls the digital averaging that is applied to the channel 1 VSOURCE measurement, as 
+shown in Table 4-3. This determines the number of consecutive samples that are averaged.
+DS20005386C-page 28    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+REGISTER 6-8: CHANNEL 1 VSENSE SAMPLING CONFIGURATION REGISTER (ADDRESS 0BH)
+
+R/W-0 R/W-1 R/W-0 R/W-1 R/W-0 R/W-0 R/W-1 R/W-1
+— C1CSS<2:0> C1SA<1:0> C1SR<1:0>
+
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7 Unimplemented: Read as ‘0’
+bit 6-4 C1CSS<2:0>: Determines the Channel 1 VSENSE voltage measurement sample time, as shown in 
+
+Table 4-5. This will affect the resolution of the data in the CH1 Sense Voltage Registers.
+bit 3-2 C1SA<1:0>: Controls the digital averaging that is applied to the channel 1 VSENSE measurement, as 
+
+shown in Table 4-4. This determines the number of consecutive samples that are averaged.
+bit 1-0 C1SR<1:0>: Determines the Current Sense full scale range for channel 1 VSENSE measurement as 
+
+shown in Table 4-6.
+
+REGISTER 6-9: CHANNEL 2 VSENSE SAMPLING CONFIGURATION REGISTER (ADDRESS 0CH)
+R/W-0 R/W-1 R/W-0 R/W-1 R/W-0 R/W-0 R/W-1 R/W-1
+
+— C2CSS<2:0> C2SA<1:0> C2SR<1:0>
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7 Unimplemented: Read as ‘0’
+bit 6-4 C2CSS<2:0>: Determines the Channel 2 VSENSE voltage measurement sample time, as shown in 
+
+Table 4-5 (PAC1720). This will affect the resolution of the data in the CH2 Sense Voltage Registers.
+Unimplemented: Read as ‘0’(PAC1710). 
+
+bit 3-2 C2SA<1:0>: Controls the digital averaging that is applied to the Channel 2 VSENSE measurement, as 
+shown in Table 4-4 (PAC1720). This determines the number of consecutive samples that are averaged.
+Unimplemented: Read as ‘0’ (PAC1710)
+
+bit 1-0 C2SR<1:0>: Determines the Channel 2 Current Sense full scale range channel 2 VSENSE 
+measurement as shown in Table 4-6 (PAC1720).
+Unimplemented: Read as ‘0’ (PAC1710)
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 29
+
+
+
+PAC1710/20
+
+REGISTER 6-10: CHANNEL 1 VSENSE RESULT REGISTER (ADDRESSES 0DH AND 0EH)
+
+R-0 R-0 R-0 R-0 R-0 R-0 R-0 R-0
+C1SR<15:8>
+
+bit 15 bit 8
+
+R-0 R-0 R-0 R-0 U-0 U-0 U-0 U-0
+C1SR<7:4> — — — —
+
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 15-4 C1SR<15:4>: These registers contain the most recent digitized value Channel 1 VSENSE samples.
+bit 3-0 Unimplemented: Read as ‘0’
+
+REGISTER 6-11: CHANNEL 2 VSENSE RESULT REGISTER (ADDRESSES 0FH AND 10H)
+R-0 R-0 R-0 R-0 R-0 R-0 R-0 R-0
+
+C2SR<15:8>
+bit 15 bit 8
+
+R-0 R-0 R-0 R-0 U-0 U-0 U-0 U-0
+C2SR<7:4> — — — —
+
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as 0
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 15-4 C2SR<15:4>: These registers contain the most recent digitized value channel 2 VSENSE samples 
+(PAC1720).
+Unimplemented: Read as ‘0’ (PAC1710)
+
+bit 3-0 Unimplemented: Read as ‘0’
+DS20005386C-page 30    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+REGISTER 6-12: CHANNEL 1 VSOURCE RESULT REGISTER (ADDRESSES 11H AND 12H)
+
+R-0 R-0 R-0 R-0 R-0 R-0 R-0 R-0
+C1VR<15:8>
+
+bit 15 bit 8
+
+R-0 R-0 R-0 U U-0 U-0 U-0 U-0
+C1VR<7:5> — — — — —
+
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 15-5 C1VR<15:5>: These registers contain the most recent digitized value Channel 1 VSOURCE samples.
+400h = 20V
+200h = 10V
+100h = 5V
+080h = 2.5V
+040h = 1.25V
+020h = 625 mV
+010h = 312.5 mV
+008h = 156.25 mV
+004h = 78.125 mV
+002h = 39.063 mV
+001h = 19.531 mV
+
+bit 4-0 Unimplemented: Read as ‘0’
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 31
+
+
+
+PAC1710/20
+
+REGISTER 6-13: CHANNEL 2 VSOURCE RESULT REGISTER (ADDRESSES 13H AND 14H)
+
+R-0 R-0 R-0 R-0 R-0 R-0 R-0 R-0
+C2VR<15:8>
+
+bit 15 bit 8
+
+R-0 R-0 R-0 U-0 U-0 U-0 U-0 U-0
+C2VR<7:5> — — — — —
+
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 15-5 C2VR<10:0>: These registers contain the most recent digitized value Channel 2 VSOURCE samples 
+(PAC1720).
+400h = 20V
+200h = 10V
+100h = 5V
+080h = 2.5V
+040h = 1.25V
+020h = 625 mV
+010h = 312.5 mV
+008h = 156.25 mV
+004h = 78.125 mV
+002h = 39.063 mV
+001h = 19.531 mV
+Unimplemented: Read as ‘0’ (PAC1710)
+
+bit 4-0 Unimplemented: Read as ‘0’
+
+REGISTER 6-14: CHANNEL 1 POWER RATIO REGISTER (ADDRESSES 15H AND 16H)
+R-0 R-0 R-0 R-0 R-0 R-0 R-0 R-0
+
+C1P<15:8>
+bit 15 bit 8
+
+R-0 R-0 R-0 R-0 R-0 R-0 R-0 R-0
+C1P<7:0>
+
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 15-0 C1P<15:0>: These registers contain the most recent channel 1 Power ratio calculations. This is a 16-
+bit binary number representing a ratio based on Power FSR.
+DS20005386C-page 32    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+REGISTER 6-15: CHANNEL 2 POWER RATIO REGISTER (ADDRESS 17H AND 18H)
+
+R-0 R-0 R-0 R-0 R-0 R-0 R-0 R-0
+C2P<15:8>
+
+bit 15 bit 8
+
+R-0 R-0 R-0 R-0 R-0 R-0 R-0 R-0
+C2P<7:0>
+
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 15-0 C2P<15:0>: These registers contain the most recent channel 2 power ratio calculations (PAC1720). 
+This is a 16-bit binary number representing a ratio based on Power FSR
+Unimplemented: Read as ‘0’ (PAC1710)
+
+REGISTER 6-16: CHANNEL 1 VSENSE HIGH LIMIT REGISTER (ADDRESS 19H)
+R/W-0 R/W-1 R/W-1 R/W-1 R/W-1 R/W-1 R/W-1 R/W-1
+
+C1SH<7:0>
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7-0 C1SH<7:0>: Two’s complement high-limit channel 1 VSENSE
+0100_000 = 1024
+0010_0000 = 512
+0001_0000 = 256
+0000_1000 = 128
+0000_0100 = 64
+0000_0010 = 32
+0000_0001 = 16
+1111_1111 = -1
+1000_000 = -1024
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 33
+
+
+
+PAC1710/20
+
+REGISTER 6-17: CHANNEL 2 VSENSE HIGH-LIMIT REGISTER (ADDRESS 1AH)
+
+R/W-0 R/W-1 R/W-1 R/W-1 R/W-1 R/W-1 R/W-1 R/W-1
+C2SH<7:0>
+
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7-0 C2SH<7:0>: Two’s complement high-limit channel 2 VSENSE (PAC1720)
+0100_000 = 1024
+0010_0000 = 512
+0001_0000 = 256
+0000_1000 = 128
+0000_0100 = 64
+0000_0010 = 32
+0000_0001 = 16
+1111_1111 = -1
+1000_000 = -1024
+Unimplemented: Read as ‘0’ (PAC1710)
+
+REGISTER 6-18: CHANNEL 1 VSENSE LOW-LIMIT REGISTER (ADDRESS 1BH)
+R/W-1 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0
+
+C1SL<7:0>
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7-0 C1SL<7:0>: Two’s complement low-limit channel 1 VSENSE
+0100_000 = 1024
+0010_0000 = 512
+0001_0000 = 256
+0000_1000 = 128
+0000_0100 = 64
+0000_0010 = 32
+0000_0001 = 16
+1111_1111 = -1
+1000_000 = -1024
+DS20005386C-page 34    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+REGISTER 6-19: CHANNEL 2 VSENSE LOW-LIMIT REGISTER (ADDRESS 1CH)
+
+R/W-1 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0
+C2SL<7:0>
+
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7-0 C2SL<7:0>: Two’s complement low-limit channel 2 VSENSE (PAC1720)
+0100_000 = 1024
+0010_0000 = 512
+0001_0000 = 256
+0000_1000 = 128
+0000_0100 = 64
+0000_0010 = 32
+0000_0001 = 16
+1111_1111 = -1
+1000_000 = -1024
+Unimplemented: Read as ‘0’ (PAC1710)
+
+REGISTER 6-20: CHANNEL 1 VSOURCE HIGH-LIMIT REGISTER (ADDRESS 1DH)
+R/W-1 R/W-1 R/W-1 R/W-1 R/W-1 R/W-1 R/W-1 R/W-1
+
+C1VH<7:0>
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as 0
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7-0 C1VH<7:0>: Two’s complement high-limit channel 1 VSOURCE
+80h = 20V
+40h = 10V
+20h = 5V
+10h = 2.5V
+08h = 1.25V
+04h = 625 mV
+02h = 312.5 mV
+01h = 156.25 mV
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 35
+
+
+
+PAC1710/20
+
+REGISTER 6-21: CHANNEL 2 VSOURCE HIGH-LIMIT REGISTER (ADDRESS 1EH)
+
+R/W-1 R/W-1 R/W-1 R/W-1 R/W-1 R/W-1 R/W-1 R/W-1
+C2VH<7:0>
+
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7-0 C2VH: Two’s complement high-limit channel 2 VSOURCE (PAC1720)
+0h = 20V
+40h = 10V
+20h = 5V
+10h = 2.5V
+08h = 1.25V
+04h = 625 mV
+02h = 312.5 mV
+01h = 156.25 mV
+Unimplemented: Read as ‘0’ (PAC1710) 
+
+REGISTER 6-22: CHANNEL 1 VSOURCE LOW-LIMIT REGISTER (ADDRESS 1FH)
+R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0
+
+C1VL<7:0>
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7-0 C1VL<7:0>: Two’s complement low-limit channel 1 VSOURCE
+0h = 20V
+40h = 10V
+20h = 5V
+10h = 2.5V
+08h = 1.25V
+04h = 625 mV
+02h = 312.5 mV
+01h = 156.25 mV
+DS20005386C-page 36    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+REGISTER 6-23: CHANNEL 2 VSOURCE LOW-LIMIT REGISTER (ADDRESS 20H)
+
+R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0
+C2VL<7:0>
+
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7-0 C2VL<7:0>: Two’s complement low-limit channel 2 VSOURCE
+0h = 20V
+40h = 10V
+20h = 5V
+10h = 2.5V
+08h = 1.25V
+04h = 625 mV
+02h = 312.5 mV
+01h = 156.25 mV
+
+REGISTER 6-24: PRODUCT REGISTER (ADDRESS FDH)
+R-0 R-1 R-0 R-1 R-0 R-1 R-1 R-1
+
+PID<7:0>
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7-0 PID<7:0>: Product ID for PAC1710/20
+57h = PAC1720
+58H = PAC1710
+
+REGISTER 6-25: MCHP ID REGISTER (ADDRESS FEH)
+R-0 R-1 R-0 R-1 R-1 R1 R-0 R-1
+
+MID<7:0>
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7-0 MID<7:0>: Manufacturer ID
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 37
+
+
+
+PAC1710/20
+
+REGISTER 6-26: REVISION REGISTER (ADDRESS FFH)
+
+R/W-1 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-0 R/W-1
+REV<7:0>
+
+bit 7 bit 0
+
+Legend:
+R = Read bit W = Writable bit U = Unimplemented bit, read as ‘0’
+-n = Value at POR ‘1’ = bit is set ‘0’ = Bit is cleared x = Bit in unknown
+
+bit 7-0 REV<7:0>: Silicon Revision
+DS20005386C-page 38    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+7.0 PACKAGE DESCRIPTION
+7.1 Package Marking Information
+
+10-Lead VDFN (3x3x0.9 mm) Example
+
+25WW 2504
+NNNA Part Number Code 256A
+
+PAC1710-1-AIA-TR 25WW
+e4 PAC1720-1-AIA-TR 26WW e4
+
+PIN 1 PIN 1
+
+Legend: Y Year code (last digit of calendar year)
+WW Week code (week of January 1 is week ‘01’)
+NNN Alphanumeric traceability code
+<R> Package
+<COO>  Country of origin
+
+Note: In the event the full Microchip part number cannot be marked on one line, it will
+be carried over to the next line, thus limiting the number of available
+characters for customer-specific information.
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 39
+
+
+
+PAC1710/20
+10-Lead Very Thin Plastic Dual Flat, No Lead Package (9Q) - 3x3 mm Body [VDFN]
+
+Note: For the most current package drawings, please see the Microchip Packaging Specification located at
+http://www.microchip.com/packaging
+
+D A B
+N
+
+(DATUM A)
+
+(DATUM B)
+E
+
+NOTE 1
+2X
+
+0.10 C
+1 2
+
+2X
+0.10 C TOP VIEW
+
+0.10 C
+A1
+
+C A
+SEATING
+
+PLANE 10X
+(A3) SIDE VIEW 0.05 C
+
+D2
+P
+
+NOTE 1 1 2
+
+P E2
+
+K
+N
+
+L 10X b
+e 0.10 C A B
+
+0.05 C
+BOTTOM VIEW
+
+MMicircorochchipi pTTecehcnhonlolgoyg yDDrarwawinign gC 0 C40-240-260B6 Sh Sehete 1e to 1f 2
+of 2
+DS20005386C-page 40    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+10-Lead Very Thin Plastic Dual Flat, No Lead Package (9Q) - 3x3 mm Body [VDFN]
+
+Note: For the most current package drawings, please see the Microchip Packaging Specification located at
+http://www.microchip.com/packaging
+
+Units MILLIMETERS
+Dimension Limits MIN NOM MAX
+
+Number of Terminals N 10
+Pitch e 0.50 BSC
+Overall Height A 0.80 0.85 0.90
+Standoff A1 0.00 0.02 0.05
+Terminal Thickness (A3) 0.20 REF
+Overall Length D 3.00 BSC
+Exposed Pad Length D2 2.20 2.30 2.40
+Overall Width E 3.00 BSC
+Exposed Pad Width E2 1.50 1.60 1.70
+Exposed Pad Chamfer P - 0.25 -
+Terminal Width b 0.18 0.25 0.30
+Terminal Length L 0.35 0.40 0.45
+Terminal-to-Exposed-Pad K 0.25 0.30 -
+
+Notes:
+1. Pin 1 visual index feature may vary, but must be located within the hatched area.
+2. Package is saw singulated
+3. Dimensioning and tolerancing per ASME Y14.5M
+
+BSC: Basic Dimension. Theoretically exact value shown without tolerances.
+REF: Reference Dimension, usually without tolerance, for information purposes only.
+
+Microchip Technology Drawing  C04-206  Sheet 2 of 2
+ 2015-2022 Microchip Technology Inc. and its subsidiaries  DS20005386C-page 41
+
+
+
+PAC1710/20
+10-Lead Very Thin Plastic Dual Flat, No Lead Package (9Q) - 3x3 mm Body [VDFN]
+
+Note: For the most current package drawings, please see the Microchip Packaging Specification located at
+http://www.microchip.com/packaging
+
+C
+2X CH
+ØV
+
+1 10
+2
+
+VX
+X1 E X2
+
+G1
+VY
+
+SILK SCREEN
+(G2)
+
+Y2
+Y1
+
+RECOMMENDED LAND PATTERN
+
+Units MILLIMETERS
+Dimension Limits MIN NOM MAX
+
+Contact Pitch E 0.50 BSC
+Optional Center Pad Width Y2 1.70
+Optional Center Pad Length X2 2.40
+Contact Pad Spacing C 3.00
+Center Pad Chamfer CH 0.28
+Contact Pad Width (X10) X1 0.30
+Contact Pad Length (X10) Y1 0.80
+Contact Pad to Contact Pad (X8) G1 0.20
+Contact Pad to Center Pad (X10) G2 0.25 REF
+Thermal Via Diameter V 0.30
+Thermal Via Pitch VX 1.00
+Thermal Via Pitch VY 1.00
+
+Notes:
+1. Dimensioning and tolerancing per ASME Y14.5M
+
+BSC: Basic Dimension. Theoretically exact value shown without tolerances.
+REF: Reference Dimension, usually without tolerances, for reference only.
+
+2. For best soldering results, thermal vias, if used, should be filled or tented to avoid solder loss during
+reflow process
+
+Microchip Technology Drawing C04-2206
+DS20005386C-page 42    2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+APPENDIX A: REVISION HISTORY
+Revision C (December 2022)
+The following is a list of modifications:
+• Updated the Operating Temperature Range to 
+
+reflect “0°C to +85°C” throughout the document, 
+including in the Features and Electrical 
+Characteristics sections;
+
+• Updated Note 1 in Figure 4-1;
+• Minor editorial corrections.
+
+Revision B (February 2016)
+The following is a list of modifications:
+• Updated the package drawings in Section 7.0 
+
+“Package Description”.
+
+Revision A (May 2015)
+The following is a list of modifications:
+• Replaced previous SMSC version 1.1 (12-08-11);
+• Updated the Absolute Maximum Ratings in 
+
+Section 1.1 “Electrical Specifications”;
+• Added information for the dual high-side current 
+
+sensor (PAC1720).
+
+Revision 1.1 (December 2011)
+• Initial release of this Document.
+ 2015-2022 Microchip Technology Inc. and its subsidiaries DS20005386C-page 43
+
+
+
+PAC1710/20
+
+NOTES:
+DS20005386C-page 44  2015-2022 Microchip Technology Inc. and its subsidiaries
+
+
+
+PAC1710/20
+
+PRODUCT IDENTIFICATION SYSTEM
+To order or obtain information, e.g., on pricing or delivery, refer to the factory or the listed sales office.
+
+PART NO. -X -XXX -XX Examples:
+Device      SMBus Package Tape and a) PAC1710-1-AIA-TR: Single-channel high-side 
+
+Address  Reel current monitor
+3x3 VDFN 10-lead 
+
+   package, shipped in a 4,000 
+piece Tape and Reel
+
+Device: PAC1710/20: High-side power/current monitor with analog 
+output
+
+SMBus Address: -1 = selectable address
+
+Package: AIA = 10-lead 3 mm x 3 mm VDFN
+
+Shipping Pack: TR =4,000 piece Tape and Reel
+ 2015-2022 Microchip Technology Inc. and its subsidiaries. DS20005386C-page 45
+
+
+
+PAC1710/20
+
+NOTES:
+DS20005386C-page 46  2015-2022 Microchip Technology Inc. and its subsidiaries.
+
+
+
+Note the following details of the code protection feature on Microchip products:
+• Microchip products meet the specifications contained in their particular Microchip Data Sheet.
+
+• Microchip believes that its family of products is secure when used in the intended manner, within operating specifications, and 
+under normal conditions.
+
+• Microchip values and aggressively protects its intellectual property rights. Attempts to breach the code protection features of 
+Microchip product is strictly prohibited and may violate the Digital Millennium Copyright Act.
+
+• Neither Microchip nor any other semiconductor manufacturer can guarantee the security of its code. Code protection does not 
+mean that we are guaranteeing the product is "unbreakable" Code protection is constantly evolving. Microchip is committed to 
+continuously improving the code protection features of our products.
+This publication and the information herein may be used only
+with Microchip products, including to design, test, and integrate
+Microchip products with your application. Use of this informa-
+tion in any other manner violates these terms. Information
+regarding device applications is provided only for your conve-
+nience and may be superseded by updates. It is your responsi-
+bility to ensure that your application meets with your
+specifications. Contact your local Microchip sales office for
+additional support or, obtain additional support at https://
+www.microchip.com/en-us/support/design-help/client-support-
+services.
+
+THIS INFORMATION IS PROVIDED BY MICROCHIP "AS IS".
+MICROCHIP MAKES NO REPRESENTATIONS OR WAR-
+RANTIES OF ANY KIND WHETHER EXPRESS OR IMPLIED,
+WRITTEN OR ORAL, STATUTORY OR OTHERWISE,
+RELATED TO THE INFORMATION INCLUDING BUT NOT
+LIMITED TO ANY IMPLIED WARRANTIES OF NON-
+INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
+PARTICULAR PURPOSE, OR WARRANTIES RELATED TO
+ITS CONDITION, QUALITY, OR PERFORMANCE.
+
+IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDI-
+RECT, SPECIAL, PUNITIVE, INCIDENTAL, OR CONSE-
+QUENTIAL LOSS, DAMAGE, COST, OR EXPENSE OF ANY
+KIND WHATSOEVER RELATED TO THE INFORMATION OR
+ITS USE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
+BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES
+ARE FORESEEABLE. TO THE FULLEST EXTENT
+ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON
+ALL CLAIMS IN ANY WAY RELATED TO THE INFORMATION
+OR ITS USE WILL NOT EXCEED THE AMOUNT OF FEES, IF
+ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP
+FOR THE INFORMATION. 
+
+Use of Microchip devices in life support and/or safety applica-
+tions is entirely at the buyer's risk, and the buyer agrees to
+defend, indemnify and hold harmless Microchip from any and
+all damages, claims, suits, or expenses resulting from such
+use. No licenses are conveyed, implicitly or otherwise, under
+any Microchip intellectual property rights unless otherwise
+stated.
+For information regarding Microchip’s Quality Management Systems, 
+please visit www.microchip.com/quality.
+
+2015-2022 Microchip Technology Inc. and its subsidiaries
+Trademarks
+The Microchip name and logo, the Microchip logo, Adaptec, AVR, 
+AVR logo, AVR Freaks, BesTime, BitCloud, CryptoMemory, 
+CryptoRF, dsPIC, flexPWR, HELDO, IGLOO, JukeBlox, KeeLoq, 
+Kleer, LANCheck, LinkMD, maXStylus, maXTouch, MediaLB, 
+megaAVR, Microsemi, Microsemi logo, MOST, MOST logo, 
+MPLAB, OptoLyzer, PIC, picoPower, PICSTART, PIC32 logo, 
+PolarFire, Prochip Designer, QTouch, SAM-BA, SenGenuity, 
+SpyNIC, SST, SST Logo, SuperFlash, Symmetricom, SyncServer, 
+Tachyon, TimeSource, tinyAVR, UNI/O, Vectron, and XMEGA are 
+registered trademarks of Microchip Technology Incorporated in the 
+U.S.A. and other countries.
+
+AgileSwitch, APT, ClockWorks, The Embedded Control Solutions 
+Company, EtherSynch, Flashtec, Hyper Speed Control, HyperLight 
+Load, Libero, motorBench, mTouch, Powermite 3, Precision Edge, 
+ProASIC, ProASIC Plus, ProASIC Plus logo, Quiet- Wire, 
+SmartFusion, SyncWorld, Temux, TimeCesium, TimeHub, 
+TimePictra, TimeProvider, TrueTime, and ZL are registered 
+trademarks of Microchip Technology Incorporated in the U.S.A.
+
+Adjacent Key Suppression, AKS, Analog-for-the-Digital Age, Any 
+Capacitor, AnyIn, AnyOut, Augmented Switching, BlueSky, 
+BodyCom, Clockstudio, CodeGuard, CryptoAuthentication, 
+CryptoAutomotive, CryptoCompanion, CryptoController, 
+dsPICDEM, dsPICDEM.net, Dynamic Average Matching, DAM, 
+ECAN, Espresso T1S, EtherGREEN, GridTime, IdealBridge, In-
+Circuit Serial Programming, ICSP, INICnet, Intelligent Paralleling, 
+IntelliMOS, Inter-Chip Connectivity, JitterBlocker, Knob-on-Display, 
+KoD, maxCrypto, maxView, memBrain, Mindi, MiWi, MPASM, MPF, 
+MPLAB Certified logo, MPLIB, MPLINK, MultiTRAK, NetDetach, 
+Omniscient Code Generation, PICDEM, PICDEM.net, PICkit, 
+PICtail, PowerSmart, PureSilicon, QMatrix, REAL ICE, Ripple 
+Blocker, RTAX, RTG4, SAM-ICE, Serial Quad I/O, simpleMAP, 
+SimpliPHY, SmartBuffer, SmartHLS, SMART-I.S., storClad, SQI, 
+SuperSwitcher, SuperSwitcher II, Switchtec, SynchroPHY, Total 
+Endurance, Trusted Time, TSHARC, USBCheck, VariSense, 
+VectorBlox, VeriPHY, ViewSpan, WiperLock, XpressConnect, and 
+ZENA are trademarks of Microchip Technology Incorporated in the 
+U.S.A. and other countries.
+
+SQTP is a service mark of Microchip Technology Incorporated in 
+the U.S.A.
+
+The Adaptec logo, Frequency on Demand, Silicon Storage 
+Technology, and Symmcom are registered trademarks of Microchip 
+Technology Inc. in other countries.
+
+GestIC is a registered trademark of Microchip Technology Germany 
+II GmbH & Co. KG, a subsidiary of Microchip Technology Inc., in 
+other countries.
+
+All other trademarks mentioned herein are property of their 
+respective companies.
+
+© 2022, Microchip Technology Incorporated and its subsidiaries.
+
+All Rights Reserved.
+
+ISBN: 978-1-6683-1718-1
+DS20005386C-page 47
+
+
+
+Worldwide Sales and Service
+AMERICAS ASIA/PACIFIC ASIA/PACIFIC EUROPE
+Corporate Office Australia - Sydney India - Bangalore Austria - Wels
+2355 West Chandler Blvd. Tel: 61-2-9868-6733 Tel: 91-80-3090-4444 Tel: 43-7242-2244-39
+Chandler, AZ 85224-6199 China - Beijing India - New Delhi Fax: 43-7242-2244-393
+Tel: 480-792-7200 Tel: 86-10-8569-7000 Tel: 91-11-4160-8631 Denmark - Copenhagen
+Fax: 480-792-7277
+Technical Support: China - Chengdu India - Pune Tel: 45-4485-5910 
+
+Tel: 86-28-8665-5511 Tel: 91-20-4121-0141 Fax: 45-4485-2829
+http://www.microchip.com/
+support China - Chongqing Japan - Osaka Finland - Espoo
+Web Address: Tel: 86-23-8980-9588 Tel: 81-6-6152-7160 Tel: 358-9-4520-820
+www.microchip.com China - Dongguan Japan - Tokyo France - Paris
+Atlanta Tel: 86-769-8702-9880 Tel: 81-3-6880- 3770 Tel: 33-1-69-53-63-20 
+Duluth, GA China - Guangzhou Korea - Daegu Fax: 33-1-69-30-90-79 
+Tel: 678-957-9614 Tel: 86-20-8755-8029 Tel: 82-53-744-4301 Germany - Garching
+Fax: 678-957-1455 China - Hangzhou Korea - Seoul Tel: 49-8931-9700
+
+Austin, TX Tel: 86-571-8792-8115 Tel: 82-2-554-7200 Germany - Haan
+Tel: 512-257-3370 China - Hong Kong SAR Malaysia - Kuala Lumpur Tel: 49-2129-3766400
+
+Boston Tel: 852-2943-5100 Tel: 60-3-7651-7906 Germany - Heilbronn
+Westborough, MA China - Nanjing Malaysia - Penang Tel: 49-7131-72400
+Tel: 774-760-0087 Tel: 86-25-8473-2460 Tel: 60-4-227-8870 Germany - Karlsruhe
+Fax: 774-760-0088 China - Qingdao Philippines - Manila Tel: 49-721-625370
+Chicago Tel: 86-532-8502-7355 Tel: 63-2-634-9065 Germany - Munich
+Itasca, IL China - Shanghai Singapore Tel: 49-89-627-144-0 
+Tel: 630-285-0071 Tel: 86-21-3326-8000 Tel: 65-6334-8870 Fax: 49-89-627-144-44
+Fax: 630-285-0075 China - Shenyang Taiwan - Hsin Chu Germany - Rosenheim
+Dallas Tel: 86-24-2334-2829 Tel: 886-3-577-8366 Tel: 49-8031-354-560
+Addison, TX 
+Tel: 972-818-7423 China - Shenzhen Taiwan - Kaohsiung Israel - Ra’anana 
+
+Tel: 86-755-8864-2200 Tel: 886-7-213-7830 Tel: 972-9-744-7705
+Fax: 972-818-2924
+
+China - Suzhou Taiwan - Taipei Italy - Milan 
+Detroit Tel: 86-186-6233-1526 Tel: 886-2-2508-8600 Tel: 39-0331-742611 
+Novi, MI Fax: 39-0331-466781
+Tel: 248-848-4000 China - Wuhan Thailand - Bangkok
+
+Tel: 86-27-5980-5300 Tel: 66-2-694-1351 Italy - Padova
+Houston, TX Tel: 39-049-7625286 
+Tel: 281-894-5983 China - Xian Vietnam - Ho Chi Minh
+
+Tel: 86-29-8833-7252 Tel: 84-28-5448-2100 Netherlands - Drunen
+Indianapolis Tel: 31-416-690399 
+Noblesville, IN China - Xiamen Fax: 31-416-690340
+Tel: 317-773-8323 Tel: 86-592-2388138 
+
+Norway - Trondheim
+Fax: 317-773-5453 China - Zhuhai Tel: 47-7288-4388
+Tel: 317-536-2380 Tel: 86-756-3210040 
+
+Poland - Warsaw
+Los Angeles Tel: 48-22-3325737 
+Mission Viejo, CA 
+Tel: 949-462-9523 Romania - Bucharest
+
+Tel: 40-21-407-87-50
+Fax: 949-462-9608
+Tel: 951-273-7800 Spain - Madrid
+
+Tel: 34-91-708-08-90
+Raleigh, NC Fax: 34-91-708-08-91
+Tel: 919-844-7510
+
+Sweden - Gothenberg
+New York, NY Tel: 46-31-704-60-40
+Tel: 631-435-6000
+
+Sweden - Stockholm
+San Jose, CA Tel: 46-8-5090-4654
+Tel: 408-735-9110
+Tel: 408-436-4270 UK - Wokingham
+
+Tel: 44-118-921-5800
+Canada - Toronto Fax: 44-118-921-5820
+Tel: 905-695-1980 
+Fax: 905-695-2078
+
+DS20005386C-page 48   2015-2022 Microchip Technology Inc. and its subsidiaries
+09/14/21

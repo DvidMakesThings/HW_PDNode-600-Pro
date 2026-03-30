@@ -1,9 +1,10 @@
 /**
  * @file tasks/StorageTask.c
- * @brief Non-volatile config owner — AT24C256 EEPROM over I2C0.
+ * @brief Non-volatile config owner — CAT24C256 EEPROM over I2C.
  *
- * Owns all EEPROM access. Maintains a RAM cache for fast reads.
- * Writes are debounced: a 2 s idle timeout fires before the EEPROM write.
+ * Owns all EEPROM access via the eeprom_io abstraction layer.
+ * Maintains a RAM cache for fast reads. Writes are debounced:
+ * a 2 s idle timeout fires before the EEPROM write is committed.
  *
  * @project PDNode-600 Pro
  * @version 1.0.0
@@ -12,15 +13,14 @@
 #include "../CONFIG.h"
 #include "StorageTask.h"
 #include "HealthTask.h"
-#include "../drivers/CAT24C256_driver.h"
-#include "../drivers/i2c_bus.h"
+#include "../eeprom/eeprom_io.h"
 
 #define STORAGE_TAG         "[STORAGE]"
 #define STORAGE_STACK       2048
 #define STORAGE_DEBOUNCE_MS 2000
 
 /* -------------------------------------------------------------------------- */
-/*  Default values                                                            */
+/*  Default values                                                             */
 /* -------------------------------------------------------------------------- */
 static const pdnode_net_cfg_t DEFAULT_NET = {
     .ip   = DEFAULT_IP,
@@ -38,7 +38,7 @@ static const pdnode_identity_t DEFAULT_IDENTITY = {
 };
 
 /* -------------------------------------------------------------------------- */
-/*  Runtime state                                                             */
+/*  Runtime state                                                              */
 /* -------------------------------------------------------------------------- */
 typedef enum {
     WRITE_NONE  = 0,
@@ -46,27 +46,17 @@ typedef enum {
     WRITE_IDENT = (1 << 1)
 } write_flags_t;
 
-static volatile bool        s_ready           = false;
+static volatile bool        s_ready          = false;
 static pdnode_net_cfg_t     s_net_cache;
 static pdnode_identity_t    s_ident_cache;
-static SemaphoreHandle_t    s_cache_mutex     = NULL;
-static volatile uint8_t     s_pending         = WRITE_NONE;
-static volatile uint32_t    s_dirty_ts        = 0;
-static volatile uint32_t    s_prov_unlock_ms  = 0;  /* 0 = locked */
+static SemaphoreHandle_t    s_cache_mutex    = NULL;
+static volatile uint8_t     s_pending        = WRITE_NONE;
+static volatile uint32_t    s_dirty_ts       = 0;
+static volatile uint32_t    s_prov_unlock_ms = 0;  /* 0 = locked */
 
 /* -------------------------------------------------------------------------- */
-/*  CRC-8 and MAC helpers                                                     */
+/*  MAC helpers                                                                */
 /* -------------------------------------------------------------------------- */
-
-static uint8_t calc_crc8(const uint8_t *data, size_t len) {
-    uint8_t crc = 0x00;
-    for (size_t i = 0; i < len; i++) {
-        crc ^= data[i];
-        for (uint8_t j = 0; j < 8; j++)
-            crc = (crc & 0x80u) ? (uint8_t)((crc << 1) ^ 0x07u) : (uint8_t)(crc << 1);
-    }
-    return crc;
-}
 
 /** FNV-1a hash of serial string → 3-byte suffix, prefixed with "PD" OUI. */
 static void pdnode_fill_mac(const char *serial, uint8_t mac[6]) {
@@ -82,11 +72,11 @@ static void pdnode_fill_mac(const char *serial, uint8_t mac[6]) {
 }
 
 static bool pdnode_mac_needs_repair(const uint8_t mac[6]) {
-    bool wrong_pfx  = (mac[0] != PDNODE_MAC_PREFIX0 ||
-                       mac[1] != PDNODE_MAC_PREFIX1 ||
-                       mac[2] != PDNODE_MAC_PREFIX2);
-    bool zero_sfx   = (mac[3] | mac[4] | mac[5]) == 0x00u;
-    bool ff_sfx     = (mac[3] & mac[4] & mac[5]) == 0xFFu;
+    bool wrong_pfx = (mac[0] != PDNODE_MAC_PREFIX0 ||
+                      mac[1] != PDNODE_MAC_PREFIX1 ||
+                      mac[2] != PDNODE_MAC_PREFIX2);
+    bool zero_sfx  = (mac[3] | mac[4] | mac[5]) == 0x00u;
+    bool ff_sfx    = (mac[3] & mac[4] & mac[5]) == 0xFFu;
     return wrong_pfx || zero_sfx || ff_sfx;
 }
 
@@ -98,7 +88,7 @@ static bool pdnode_mac_needs_repair(const uint8_t mac[6]) {
 static void ascii_to_hex_lower(const char *in, char *out, size_t out_max) {
     const char *hex = "0123456789abcdef";
     size_t i;
-    for (i = 0; in[i] != '\0' && (i * 2u + 2u) < out_max; i++) {
+    for (i = 0u; in[i] != '\0' && (i * 2u + 2u) < out_max; i++) {
         out[i * 2u]      = hex[(unsigned char)in[i] >> 4];
         out[i * 2u + 1u] = hex[(unsigned char)in[i] & 0x0Fu];
     }
@@ -109,72 +99,46 @@ static bool prov_window_open(void) {
     if (s_prov_unlock_ms == 0u) return false;
     uint32_t elapsed = to_ms_since_boot(get_absolute_time()) - s_prov_unlock_ms;
     if (elapsed > PROV_UNLOCK_TIMEOUT_MS) {
-        s_prov_unlock_ms = 0u;   /* auto-expire */
+        s_prov_unlock_ms = 0u;
         return false;
     }
     return true;
 }
 
 /* -------------------------------------------------------------------------- */
-/*  EEPROM helpers                                                            */
+/*  EEPROM load / save helpers                                                 */
 /* -------------------------------------------------------------------------- */
-
-static bool eeprom_valid(void) {
-    uint8_t buf[2];
-    CAT24C256_ReadBuffer(STORAGE_MAGIC_ADDR, buf, 2);
-    uint16_t magic = ((uint16_t)buf[0] << 8) | buf[1];
-    return (magic == STORAGE_MAGIC_VALUE);
-}
-
-static void eeprom_write_magic(void) {
-    uint8_t buf[2] = {(STORAGE_MAGIC_VALUE >> 8) & 0xFF,
-                       STORAGE_MAGIC_VALUE & 0xFF};
-    CAT24C256_WriteBuffer(STORAGE_MAGIC_ADDR, buf, 2);
-}
-
-static void net_write_with_crc(const pdnode_net_cfg_t *cfg) {
-    CAT24C256_WriteBuffer(STORAGE_NET_ADDR, (const uint8_t *)cfg, sizeof(*cfg));
-    uint8_t crc = calc_crc8((const uint8_t *)cfg, sizeof(*cfg));
-    CAT24C256_WriteBuffer(STORAGE_NET_CRC_ADDR, &crc, 1);
-}
 
 static void load_defaults(void) {
     INFO_PRINT("%s EEPROM blank — writing defaults\r\n", STORAGE_TAG);
     s_net_cache   = DEFAULT_NET;
     s_ident_cache = DEFAULT_IDENTITY;
-    /* Derive MAC from default serial */
     pdnode_fill_mac(s_ident_cache.serial, s_net_cache.mac);
     INFO_PRINT("%s MAC: %02X:%02X:%02X:%02X:%02X:%02X\r\n", STORAGE_TAG,
                s_net_cache.mac[0], s_net_cache.mac[1], s_net_cache.mac[2],
                s_net_cache.mac[3], s_net_cache.mac[4], s_net_cache.mac[5]);
     eeprom_write_magic();
-    net_write_with_crc(&s_net_cache);
-    CAT24C256_WriteBuffer(STORAGE_IDENTITY_ADDR,
-                          (const uint8_t *)&s_ident_cache, sizeof(s_ident_cache));
+    eeprom_write_block(EEPROM_NET_ADDR,      &s_net_cache,   sizeof(s_net_cache));
+    eeprom_write_block(EEPROM_IDENTITY_ADDR, &s_ident_cache, sizeof(s_ident_cache));
 }
 
 static void load_from_eeprom(void) {
     /* Identity first — serial is needed for MAC validation */
-    CAT24C256_ReadBuffer(STORAGE_IDENTITY_ADDR,
-                         (uint8_t *)&s_ident_cache, sizeof(s_ident_cache));
-    s_ident_cache.serial[sizeof(s_ident_cache.serial) - 1] = '\0';
+    if (!eeprom_read_block(EEPROM_IDENTITY_ADDR, &s_ident_cache, sizeof(s_ident_cache))) {
+        WARNING_PRINT("%s Identity CRC mismatch — using defaults\r\n", STORAGE_TAG);
+        s_ident_cache = DEFAULT_IDENTITY;
+    }
+    s_ident_cache.serial[sizeof(s_ident_cache.serial) - 1u] = '\0';
 
-    /* Net config with CRC check */
-    CAT24C256_ReadBuffer(STORAGE_NET_ADDR,
-                         (uint8_t *)&s_net_cache, sizeof(s_net_cache));
-    uint8_t stored_crc = 0;
-    CAT24C256_ReadBuffer(STORAGE_NET_CRC_ADDR, &stored_crc, 1);
-    uint8_t calc_crc = calc_crc8((const uint8_t *)&s_net_cache, sizeof(s_net_cache));
-
-    if (stored_crc != calc_crc) {
-        WARNING_PRINT("%s Net CRC mismatch (0x%02X vs 0x%02X) — restoring defaults\r\n",
-                      STORAGE_TAG, stored_crc, calc_crc);
+    /* Net config with CRC validation */
+    if (!eeprom_read_block(EEPROM_NET_ADDR, &s_net_cache, sizeof(s_net_cache))) {
+        WARNING_PRINT("%s Net CRC mismatch — restoring defaults\r\n", STORAGE_TAG);
         s_net_cache = DEFAULT_NET;
         pdnode_fill_mac(s_ident_cache.serial, s_net_cache.mac);
-        net_write_with_crc(&s_net_cache);
+        eeprom_write_block(EEPROM_NET_ADDR, &s_net_cache, sizeof(s_net_cache));
     } else if (pdnode_mac_needs_repair(s_net_cache.mac)) {
         pdnode_fill_mac(s_ident_cache.serial, s_net_cache.mac);
-        net_write_with_crc(&s_net_cache);
+        eeprom_write_block(EEPROM_NET_ADDR, &s_net_cache, sizeof(s_net_cache));
         INFO_PRINT("%s MAC repaired from serial\r\n", STORAGE_TAG);
     }
 
@@ -186,28 +150,27 @@ static void load_from_eeprom(void) {
 
 static void flush_pending(void) {
     if (s_pending & WRITE_NET) {
-        net_write_with_crc(&s_net_cache);
+        eeprom_write_block(EEPROM_NET_ADDR, &s_net_cache, sizeof(s_net_cache));
         INFO_PRINT("%s Net config written to EEPROM\r\n", STORAGE_TAG);
     }
     if (s_pending & WRITE_IDENT) {
-        CAT24C256_WriteBuffer(STORAGE_IDENTITY_ADDR,
-                              (const uint8_t *)&s_ident_cache, sizeof(s_ident_cache));
+        eeprom_write_block(EEPROM_IDENTITY_ADDR, &s_ident_cache, sizeof(s_ident_cache));
         INFO_PRINT("%s Identity written to EEPROM\r\n", STORAGE_TAG);
     }
     s_pending = WRITE_NONE;
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Task function                                                             */
+/*  Task function                                                              */
 /* -------------------------------------------------------------------------- */
 
 static void StorageTask_Function(void *arg) {
     (void)arg;
     INFO_PRINT("%s Task started\r\n", STORAGE_TAG);
 
-    CAT24C256_Init();
+    eeprom_init();
 
-    if (eeprom_valid()) {
+    if (eeprom_check_magic()) {
         load_from_eeprom();
     } else {
         load_defaults();
@@ -235,7 +198,7 @@ static void StorageTask_Function(void *arg) {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Public API                                                                */
+/*  Public API                                                                 */
 /* -------------------------------------------------------------------------- */
 
 BaseType_t StorageTask_Init(bool enable) {
@@ -301,7 +264,7 @@ void Storage_SetIdentity(const pdnode_identity_t *id) {
 bool Storage_GetSerial(char serial[16]) {
     if (!serial || !s_ready) return false;
     if (xSemaphoreTake(s_cache_mutex, pdMS_TO_TICKS(50))) {
-        memcpy(serial, s_ident_cache.serial, 16);
+        memcpy(serial, s_ident_cache.serial, 16u);
         xSemaphoreGive(s_cache_mutex);
         return true;
     }
@@ -369,11 +332,11 @@ bool Storage_FillEthConfig(w5500_NetConfig *eth) {
     if (!eth || !s_ready) return false;
     pdnode_net_cfg_t net;
     if (!Storage_GetNetConfig(&net)) return false;
-    memcpy(eth->ip,  net.ip,  4);
-    memcpy(eth->sn,  net.sn,  4);
-    memcpy(eth->gw,  net.gw,  4);
-    memcpy(eth->dns, net.dns, 4);
-    memcpy(eth->mac, net.mac, 6);
+    memcpy(eth->ip,  net.ip,  4u);
+    memcpy(eth->sn,  net.sn,  4u);
+    memcpy(eth->gw,  net.gw,  4u);
+    memcpy(eth->dns, net.dns, 4u);
+    memcpy(eth->mac, net.mac, 6u);
     eth->dhcp = net.dhcp;
     return true;
 }

@@ -19,22 +19,21 @@
 extern "C" {
 #endif
 
-/* PAC1720 Register Map (selected) */
+/* PAC1720 Register Map (DS20005386C Table 6-1) */
 #define PAC1720_REG_PROD_ID         0xFD
 #define PAC1720_REG_CONFIG          0x00
 #define PAC1720_REG_CONV_RATE       0x01
-#define PAC1720_REG_CH1_SENSE_CFG   0x0A
-#define PAC1720_REG_CH2_SENSE_CFG   0x0B
-#define PAC1720_REG_CH1_VSRC_CFG    0x0C
-#define PAC1720_REG_CH2_VSRC_CFG    0x0D
-#define PAC1720_REG_CH1_VSENSE_HI   0x0E
-#define PAC1720_REG_CH1_VSENSE_LO   0x0F
-#define PAC1720_REG_CH2_VSENSE_HI   0x10
-#define PAC1720_REG_CH2_VSENSE_LO   0x11
-#define PAC1720_REG_CH1_VSRC_HI     0x12
-#define PAC1720_REG_CH1_VSRC_LO     0x13
-#define PAC1720_REG_CH2_VSRC_HI     0x14
-#define PAC1720_REG_CH2_VSRC_LO     0x15
+#define PAC1720_REG_VSRC_SAMP_CFG  0x0A   /* VSOURCE sampling — both channels combined */
+#define PAC1720_REG_CH1_SENSE_CFG   0x0B   /* CH1 VSENSE sampling/range config */
+#define PAC1720_REG_CH2_SENSE_CFG   0x0C   /* CH2 VSENSE sampling/range config */
+#define PAC1720_REG_CH1_VSENSE_HI   0x0D   /* CH1 sense result high byte */
+#define PAC1720_REG_CH1_VSENSE_LO   0x0E   /* CH1 sense result low byte  */
+#define PAC1720_REG_CH2_VSENSE_HI   0x0F   /* CH2 sense result high byte */
+#define PAC1720_REG_CH2_VSENSE_LO   0x10   /* CH2 sense result low byte  */
+#define PAC1720_REG_CH1_VSRC_HI     0x11   /* CH1 VSOURCE result high byte */
+#define PAC1720_REG_CH1_VSRC_LO     0x12   /* CH1 VSOURCE result low byte  */
+#define PAC1720_REG_CH2_VSRC_HI     0x13   /* CH2 VSOURCE result high byte */
+#define PAC1720_REG_CH2_VSRC_LO     0x14   /* CH2 VSOURCE result low byte  */
 
 /* Full-scale sense voltage (mV) for the chosen range */
 #define PAC1720_FSR_MV              80.0f   /* ±80 mV range */

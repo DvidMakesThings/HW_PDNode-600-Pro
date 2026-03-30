@@ -63,6 +63,9 @@ set(PDNode_SOURCES
     drivers/snmp.c
     drivers/snmp_table.c
 
+    # EEPROM I/O layer
+    eeprom/eeprom_io.c
+
     # Web
     web/http_server.c
     web/status_handler.c
@@ -86,6 +89,7 @@ pico_enable_stdio_usb(PDNode_RTOS 0)
 target_include_directories(PDNode_RTOS PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
     ${CMAKE_CURRENT_LIST_DIR}/drivers
+    ${CMAKE_CURRENT_LIST_DIR}/eeprom
     ${CMAKE_CURRENT_LIST_DIR}/tasks
     ${CMAKE_CURRENT_LIST_DIR}/web
 )

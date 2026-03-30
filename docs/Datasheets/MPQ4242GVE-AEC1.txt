@@ -1,0 +1,5108 @@
+﻿MPQ4242 
+ 5A, 36V, Fully Integrated USB PD  
+
+Solution with Integrated Buck-Boost 
+ Converter, AEC-Q100 Qualified 
+
+DESCRIPTION FEATURES 
+
+The MPQ4242 is a fully integrated power • All-In-One USB PD Solution for Automotive 
+delivery (PD) solution for USB Type-C sourcing Sourcing Ports 
+ports. It integrates a buck-boost converter with • Integrated 4-Switch Buck-Boost Converter  
+four power switches and a USB PD controller. • Integrated PD 3.0 Controller 
+The device supports up to 5A of continuous • Wide 4.8V to 36V Operating Input Voltage 
+output current (IOUT) under a certain input supply (VIN) Range 
+range. • 3.3V to 22.5V Output Voltage (VOUT) Range 
+The MPQ4242’s USB Type-C port supports USB • Accurate Output CC Current Limit: ±5% 
+PD revision 3.0 with PPS. It is backward • External High-Side MOSFET (HS-FET) can 
+compatible with DCP schemes for battery be Paralleled  
+charging specification (BC1.2), 3A divider mode, • Low IQ when USB Type-C is Disconnected 
+and 1.2V/1.2V mode. The MPQ4242 also • 250kHz / 420kHz Configurable Frequency 
+supports QC 2.0/3.0 and Huawei FCP mode.  with Spread Spectrum 
+
+The MPQ4242 provides a configurable PD • Supports USB Type-C V2.0 
+
+power management state machine when the • Supports USB PD R3.0, V2.0, and PPS with 
+
+battery voltage (VBATT) is low, or if an over- 7 PDO List 
+
+temperature condition occurs. When two • Supports QC 3.0 Specification, Huawei FCP 
+
+MPQ4242s are used as dual PD ports, the • Supports DCP Schemes for BC1.2, 3A 
+internal power sharing logic can effectively Divider Mode, and 1.2V/1.2V Mode 
+distribute the total power. • CCx, DP, and DM Short to VBUS / VBATT 
+
+Protection 
+Fault condition protections include I/O pin short 
+
+• Battery Short to Ground Protection Driver 
+for the BUS and VIN pins, CC over-current 
+
+• I2C Slave Interface 
+protection (OCP), current limiting with hiccup 
+
+• Output Line Drop Compensation  
+mode, output over-voltage protection (OVP), and 
+thermal shutdown.  • Configurable PD Power Management during 
+
+Low Battery Voltages or High Temperatures 
+The MPQ4242 requires a minimal number of • Supports Dual-Port PD Power Sharing 
+readily available, standard external components. • PWM Duty Cycle Configurable LED Driver 
+It is available in a QFN-22 (4mmx5mm) package.  • Up to 120 Minutes for EN Off Delay  
+
+• Available in a QFN-22 (4mmx5mm) 
+Package with Wettable Flanks 
+
+• Available in AEC-Q100 Grade 1 
+
+APPLICATIONS 
+• USB Power Delivery Charging Ports 
+• USB Power Supplies 
+
+All MPS parts are lead-free, halogen-free, and adhere to the RoHS directive. 
+For MPS green status, please visit the MPS website under Quality 
+Assurance. “MPS”, the MPS logo, and “Simple, Easy Solutions” are 
+trademarks of Monolithic Power Systems, Inc. or its subsidiaries. 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 1 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+TYPICAL APPLICATION 
+
+5V/9V/15V/20V at 3A
+V C3
+
+IN 9V to 16V
+0.22µF PPS 3.3V to 11V at 3A
+
+PPS 3.3V to 16V at 3A
+C1
+
+120µF U1 L1 PPS 3.3V to 21V at 3A
+
+EN VIN HS_G BST1 SW1
+4.7µH
+
+C4 C2A C2B
+0.22µF 100µF
+
+VCC SW2 20µF
+
+C5
+2.2µF BST2 USB_GND
+
+VBUS
+OUT
+
+ICOMP
+V
+
+C6 MPQ4242 U
+CC DM
+
+470pF S
+R5 DP
+
+B
+CC1
+
+GPIO2 -
+CC2 C
+
+RNTC
+SCL C7 C8
+
+GPIO1 390pF 390pF
+SDA
+
+AGND PGND ISENS- ISENS+
+RSENS
+
+USB_GND
+
+10m  
+  
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 2 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+ORDERING INFORMATION 
+Part Number* Package Top Marking MSL 
+
+MPQ4242GVE-0000-AEC1 
+MPQ4242GVE-0001-AEC1 QFN-22 
+
+See Below 1 
+MPQ4242GVE-0015-AEC1 (4mmx5mm) 
+MPQ4242GVE-xxxx-AEC1** 
+
+EVKT-MPQ4242 - - - 
+
+* For Tape & Reel, add suffix -Z (e.g. MPQ4242GVE-xxxx-AEC1-Z). 
+
+** “-xxxx” is the configuration code identifier for the register setting stored in the OTP. Each “x” can be a 
+hexadecimal value between 0 and F. Work with an MPS FAE to create this unique number. 
+
+*** The MPQ4242GVE-0000-AEC1 is the default 60W PD version, which can be configured once by the one-time 
+programmable (OTP) memory. The MPQ4242GVE-0001-AEC1 is the standard version for a 45W PD application, 
+
+and it cannot be written with the OTP again. 
+
+TOP MARKING 
+
+ 
+
+ 
+
+MPS: MPS prefix  
+Y: Year code  
+WW: Week code 
+MP4242: Part number 
+LLLLLL: Lot number 
+E: Wettable flank 
+
+EVALUATION KIT EVKT-MPQ4242 
+EVKT-MPQ4242 kit contents (items below can be ordered separately): 
+
+# Part Number Item Quantity 
+1 EVQ4242-VE-00B The MPQ4242 evaluation board 1 
+
+Includes one USB to I2C communication interface device, one 
+2 EVKT-USBI2C-02 1 
+
+USB cable, and one ribbon cable 
+3 MPQ4242GVE-0000-AEC1 The MPQ4242 IC, which can be used for OTP configurations 2 
+
+Order directly from MonolithicPower.com or our distributors. 
+
+Ribbon Cable USB to I2C USB Cable
+Evaluation Board Communication Interface MPS
+
+EVKT-USBI2C-02 VBP GUI
+
+ 
+Figure 1: EVKT-MPQ4242 Evaluation Kit Set-Up
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 3 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+PACKAGE REFERENCE 
+
+TOP VIEW
+
+ISENS+ ISENS- GPIO1 ICOMP VCC AGND HS_G
+
+22 21 20 19 18 17 16
+
+VIN 1 15 BST1
+
+14 SW1
+
+PGND 2 13 EN
+
+12 SW2
+
+OUT 3 11 BST2
+
+4 5 6 7 8 9 10
+
+CC2 DP DM CC1 GPIO2 SDA SCL
+
+ 
+
+QFN-22 (4mmx5mm) with Wettable Flanks 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 4 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+PIN FUNCTIONS 
+Pin # Name Description 
+
+Supply voltage. The MPQ4242 operates from a 4.8V to 36V unregulated input. An input 
+capacitor (CIN) is required to prevent large voltage spikes at the input. Place CIN as close to 
+
+1 VIN 
+the IC as possible. The VIN pin is the drain of the internal power device, and it is the power 
+supply for the whole chip. 
+
+Power ground. Place the PGND pin outside of the CIN and output capacitor (COUT) ground 
+2 PGND path to prevent switching current spikes. PGND requires extra consideration during the PCB 
+
+layout. Make the PGND connection with copper traces and vias.  
+
+Buck-boost output pin. COUT is required to prevent large voltage spikes from appearing at 
+3 OUT 
+
+the output in buck-boost and boost mode. Place COUT as close to the IC as possible. 
+
+Configuration channel (CC). The CC2 pin discovers, configures, and manages connections 
+4 CC2 
+
+across a USB Type-C cable. 
+
+D+ data line to USB connector. The DP pin is the input/output used for handshaking with 
+5 DP 
+
+portable devices. 
+
+D- data line to USB connector. The DM pin is the input/output used for handshaking with 
+6 DM 
+
+portable devices. 
+
+Configuration Channel (CC). The CC1 pin discovers, configures, and manages connections 
+7 CC1 
+
+across a USB Type-C cable. 
+
+USB Type-C polarity indication. The POL pin is an open drain. When 
+POL CC1 is selected as the CC line, POL is pulled low; when CC2 is selected 
+
+as the CC line, POL is an open drain. 
+
+NTC NTC thermal-sense input. 
+
+VCONN_IN 1W VCONN power supply input. 
+8 GPIO2 LED_PWM Output for the PWM driver to the LED. 
+
+Output to indicate if the device is attached. The ATTACH pin is active 
+ATTACH 
+
+low.  
+
+Power sharing 2 input. The POWER_SHARE2 pin is active high. When 
+POWER_SHARE2 this pin’s voltage exceeds 1.87V, the PD power drops to the 
+
+PS_PDP_THD setting. 
+
+9 SDA I2C data line. 
+
+10 SCL I2C clock signal input. 
+
+Bootstrap 2. Connect a 0.22µF capacitor between the SW2 and BST2 pins to form a floating 
+11 BST2 
+
+supply across the high-side switch driver.  
+
+12 SW2 Switch 2 output. Use a wide PCB trace to make the SW2 connection. 
+
+Enable control pin. Apply a logic high voltage on the EN pin to enable the IC. Pull EN to 
+13 EN 
+
+logic low to disable the IC. The EN pin has an internal 6µA pull-up. 
+
+14 SW1 Switch 1 output. Use a wide PCB trace to make the SW1 connection. 
+
+Bootstrap 1. Place a 0.22µF capacitor between the SW1 and BST1 pins to form a floating 
+15 BST1 
+
+supply across the high-side switch driver.  
+
+16 HS_G High-side gate driver signal for an external N-channel MOSFET. 
+
+17 AGND Analog ground. Connect the AGND pin to PGND. 
+
+18 VCC Internal 5V LDO regulator output. Decouple the VCC pin with a 2.2µF capacitor. 
+
+Compensation pin for the CC current limit loop. Decouple the ICOMP pin with a 470pF 
+19 ICOMP 
+
+capacitor. 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 5 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+PIN FUNCTIONS (continued) 
+Pin # Name Description 
+
+Gate drive for the external low-side N-channel power MOSFET. 
+The GATE pin is an open-drain structure. GATE pulls low to turn off 
+
+GATE the power MOSFET when the secondary current limit is triggered. If 
+GATE is not selected, the GND short to VBATT detection function is 
+disabled. 
+
+Power sharing 1 input. The POWER_SHARE1 pin is active low. 
+POWER_SHARE1 When this pin’s voltage is low, the PD power drops to the value set 
+
+by PS_PDP_THD. 
+
+Fault indication. Open-drain output. If a fault occurs, the FAULT pin 
+FAULT 
+
+pulls low. 
+
+Second NTC detection input. If the NTC2 pin is triggered, PDP 
+20 GPIO1 NTC2 
+
+reduces its power to the set power share value. 
+
+Attach and fault indicator. The ATTACH_FLT_ALT pin is an open-
+drain output. If no fault event has occurred, this pin pulls low for 12µs 
+when a sink plug-in is detected. If a fault occurs, it pulls low. See the 
+truth table below for more details. 
+
+ATTACH_FLT_ALT 
+Device Plug In 0 1 1 0 
+Fault Event 0 0 1 1 
+ATTACH_FLT_ Open 12µs pull-down 
+
+Low Low 
+ALT drain pulse 
+
+ 
+
+Current monitor output. The IMON pin represents the signal 
+IMON 
+
+between the ISENS+ and ISENS- pins. 
+
+Negative node of current-sense signal input. Place a current-sense resistor between the 
+21 ISENS- 
+
+PGND pin and the USB port’s GND. Connect the ISENS- pin to the PGND side. 
+
+Positive node of current-sense signal input. Place a current-sense resistor between the 
+22 ISENS+ 
+
+PGND pin and the USB port’s GND. Connect the ISENS+ pin to the USB port’s GND side. 
+
+  
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 6 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+ABSOLUTE MAXIMUM RATINGS (1) Thermal Resistance             θJA           θJC 
+
+Supply voltage (VIN) ...................... -0.3V to +40V EVQ4242-VE-00B (6) ……....27.5.….5.2...°C/W 
+
+V QFN-22 (4mmx5mm) (7) ……..44….….9... °C/W 
+HS_G ...................................... -0.3V to VIN + 12V 
+
+VEN ................................................ -0.3V to +40V 
+VOUT, VCC1, VCC2, VDP, VDM ............... -0.3V to +26V Notes: 
+
+1) Exceeding these ratings may damage the device. 
+VSW1…………………………-0.3V (-5V for <10ns) 
+
+2) The maximum allowable power dissipation is a function of the 
+to VIN + 0.3V (+43V for <10ns) maximum junction temperature, TJ (MAX), the junction-to-
+
+V ambient thermal resistance, θJA, and the ambient temperature, 
+SW2………………………...-0.3V (-5V for <10ns) 
+
+TA. The maximum allowable continuous power dissipation at 
+to VOUT + 0.3V (29V for <10ns) any ambient temperature is calculated by PD (MAX) = (TJ 
+VBST1 ................................................. VSW1 + 6.5V (MAX) - TA) / θJA. Exceeding the maximum allowable power 
+
+V dissipation can cause excessive die temperature, and the 
+BST2 ................................................. VSW2 + 6.5V 
+
+device may go into thermal shutdown. Internal thermal 
+All other pins ................................ -0.3V to +5.5V shutdown circuitry protects the device from permanent 
+Continuous power dissipation (TA = 25°C) (2) damage. 
+
+3) HBM, per JEDEC specification JESD22-A114; CDM, per 
+QFN-22 (4mmx5mm) ............................... 4.55W 
+
+JEDEC specification JESD22-C101, AEC specification 
+Junction temperature ................................ 150°C AECQ100-011. JEDEC document JEP155 states that 500V 
+
+Lead temperature ..................................... 260°C HBM allows safe manufacturing with a standard ESD control 
+process. JEDEC document JEP157 states that 250V CDM 
+
+Storage temperature ................ -65°C to +150°C allows safe manufacturing with a standard ESD control 
+process. 
+
+ESD Ratings (3) 
+4) HBM with regard to GND. 
+5) The device is not guaranteed to function outside of its operating 
+
+CC1/CC2/DP/DM (HBM) (4) ........................ ±8kV  
+conditions. 
+
+Human body model (HBM) ........................ ±2kV  6) Measured on MPQ4242 test board, 43mmx5mm, 4-layer PCB. 
+
+Charged device model (CDM)  ................ ±750V 7) Measured on JESD51-7, 4-layer PCB. The value of θJA given 
+in this table is only valid for comparison with other packages 
+
+Recommended Operating Conditions (5) and cannot be used for design purposes. These values were 
+calculated in accordance with JESD51-7 and simulated on a 
+
+Supply voltage (VIN) ......................... 4.8V to 36V specified JEDEC board. They do not represent the 
+
+Output voltage (VOUT) .................... 3.3V to 22.5V performance obtained in an actual application. 
+
+Output current ......................... 5A or 100W peak 
+Operating junction temp (TJ) .... -40°C to +150°C 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 7 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+ELECTRICAL CHARACTERISTICS 
+VIN = 12V, VEN = floating, TJ = -40°C to +150°C, typical value is tested at TJ = 25°C, unless otherwise 
+noted. 
+
+Parameter Symbol Condition Min Typ Max Units 
+
+EN = 0V, TJ = 25°C  12 20 μA 
+Supply current (shutdown) IIN 
+
+EN = 0V, TJ = -40°C ~125°C  12 80 μA 
+
+No device attached, set EN to 
+Supply current (standby) IQ_STB  150 200 μA 
+
+1b via the I2C, TJ = 25°C  
+
+Buck-boost non-switching, CC 
+Supply current (quiescent) IQ_BB  4  mA 
+
+attached 
+
+EN rising threshold VEN_RISING  -4% 1.3 +4% V 
+
+EN hysteresis VEN_HYS   100  mV 
+
+EN pull-up current IEN VEN = 2V 3 6 9 μA 
+
+Thermal shutdown (8) TTSD   175  °C 
+
+Thermal hysteresis (8) TTSD_HYS   20  °C 
+
+VIN under-voltage lockout 
+VIN_UVLO_RISING  -4% 4.3 +4% V 
+
+threshold rising 
+
+VIN under-voltage lockout 
+VIN_UVLO_HYS   400  mV 
+
+threshold hysteresis 
+
+VCC regulator VCC  4.75 5 5.25 V 
+
+VCC load regulation VCC_REG ICC = 70mA  3  % 
+
+VBUS_UV falling threshold 1 VBUS_UV1  2.9 3 3.1 V 
+
+VBUS_UV falling threshold 2 VBUS_UV2  -3% 4.5 +3% V 
+
+Buck-boost Converter 
+
+Switch A on resistance RDS_ON_A   16.3  mΩ 
+
+Switch B on resistance RDS_ON_B   41.5  mΩ 
+
+Switch C on resistance RDS_ON_C   15  mΩ 
+
+Switch D on resistance RDS_ON_D   15.3  mΩ 
+
+VIN + 
+VHS_G voltage VHSG    V 
+
+10 
+
+VHS_G source current (8) IHSG   100  μA 
+
+VHS_G pull-down RHS_DN   3 6.5 Ω 
+
+VOUT0  -3% 3.3 +3% V 
+
+VOUT1  -2% 5 +2% V 
+Output voltage 
+
+VOUT2  -1.5% 9 +1.5% V 
+
+VOUT3  -1.5% 20 +1.5% V 
+
+Output over-voltage 
+VOVP  112 117 122 % 
+
+protection (OVP) 
+
+Output absolute OVP VOVP_ABS  24 25 26 V 
+
+OVP recovery hysteresis VOVP_HYS   10  % 
+
+Input over-voltage protection VIN_OVP OTP trim option 21.4 22.4 23.4 V 
+
+Input OVP recovery 
+VOVP_HYS OTP trim option  2  V 
+
+hysteresis 
+
+  
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 8 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+ELECTRICAL CHARACTERISTICS (continued) 
+VIN = 12V, VEN = floating, TJ = -40°C to +150°C, typical value is tested at TJ = 25°C, unless otherwise 
+noted. 
+
+Parameter Symbol Condition Min Typ Max Units 
+
+VEN = 0V, VSW = 36V, TJ = 25°C   1000 nA 
+Switch leakage SWLKG VEN = 0V, VSW = 36V, TJ = -
+
+  80 μA 
+40°C~125°C 
+
+Set LINE_DROP_COMP to 01b 
+Line drop compensation VLDC via the I2C, VOUT = 5V, IOUT = 3A  150  mV 
+
+(only enabled when VOUT > 4.9V) 
+
+OC threshold = 1A,  
+IOC1 9 10 11 mV 
+
+RSENS = 10mΩ  
+ISENS OC Threshold 
+
+OC threshold = 3A,  
+IOC2 28.5 30 31.5 mV 
+
+RSENS = 10mΩ  
+
+Switch A current limit ILIMIT1 Switch A, boost mode  20  A 
+
+Switch B valley limit ILIMIT2 Switch B, buck mode  6.7  A 
+
+fSW1 Set FREQ to 00b via the I2C 200 250 300 kHz 
+Oscillator frequency 
+
+fSW2 Set FREQ to 01b via the I2C 350 420 490 kHz 
+
+Frequency dithering span fDITH_SPAN Set FREQ to 01b via the I2C  ±11  % 
+
+Minimum on time (8) tON_MIN Buck SWC  80  ns 
+
+Minimum off time (8) tOFF_MIN Buck SWB  60  ns 
+
+5V output from 10% to 90%, 
+Soft-start time tSS 0.5 1.1 1.7 ms 
+
+Constant slew rate for other VOUT 
+
+Output discharge resistance RDIS_OUT   320  Ω 
+
+Ground NMOSFET Gate Driver 
+GND short to battery threshold VRGND RSENS = 10mΩ  135  mV 
+
+Short to battery retry delay (8) tSBP   1  s 
+
+Gate pull-down resistance RPD   20 45 Ω 
+
+NTC, NTC2 
+External thermal sense RP = 43.2kΩ, RNTC = 4.79kΩ 
+
+VNTC_ETY 8% 10% 12% VCC 
+triggering voltage (100C) 
+
+External thermal sense Set NTC_HYSTERESIS to 0b via 
+VNTC_RCY1  20%  VCC 
+
+recovery voltage 1 the I2C 
+
+External thermal sense Set NTC_HYSTERESIS to 1b via 
+VNTC_RCY2 
+
+recovery voltage 2 the I2
+ 30%  VCC 
+
+C 
+
+GPIO1 
+
+Power share input high VIH_PS  2   V 
+
+Power share input low VIL_PS    0.8 V 
+
+Power share pull-up resistance ILKG_PS 5V pull-up  1  MΩ 
+
+Fault pull-down resistance RPD_FAULT   20 45 Ω 
+
+Fault leakage ILKG_FAULT    3 μA 
+
+GPIO2 
+
+Connect CC1 to GND with a 
+POL pull-down resistance RPD_POL   45 Ω 
+
+5.1kΩ resistor 
+
+Connect CC2 to GND with a 
+POL leakage ILKG_POL   3 μA 
+
+5.1kΩ resistor 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 9 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+ELECTRICAL CHARACTERISTICS (continued) 
+VIN = 12V, VEN = floating, TJ = -40°C to +150°C, typical value is tested at TJ = 25°C, unless otherwise 
+noted. 
+
+Parameter Symbol Condition Min Typ Max Units 
+
+LED PWM output FREQ fLED  21 24 27 kHz 
+
+LED_PWM output duty DLED   50  % 
+
+USB Type-C connected, 
+Connected output VATTO   0.4 V 
+
+force 50μA  
+
+Power share input threshold VTH_PS  1.52 1.87 2.22 V 
+
+USB Charging Mode Identification 
+BC1.2 DCP Mode 
+
+DP and DM short resistance RDP_DM_SHORT VDP = 0.8V, IDM = 1mA  30 70 Ω 
+
+Divider Mode 
+
+DP output voltage VDIVIDER_DP VOUT = 5V 2.5 2.7 2.9 V 
+
+DM output voltage VDIVIDER_DM VOUT = 5V 3.05 3.3 3.55 V 
+
+DP output impedance RDIVIDER_DP   23  kΩ 
+
+DM output impedance RDIVIDER_DM   17  kΩ 
+
+1.2V/1.2V Mode  
+
+DP/DM output voltage VDP_DM_1.2V VOUT = 5V 1.15 1.25 1.35 V 
+
+DP/DM output impedance RDP_DM_1.2V   75  kΩ 
+
+Quick Charge 3.0 Mode 
+
+DP/DM low voltage VQC_LOW  0.2 0.3 0.4 V 
+
+DP/DM high voltage VQC_HIGH  1.8 2 2.2 V 
+
+QC mode entry voltage glitch 
+tQC_GLITCH   1000  ms 
+
+time (QC identify) (8) 
+
+DP output impendence RDP_QC   350  kΩ 
+
+DM output impendence RDM_QC   20  kΩ 
+
+Request voltage time (8) tV_NEW_REQUEST  200   ms 
+
+Output voltage change glitch 
+tGLITCH_V_CHANGE  20  60 ms 
+
+time (8) 
+
+Unplug VBUS discharge time (8) tVBUS_DISC_QC    500 ms 
+
+CDP Mode 
+
+DM CDP output voltage VDM_SRC VDP = 0.6V, DM sink = 250µA 0.5 0.6 0.7 V 
+
+DP rising lower window 
+VDAT_REF  0.25 0.35 0.45 V 
+
+threshold for VDM_SRC EN 
+
+DP rising lower window 
+VDAT_REF_HYS   30  mV 
+
+threshold hysteresis  
+
+DP rising upper window 
+VLGC_SRC  0.8 0.9 1 V 
+
+threshold for VDM_SRC  
+
+DP rising upper window 
+VLGC_SRC_HYS   50  mV 
+
+threshold hysteresis 
+
+FCP Mode 
+
+DM Tx high voltage(8) VFCPT_H RLOAD = 15kΩ 2.55  5 V 
+
+DM Tx low voltage(8) VFCPT_L RLOAD = 15kΩ   0.4 V 
+
+DM Rx high voltage VFCPR_H  1.5  5 V 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 10 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+ELECTRICAL CHARACTERISTICS (continued) 
+VIN = 12V, VEN = floating, TJ = -40°C to +150°C, typical value is tested at TJ = 25°C, unless otherwise 
+noted. 
+
+Parameter Symbol Condition Min Typ Max Units 
+
+DM Rx low voltage VFCPR_L    1 V 
+
+DM pull-low resistance RLD_D-   15  kΩ 
+
+Unit interval of PHY(8) UI  144 160 176 μs 
+
+USB Type-C - CC1 and CC2 pins 
+
+CC pull-up current 1 IRP1 VBUS = 5V @ 3A, TJ = 0°C to 85°C -8% 330 +8% μA 
+
+CC pull-up current 2 IRP2 VBUS = 5V @ 1.5A, TJ = 0°C to 85°C -8% 180 +8% μA 
+
+CC voltage to enable VCONN 
+VRA1    0.75 V 
+
+for 3A USB Type-C mode 
+
+CC voltage to enable VBUS 
+VRD1  0.85  2.45 V 
+
+for 3A USB Type-C mode 
+
+CC disconnect threshold for 
+VOPEN1  2.75   V 
+
+3A USB Type-C mode 
+
+CC voltage to enable VCONN 
+VRA2    0.35 V 
+
+for 1.5A USB Type-C mode 
+
+CC voltage to enable VBUS 
+VRD2  0.45  1.5 V 
+
+for 1.5A USB Type-C mode 
+
+CC disconnect threshold for 
+VOPEN2  1.7   V 
+
+1.5A USB Type-C mode 
+
+CC voltage falling de-bounce 
+tCC_DEBOUNCE VBUS enable deglitch 100 150 200 ms 
+
+timer 
+
+CC voltage rising de-bounce 
+tPD_DEBOUNCE VBUS disable deglitch 5 10 15 ms 
+
+timer 
+
+PVCONN_100m
+100mW VCONN output power Default 100   mW 
+
+W 
+
+1W VCONN output power PVCONN_1W Set GPIO2 to 011b via the I2C 1   W 
+
+USB PD 
+
+Unit interval time (8) tUI  3.03  3.7 μs 
+
+Transmitter 
+
+End drive BMC time (8) tEDBMC    23 μs 
+
+Falling time (8) tFALL  300 400  ns 
+
+Rising time (8) tRISE  300 400  ns 
+
+Hold low BMC time (8) tHLBMC  1   μs 
+
+Logic high voltage VLH  1.05  1.2 V 
+
+Logic low voltage VLL    70 mV 
+
+Output impedance  ZTX   45  Ω 
+
+Receiver (8) 
+
+CC receiver capacitance  CRECEIVER    600 pF 
+
+Transitions for signal 
+NTRANSITION  3   Edges 
+
+detection  
+
+Rx bandwidth limiting filter  tRX_FILTER  100   ns 
+
+Time window for detecting tTRANSITION_WI
+ 12  20 μs 
+
+non-idle  NDOW 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 11 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+ELECTRICAL CHARACTERISTICS (continued) 
+VIN = 12V, VEN = floating, TJ = -40°C to +150°C, typical value is tested at TJ = 25°C, unless otherwise 
+noted. 
+
+Parameter Symbol Condition Min Typ Max Units 
+
+Receiver input impedance  ZBMC_RX  1   MΩ 
+
+I2C Interface Specifications (8) 
+
+I2C pull-up VDD can be to 1.8V 
+Input logic high VIH 1.26   V 
+
+to 5V 
+
+Input logic low VIL    0.54 V 
+
+Output voltage logic low VOUT_L    0.45 V 
+
+SCL clock frequency fSCL   400  kHz 
+
+SCL high time tHIGH  60   ns  
+
+SCL low time tLOW  160   ns 
+
+Data set-up time tSU_DAT  10   ns 
+
+Data hold time tHD_DAT   70  ns 
+
+Set-up time for repeated 
+tSU_STA  160   ns 
+
+start condition 
+
+Hold time for repeated 
+tHD_STA  160   ns 
+
+start condition 
+
+Bus free time between a 
+tBUF  160   ns 
+
+start and a stop condition 
+
+Set-up time for stop 
+tSU_STO  160   ns 
+
+condition 
+
+Rising time of SCL and 
+tR  10  300 ns 
+
+SDA 
+
+Falling time of SCL and 
+tF  10  300 ns 
+
+SDA 
+
+Pulse width of suppressed 
+tSP  0  50 ns 
+
+spike 
+
+Capacitance bus for each 
+CB    400 pF 
+
+bus line 
+
+SCL low time tLOW  160   ns 
+
+Note: 
+
+8) Guaranteed by characterization sample test. 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 12 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+TYPICAL CHARACTERISTICS 
+VIN = 12V, VOUT = 5V, L = 4.7µH, TA = 25°C, unless otherwise noted. 
+
+Efficiency vs. Load Current Efficiency vs. Load Current
+V V
+
+IN = 9V, FCCM, L = 4.7µH, IN = 12V, FCCM, L = 4.7µH, 
+R R
+
+DC = 9.3mΩ, disable external switch A DC = 9.3mΩ, disable external switch A 
+100 100
+
+95 95
+
+90 90
+
+VOUT=5V
+85 85 VOUT=5V
+
+VOUT=9V VOUT=9V
+80 VOUT=12V 80 VOUT=12V
+
+VOUT=15V
+75 75 VOUT=15V
+
+VOUT=20V VOUT=20V
+70 70
+
+0 1 2 3 4 0 1 2 3 4
+LOAD CURRENT (A)  LOAD CURRENT (A)  
+
+Efficiency vs. Load Current Load Regulation vs. Load 
+V Current
+
+IN = 16V, FCCM, L = 4.7µH,
+RDC = 9.3mΩ, disable external switch A 
+
+100 0.1
+VOUT=5V
+
+95 VOUT=9V
+0.05
+
+90 VOUT=15V
+VOUT=20V
+
+85 VOUT=5V 0
+VOUT=9V
+
+80 VOUT=12V
+VOUT=15V -0.05
+
+75 VOUT=20V
+
+70 -0.1
+0 1 2 3 4 0 1 2 3 4
+
+LOAD CURRENT (A)  LOAD CURRENT (A)  
+
+Case Temperature Rise Line Regulation vs. Input Voltage
+VIN = 12V, fSW = 420kHz, 4.3cmx5cm  PCB, VOUT = 5V, measured between VOUT and 
+disable external switch A PGND
+
+40 0.5
+
+35 0.4 IOUT=0A
+0.3
+
+30
+0.2 IOUT=3A
+
+25 0.1
+20 0
+
+15 -0.1
+VOUT=5V -0.2
+
+10 VOUT=9V -0.3
+5 VOUT=15V
+
+-0.4
+VOUT=20V
+
+0 -0.5
+1 1.5 2 2.5 3 0 10 20 30 40
+
+LOAD CURRENT (A)  INPUT VOLTAGE (V)  
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 13 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+EFFICIENCY (%) EFFICIENCY (%)
+CASE TEMPERATURE RISE(℃)
+
+LINE REGULATION (%) LOAD REGULATION (%) EFFICIENCY (%)
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+TYPICAL CHARACTERISTICS (continued) 
+VIN = 12V, VOUT = 5V, L = 4.7µH, TA = 25°C, unless otherwise noted. 
+
+IMON Voltage vs. Load Current Line Drop Compensaton vs. 
+Load Current
+VOUT = 5V, measured between VOUT and 
+PGND, set 0X1E, bit[6] = 0
+
+1 700
+0.9 150mV@3A
+
+600
+0.8 300mV@3A
+0.7 500 600mV@3A
+
+0.6 400
+0.5
+0.4 300
+
+Vout=5V
+0.3
+
+Vout=12V 200
+0.2
+0.1 Vout=20V 100
+
+0 0
+0.2 1.2 2.2 3.2 0 1 2 3 4
+
+LOAD CURRENT (A)  LOAD CURRENT (A)  
+
+Line Drop Compensaton vs. VBUS Voltage vs. Load Current
+Load Current
+VOUT = 5V,measured between VOUT and 
+PGND, set 0X1E, bit[6] = 1
+
+700 25
+
+600 300mV@3
+A 20
+
+500
+
+400 15
+
+300 10
+200
+
+5
+100
+
+0 0
+0 1 2 3 4 0 1 2 3 4
+
+LOAD CURRENT (A)  LOAD CURRENT(A)  
+
+  
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 14 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+LINE DROP COMPENSATION(mV) IMON VOLTAGE (V)
+
+VBUS VOLTAGE(V) LINE DROP COMPENSATION 
+(mV)
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+TYPICAL PERFORMANCE CHARACTERISTICS 
+VIN = 12V, VOUT = 5V, L = 4.7µH, TA = 25°C, unless otherwise noted. 
+
+ Output Voltage Ripple  Output Voltage Ripple 
+VBUS = 5V, load = 0A VBUS = 5V, load = 3A 
+
+  
+
+  
+
+CH1: VBUS/AC CH1: VBUS/AC 
+
+  
+
+  
+
+ 
+
+CH2: VSW1 CH2: VSW1 
+
+  
+
+CH3: VSW2 CH3: VSW2 
+
+CH4: IL CH4: IL 
+  
+
+  
+    
+
+    
+
+ Output Voltage Ripple  Output Voltage Ripple 
+VBUS = 9V, load = 0A, VBUS = 9V, load = 3A, 
+
+  
+
+ 
+CH1: VBUS/AC 
+
+CH1: VBUS/AC 
+ 
+
+ 
+ 
+
+ 
+
+ 
+CH2: VSW1 
+
+CH2: VSW1 
+ 
+
+ 
+
+CH3: VSW2 
+
+ CH3: VSW2 
+
+CH4: ILL CH4: IL 
+ 
+
+ 
+  
+
+    
+    
+
+ Output Voltage Ripple  Output Voltage Ripple 
+VIN = 14V, VBUS = 15V, load = 0A VIN = 14V, VBUS = 15V, load = 3A 
+
+  
+
+  
+
+CH1: VBUS/AC CH1: VBUS/AC 
+
+  
+
+  
+
+  
+
+CH2: VSW1 CH2: VSW1 
+
+  
+
+CH3: VSW2 CH3: VSW2 
+
+CH4: IL CH4: IL 
+  
+
+  
+    
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 15 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+TYPICAL PERFORMANCE CHARACTERISTICS (continued) 
+VIN = 12V, VOUT = 5V, L = 4.7µH, TA = 25°C, unless otherwise noted. 
+
+ Output Voltage Ripple  Output Voltage Ripple 
+VBUS = 20V, load = 0A VBUS = 20V, load = 2.25A 
+
+  
+
+  
+
+CH1: VBUS/AC CH1: VBUS/AC 
+
+  
+
+CH2: VSW1 CH2: VSW1 
+
+  
+
+CH3: VSW2 CH3: VSW2 
+
+  
+
+ 
+
+CH4: IL CH4: IL 
+  
+
+  
+    
+
+    
+
+ EN Pin Enabled  EN Pin Enabled 
+CC1 connected to a 5.1kΩ Rd resistor,  CC1 connected to a 5.1kΩ Rd resistor,  
+load = 0A load = 3A 
+
+  
+
+  
+
+CH1: VBUS  
+
+ CH1: VBUS 
+
+  
+
+  
+
+CH2: VSW1 CH2: VSW1 
+
+  
+
+CH3: VEN CH3: VEN 
+
+  
+
+CH4: IL CH4: IL 
+  
+
+  
+    
+    
+
+ EN Pin Disabled  EN Pin Disabled 
+CC1 connected to a 5.1kΩ Rd resistor,  CC1 connected to a 5.1kΩ Rd resistor,  
+load = 0A load = 3A 
+
+  
+
+  
+
+CH1: VBUS  
+
+ CH1: VBUS 
+
+CH2: VSW1  
+
+ CH2: VSW1 
+
+  
+
+CH3: VEN CH3: VEN 
+
+  
+
+ 
+
+CH4: IL CH4: IL 
+  
+
+  
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 16 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+TYPICAL PERFORMANCE CHARACTERISTICS (continued) 
+VIN = 12V, VOUT = 5V, L = 4.7µH, TA = 25°C, unless otherwise noted. 
+
+ Input Start-Up  Input Start-Up 
+Load = 0A, CC1 connected to a 5.1kΩ Rd Load = 3A, CC1 connected to a 5.1kΩ Rd 
+resistor resistor 
+
+  
+
+  
+
+  
+
+CH1: VBUS CH1: VBUS 
+
+  
+
+  
+
+CH2: VSW1 CH2: VSW1 
+
+  
+
+CH3: VSW2  
+
+ CH3: VSW2 
+
+CH4: IL CH4: IL 
+  
+
+  
+    
+
+    
+
+ Input Shutdown  Input Shutdown 
+Load = 10mA Load = 3A 
+
+  
+
+  
+
+CH1: VBUS  
+
+ CH1: VBUS 
+
+CH2: VSW1  
+
+ CH2: VSW1 
+
+  
+
+CH3: VSW2 CH3: VSW2 
+
+  
+
+  
+
+CH4: IL CH4: IL 
+  
+
+  
+    
+    
+
+  
+SCP Entry SCP Recovery 
+
+  
+
+  
+
+  
+
+CH1: VBUS CH1: VBUS 
+
+  
+
+CH2: VSW1 CH2: VSW1 
+
+  
+
+CH3: VSW2 CH3: VSW2 
+
+  
+
+  
+
+CH4: IL CH4: IL 
+  
+
+  
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 17 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+TYPICAL PERFORMANCE CHARACTERISTICS (continued) 
+VIN = 12V, VOUT = 5V, L = 4.7µH, TA = 25°C, unless otherwise noted. 
+
+  CC1 Connected to Rd to Enable 
+VBUS 
+
+SCP Steady State 
+IOUT = 0A, CC2 connected to a 1kΩ Ra resistor 
+
+  
+
+ 
+
+CH1: VBUS 
+CH1: VBUS 
+
+ 
+ 
+
+CH2: VSW1 
+
+ CH2: CC1 
+
+CH3: VSW2 
+
+ CH3: CC2/ 
+
+VCONN 
+
+CH4: IL CH4: POL 
+  
+
+  
+    
+
+    
+
+ CC1 Disconnected from Rd to  
+CC2 Connected to Rd to Enable 
+
+Disable VBUS 
+VBUS 
+
+IOUT = 0A, CC2 connected to a 1kΩ RA 
+I ected to a 1kΩ R
+
+resistor OUT = 0A, CC1 conn A resistor 
+
+  
+
+ 
+
+CH1: VBUS CH1: VBUS 
+
+  
+
+CH2: CC1/ 
+CH2: CC1 
+
+VCONN 
+ 
+
+CH3: CC2/ CH3: CC2  
+
+VCONN 
+
+CH4: POL CH4: POL 
+ 
+
+  
+ 
+
+    
+    
+
+ CC2 Disconnected from R  
+d to 
+
+Disable VBUS PDO Transition 
+IOUT = 0A, CC1 connected to1kΩ Ra resistor 5V PDO to 9V PDO 
+
+  
+
+  
+
+  
+
+CH1: VBUS  
+
+ 
+CH1: VBUS 
+
+CH2: CC1/ 
+ 
+
+VCONN 
+
+ 
+CH2: CC1 
+
+CH3: CC2   
+
+CH3: CC2/ 
+CH4: POL 
+
+ VCONN 
+   
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 18 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+TYPICAL PERFORMANCE CHARACTERISTICS (continued) 
+VIN = 12V, VOUT = 5V, L = 4.7µH, TA = 25°C, unless otherwise noted. 
+
+ PDO Transition  PDO Transition 
+9V PDO to 5V PDO 9V PDO to 15V PDO 
+
+  
+
+  
+
+  
+
+  
+
+ 
+CH1: VBUS 
+
+ 
+ 
+
+CH1: VBUS 
+
+CH2: CC1 CH2: CC1 
+
+ 
+
+CH3: CC2/ CH3: CC2/ 
+
+V V
+CONN  CONN  
+
+  
+  
+
+    
+    
+
+ PDO Transition  PDO Transition 
+15V PDO to 9V PDO 15V PDO to 20V PDO 
+
+  
+
+  
+
+  
+
+  
+
+  
+
+CH1: VBUS 
+CH1: VBUS 
+
+CH2: CC1 
+CH2: CC1 
+
+ 
+ 
+
+CH3: CC2/ 
+CH3: CC2/ 
+
+VCONN  
+ VCONN  
+
+   
+    
+    
+
+ PDO Transition  PDO Transition 
+20V PDO to 15V PDO 5V PDO to 20V PDO 
+
+  
+
+  
+
+  
+
+  
+
+CH1: VBUS CH1: VBUS 
+
+  
+
+CH2: CC1 CH2: CC1 
+
+  
+
+CH3: CC2/ CH3: CC2/ 
+
+VCONN VCONN 
+
+    
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 19 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+TYPICAL PERFORMANCE CHARACTERISTICS (continued) 
+VIN = 12V, VOUT = 5V, L = 4.7µH, TA = 25°C, unless otherwise noted. 
+
+ PDO Transition  Mobile Phone Charging Test 
+20V PDO to 5V PDO Phone requests 3.3V to 21V APDO 
+
+  
+
+  
+
+  
+
+ CH1: VBUS 
+
+CH1: VBUS  
+
+  
+
+ CH2: CC1 
+
+CH2: CC1  
+
+ CH3: CC2/ 
+
+CH3: CC2/ VCONN  
+
+VCONN  CH4: IOUT 
+ 
+
+  
+    
+
+    
+
+  Thermal Image 
+VIN = 13.5V, VOUT = 20V, IOUT = 3A, 
+fSW = 420kHz, 4.3cmx5cm PCB, 
+
+Laptop Charging Test top/bottom layer: 2oz; mid-layer 1 and 2: 1oz, 
+Laptop requests 20V PDO enable external switch A 
+
+  
+
+ 
+
+ 
+
+ 
+
+CH1: VBUS 
+
+ 
+
+CH2: CC1 
+
+ 
+
+CH3: CC2/ 
+
+VCONN  
+
+CH4: IOUT 
+ 
+
+  
+    
+    
+
+    
+
+    
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 20 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+FUNCTIONAL BLOCK DIAGRAM 
+
+VIN
+
+UVLO Current-Sense 
+5V VCC Amplifier
+
+VCC
+Regulator
+
+DrA
+Oscillator Σ HS_G
+
+1.8V VDD
+Regulator
+
+2
+I C Bootstrap 1 BST1
+
+2
+I C/PD
+
+Reference I HS
+REF
+
+PWM Comparator Driver A
+
+VCC SW1
+
+Soft-Start Ramp
+LS
+
+RFB1 FB
+OUT Driver B
+
+V
+R IN OVP 
+
+FB2 Error Amplifier PGND
+OVP, Comparator
+
+PG Buck-
+Voltage VVIN_OV_REF Boost Bootstrap 2 OUT
+
+VIN Regulation Control
+VIN Logic
+
+BST2
+6µA
+
+HS
+D
+
+EN Driver
+
+VCC SW2
+
+LS
+C
+
+Driver
+CC Current Limit, 
+
+GPIO2 Line Drop Comp.
+GPIO2 Logic AMP1
+
+ISENS+
+Thermal 
+
+ISENS-
+Sense
+
+IREF ICOMP
+
+GPIO1 GPIO1 Control 3.3V VCC
+
+VCONN
+RP
+
+CC2
+SCL 2 USB Type-C 
+
+I C USB PD
+Connection, 
+
+Register Phy. and 
+Detection, CC2
+
+and Protocol 
+and VCONN 
+
+SDA OTP Layer 3.3V VCC
+Control
+
+CC1
+
+RP
+OUT VCONN
+
+QC 3.0, 
+CC1
+
+FCP
+
+AGND 2.7V/3.3V
+
+DCP DM
+BC1.2 Auto 
+
+1.2V Detect. DP
+
+ 
+Figure 2: Functional Block Diagram 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 21 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+OPERATION 
+The MPQ4242 is a buck-boost converter with Buck Mode (VIN > VOUT) 
+four integrated switches and USB charging When VIN exceeds VOUT, the MPQ4242 works in 
+protocols. The buck-boost converter works in buck mode. In buck mode, switch A (SWA) and 
+current mode, which provides a fast transient switch B (SWB) switch for buck regulation. 
+response for buck, boost, and buck-boost Meanwhile, switch C (SWC) is off, and switch D 
+modes. One special buck-boost control strategy (SWD) stays on to conduct the inductor current 
+provides high efficiency across the full input (IL). 
+range and smooths transitions between different 
+modes. Figure 2 on page 21 shows the internal SWA works with a peak current mode control 
+
+block diagram.  logic, and SWB turns on until the tCLK times out. 
+In each buck mode cycle, SWA turns on to 
+
+Pulse-Width Modulation (PWM) Operation charge IL. When IL reaches the value set by 
+The MPQ4242 operates in a fixed-frequency VCOMP, SWA turns off and SWB turns on. SWB 
+peak current mode control to regulate the output stays on until the next clock begins. Then SWA 
+voltage (VOUT). The internal clock initiates the turns on and the cycle repeats. The COMP 
+PWM cycle and turns on the related power signal is the error amplifier (EA) output from the 
+switch. The switch remains on until its current VOUT feedback and the internal FB reference 
+reaches the value set by the COMP voltage voltage. Figure 5 shows the buck mode 
+(VCOMP). When the power switch is off, it remains waveform. 
+off until the next clock cycle starts. The switching 
+frequency (fSW) can be configured to 250kHz or SW1
+
+420kHz via the I2C. 
+SW2
+
+Buck-Boost Operation  COMP
+
+The MPQ4242 can regulate VOUT to be above, IL
+below, or equal to the input voltage (VIN). Figure 
+
+t
+3 shows a buck-boost power structure with one CLK
+
+inductor and four switches (SWA, SWB, SWC, Controlled by COMP
+ 
+
+and SWD).  Figure 5: Buck Mode Waveform 
+VIN VOUT
+
+Boost Mode (VIN < VOUT) 
+SWA SWD When VIN is below VOUT, the MPQ4242 works in 
+
+boost mode. In boost mode, SWC and SWD 
+SW1 switch for boost regulation. Meanwhile, SWB is 
+
+SW2
+
+off and SWA stays on to conduct IL 
+SWB SWC
+
+SWC turns on at the beginning of each clock 
+cycle. SWC turns off when IL reaches the value 
+
+ set by VCOMP. SWD turns on until tCLK times out to 
+Figure 3: Buck-Boost Topology boost IL to the output. Figure 6 shows the boost 
+
+work waveform. 
+Buck mode, boost mode, and buck-boost mode 
+can have different VIN inputs (see Figure 4).  SW1
+
+Boost Buck-Boost Buck SW2
+
+SWA on, SWB off, All FETs SWD on, SWC off, COMP
+SWC and SWD Switch SWA and SWB IL
+
+switch V switch
+O-SET
+
+Controlled by 
+VIN Voltage COMP   
+
+Boost Boost Buck Buck Figure 6: Boost Waveform 
+DMAX Threshold Threshold DMIN  
+
+Figure 4: Buck-Boost Operation Range 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 22 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+Buck-Boost Mode (VIN ≈ VOUT) recommended. The EXT_HS_FET_RON 
+
+When VIN is almost equal to VOUT, the converter configuration value should match (or be close to) 
+
+cannot provide enough energy to the load in the MOSFET’s real RDS(ON) under a 10VGS 
+
+buck mode due to SWA’s minimum off time. In condition. The external MOSFET only turns on in 
+
+boost mode, the converter supplies too much boost mode when VIN is significantly below VOUT. 
+
+power to the load due to SWC’s minimum on 5V Internal VCC Regulator 
+time. Under these conditions, the MPQ4242 
+
+The 5V internal regulator powers the CC pin’s 
+adopts buck-boost control to regulate the output 
+
+pull-up, VCONN, and most of the internal logic 
+(see Figure 7).  
+
+circuitries. The regulator takes the VIN input and 
+operates across the full VIN range. When VIN 
+
+SW1 75% 
+exceeds 5V, the regulator’s output is in full 
+
+tAD-ON
+
+regulation. If VIN is below 5V, the output 
+decreases with VIN.  
+
+SW2
+The VCC pin can support 0.1W of output power 
+
+tAC-ON tBD-ON
+I (P
+L OUT). The VCC pin requires a 2.2µF ceramic 
+
+decoupling capacitor. 
+
+Under-Voltage Lockout (UVLO) 
+tBUCK-BOOS T tBUCK-BOOS T  Under-voltage lockout (UVLO) protects the chip 
+
+Figure 7: Buck-Boost Waveform from operating at an insufficient supply voltage. 
+
+If V The MPQ4242’s UVLO comparator monitors VIN.  
+IN is almost equal to VOUT, buck-boost mode 
+
+activates. The MOSFET turn-on sequence is as Internal Soft-Start 
+follows: 
+
+Soft start prevents the converter’s VOUT from 
+1. SWA and SWC overshooting during start-up. When the chip 
+2. SWA and SWD starts, the internal circuitry generates a soft-start 
+3. SWB and SWD voltage (VSS) that ramps up from 0V to 5V. When 
+
+SS is below the reference voltage (VREF), the 
+Throughout this process, IL can reach the VCOMP 
+
+error amplifier uses VSS as the reference. When 
+requirement, and supply enough current to the 
+
+VSS exceeds VREF, the error amplifier uses VREF 
+output. 
+
+as the reference. The SS time is internally set to 
+The SWA and SWD turn-on time is fixed to 75% 1ms for a 5V VOUT. 
+of the buck-boost operation frequency.  
+
+If the output of the MPQ4242 is pre-biased to a 
+If the buck mode minimum off time is almost certain voltage during start-up, the IC disables 
+reached, the IC enters buck-boost mode. If VIN is the switching of both the high-side and low-side 
+about 10% above VOUT in buck-boost mode, the switches until the voltage on the internal soft-
+IC changes to buck mode. If VIN is about 10% start capacitor exceeds the internal feedback 
+below VOUT, the IC enters boost mode. If the voltage.  
+boost mode minimum on time is almost reached, 
+
+Constant Current (CC) Mode Over-Current-
+the IC enters buck-boost mode. 
+
+Protection (OCP) 
+External High-Side MOSFET Gate Driver The MPQ4242 senses the ground current via an 
+An external N-channel MOSFET can be added external current-sense resistor. The device uses 
+to improve system efficiency, especially for PD this information to limit the output current (IOUT). 
+applications exceeding 45W. For applications This is a highly accurate current limit. If IOUT 
+below 45W, an external MOSFET is not exceeds the current-limit threshold, the 
+required, and EXT_HS_FET_RON should be set MPQ4242 enters constant current (CC) limit 
+to 000b. mode, and the current amplitude is limited.  
+
+The external MOSFET is paralleled with the If the MPQ4242 works in fixed PDO mode, it 
+internal SWA. To accurately sense the input sends a hard reset message once IOUT exceeds 
+current, a 5mΩ to 12mΩ RDS(ON) MOSFET is the constant current limit. If the MPQ4242 works 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 23 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+in APDO mode and continues to reduce the load Floating Driver and Bootstrap Charging 
+resistance, VOUT drops until reaches its under- An external bootstrap capacitor powers the 
+voltage (UV) threshold (about 3V). If a UV floating power MOSFET driver. This floating 
+condition is triggered, the MPQ4242 sends a driver has its own UVLO protection. Its UVLO 
+hard reset message. If IOUT still exceeds the over- rising threshold is 2.2V, with a hysteresis of 
+current protection (OCP) threshold, the 150mV. The BST1 capacitor’s voltage is 
+MPQ4242 enters hiccup mode to periodically regulated internally by VCC through D2, M1, and 
+restart the part.  C4. The BST2 capacitor’s voltage is regulated 
+
+This protection is especially useful when the internally by VCC through D3, M2, and C5 (see 
+
+output is dead-shorted to ground. This operation Figure 8).   
+
+greatly reduces the average short-circuit current, 
+S1
+
+alleviates thermal issues, and protects the M1 S2 M2
+
+regulator. The MPQ4242 exits hiccup mode VCC
+BST1 BST2 VCC
+
+once the OC condition is removed. D2 C4 C5 D3
+L1
+
+The current limit threshold can be set from 1A to SW1
+Turn on the P-channel SW2 Turn on the P-channel 
+
+MOSFET when SWC is 
+6.35A (with a 50mA resolution) via the I2C. MOSFET when SWB is on on  
+Peak and Valley Current Limit. Figure 8: Internal Bootstrap Charging Circuit 
+
+In addition to the output CC limit, the MPQ4242 In buck mode, S2 is always on, and BST2 is 
+also has SWA peak current and SWB valley charged by BST1. In boost mode, S1 is always 
+current limits. on, and BST1 is charged by BST2. 
+
+In buck mode and buck-boost mode, both the Output Line Drop Compensation 
+SWA peak current limit and the SWB valley The MPQ4242 is capable of compensating for a 
+current limit work as thresholds. The SWB’s VOUT drop. 
+valley current limit has a 6.7A falling threshold. 
+In boost mode, only the SWA peak current limit If IOUT is 0A, there is no compensation. If IOUT is 
+threshold operates. The peak current limit can be 3A, the line drop compensation voltage is 150mV. 
+configured via the I2C or one-time- For example, if the USB output current exceeds 
+programmable (OTP) memory. 3A, the line drop compensation voltage stays at 
+
+150mV and does not rise. The line drop 
+Output Over-Voltage Protection (OVP) compensation value can be set to 150mV, 
+The MPQ4242 has output over-voltage 300mV, or 600mV via 0x18, bits[2:1]. Set 0x1E, 
+protection (OVP). If VOUT exceeds 117% of VREF, bit[6] = 1 to enable an additional compensation 
+SWA, SWB, SWC, and SWD turn off. The voltage. Then the line drop compensation value 
+resistor discharge path from the OUT pin to can be set to 300mV, 450mV, or 750mV when 
+ground turns on. When VOUT drops to 107% of the load is 3A. 
+VREF, the chip returns to normal operation.  
+
+Line drop compensation can be configured via 
+The absolute output OVP threshold is about 25V. the I2C or OTP. The compensated voltage is the 
+The discharge resistor turns on when absolute same for all voltages. 
+OVP is triggered. 
+
+For the default IC, line drop compensation is 
+Input Over-Voltage Protection (VIN OVP) disabled in PPS mode. Line drop compensation 
+The MPQ4242 has input OVP. If VIN exceeds its can be enabled in PPS mode through factory 
+OVP rising threshold (about 22V), SWA, SWB, OTP trimming. 
+SWC, and SWD turn off. The chip returns to Thermal Shutdown 
+normal operation when VIN drops to its OVP 
+
+Thermal shutdown prevents the chip from 
+falling threshold (about 20V). 
+
+operating at exceedingly high temperatures. 
+VIN OVP if disabled by default, and it is controlled 
+
+If the silicon die temperature exceeds 175°C, the 
+by OTP trimming. The MPQ4242-0000 does not 
+
+whole chip shuts down. When the temperature 
+have VIN OVP. The MPQ4242-0001 provides VIN 
+OVP. 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 24 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+falls below its lower threshold (about 155°C), the detection function is used for VBUS management 
+chip is enabled again. and can determine the host-to-device 
+
+connection. 
+CHARGING MODE AUTO-DETECTION 
+
+Legacy USB 2.0 Mode Initially, a DFP-to-UFP connection is detected by 
+a host (DFP) when one of the CC pins at its USB 
+
+The MPQ4242 integrates a USB-dedicated 
+Type-C receptacle senses a specified resistance 
+
+charging port automatic detection function that 
+at GND. Subsequently, DFP-to-UFP disconnect 
+
+recognizes most mainstream portable devices. 
+is detected when the CC pin that was terminated 
+
+The device supports the following charging 
+at its USB Type-C receptacle is no longer 
+
+schemes: 
+connected to GND via a specified resistance. 
+
+• USB battery charging specification (BC1.2) / 
+Power is not applied to the USB Type-C host or 
+
+Chinese Telecommunications Industry 
+hub receptacle (VBUS or VCONN) until the DFP 
+
+Standard YD/T 1591-2009 
+detects the presence of a connected device 
+
+• Apple 3A Divider Mode (UFP) port. When a DFP-to-UFP connection is 
+detected, the DFP is expected to enable power 
+
+• 1.2V/1.2V Mode to the receptacle and proceed to normal USB 
+• QC 3.0  operation with the connected device. When a  
+
+DFP-to-UFP disconnect is detected, the port 
+• Huawei FCP Class A sourcing VBUS removes power. 
+The automatic detection function is a state The MPQ4242’s power supply capability is rated 
+machine that supports all of the above DCP for 5V @ 3A by default. VCONN is provided by the 
+charging schemes. This function starts in 3A DFP to power cables with electronics that are 
+divider mode. If a device compliant to divider plugged in. VCONN is provided power over the CC 
+mode is connected, the MPQ4242 stays in pin that is not connected to the cable’s CC wire. 
+divider mode. Meanwhile, 3.3V is applied to the The maximum output power of VCONN is 1W. 
+DM pin, while 2.7V is applied to the DP pin.  
+
+VCONN is disabled until RA is detected. RA is a 
+If a BC1.2 or YD/T 1591-2009 compliant device pull-down resistor connected from the CC pin to 
+is connected, the MPQ4242 operates in GND. It resistance must be below 1.2kΩ. 
+1.2V/1.2V and BC1.2 DCP mode. In this 
+scenario, DM and DP are shorted together with USB Power Delivery (PD) 3.0 
+a resistance. The device then stays in this mode In USB power delivery (PD), pairs of directly 
+until the data line is released. If this occurs, the connected ports negotiate the voltage, current, 
+MPQ4242 returns to 3A divider mode. and/or the direction of power flow over the USB 
+
+cable, using VBUS or the CC wire as the 
+When a QC 3.0 or FCP device (without PD 
+
+communication channel. The mechanisms used 
+protocol) is connected, the MPQ4242 can 
+
+operate independently of other USB methods 
+automatically enter high-voltage, quick charge 
+
+that negotiate power. USB Type-C connectors 
+mode. 
+
+can support the CC wire as the communication 
+The MPQ4242 supports BC1.2 charging channel. 
+downstream port (CDP) handshaking as well. 
+
+The USB PD engine can disable the clock and 
+This can be enabled by setting CDP_EN to 1b 
+
+enter sleep mode if no PD command is detected. 
+via the I2C. 
+
+The input current is typically 150µA in sleep 
+If a USB PD contract is established after the sink mode. Figure 9 on page 26 shows the USB PD 
+is connected, the QC 3.0 and FCP functions are communication stack. 
+disabled. 
+
+USB Type-C Port  
+
+The USB Type-C receptacle, plug, and cable 
+solution incorporates a configuration process to 
+detect a downstream facing port (DFP) to 
+upstream facing port (UFP) connection. This 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 25 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+ 
+Figure 9: USB PD Communication Stack 
+
+Table 1 shows the functions and DFP 
+commands supported by the MPQ4242. 
+
+Table 1: Control Message 
+
+Transmitted Message Received Message 
+ACCEPT GET_PPS_STATUS 
+
+GET_STATUS GET_STATUS 
+GOODCRC GOODCRC 
+
+NOT_SUPPORTED NOT_SUPPORTED 
+PS_RDY REJECT 
+REJECT SOFT_RESET  
+
+SOFT_RESET HARD_RESET Figure 10: Device Policy Manager 
+HARD_RESET VCONN_SWAP Figure 11 shows a PD contract handshake 
+
+- GET_SOURCE_CAP sequence for the MPQ4242. 
+GET_SOURCE_CAP_ 
+
+- 
+EXTENDED 
+
+Table 2 shows the data messages. 
+
+Table 2: Data Message 
+
+Transmitted Message Received Message 
+SOURCE_CAPABILITIES SINK_CAPABILITIES 
+
+BIST REQUEST 
+ALERT BIST 
+
+- ALERT 
+
+Table 3 shows the extended messages.  
+
+Table 3: Extended Message Figure 11: PD Contract Handshake 
+
+Transmitted Message Received Message 
+STATUS - 
+
+PPS_STATUS - 
+SOURCE_ 
+
+CAPABILITIES_ - 
+EXTENDED 
+
+FIgure 10 shows the MPQ4242’s device policy 
+manager function block. 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 26 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+VCONN Power Supply NTC Function 
+
+The integrated VCONN power supply has a When the GPIO2 pin is set to the NTC function, 
+maximum of 100mW. The power switch the device compares the NTC voltage to VREF. If 
+connected from VCC to VCONN has a current the NTC voltage is below the threshold, the 
+limit. During a VCONN short to ground event, the MPQ4242 initiates thermal shutdown protection. 
+MPQ4242 turns off VCONN. In this scenario, the device will either shut down 
+
+or reduce the PD power. The response can be 
+For a 1W VCONN application, an external 
+
+selected via NTC_MODE.  
+VCONN supply should be applied to GPIO2. 
+
+If NTC_MODE is set to 1, OTW2_NTC_PDP 
+LED PWM Driver 
+
+determines the value to which PD power should 
+The GPIO2 pin can be configured as a PWM be reduced. OTW2_NTC_PDO_SELECT sets 
+output to drive an LED. By default, it is 25kHz, which PDO voltage is enabled after entering 
+with a 50% duty cycle PWM and a maximum NTC mode. See Table 4 on page 29 for more 
+15mA capability. details.  
+The PWM duty cycle can be set between 5% and It the NTC voltage rises above the recovery 
+100% (with a 1% resolution) via the I2C. threshold, the device recovers to a normal state. 
+EN Off Time The I2C can set one of two NTC recovery 
+
+hysteresis values. There is no 16s recover delay. 
+The MPQ4242 has a configurable EN off time. 
+When the EN pin is pulled low, the device NTC2 Function 
+operates at full functionality until the timer When the GPIO1 pin is set to the NTC2 function, 
+elapses. The maximum EN off delay is 120 the device compares the NTC2 voltage to VREF. 
+minutes. If the EN pin is pull high within this time, If the NTC2 voltage drops below this threshold, 
+the counter is reset. the MPQ4242 triggers power sharing. When the 
+Current Monitor Output power share function is triggered, PD power 
+
+rating drops to the value set by PS_PDP_THD. 
+When the GPIO1 pin is set as IMON, the 
+
+Table 4 on page 29 shows the PDO / APDO 
+MPQ4242 senses the average load current 
+
+voltage and current.  
+through a current-sense resistor. The IMON 
+amplifier outputs a voltage signal on the GPIO1 If the NTC2 voltage rises above the recovery 
+pin. This signal is amplified from the voltage threshold, the MPQ4242 exits power sharing. 
+difference between the ISEN+ and ISEN- pins. It NTC_HYSTERESIS sets the hysteresis, which is 
+is recommended to place a 4.7nF + 4.7kΩ filter also sets the hysteresis for the GPIO1 pin’s NTC 
+on the GPIO1 pin (see Figure 12). The minimum function. 
+load that IMON can recognize is 0.2A. 
+
+The NTC_MODE, OTW2_NTC_PDO_SELECT, 
+
+4.7kΩ and OTW2_NTC_PDP bits do not control the 
+IMON GPIO1/IMON NTC2 pin’s behavior. 
+
+4.7nF If GPIO2 is set to the power share function while 
+MPQ4242
+
+GPIO1 is set for the NTC2 function, the 
+MPQ4242 enters power sharing when either 
+
+ NTC2 or GPIO2_POWER_SHARE is triggered. 
+Figure 12: IMON Connection 
+
+The relationship between the IMON voltage and Battery to Ground Short Protection Driver 
+
+the load current can be calculated with Equation The GPIO1 pin can be set to the GATE function 
+(1): for GND to battery short protection. If a battery 
+
+to output ground (GND2) short occurs, the GATE 
+           VIMON = GainIOUT R            (1) 
+
+SENS pin pulls low and Q2 turns off. Figure 13 on page 
+28 shows the battery to ground short driver. 
+
+Where Gain is 27.5V/V, and RSENS = 10mΩ. 
+
+When automatic PFM/PWM mode is set up, the 
+IMON function can only work normally when the 
+part enters continuous conduction mode (CCM).  
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 27 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+VCC updated PDO with a reduced PDP. The PDO list 
+R1 is determined by VBATT_L2_PDO_SELECT. 
+
+1k  
+
+20
+GPIO1_GATE If the MPQ4242 detects that the battery voltage 
+
+PGND ISENS- ISENS+ (its VIN voltage) is below the 
+21 RSENS 22 Q2 VBATT_LOW_THLD3 falling threshold for the 
+
+10m  VBATT_LOW_BLK deglitch time, it shuts down. 
+GND2  
+
+Figure 13: Battery Short-to-Ground Driver When the battery voltage recovers and exceeds 
+the VBATT_LOW_THLD rising threshold with a 
+
+Over Temperature Warning (OTW) Function 
+1s digital deglitch time, the PDO recovers to 
+
+The MPQ4242 senses its die temperature normal PDP. 
+internally. If the chip’s temperature exceeds the 
+OTW1 threshold, the MPQ4242 reduces the PD There are three battery voltage (VBATT) low 
+
+power state to the value set by OTW1_PDP. thresholds: VBATT_LOW_THLD1, 
+
+OTW1_PDO_SELECT sets which PDO voltage VBATT_LOW_THLD2, and 
+
+is enabled after entering OTW1 mode. Table 4 VBATT_LOW_THLD3. Accordingly, 
+
+on page 29 shows the OTW_PDO_SELECT VBATT_LOW1_PDP and VBATT_LOW2_PDP 
+
+function.  define the MPQ4242’s reduced PDP level. 
+During the MPQ4242’s first start-up, the internal 
+
+If the die temperature continues increasing and VBATT_LOW_FLAG default state is 0. The 
+triggers the second threshold set by OTW2, the VBATT_LOW detection circuitry starts to work 
+MPQ4242 reduces the PD power to the level set when a USB Type-C receptacle is attached; it is 
+by OTW2_NTC_PDP. reset by UVLO or an EN shutdown. 
+
+OTW2_NTC_PDO_SELECT sets which PDO POWER SHARE FUNCTION 
+voltage is enabled. The MPQ4242 waits 16 
+
+GPIO1_POWER_SHARE 
+seconds after the OTW condition is removed 
+before recovering to a normal PD rating. The GPIO1_POWER_SHARE pin can accept an 
+
+external input voltage. If the second MPQ4242 
+Low-Battery Operation (MPQ4242-B) detects that a valid sink is 
+During the first VIN start-up, the MPQ4242 is attached in, the first MPQ4242’s (MPQ4242-A) 
+delayed for 1s before detecting VIN.  GPIO1_POWER_SHARE pin is pulled down by 
+
+the MPQ4242-B’s GPIO2_ATTACH pin (see 
+If the MPQ4242 detects that the battery voltage 
+
+Figure 14). 
+(its VIN voltage) is lower than the 
+VBATT_LOW_THLD1 falling threshold for the Vcc-A Vcc-B 
+
+Vcc-A Vcc-B 
+
+VBATT_LOW_BLK deglitch time, it reduces the 10kΩ 10kΩ 
+GPIO1_POWER_ GPIO1_POWER_
+
+PD power rating according to the set value. SHARE SHARE
+
+Meanwhile, VBATT_LOW1_FLAG is set. If there MPQ4242-A MPQ4242-B
+
+is a PD contract, the PD engine resends the GPIO2_ATTACH GPIO2_ATTACH
+
+updated PDO with a reduced PDP. The PDO list   
+is determined by VBATT_L1_PDO_SELECT. Figure 14: Power Share Connection Between 
+
+Two MPQ4242s (e.g. Cut Total Power to 50% / 
+If the MPQ4242 detects that the battery voltage 50%) 
+(its VIN voltage) is below the 
+VBATT_LOW_THLD2 falling threshold for the When the power share function is triggered, the 
+
+VBATT_LOW_BLK deglitch time, it reduces the PDO list and current are determined by 
+
+PD power rating according to the set value. PS_PDP_THD and 
+
+Meanwhile, VBATT_LOW2_FLAG is set. If there PS_PDP_THD_PDO_SELECT (see Table 4 on 
+
+is a PD contract, the PD engine resends the page 29). For example, a 3.3V to 21V APDO 
+current rating is can be calculated as 45W /     
+21V = 2.1A.
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 28 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+Table 4: PDO Voltage and Current Set Table based on the PS_PDP_THD and PS_PDP_THD_PDO_SEL  
+
+5V 9V 12V 15V 20V 5V 9V 15V 20V 
+PDO List 
+
+(Fixed) (Fixed) (Fixed) (Fixed) (Fixed) (Prog. ) (Prog.) (Prog.) (Prog.) 
+PDP / 5 PDP / 20 PDP / PDP / 21 
+
+Output Current (9) PDP / 9 PDP / 12 PDP / 15 (10) PDP / 11 PDP / 16 
+  5.9 (10) 
+
+PS_PDP_THD_ 
+PDO_SEL Register x 1 0 1 1 1 1 0 0 
+
+Selection Bit (13) 
+3.3V to 
+
+PS_PDP_THD = 5V, 3A 15V, 20V, 3.3V to 
+(11) 9V, 2.5A - 5.9V, 3A - - 
+
+22.5W  1.5A 1.13A (12) 11V, 2A 
+ 
+
+Notes: 
+
+9) A fixed 5V PDO is always enabled after enter power sharing. 
+10) The fixed PDO current is equal to PDP / Voltage. The maximum current is 3A for <20V fixed PDOs. The maximum current can be 5A for 
+
+20V PDO and all APDOs. 
+11) The minimum PDP is 5V x 1.5A = 7.5W. RP changes to 5V / 1.5A when PDP <15W. 
+12) The PPS current is calculated with PDP / 5.9V for 5V PPS; PDP / 11V for 9V PPS; PDP / 16V for 15V PPS; PDP / 21V for 20V PPS. 
+13) The registers PS_PDP_THD, PS_PDO_SELECT, VBATT_L1_PDO_SELECT, VBATT_L2_PDO_SELECT, OTW1_PDO_SELECT, and 
+
+OTW2_NTC_PDO_SELECT share the same format. The gray cells are set by 8-bit register values. 
+
+GPIO2_POWER_SHARE MPQ4242-A detects that its GPIO2 voltage 
+
+The GPIO2_POWER_SHARE threshold is exceeds VTH_PS, the power share function is 
+
+V triggered. In this scenario, the PDO list and 
+TH_PS (typically 1.87V). When the GPIO2 pin is 
+
+set for the power share function, and the current is determined by PS_PDP_THD and 
+PS_PDP_THD_PDO_SELECT (see Table 5).  
+
+Table 5: PDO Voltage and Current Set Table based on PS_PDP_THD and PS_PDP_THD_PDO_SEL 
+
+5V 9V 12V 15V 20V 5V 9V 15V 20V 
+PDO List 
+
+Fixed Fixed Fixed Fixed Fixed Prog. Prog. Prog. Prog. 
+PDP / 5 PDP / 20 PDP / PDP / 21 
+
+Output Current (9) PDP / 9 PDP / 12 PDP / 15 (10) PDP / 11 PDP / 16 
+  5.9 (10) 
+
+PS_PDP_THD_ 
+PDO_SEL Register x 1 0 0 0 1 1 0 0 
+
+Selection Bit (13) 
+3.3V to 3.3V to 
+
+PS_PDP_THD = 5V, 3A 
+15W (11) 9V, 1.6A - - x 5.9V, 3A 11V, - - 
+
+  (12) 1.35A 
+
+The MPQ4242 exits the power sharing status When VBUS exceeds 11.2V, the power share 
+after the GPIO2 voltage drops below VTH_PS. function is triggered.  
+Figure 15 shows the GPIO2_POWER_SHARE 
+
+Table 6 on page 30 shows the PDP of the 
+connection block.  
+
+MPQ4242-A and MPQ4242-B in the 
+GPIO2_POWER_SHARE function. 
+
+MPQ4242-A MPQ4242-B
+
+VBUS VBUS
+GPIO2_POWER_ GPIO2_POWER_
+
+SHARE SHARE
+
+20kΩ 100kΩ 100kΩ 20kΩ
+
+10nF 10nF  
+Figure 15: GPIO2 Power Share Connection Between Two MPQ4242s  
+
+ 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 29 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+Table 6: GPIO2 Power Share PDP Management In Dual-Channel Application (14) 
+Column Format = <PD Contract W> (<Advertised Power W>) 
+Total Shared Power = 60W 
+Each Port PDP = 45W 
+
+Condition USB Type-C Port 1 USB Type-C Port 2 Total Power 
+
+1 -- (45W) (15) -- (45W) (15) - 
+2 15W (45W) -- (45W) (15) 15W 
+3 27W (45W) -- (45W) (15) 27W 
+4 45W (45W) 15W (15W) 60W 
+5 27W (45W) 15W (45W) 42W 
+6 27W (45W) 27W (45W) 54W 
+7 15W (15W) 45W (45W) 60W 
+8 -- (15W) (16) 45W (45W) 45W 
+9 -- (45W) (15) 27W (45W) 27W 
+
+Notes: 
+
+14) The PDP table is based on the GPIO2_POWER_SHARE set-up in Figure 15 on page 29. The MPQ4242-A triggers power sharing when the 
+MPQ4242-B’s VBUS >11.2V. 
+
+15) The port is not connected and there is no valid PD contract, but the maximum PDP (45W) is still advertised. 
+16) Power sharing has been triggered because another port has made a PD contract with a high PDP. To limit the total shared power to 60W 
+
+or less, the advertised power drops to 15W. 
+
+Figure 16 shows the PDP state machine. Figure 
+17 on page 31 shows the PDP foldback scheme. 
+
+USB Type-C 
+Attached
+
+2
+External I C Command 2
+
+I C PD Register Setting
+
+Send SRC_CAP
+
+PD contract established
+
+No Any event is 
+BIST_SHARED_MODE_CFG can disable all events
+
+triggered?
+
+YES
+
+No No No No
+
+GPIO power share is OTW1 event is OTW2 or NTC 
+Battery voltage is low?
+
+triggered? triggered? event is triggered?
+
+YES YES OTW2 NTC
+
+VBATT_LOW
+Threshold 3
+
+No
+NTC_MODE= VBATT_LOW VBATT_LOW
+
+0 or 1? Threshold 2 Threshold 1
+NTC2 is triggered?
+
+1 0
+YES
+
+Reduce PDO to Reduce PDO to Reduce PDO to Reduce PDO to Reduce PDO to 
+Device Shutdown
+
+PS_PDP OTW1_PDP OTW2_NTC_PDP VBATT_LOW2_PDP VBATT_LOW1_PDP
+
+Compare 
+which active PDP 
+
+is smallest
+
+Resend SRC_CAP
+Based on the smallest PDP
+
+ 
+
+Figure 16: PDP State Machine (I2C Still Operates during NTC Shutdown) 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 30 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+Temperature
+
+Min. Min. 
+OTW2NTC_PDP {OTW2_NTC_PDP, {OTW2_NTC_PDP, 
+
+VBATT_LOW1_PDP} VBATT_LOW2_ PDP}
+
+OTW2 or NTC Prog.
+
+Min. Min. 
+OTW1_PDP {OTW1_PDP, {OTW1_PDP, 
+
+VBATT_LOW1_PDP} VBATT_LOW2_PDP}
+Shutdown
+
+OTW1 Prog.
+
+Normal PDP VBATT_LOW1_PDP VBATT_LOW2_PDP
+
+16V 11.5V Prog. 9V Prog. 6V Prog. VBATT
+
+320ms debounce 320ms debounce 320ms debounce  
+
+Figure 17: PDP Foldback Scheme 
+ 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 31 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+I2C INTERFACE 
+I2C Serial Interface Description The master then generates the SCL clocks, and 
+
+The I2C is a two-wire, bidirectional serial transmits the device address and the read/write 
+
+interface, consisting of a data line (SDA) and a (R/W) direction bit on the SDA line. 
+
+clock line (SCL). The lines are externally pulled Transfer Data 
+to a bus voltage when they are idle. Connecting 
+
+Data is transferred in 8-bit bytes by the SDA line. 
+to the line, a master device generates the SCL 
+
+Each byte of data should be followed by an 
+signal and device address, and arranges the 
+
+acknowledge bit. 
+communication sequence.  
+
+I2C Start-Up Timing 
+The MPQ4242 interface is an I2C slave that 
+supports fast mode (400kHz). The I2C interface The I2C function is enabled once VIN exceeds its 
+
+adds flexibility to the power supply solution. The UVLO threshold and EN is active. 
+
+output voltage (VOUT), transition slew rate, and I2C Update Sequence 
+additional parameters can be instantaneously 
+
+The MPQ4242 requires a start condition, a valid 
+controlled by the I2C interface. When the master 
+
+I2C address, a register address byte, and a data 
+sends the address as an 8-bit value, the 7-bit 
+
+byte for a single data update. After receiving 
+address should be followed by 0 or 1 to indicate 
+
+each byte, the MPQ4242 acknowledges by 
+a write or read operation, respectively. 
+
+pulling SDA low during the high period of a single 
+Start and Stop Conditions clock pulse. A valid I2C address selects the 
+
+The start (S) condition and stop (P) condition are MPQ4242. The MPQ4242 performs an update 
+
+signaled by the master device, which signifies on the falling edge of the LSB. Figure 19 shows 
+
+the beginning and the end of the I2C transfer. an I2C write example for a single register. Figure 
+
+The start condition is defined as the SDA signal 20 on page 33 shows an I2C write example for 
+
+transitioning from high to low while SCL is high. multiple registers. Figure 21 on page 33 shows 
+
+The stop condition is defined as the SDA signal an I2C read example for a single register.  
+
+transitioning from low to high while SCL is high 
+(see Figure 18). 
+
+SDA
+
+SCL
+S P
+
+Start Condition Stop Condition  
+Figure 18: Start and Stop Conditions 
+
+8 Bits 8 Bits 8 Bits
+
+S Slave Address Wr A Register Address K A Write Data A P
+
+Master to Slave A = Acknowledge (SDA = low) S = Start Condition Write (Wr) = 0
+
+Slave to Master NA = Not Acknowledge (SDA = high) P = Stop Condition Read (Rd) = 1
+ 
+
+Figure 19: I2C Write Example (Write Single Register) 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 32 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+8 Bits 8 Bits 8 Bits
+
+S Slave Address Wr A Register Address K A Write Data K A Write Data K + 1 A Write Data K + N A P
+
+Multi-byte write executed from current register 
+location (the read- only register is skipped)
+
+Master to Slave A = Acknowledge (SDA = low) S = Start Condition Write (Wr) = 0
+
+Slave to Master NA = Not Acknowledge (SDA = high) P = Stop Condition Read (Rd) = 1
+ 
+
+Figure 20: I2C Write Example (Write Multiple Registers) 
+
+8 Bits 8 Bits 8 Bits 8 Bits
+
+S Slave Address Wr A Register Address K A Sr Slave Address Rd A Read Data K NA P
+
+Register address to read Read register data from current register 
+specified location
+
+Master to Slave A = Acknowledge (SDA = low) S = Start Condition Write (Wr) = 0
+
+Slave to Master NA = Not Acknowledge (SDA = high) P = Stop Condition Read (Rd) = 1
+
+ 
+Figure 21: I2C Read Example (Read Single Register) 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 33 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+I2C REGISTER MAP 
+Addr. 
+
+Name R/W D7 D6 D5 D4 D3 D2 D1 D0 
+(Hex) 
+
+PDO7_EN PDO6_EN PDO5_EN PDO4_EN PDO3_EN PDO2_EN 
+00 PDO_SET1 R/W - - (17) (17) (17) (17) (17) (17) 
+
+PDO7_ PDO6_ PDO5_ PDO4_ PDO3_ PDO2_ 
+01 PDO_SET2 R/W - - 
+
+TYPE (17) TYPE (17) TYPE (17) TYPE (17) TYPE (17) TYPE (17) 
+COMMUNI
+CA_CAPA
+
+02 HOST_SET R/W PRODUCT_TYPE_DFP (17) HOST_CAPABILITY(000B) (17) PORT_NUMBER (17) 
+B_HOST 
+
+(17) 
+
+03 PDO_I1 R/W PDO1_CURRENT_SETTING (17) (3A default) 
+
+04 PDO_V2_L R/W PDO2_VOLTAGE_SETTING (low byte) (17) (9V default) 
+
+05 PDO_V2_H R/W PDO2_VOLTAGE_SETTING (high byte) (17) (0x00) 
+
+06 PDO_I2 R/W PDO2_CURRENT_SETTING (17) (3A default) 
+
+07 PDO_V3_L R/W PDO3_VOLTAGE_SETTING (low byte) (17) (15V default) 
+
+08 PDO_V3_H R/W PDO3_VOLTAGE_SETTING (high byte) (17) (0x00) 
+
+09 PDO_I3 R/W PDO3_CURRENT_SETTING (17) (3A) 
+
+0A PDO_V4_L R/W PDO4_VOLTAGE_SETTING (low byte) (17) (20V default) 
+
+0B PDO_V4_H R/W PDO4_VOLTAGE_SETTING (high byte) (17) (0x00) 
+
+0C PDO_I4 R/W PDO4_CURRENT_SETTING (17) (3A) 
+
+0D PDO_V5_L R/W PDO5_VOLTAGE_SETTING (low byte) (17) (3.3V) 
+
+0E PDO_V5_H R/W PDO5_VOLTAGE_SETTING (high byte) (17) (11V) 
+
+0F PDO_I5 R/W PDO5_CURRENT_SETTING (17) (3A) 
+
+10 PDO_V6_L R/W PDO6_VOLTAGE_SETTING (low byte) (17) (3.3V) 
+
+11 PDO_V6_H R/W PDO6_VOLTAGE_SETTING (high byte) (17) (16V) 
+
+12 PDO_I6 R/W PDO6_CURRENT_SETTING (17) (3A) 
+
+13 PDO_V7_L R/W PDO7_VOLTAGE_SETTING (low byte) (17) (3.3V) 
+
+14 PDO_V7_H R/W PDO7_VOLTAGE_SETTING (high byte) (17) (21V) 
+
+15 PDO_I7 R/W PDO7_CURRENT_SETTING (17) (3A) 
+
+USBCOMM
+LEGACY_CHARGING_ NTC_ PE-C_ 
+
+16 PD_CTL1 R/W CDP_EN (17) TE TOUCH_TEMP (17) TY
+MODE_SEL (17) UNICA
+
+ (17) CTL_RP (17)  
+ MODE (17) 
+
+ 
+USBSUSP
+
+17 PD_CTL2 R/W HDRST TOU H CURRENT (17) COMPLIANCE (17)
+(17) C   
+
+END  
+S
+
+18 PWR_CLT1 R/W EN (17) MODE (17) FREQ (17) DITHER (17) LINE_DROP_COMP (17) LEW_ 
+ 
+
+RATE (17) 
+EN_VBUS PPS_MIN_
+
+19 PWR_CLT2 R/W (17) OTW1_THRESHOLD (17) OTP_THRESHOLD (17) 
+ SEL (17) 
+
+1A VOUT_L R/W RESERVED_ALL: 0 VOUT_DATA_BIT_LOW[2:0] (17) 
+
+1B VOUT_H R/W VOUT_DATA_BIT_HIGH[10:3] (17) (use this as default DAC VREF) 
+
+1C IOUT_LIM R/W - OUTPUT_CURRENT_LIMIT_THRESHOLD (17) (1A to 6.35A/50mA step) 
+
+1D CTL_SYS0 R/W - - - GO_BIT 
+
+ADDITION
+AL_LINE_
+
+SEND_ DROP_ 
+1E CTL_SYS1 R/W EN_OFF_TIMER (17) I2C_SLAVE_ADDRESS (A4~A1) (17) 
+
+SRC_CAP COMPEN
+SATION 
+
+(17) 
+I2C_CTL_ 
+
+1F CTL_SYS2 R/W GPIO1 (17) GPIO2 (17) VOUT_EN  
+(17) 
+
+20 CTL_SYS3 R/W PS_PDP_THD (17) (PDP is reduced to this value after power sharing) 
+
+21 CTL_SYS4 R/W PS_PDP_THD_PDO_SELECT (17) 
+
+PPS_3A_ 7) PD_CAP_PEAK_ 
+22 CTL_SYS5 R/W - 17) CC_BLANK_TIMER (1  - 
+
+5A (  CURRENT (17) 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 34 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+I2C REGISTER MAP (continued) 
+Addr. 
+
+Name R/W D7 D6 D5 D4 D3 D2 D1 D0 
+(Hex) 
+
+23 CTL_SYS6 R/W VBATT_LOW1_PDP (17) 
+
+24 CTL_SYS7 R/W VBATT_L1_PDO_SELECT (17) 
+
+25 CTL_SYS8 R/W VBATT_LOW2_PDP (17) 
+
+26 CTL_SYS9 R/W VBATT_L2_PDO_SELECT (17) 
+
+27 CTL_SYS10 R/W OTW1_PDP (17) 
+
+28 CTL_SYS11 R/W OTW1_PDO_SELECT (17) 
+
+29 CTL_SYS12 R/W OTW2_NTC_PDP (17) 
+
+2A CTL_SYS13 R/W OTW2_NTC_PDO_SELECT (17) 
+
+2B CTL_SYS14 R/W VBATT_LOW_THLD1 (17) VBATT_LOW_THLD2 (17) 
+
+2C CTL_SYS15 R/W VBATT_LOW_THLD3 (17) VBATT_LOW_BLK (17) - - 
+
+2D CTL_SYS16 R/W - EXT_HS_FET_RON (17) OTW2_THRESHOLD (17) - 
+
+NTC_HYST NTC_ 
+2E CTL_SYS17 R/W PEAK_CL (17) - 7
+
+ERESIS (17) MODE (17) - VBUS_VOLTAGE (1 ) 
+ 
+
+OTP_ 
+2F CTL_SYS18 R/W LED_PWM_DUTY (17) 
+
+PROGRAM 
+NTC2_ SHORT_ NTC_ 
+
+30 STATUS1 R ATTACHED POL FAULT OTP_PAGE CC_CV 
+ENTER VBATT ENTER 
+
+VBATT_ VBATT_ 
+31 STATUS2 R LOW1_ LOW2_ OTW1 OTW2 SELECTED_PDO_INDEX PDO_TYPE 
+
+FLAG FLAG 
+
+32 STATUS3 R CONTRACT_POWER (CP) 
+
+33 ID1 R OTP_SUFFIX_CODE (17) 
+
+34 ID2 R OTP_SOFTWARE_REVISION_NO (17) 
+
+GIVEBACK_ CABLE_ 
+35 FW_REV R MISMATCH FIRMWARE_REVISION  
+
+FLAG CAP 
+MAX_REQ_ Max requested operation current (MISMATCH = 1) in a 20mA unit; only valid when GIVEBACK_FLAG = 0; fixed 
+
+36 R 
+CUR PDO 
+
+37 MFR_ID R MANUFACTURER_ID (17): 0000 1001b 
+
+38 DEV_ID R DEVICE_ID (17): 0101 1000b 
+
+39 CLK_ON  W Write 1b to enable clock  
+
+Note:  
+
+17) This register can be configured via the one-time programmable (OTP) memory. 
+ 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 35 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+REGISTER MAP 
+The default register value is based on MPQ4242-0000. 
+
+PDO_SET1 
+
+Address: 0x00 
+Type: Read/Write 
+
+Bits Name Description 
+
+D[7:6] RESERVED Reserved. 
+
+Enables the PDO7’s power object setting. The default is 1b. 
+
+D[5] PDO7_EN 
+0b: Disabled 
+1b: Enabled 
+
+Enables the PDO6’s power object setting. The default is 1b. 
+
+D[4] PDO6_EN 
+0b: Disabled 
+1b: Enabled 
+
+Enables the PDO5’s power object setting. The default is 1b. 
+
+D[3] PDO5_EN 
+0b: Disabled 
+1b: Enabled 
+
+Enables the PDO4’s power object setting. The default is 1b. 
+
+D[2] PDO4_EN 
+0b: Disabled 
+1b: Enabled 
+
+Enables the PDO3’s power object setting. The default is 1b. 
+
+D[1] PDO3_EN 
+0b: Disabled 
+1b: Enabled 
+
+Enables the PDO2’s power object setting. The default is 1b. 
+
+D[0] PDO2_EN 
+0b: Disabled 
+1b: Enabled 
+
+PDO1 is fixed as a 5V power data object, and it is always enabled. Its voltage can be changed by 
+VBUS_VOLTAGE. 
+
+PDO_SET2 
+
+Address: 0x01 
+Type: Read/Write 
+
+Bits Name Description 
+
+D[7:6] RESERVED Reserved. 
+
+Sets the PDO7’s power object. The default is 1b. 
+
+D[5] PDO7_TYPE 0b: Fixed PDO 
+1b: APDO 
+
+Sets the PDO6’s power object. The default is 1b. 
+
+D[4] PDO6_TYPE 0b: Fixed PDO 
+1b: APDO 
+
+Sets the PDO5’s power object. The default is 1b. 
+
+D[3] PDO5_TYPE 0b: Fixed PDO 
+1b: APDO 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 36 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+Sets the PDO4’s power object. The default is 0b. 
+
+D[2] PDO4_TYPE 0b: Fixed PDO 
+1b: APDO 
+
+Sets the PDO3’s power object. The default is 0b. 
+
+D[1] PDO3_TYPE 0b: Fixed PDO 
+1b: APDO 
+
+Sets the PDO2’s power object. The default is 0b. 
+
+D[0] PDO2_TYPE 0b: Fixed PDO 
+1b: APDO 
+
+HOST_SET 
+
+Address: 0x02 
+Type: Read/Write 
+
+Bits Name Description 
+
+Sets the USB communication capabilities for the USB host. The default is 0b. 
+COMMUNICA_ 
+
+D[7] 
+CAPAB_HOST 0b: Other 
+
+1b: The product can enumerate USB devices  
+
+Sets the product type (DFP). The default is 11b. 
+
+PRODUCT_TYPE_ 00b: Undefined 
+D[6:5] 
+
+DFP 01b: PDUSB hub 
+10b: PDUSB host 
+11b: Power Brick  
+
+D[4:2] HOST_CAPABILITY Sets the DFP VDO message’s B26…24 bits. The default is 000b. 
+
+D[1:0] PORT_NUMBER Sets the unique port number to identify a specific port on a multi-port device. 
+
+PDO_I1 
+
+Address: 0x03 
+Type: Read/Write 
+
+Bits Name Description 
+
+Sets PDO1’s maximum output current setting in 20mA units. The default is 0x96 
+PDO1_CURRENT_ (3A). When this bit is set to exceed 3A, the MPQ4242 checks the cable current 
+
+D[7:0] 
+SETTING rating first. If it is 5A, then send the >3A setting; if the cable is 3A, only send a 3A 
+
+maximum current capability. 
+
+PDO_V2_L and PDO_V2_H 
+
+Address: 0x04, 0x05 
+Type: Read/Write 
+
+If PDO2_TYPE is set to 0b (fixed PDO).  
+
+Register Name Description 
+
+PDO_V2_L, PDO2_VOLTAGE_ Sets the PDO2’s output voltage in 100mV units. The default is 0x5A (9V). The 
+Bits D[7:0] SETTING maximum voltage that can be set is 22.97V. 
+
+If PDO2_TYPE is set to 1b (APDO).  
+
+Register Name Description 
+
+PDO_V2_H, PDO2_MAXIMUM_ 
+Sets the maximum PDO2 voltage in 100mV increments. 
+
+Bits D[7:0] VOLTAGE 
+PDO_V2_L, PDO2_MINIMUM_ 
+
+Sets the minimum PDO2 voltage in 100mV increments. 
+Bits D[7:0] VOLTAGE 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 37 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+PDO_I2 
+
+Address: 0x06 
+Type: Read/Write 
+
+Bits Name Description 
+
+Sets PDO2’s maximum output current setting in 20mA units for fixed PDO, or 50mA 
+PDO2_CURRENT_ units for APDO (PPS). The default is 0x96 (3A and fixed PDO). When this bit is set 
+
+D[7:0] 
+SETTING to exceed 3A, the MPQ4242 checks the cable current rating first. If it is 5A, then 
+
+send the >3A setting; if the cable is 3A, only send a 3A maximum current capability. 
+
+PDO_V3_L and PDO_V3_H 
+
+Address: 0x07, 0x08 
+Type: Read/Write 
+
+If PDO3_TYPE is set to 0b (fixed PDO).  
+
+Register Name Description 
+
+PDO_V3_L, PDO3_VOLTAGE_ Sets the PDO3’s output voltage in 100mV units. The default is 0x96 (15V). The 
+Bits D[7:0] SETTING maximum voltage that can be set is 22.97V. 
+
+If PDO3_TYPE is set to 1b (APDO).  
+
+Register Name Description 
+
+PDO_V3_H, PDO3_MAXIMUM_ 
+Sets the maximum PDO3 voltage in 100mV increments. 
+
+Bits D[7:0] VOLTAGE 
+PDO_V3_L, PDO3_MINIMUM_ 
+
+Sets the minimum PDO3 voltage in 100mV increments. 
+Bits D[7:0] VOLTAGE 
+
+PDO_I3 
+
+Address: 0x09 
+Type: Read/Write 
+
+Bits Name Description 
+
+Sets PDO3’s maximum output current setting in 20mA units for fixed PDO, or 50mA 
+PDO3_CURRENT_ units for APDO (PPS). The default is 0x96 (3A). When this bit is set to exceed 3A, 
+
+D[7:0] 
+SETTING the MPQ4242 checks the cable current rating first. If it is 5A, then send the >3A 
+
+setting; if the cable is 3A, only send a 3A maximum current capability. 
+
+PDO_V4_L and PDO_V4_H 
+
+Address: 0x0A, 0x0B 
+Type: Read/Write 
+
+If PDO4_TYPE is set to 0b (fixed PDO).  
+
+Register Name Description 
+
+PDO_V4_L, PDO4_VOLTAGE_ Sets the PDO4’s output voltage in 100mV units. The default is 0xC8 (20V). The 
+Bits D[7:0] SETTING maximum voltage that can be set is 22.97V. 
+
+If PDO4_TYPE is set to 1b (APDO).  
+
+Register Name Description 
+PDO_V4_H, PDO4_MAXIMUM_ 
+
+Sets the maximum PDO4 voltage in 100mV increments. 
+Bits D[7:0] VOLTAGE 
+
+PDO_V4_L, PDO4_MINIMUM_ 
+Sets the minimum PDO4 voltage in 100mV increments. 
+
+Bits D[7:0] VOLTAGE 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 38 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+PDO_I4 
+
+Address: 0x0C 
+Type: Read/Write 
+
+Bits Name Description 
+
+Sets PDO4’s maximum output current setting in 20mA units for fixed PDO, or 50mA 
+PDO4_CURRENT_ units for APDO (PPS). The default is 0x96 (3A and fixed PDO). When this bit is set 
+
+D[7:0] 
+SETTING to exceed 3A, the MPQ4242 checks the cable current rating first. If it is 5A, then 
+
+send the >3A setting; if the cable is 3A, only send a 3A maximum current capability. 
+
+PDO_V5_L and PDO_V5_H 
+
+Address: 0x0D, 0x0E 
+Type: Read/Write 
+
+If PDO5_TYPE is set to 0b (fixed PDO).  
+
+Register Name Description 
+
+PDO_V5_L, PDO5_VOLTAGE_ 
+Sets the PDO5’s output voltage in 100mV units.  
+
+Bits D[7:0] SETTING 
+
+If PDO5_TYPE is set to 1b (APDO).  
+
+Register Name Description 
+
+PDO_V5_H, PDO5_MAXIMUM_ 
+Sets the maximum PDO5 voltage in 100mV increments. The default is 0x6E (11V). 
+
+Bits D[7:0] VOLTAGE 
+PDO_V5_L, PDO5_MINIMUM_ 
+
+Sets the minimum PDO5 voltage in 100mV increments. The default is 0x21 (3.3V). 
+Bits D[7:0] VOLTAGE 
+
+PDO_I5 
+
+Address: 0x0F 
+Type: Read/Write 
+
+Bits Name Description 
+
+Sets PDO5’s maximum output current setting in 20mA units for fixed PDO, or 50mA 
+PDO5_CURRENT_ units for APDO (PPS). The default is 0x3C (3A). When this bit is set to exceed 3A, 
+
+D[7:0] 
+SETTING the MPQ4242 checks the cable current rating first. If it is 5A, then send the >3A 
+
+setting; if the cable is 3A, only send a 3A maximum current capability. 
+
+PDO_V6_L and PDO_V6_H 
+
+Address: 0x10, 0x11 
+Type: Read/Write 
+
+If PDO6_TYPE is set to 0b (fixed PDO).  
+
+Register Name Description 
+
+PDO_V6_L, PDO6_VOLTAGE_ 
+Sets the PDO6’s output voltage in 100mV units.  
+
+Bits D[7:0] SETTING 
+
+If PDO6_TYPE is set to 1b (APDO).  
+
+Register Name Description 
+
+PDO_V6_H, PDO6_MAXIMUM_ 
+Sets the maximum PDO6 voltage in 100mV increments. The default is 0xA0 (16V). 
+
+Bits D[7:0] VOLTAGE 
+PDO_V6_L, PDO6_MINIMUM_ 
+
+Sets the minimum PDO6 voltage in 100mV increments. The default is 0x21 (3.3V). 
+Bits D[7:0] VOLTAGE 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 39 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+PDO_I6 
+
+Address: 0x12 
+Type: Read/Write  
+
+Bits Name Description 
+
+Sets PDO6’s maximum output current setting in 20mA units for fixed PDO, or 50mA 
+PDO6_CURRENT_ units for APDO (PPS). The default is 3A and APDO. When this bit is set to exceed 
+
+D[7:0] 
+SETTING 3A, the MPQ4242 checks the cable current rating first. If it is 5A, then send the >3A 
+
+setting; if the cable is 3A, only send a 3A maximum current capability. 
+
+PDO_V7_L and PDO_V7_H 
+
+Address: 0x13, 0x14 
+Type: Read/Write 
+
+If PDO7_TYPE is set to 0b (fixed PDO).  
+
+Register Name Description 
+
+PDO_V7_L, PDO7_VOLTAGE_ 
+Sets the PDO7’s output voltage in 100mV units.  
+
+Bits D[7:0] SETTING 
+
+If PDO7_TYPE is set to 1b (APDO).  
+
+Register Name Description 
+
+PDO_V7_H, PDO7_MAXIMUM_ 
+Sets the maximum PDO7 voltage in 100mV increments. The default is 0xD2 (21V). 
+
+Bits D[7:0] VOLTAGE 
+PDO_V7_L, PDO7_MINIMUM_ 
+
+Sets the minimum PDO7 voltage in 100mV increments. The default is 0x21 (3.3V). 
+Bits D[7:0] VOLTAGE 
+
+PDO_I7 
+
+Address: 0x15 
+Type: Read/Write  
+
+Bits Name Description 
+
+Sets PDO7’s maximum output current setting in 20mA units for fixed PDO, or 50mA 
+PDO7_CURRENT_ units for APDO (PPS). The default is 3A and APDO. When this bit is set to exceed 
+
+D[7:0] 
+SETTING 3A, the MPQ4242 checks the cable current rating first. If it is 5A, then send the >3A 
+
+setting; if the cable is 3A, only send a 3A maximum current capability. 
+
+PD_CTL1 
+
+Address: 0x16 
+Type: Read/Write 
+
+Bits Name Default Description 
+
+Selects the CDP mode. If this bit is set to 1, all the DCP, QC, and Apple modes are 
+D[7] CDP_EN 0b 
+
+disabled. The device only works in CDP handshaking mode. The default is 0. 
+
+Sets certain values based on the truth table below. 
+
+CDP_EN 1 0 0 0 
+LEGACY_ 
+
+LEGACY_ CHARGING_ X 00 01 10/11 
+D[6:5] CHARGING_ 00b MODE_SEL 
+
+MODE_SEL 
+Apple mode Only BC1.2 is 
+
+All DCP 
+CDP and BC1.2 active; Apple mode 
+
+Mode modes are 
+mode mode are and QC mode are 
+
+active 
+active disabled 
+
+ 
+
+Sets whether USB communication is supported. The default is 0b. 
+USBCOMMUN
+
+D[4] 0b 
+ICATE 0b: USB communication is not supported 
+
+1b: USB communication is supported 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 40 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+Selects whether the device enters USB Type-C 3A or 1.5A mode if an NTC or over-
+temperature warning (OTW) event occurs. In 5V @ 3A USB Type-C mode, the RP pull-
+up current is 330µA and the RD detection range is between 0.8V and 2.6V. The default 
+
+D[3] NTC_CTL_RP 0b is 0. 
+
+0b: PDP <15W, and RP = 1.5A,otherwise, RP = 3A  
+1b: The device enters 1.5A USB Type-C mode if an NTC or OTW1/OTW2 condition 
+occurs 
+
+Sets the touch temperature default value to 0, 1 or 2. These bits are defined in 
+D[2:1] TOUCH_TEMP 00b SOURCE_CAPABILITIES_EXTENDED Message byte 20, bits[1:0]. These bits are set 
+
+to 00b by default 
+
+Selects 3A or 1.5A Type-C mode. In 5V @ 3A USB Type-C mode, the RP pull-up 
+current is 330µA and the RD detection range is between 0.85V and 2.45V. The default 
+
+TYPE-C_ 
+D[0] 0b is 0. 
+
+MODE 
+0b: 3A Type-C mode 
+1b: 1.5A Type-C mode  
+
+PD_CTL2 
+
+Address: 0x17 
+Type: Read/Write 
+
+Bits Name Default Description 
+
+Sends a hard reset command. The default is 0b. 
+
+D[7] HDRST 0b 0b: Normal state. 
+1b: Send a hard reset command to the sink. After the HDRST message is sent, this 
+bit automatically resets to 0b 
+
+Sets whether the USB suspend function is supported. The default is 0b. 
+USB_ 
+
+D[6] 0b 
+SUSPEND 0b: Not supported 
+
+1b: Supported 
+
+Sets the TOUCH_CURRENT, bits[2:0]. These bits are defined in 
+TOUCH_ 
+
+D[5:3] 000b SOURCE_CAPABILITIES_EXTENDED Message byte 13, bits[2:0]. These bits are set 
+CURRENT 
+
+to 000b by default. Bit D[5] indicates TOUCH_CURRENT, bit 2 
+
+Sets the values of bits[2:0] of the Compliance byte, defined in 
+D[2:0] COMPLIANCE 101b SOURCE_CAPABILITIES_EXTENDED Message byte 12, bits[2:0]. Bit D[2] sets the 
+
+compliance value for bit 2. 
+
+PWR_CTL1 
+
+Address: 0x18 
+Type: Read/Write 
+
+Bits Name Default Description 
+
+Determines the I2C control to turn the part on or off. When the external EN pin is low, 
+the converter is off and the I2C shuts down. When the EN pin is high, the EN bit takes 
+over. The default is 1.  
+
+D[7] EN 1b 0b: The part is off but the I2C register does not reset. In addition, the USB Type-C logic 
+is off, and the system clock turns off to save quiescent current (IQ) 
+1b: If the USB Type-C receptacle is disconnected, the system clock remains off to 
+save IQ  
+
+Sets the PWM mode. The default is 1. 
+
+D[6] MODE 1b 0b: Enables auto-PFM/PWM mode 
+1b: Forced PWM mode 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 41 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+Sets the switching frequency (fSW). The default is 01. 
+
+D[5:4] FREQ 01b 00b: 250kHz 
+01b: 420kHz 
+10b/11b: Reserved 
+
+Enables the frequency spread spectrum function. The default is 0. 
+
+D[3] DITHER 0b 0b: Disabled  
+1b: Enabled 
+
+Sets the output voltage compensation vs. the load feature. The compensation 
+amplitude is fixed for any output voltage. Set 0x1E, bit[6] = 1 to enable an additional 
+compensation voltage. Line drop compensation has a maximum clamp at 800mV, 
+regardless of the output current. 
+
+Line drop compensation is disabled once the MPQ4242 enters PPS mode. Line drop 
+LINE_DROP_ 
+
+D[2:1] 00b compensation can be enabled in PPS mode through the factory OTP trim. The default 
+COMP is 00. 
+
+00b: No compensation 
+01b: VOUT compensates 150mV at a 3A Iout 
+10b: VOUT compensates 300mV at a3A Iout 
+11b: VOUT compensates 600mV at a3A Iout 
+
+Sets the output slew rate to adjust VOUT. The default is 1. The slew rate can be 
+calculated with the following equation: 
+
+D[0] SLEW_RATE 1b VOUT slew rate = VREF slew rate x Feedback resistor ratio (12.5) 
+
+0b: 0.4mV/µs VREF rising slew rate; 0.08mV/µs VREF falling slew rate 
+1b: 0.08mV/µs VREF rising slew rate; 0.08mV/µs VREF falling slew rate 
+
+PWR_CTL2 
+
+Address: 0x19 
+Type: Read/Write 
+
+Bits Name Default Description 
+
+Enables the power converter’s output directly, even there is no USB Type-C sink 
+device. The default is 0b. 
+
+D[7] EN_VBUS 0b 
+0b: The power converter’s on/off status is controlled by the USB Type-C controller 
+1b: The power converter is enabled 
+
+Sets the VBUS under-voltage (UV) threshold: This bit also controls the 3.3V or 5V 
+minimum PPS voltage. The default is 1. 
+
+PPS_MIN_ 
+D[6] 1b 0b: The VBUS UV falling threshold is 4.5V with 5% accuracy for 5V minimum PPS 
+
+SEL voltage applications 
+1b: The VBUS UV falling threshold is 2.97V (3.135V maximum) with 4.5% accuracy for 
+3.3V minimum PPS voltage applications 
+
+Sets the over-temperature warning (OTW1) threshold. The default is 100. The OTW 
+threshold has a 20°C hysteresis for recovery. 
+
+000: Disable the OTW function 
+001b: 105°C  
+
+OTW1_ 
+D[5:3] 100b 010b:115°C  
+
+THRESHOLD 011b: 125°C  
+100b: 135°C  
+101b: 145°C  
+110b: 155°C  
+111b: 165°C  
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 42 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+Sets the OT shutdown threshold. The default is 010. OTP has a 20°C hysteresis for 
+recovery. 
+
+OTP_ 000b: 155°C  
+D[2:0] 010b 
+
+THRESHOLD 001b: 165°C  
+010b:175°C  
+011b: 185°C  
+100b~111b: Reserved  
+
+VOUT_L and VOUT_H 
+
+Address: 0x1A, 0x1B 
+Type: Read/Write 
+
+The VOUT_L and VOUT_H registers set VOUT following an 11-bit direct format. 
+
+Name VOUT 
+Format Direct, unsigned binary integer 
+
+Register Name N/A VOUT_H D[7:0] VOUT_L D[2:0] 
+Bit 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 
+
+Access N/A R/W R/W R/W R/W R/W R/W R/W R/W R/W R/W R/W 
+Function N/A Data bit high Data bit low 
+
+Default value 
+N/A 250 Integer 
+
+(5V) 
+
+The real-world VOUT (in V) can be calculated with Equation (2): 
+
+                                                                 VOUT (V) = V / 100 + 2.5                                                         (2) 
+
+Where V is an 11-bit, unsigned binary integer from VOUT[10:0] (ranging between 0 and 2047). The VOUT 
+resolution (or minimum step) is 10mV. The MPQ4242 has a feedback network from the OUT pin to 
+internal FB reference voltage. The feedback resistor ratio is VOUT / VREF = 12.5. 
+
+See the CTL_SYS0 section below when changing VOUT. 
+
+IOUT_LIM 
+
+Address: 0x1C 
+Type: Read/Write 
+
+Bits Name Default Description 
+
+D[7] RESERVED - Reserved. 
+
+Sets the CC current limit for the buck-boost output CC, in 50mA units. The default 
+D[6:0] IOUT_LIM 0x48 is 0x48 (3.6A). When changing IOUT_LIM, the internal IREF should have some slew 
+
+rate control. The ramping slew rate is 1mA/µs. 
+
+CTL_SYS0 
+
+Address: 0x1D 
+Type: Read/Write 
+
+Bits Name Default Description 
+
+D[7] RESERVED - Reserved. 
+
+Controls when the MPQ4242 starts to change VOUT / IOUT_LIM. Set GO_BIT to 1 to 
+start the output / CC limit change based on VOUT / IOUT_LIM registers. When 
+VOUT / IOUT_LIM finishes changing (the internal VREF steps to the target VREF), 
+
+D[0] GO_BIT 0b GO_BIT automatically resets to 0. This prevents false operation of the 
+VOUT/IOUT_LIM scaling. The default is 0. 
+
+0b: VOUT / IOUT_LIM do not change 
+1b: VOUT / IOUT_LIM changes based on the VOUT / IOUT_LIM register settings 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 43 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+CTL_SYS1 
+
+Address: 0x1E 
+Type: Read/Write 
+
+Bits Name Default Description 
+
+Sends the source capability message. Write 1 to this bit to force the MPQ4242 to 
+D[7] SEND_SRC_CAP 0b send a Src_Cap message. This bit automatically resets to 0 after the Src_Cap 
+
+message is sent out. The default is 0b. 
+
+Enables an additional 150mV for line drop compensation based on the 0x18, 
+ADDITIONAL_ bits[2:1] set-up. This bit is active only when line drop compensation is active. 
+
+D[6] LINE_DROP_ 0b 
+COMPENSATION 0b: Disabled 
+
+1b: Enabled 
+
+Sets the EN off time. There is a shutdown delay time after the EN pin goes low. If 
+EN pulls high while the counter increases, the counter is reset. The default is 00. 
+
+D[5:4] EN_OFF_TIMER 000b 00b: No delay 
+01b: 20 minutes 
+10b: 40 minutes 
+11b: 120 minutes 
+
+Set the I2C slave address A4 to A1 bit. 
+
+I2C Address (A7:A1) 
+I2C_SLAVE_ Binary Hex 
+
+D[3:0] 0001b 
+ADDRESS 1100 001 (Default) 61h 
+
+I2
+Set by I2C_SLAVE_ADDRESS, bits 
+
+C adjustable for A4~A1 
+D[3:0] 
+
+ 
+
+CTL_SYS2 
+
+Address: 0x1F 
+Type: Read and Write  
+
+Bits Name Default Description 
+
+Sets the GPIO1 pin function. The default is 000. 
+
+000b: POWER_SHARE1. See the GPIO1_POWER_SHARE section on page 28 for 
+more details 
+001b: GATE. Provides a GND to battery short protection drive 
+010b: FAULT, open-drain output. Pulls low to indicate if a fault has occurred, such 
+
+D[7:5] GPIO1 000b as OCP, OTP, and GND/DP/DM/CCx to battery short 
+011b: NTC2. When this function is selected, the power share input is controlled by 
+NTC2. The NTC_MODE bit does not control the NTC2 behavior. 
+NTC_HYSTERESIS sets the hysteresis 
+100/101b: ATTACH_FLT_ALT, open-drain output. This pin pulls low for 12µs at the 
+connection rising edge if no fault event has occurred. Pulls low if a fault occurs 
+111b: Current monitor output. Represents the signal between ISENS+ and ISENS- 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 44 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+Sets the GPIO2 pin function. The default is 000. 
+
+000b: Reserved 
+001b: POL, open-drain output. Indicates the USB Type-C plug’s polarity. When CC1 
+is selected as the CC line, POL pulls low; when CC2 is selected as the CC line or 
+disconnected, POL is an open drain 
+010b: NTC. Functions as an input pin to sense the external thermal. See the NTC 
+Function section on page 27 for more details 
+
+D[4:2] GPIO2 000b 011b: VCONN_IN. Apply a 5V / 1.5W power supply on this pin 
+100b: LED_PWM output. It is a 25kHz PWM signal output with an adjustable duty 
+cycle. See the CTL_SYS18 section on page 49 for more details 
+101b: ATTACH. Indicates if the USB Type-C port is connected. Only high or low for 
+two states 
+110b: POWER_SHARE2. GPIO2 power sharing is triggered when the GPIO2 
+voltage exceeds 1.87V. See the GPIO2_POWER_SHARE section on page 29 for 
+more details 
+
+Enables the I2C registers 0x1A, 0x1B, 0x1C, and 0x1D. The default is 0. 
+
+I2C_CTL_VOUT_ 
+D[1] 0b 0b: VOUT and IOUT_LIM do not change, even after sending commands to VOUT_L, 
+
+EN VOUT_H, GO_BIT, and ILIMIT. VOUT is controlled by the USB PD engine 
+1b: VOUT changes based on the VOUT/IOUT_CC register setting 
+
+D[0] RESERVED - Reserved. 
+
+CTL_SYS3 and CTL_SYS4 
+
+Address: 0x20 to 0x21 
+Type: Read and Write  
+
+Bits Name Default Description 
+
+Sets the threshold to which the PDO power rating is reduced. When the GPIOx 
+pin (if set to the POWER_SHARE function) pulls low, the MPQ4242’s PD power 
+
+D[7:0] PS_PDP_THD 0x5A drops to the values set by PS_PDP_THD. The default is 45W. 
+
+0x01: 0.5W 
+0xFF: 127.5W 
+
+Selects which voltage is enabled in the PDO list. See Table 4 on page 29 for more 
+PS_PDP_THD_ 
+
+D[7:0] 0xBE details. The final PDO current is determined by PS_PDP_THD. The default means 
+PDO_SELECT 
+
+4 fixed PDOs:5V/9V/15V/20V and 3 APDOs: 3.3V to 5.9V/3.3V to 11V/3.3V to 16V. 
+
+CTL_SYS5 
+
+Address: 0x22 
+Type: Read/Write 
+
+Bits Name Default Description 
+
+D[7] RESERVED - Reserved. 
+
+Sets the maximum current for APDO after entering a power sharing, VBATT low, 
+OTW, or NTC state. The default is 0b. 
+
+D[6] PPS_3A_5A 0b 
+0b: 3A 
+1b: 5A (requires 5A cable) 
+
+Sets the blank time when the output CC over-current condition is reached. The 
+default is 10b. 
+
+CC_BLANK_ 
+D[5:4] 10b 00b: No additional CC blank timer 
+
+TIMER 01b: 2ms 
+10b: 16ms 
+11b: 32ms 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 45 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+Enables the peak current 1, 2, and 3 capability in the SOURCE_CAP_EXTEND 
+message. The default is 11. 
+
+PD_CAP_ 
+D[1:0] 11b 00b: Not support 
+
+PEAK_CURRENT 01b: Support peak current 1 
+10b: Support peak currents 1 and 2 
+11b: Support peak currents 1, 2 and 3 
+
+CTL_SYS6~CTL_SYS13 
+
+Address: 0x23~0x2A 
+Type: Read/Write 
+
+Bits Name Default Description 
+
+Sets the maximum power rating when VBATT drops below its first threshold. PDP is 
+
+VBATT_LOW1_ reduced to the value set by these bits. The default is 45W. 
+D[7:0] 0x5A 
+
+PDP 0x01: 0.5W 
+0xFF: 127.5W 
+
+Selects which voltage is enabled in the PDO list. See Table 4 on page 29 for more 
+VBATT_L1_ 
+
+D[7:0] 0xBE details. The final PDO current is determined by PDP_L. The default means 4 fixed 
+PDO_SELECT 
+
+PDOs:5V/9V/15V/20V and 3 APDOs: 3.3V to 5.9V/3.3V to 11V/3.3V to 16V. 
+
+Sets the maximum power rating when VBATT drops below its second threshold. PDP 
+
+VBATT_LOW2_ is reduced to the value set by these bits. The default is 15W. 
+D[7:0] 0x1E 
+
+PDP 0x01: 0.5W 
+0xFF: 127.5W 
+
+Selects which voltage is enabled in the PDO list. See Table 4 on page 29 for more 
+VBATT_L2_ 
+
+D[7:0] 0xBE details. The final PDO current is determined by PDP_L. The default means 4 fixed 
+PDO_SELECT 
+
+PDOs:5V/9V/15V/20V and 3 APDOs: 3.3V to 5.9V/3.3V to 11V/3.3V to 16V. 
+
+Sets the maximum power rating when the die temperature drops below its threshold. 
+PDP is reduced to the value set by these bits. The default is 45W. 
+
+D[7:0] OTW1_PDP 0x5A 
+0x01: 0.5W 
+0xFF: 127.5W 
+
+Selects which voltage is enabled in the PDO list. See Table 4 on page 29 for more 
+OTW1_PDO_ 
+
+D[7:0] 0xBE details. The final PDO current is determined by PDP_L. The default means 4 fixed 
+SELECT 
+
+PDOs:5V/9V/15V/20V and 3 APDOs: 3.3V to 5.9V/3.3V to 11V/3.3V to 16V. 
+
+Sets the maximum power rating when the die temperature drops below its threshold. 
+
+OTW2_NTC_ PDP is reduced to the value set by these bits. The default is 30W. 
+D[7:0] 0x3C 
+
+PDP 0x01: 0.5W 
+0xFF: 127.5W 
+
+Selects which voltage is enabled in the PDO list. See Table 4 on page 29 for more 
+OTW2_NTC_ 
+
+D[7:0] 0xBE details. The final PDO current is determined by PDP_L. The default means 4 fixed 
+PDO_SELECT 
+
+PDOs:5V/9V/15V/20V and 3 APDOs: 3.3V to 5.9V/3.3V to 11V/3.3V to 16V. 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 46 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+CTL_SYS14 and CTL_SYS15 
+
+Address: 0x2B, 0x2C 
+Type: Read/Write 
+
+Bits Name Default Description 
+
+Sets the threshold for input voltage detection. The default is 0100b. See the Low 
+Battery Operation section on page 28 for more details.  
+
+D[3:0] Input Voltage Falling Hysteresis 
+0000 This function is disabled This function is disabled 
+0001 12.6V 
+0010 12.2V 
+0011 11.8V 
+0100 11.4V 
+
+VBATT_LOW_ 0101 11V 
+D[7:4] 0100b 
+
+THLD1 0110 10.6V 
+0111 10.2V 
+1000 9.8V 800mV 
+1001 9.4V 
+1010 9V 
+1011 8.6V 
+1100 8.2V 
+1101 7.8V 
+1110 7.4V 
+1111 7V 
+
+ 
+
+Sets the threshold for input voltage detection. The default is 1000b. See the Low 
+Battery Operation section on page 28 for more details. 
+
+D[3:0] Input Voltage Falling Input Voltage Rising 
+0000 This function is disabled This function is disabled 
+0001 11.8V 
+0010 11.4V 
+0011 11V 
+0100 10.6V 
+
+VBATT_LOW_ 0101 10.2V 
+D[3:0] 1000b 
+
+THLD2 0110 9.8V 
+0111 9.4V 
+1000 9V 800mV 
+1001 8.6V 
+1010 8.2V 
+1011 7.8V 
+1100 7.4V 
+1101 7V 
+1110 6.6V 
+1111 6.2V 
+
+ 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 47 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+Those bits set the threshold of input voltage detection. The default is 1010b. See 
+the Low Battery Operation section on page 28 for more details. 
+
+D[3:0] Input Voltage Falling Input Voltage Rising 
+0000 This function is disabled This function is disabled 
+0001 9.8V 
+0010 9.4V 
+0011 9V 
+0100 8.6V 
+
+VBATT_LOW_ 0101 8.2V 
+D[7:4] 1010b 
+
+THLD3 0110 7.8V 
+0111 7.4V 
+1000 7V 800mV 
+1001 6.6V 
+1010 6.2V 
+1011 5.8V 
+1100 5.4V 
+1101 5V 
+1110 4.6V 
+1111 4.2V 
+
+ 
+
+Sets the VBATT low 1, and VBATT low 2, and VBATT low 3 blank times. The default is 
+10b. 
+
+VBATT_LOW_ 
+D[3:2] 10b 00b: 10ms 
+
+BLK 01b: 160ms 
+10b: 320ms 
+11b: 640ms 
+
+D[1:0] RESERVED - Reserved. 
+
+CTL_SYS16 
+
+Address: 0x2D 
+Type: Read/Write 
+
+Bits Name Default Description 
+
+D[7] RESERVED - Reserved. 
+
+Sets the R(DS)ON for external N-channel MOSFET at 10V VGS. Select R(DS)ON such 
+that is matches MOSFET’s actual R(DS)ON at 10VGS. The default is 000b.  
+
+D[6:4] R(DS)ON (mΩ) 
+EXT_HS_ 
+
+D[6:4] 000b 000 This function is disabled 
+FET_RON 
+
+001 5 
+010 7.5 
+011 10 
+100 12.5 
+
+ 
+
+Sets the over-temperature warning (OTW) threshold. The default is 110b. OTW has 
+a 20°C hysteresis for recovery.  
+
+000b: Disable OTW 
+001b: 105°C  
+
+OTW2_ 
+D[3:1] 110b 010b:115°C  
+
+THRESHOLD 011b: 125°C  
+100b: 135°C  
+101b: 145°C  
+110b: 155°C  
+111b: 165°C 
+
+D[0] RESERVED - Reserved. 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 48 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+CTL_SYS17 
+
+Address: 0x2E 
+Type: Read/Write 
+
+Bits Name Default Description 
+
+Sets the high-side peak current limit in boost mode. The default is 11b.  
+
+D[7:6] Peak Limit 
+D[7:6] PEAK_CL 11b 00 8A 
+
+01 12A 
+10 16A 
+11 20A 
+
+ 
+
+Sets the NTC thermal recovery hysteresis. This bit controls both NTC and NTC2. 
+
+NTC_ The default is 1b. 
+D[4] 1b 
+
+HYSTERESIS 0b: 10% 
+1b: 20% 
+
+Sets the behavior if the NTC function is triggered. The default is 0b.  
+
+D[3] NTC_MODE 0b 0b: Shut down the MPQ4242 
+1b: Reduce the PD power to the value set by OTW2_NTC_PDP  
+
+Sets the default VBUS voltage. The default is 10b.  
+
+VBUS_ 00b: 5V 
+D[1:0] 10b 
+
+VOLTAGE 01b: 5.05V 
+10b: 5.1V 
+11b: 5.15V 
+
+CTL_SYS18 
+
+Address: 0x2F 
+Type: Read/Write 
+
+Bits Name Default Description 
+
+Configures the I2C register value into the OTP memory cell. A password is required 
+before using the OTP. The OTP can be configured once. Only the MPQ4242-0000 
+
+D[7] OTP_PROGRAM 0x0 and OTP_PAGE = 0 can be used to configure the OTP. Write 1 to this bit to 
+implement OTP configurations. After configuring is complete, this bit automatically 
+resets to 0. Apply a 12V VIN while configuring the OTP.  
+
+Sets the LED_PWM output duty cycle. The minimum value is 5%; the maximum is 
+100%. 
+
+D[6:0] LED_PWM_DUTY 0x32 
+0x05: 5% 
+0x64: 100% 
+
+STATUS1 
+
+Address: 0x30 
+Type: Read-Only 
+
+This register is latch-off, and it is cleared when it is read. 
+
+Bits Name Description 
+
+Returns whether the sink is connected.  
+
+D[7] ATTACHED 0b: Disconnected 
+1b: Connected 
+
+Returns whether an NTC2 event has occurred. 
+
+D[6] NTC2_ENTER 0b: No NTC2 event has occurred 
+1b: An NTC2 event has occurred 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 49 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+Indicates the USB Type-C polarity. 
+
+D[5] POL 0b: CC1 is selected as the CC line 
+1b: CC2 is selected as the CC line 
+
+Indicates the output bus voltage status. 
+
+D[4] SHORT_VBATT 0b: Normal state 
+1b: DP, DM, CC1, CC2 or USB_GND is shorted with the battery voltage 
+
+FAULT function indicates a fault has happened. Fault conditions include OCP, OTP, and 
+GND/DP/DM/CCx to battery shorts. 
+
+D[3] FAULT 
+0b: No fault has occurred 
+1b: One or more fault events have occurred 
+
+Indicates the current OTP page index. 
+
+D[2] OTP_PAGE 0b: Page 0. No OTP configurations 
+1b: Page 1 
+
+Indicates the output power status. 
+
+D[1] CC_CV 0b: The output is in a CV state 
+1b: The output is in a CC current limit state 
+
+Returns whether an NTC event has occurred.  
+
+D[0] NTC_ENTER 0b: No NTC event has occurred 
+1b: An NTC event has occurred 
+
+STATUS2 
+
+Address: 0x31 
+Type: Read-Only 
+
+This register is latch-off, and it is cleared when it is read. 
+
+Bits Name Description 
+
+Indicates if VIN is below its first lower threshold. 
+VBATT_LOW1_ 
+
+D[7] 
+FLAG 0b: VIN is not below its threshold 
+
+1b: VIN is below its threshold 
+
+Indicates if VIN is below its second lower threshold. 
+VBATT_LOW2_ 
+
+D[6] 
+FLAG 0b: VIN is not below its threshold 
+
+1b: VIN is below its threshold 
+
+Indicates if the device is in an over-temperature warning (OTW1) state. 
+
+D[5] OTW1 0b: No OTW1 state has been detected 
+1b: The device is in an OTW1 state 
+
+Indicates if the device is in an over-temperature warning (OTW2) state. 
+
+D[4] OTW2 0b: No OTW2 state has been detected 
+1b: The device is in an OTW2 state 
+
+Returns the sink’s selected PDO index. 
+SELECTED_ 
+
+D[3:1] 
+PDO_INDEX 0: No PD contract 
+
+1~7: PDO1~ 7 has been selected 
+
+Indicates if the sink’s selected PDO is fixed PDO or APDO (PPS). 
+
+D[0] PDO_TYPE 0b: Fixed PDO 
+1b: APDO 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 50 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+STATUS3 
+
+Address: 0x32 
+Type: Read-Only 
+
+This register reflects an instantaneous value. It is a non-latch register. 
+
+Bits Name Description 
+
+Returns the PD contracted power in 0.5W units. Calculate the fixed PDO value with the 
+following equation: 
+
+Fixed PDO = Voltage x Maximum Current; 
+CONTRACT_ 
+
+D[7:0] 
+POWER Calculate the PPS with the following equation: 
+
+PPS: Max Voltage x Max Current. 
+
+If there is no PD contract, the value is 7.5W or 15W depending on RP.  
+
+ID1 
+
+Address: 0x33 
+Type: Read-Only 
+
+Bits Name Description 
+
+OTP_SUFFIX_ 
+D[7:0] “0x00” represents the MPQ4242-0000. “0x01” represents the MPQ4242-0001. 
+
+CODE 
+
+ID2 
+
+Address: 0x34 
+Type: Read-Only 
+
+Bits Name Description 
+
+OTP_SOFTWARE_ 
+D[7:0] Stores the revision number, which is the OTP value.  
+
+REVISION_NO 
+
+FW_REV 
+
+Address: 0x35 
+Type: Read-Only 
+
+Bits Name Description 
+
+Indicates if the sink request sets a mismatch bit. Defined in the PD specification. 
+
+D[7] MISMATCH 
+0b: The MISMATCH bit is set to 0 
+1b: The MISMATCH bit is set to 1 
+
+D[6] GIVEBACK_FLAG This bit is set if the sink requests a GIVEBACK flag. 
+
+0b: The cable can handle 3A only  
+D[5] CABLE_CAP 1b: 5A cable 
+
+D[4:0] FIRMWARE_REVISION Returns the PD firmware revision number. 
+
+MAX_REQ_CUR 
+
+Address: 0x36 
+Type: Read-Only 
+
+Bits Name Description 
+
+Sink requested maximal operation current (MISMATCH bit = 1) in 20mA unit, only 
+D[7:0] MAX_REQ_CUR 
+
+valid when GIVEBACK_FLAG = 0 and fixed PDO is selected. 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 51 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+MFR_ID 
+
+Address: 0x37 
+Type: Read-Only 
+
+Bits Name Description 
+
+D[7:0] MANUFACTURER_ID Returns the manufacturer ID. The default is 0000 1001b. 
+
+DEV_ID 
+
+Address: 0x38 
+Type: Read-Only 
+
+Bits Name Description 
+
+D[7:0] DEVICE_ID Returns the device ID. The default is 0101 1000b. 
+
+CLK_ON 
+
+Address: 0x39 
+Type: Write-Only 
+
+Bits Name Description 
+
+Enables the digital clock. Write 0x01 to enable the digital clock. No I2C registers can 
+be modified before the digital clock is enabled. This bit automatically resets to 0 after 
+
+D[7:0] CLOCK_ON the clock is enabled. The digital clock is enabled when a USB Type-C device is 
+connected. Write 0 to 0x39, set the EN bit to 0,  or pull down the EN pin and VIN pin 
+below their UVLO thresholds to disable the digital clock again. 
+
+GPIO1 and GPIO2 Options 
+GPIO1 
+
+GATE POWER_SHARE1 FAULT NTC2 ATTACH_FLT_ALT IMON 
+Options 
+GPIO2 VCONN_IN 
+
+POL NTC LED_PWM ATTACH POWER_SHARE2 
+Options (max 5.25V) 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 52 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+APPLICATION INFORMATION  
+
+COMPONENT SELECTION calculated with Equation (6): 
+
+Selecting the Inductor 
+ V  I VIN(MIN)  (VOUT - VIN(MIN) )
+I = OUT OUT +  (6) 
+
+In a buck-boost topology, the inductor must PEAK_BOOST
+η× VIN(MIN) 2VOUT  fREQ L
+
+support buck applications with the maximum 
+input voltage (VIN) and boost applications with Where η is the estimated efficiency of the 
+the minimum VIN. Two critical inductance values MPQ4242 
+can be determined according to the buck mode Selecting the Input Capacitor 
+and boost mode current ripple. The first 
+
+It is recommended to use ceramic capacitors 
+inductance value (LMIN_BUCK) can be calculated 
+
+plus an electrolytic capacitor for the input and 
+with Equation (3): 
+
+output capacitors. This filters the input and 
+V output ripple current and helps achieve stable 
+
+OUT  (VIN(MAX) - VOUT )
+         LMIN_BUCK =      (3) operation. Ceramic capacitors with X5R or X7R 
+
+VIN(MAX)  fREQ ΔIL dielectrics are highly recommended because of 
+their low ESR and small temperature coefficients. 
+
+The second inductance value (LMIN_BOOST) can be 
+For automotive applications, a 100µF electrolytic 
+
+calculated with Equation (4): 
+capacitor and two 10µF + 0.1µF ceramic 
+
+V capacitors are recommended. 
+IN(MIN)  (VOUT - VIN(MIN) )
+
+      LMIN_BOOST =   (4) 
+V The input capacitor can be electrolytic, tantalum, 
+
+OUT  fREQ ΔIL
+or ceramic. When using an electrolytic capacitor, 
+
+Where fREQ is the switching frequency, and ∆IL is place two additional, high-quality ceramic 
+the peak-to-peak inductor current ripple.  capacitors as close to VIN as possible.  
+
+Typically, the peak-to-peak ripple can be set at Selecting the Output Capacitor 
+1A to 3A of the inductor current. In addition to the The device requires an output capacitor (COUT) 
+inductance value, the inductor must support the to maintain the DC output voltage. Typically, a 
+peak current in buck and boost applications to 100µF polymer or hybrid electric capacitor and 
+avoid saturation. The peak current in buck mode two 10µF + 0.1µF ceramic output capacitors are 
+can be calculated with Equation (5): recommended for excellent loop stability and 
+
+V transient response.  
+OUT  (VIN(MAX) - VOUT )
+
+        IPEAK_BUCK = IOUT +       (5) The E-capacitor’s ESR must be smaller than 
+2VIN(MAX)  fREQ L
+
+50mΩ for excellent loop stability, transient 
+
+The peak current in boost mode can be response, and efficiency. 
+
+In GND to battery short applications, the output 
+E-capacitor’s negative node must be connected 
+to the current-sense resistor (see Figure 24 on 
+page 55). 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 53 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+PCB Layout Guidelines 
+
+Efficient PCB layout is critical for standard 
+operation and thermal dissipation. For the best 
+results, refer to Figure 23 and follow the 
+guidelines below: GND
+1. Use short, direct, and wide traces to connect 
+
+OUT. Adding vias under the IC, then route 
+the OUT trace on both PCB layers. 
+
+2. Place a large copper plane for PGND. Add 
+multiple vias to improve thermal dissipation. 
+Connect AGND to PGND.  
+
+3. Place PGND vias close to PGND pin and 
+under the IC’s body. 
+
+ 
+4. Place the VCC decoupling capacitor as close Mid-Layer 1 
+
+as possible to the VCC pin. Place 3 vias 
+close to the VCC decoupling capacitor’s 
+AGND terminal. 
+
+5. Place a large copper plane for SW . 
+
+6. Place two ceramic input decoupling 
+capacitors as close as possible to VIN, 
+VOUT, and PGND to improve EMI 
+performance.  
+
+7. Place an input filter at the bottom layer to 
+improve EMI performance. 
+
+8. Use Kelvin connections for the output current 
+sense traces (ISENS+ and ISENS-). 
+
+Kelvin connection 
+9. Place the input capacitor also close to the 
+
+for current sense
+VIN pin as possible. Especially the 0.1µF  
+capacitor should be placed close to the VIN Mid-Layer 2 
+pin and PGND. 
+
+10. Make the HS_G trace wide and short. 
+
+The HS_G trace should 
+be wide and short
+
+Place PGND vias close to PGND pin and 
+under IC body.
+
+Place EMI filter 
+
+Place 3 AGND vias on the opposite 
+close to Vcc capacitor side of IC.
+
+The 0.1uF capacitor must be close 
+to VIN and PGND.  
+
+  Bottom Layer 
+Top Layer 
+
+Figure 23: Recommended PCB Layout
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 54 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+TYPICAL APPLICATION CIRCUITS 
+
+C1B Optional for 60W only
+Q2
+
+V C1 4.7µF x C1C 10m   R6 C13 5V, 9V, 15V, and 20V at 3A
+R2 C3
+
+IN 100µF 2 0.1µF 1 1nF
+10 0.22µF PPS 3.3V to 11V at 3A
+
+PPS 3.3V to 16V at 3A
+9V to 16V + R6 Optional
+
+100k PPS 3.3V to 21V at 3A
+U1 1 16 15
+
+L1
+R7 13
+
+35.7k EN VIN HS_G BST1 14 C2
+SW1
+
+4.7µH C2A C2B C2C C8 100µF
+0.1µF 10µF 10µF 10µF ESR   50m  
+
+18 SW2 12
+VCC
+
+11 +
+C5 BST2
+
+2.2µF R3 C4 VBUS
+0 0.22µF
+
+19 3
+OUT
+
+ICOMP USB_GND
+MPQ4242-xxxx 6 U
+
+VCC C6 DM
+470pF 5 S CC1 CC2 DM DP DM DP
+
+R5 DP
+B C11
+
+7 C12
+43.2k 
+
+8 CC1 1nF 1nF
+GPIO2 -
+
+RNTC 4
+10 CC2 C ESD1L001
+
+4.79k  at C7
+SCL R1
+
+W1T2G
+100°C 1nF 9
+
+SDA 23.2k C9 C10
+20
+
+GPIO1 VCC 390pF 390pF Shield
+
+AGND PGND ISENS- ISENS+ C13 R8
+R 100nF
+
+NTC2 100k 
+17 2 21 RS 22 2.529k  at 120°C
+
+10m  USB_GND
+USB_GND  
+
+Figure 24: MPQ4242 60W PD Application 
+
+V C1B Optional for 60W only Default PDO:
+IN Q1
+
+4.7µF x R9 C19 5V, 9V, and 15V at 3A
+9V to 16V C1 C1C 10m   R2 C3
+
+2 1 1nF
+100µF 0.1µF 10 0.22µF 20V at 2.25A
+
+PPS 3.3V to 11V at 3A
++ R6 Optional
+
+PPS 3.3V to 16V at 3A
+100k 
+
+U1 1 16 15 PPS 3.3V to 21V at 2.25A
+R7 13 L1 C2B
+
+35.7k EN VIN HS_G BST1 14
+SW1 10µF x 
+
+4.7µH C2C C2, 100µF
+2
+
+0.1µF ESR   50m  
+18 SW2 12
+
+VCC
+11 + C2D
+
+C5 BST2 10µF
+2.2µF R3 C4 USB_GND1
+
+3 0 0.22µF VBUS1
+19 OUT
+
+ICOMP
+MPQ4242-A 6 U
+
+C6 DM
+470pF 5 S CC1 CC2 DM DP DM DP
+
+R4 DP
+B C11 C12
+
+V 100k 7 1nF 1nF
+BUS2 8 CC1
+
+GPIO2 -
+4
+
+CC2 C ESD1L001
+R5 C17
+
+W1T2G
+20k 10nF 10 C9
+
+SCL 20 C10
+
+9 GPIO1 390pF 390pF
+SDA Shield
+
+22
+AGND PGND ISENS- ISENS+
+
+C17 R8
+100nF 100k 
+
+17 2 21 RS1
+
+10m  C8B
+C8 USB_GND1
+
+10µF x 
+C8C 100µF
+
+USB_GND1 2
+0.1µF ESR   50m  
+
+C8D
++
+
+C7 10µF
+
+4.7µF x C7B
+2 0.1µF 1 USB_GND2
+
+VIN 3
+OUT
+
+VBUS2
+6 U
+
+DM CC1 CC2 DM DP DM DP
+
+5 S C15 C16
+Configure the GPIO2 pin DP 1nF 1nF
+
+MPQ4242-B * B
+for the power share 7
+
+CC1
+function R9 - ESD1L001
+
+4 W1T2G
+V 100k CC2
+
+BUS1 8 C
+GPIO2
+
+*Other pin connections C13 C14
+20
+
+are the same as the R10 C18 GPIO1 390pF 390pF Shield
+20k 10nF 22
+
+MPQ4242-A PGND ISENS+ C18 R12
+100nF 100k 
+
+2 RS2
+
+10m  USB_GND2
+
+ USB_GND2  
+ Figure 25: MPQ4242 Dual-Channel 45W PD Application with GPIO2_POWER_SHARE (18) (19) (20) 
+
+Notes: 
+
+18) See Table 5 on page 29 for the GPIO2 power share PDP management. VBUS exceeds 11.2V to trigger power share function (GPIO2 input 
+voltage > 1.87V). 
+
+19) GPIO1 can be configured as a gate drive for the external low-side N-channel power MOSFET used for USB_GND short to battery protection. 
+20) TVS diodes are required to pass the ±8kV contact =/ ±15kV air discharge per IEC ESD specifications. 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 55 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+MPQ4242GQV-0000 CONFIGURATION TABLE 
+Voltage Current 
+
+OTP Items(PDO) Enabled/Disabled PDO Type 
+Setting Setting 
+
+PDO1 Enabled Fixed PDO 5V 3A 
+PDO2 1b: Enabled (default) 0b: Fixed PDO (default) 9V (default) 3A 
+PDO3 1b: Enabled (default) 0b: Fixed PDO (default) 15V (default) 3A 
+PDO4 1b: Enabled (default) 0b: Fixed PDO (default) 20V (default) 3A 
+PDO5 1b: Enabled (default) 1b: APDO (default) 3.3V to 11V 3A 
+PDO6 1b: Enabled (default) 1b: APDO (default) 3.3V to 16V 3A 
+PDO7 1b: Enabled (default) 1b: APDO (default) 3.3V to 21V 3A 
+
+Table 7: OTP Descriptions 
+
+OTP Items Description Value 
+000b: POWER_SHARE function 
+
+GPIO1 Configures the GPIO1 pin’s function. 
+(default) 
+
+GPIO2 Configures the GPIO2 pin’s function. 000b: Reserved 
+Sets the over-temperature shutdown 
+
+OTP_THRESHOLD 010b: 175°C (default) 
+threshold. 
+Sets-the over temperature warning 
+
+OTW1_THRESHOLD 100b: 135°C (default) 
+threshold. 
+Sets the maximum power rating when the die 
+
+OTW1_PDP 45W (default) 
+temp drops below its threshold. 
+Selects which voltage is enabled in the PDO 
+
+OTW1_PDO_SELECT 0xBE (default) 
+list. 
+Sets the over-temperature warning 
+
+OTW2_THRESHOLD 110b: 155°C (default) 
+threshold. 
+Set the maximum power rating when the die 
+
+OTW2_NTC_PDP 30W (default) 
+temperature drops below its threshold.  
+
+OTW2_NTC_PDO_ Selects which voltage is enabled in the PDO 
+0xBE (default) 
+
+SELECT list. 
+NTC_HYSTERESIS Sets the NTC thermal recovery hysteresis. 1b: 20%( default) 
+
+Sets the MPQ4242 behavior when the NTC 1b: Reduce PD power to the value 
+NTC_MODE 
+
+is triggered. set by OTW2_NTC_PDP 
+VBATT_LOW_THLD1 Sets the first threshold for VIN detection. 0100b: 11.4V (default) 
+VBATT_LOW_THLD2 Sets the second threshold for VIN detection. 1000b: 9V (default) 
+
+Sets the third threshold for VIN detection. The 
+VBATT_LOW_THLD3 device shuts down after this threshold is 1010b: 6.2V (default) 
+
+triggered. 
+Sets the VBATT low 1 and VBATT low 2 blank 
+
+VBATT_LOW_BLK 10b: 320ms (default) 
+times. 
+Sets the maximum power rating when VBATT 
+
+VBATT_LOW1_PDP 45W (default) 
+falls below its first threshold. 
+
+VBATT_L1_PDO_ Select s the voltage that is enabled in the 
+0xBE (default) 
+
+SELECT PDO list. 
+Sets the maximum power rating when VBATT 
+
+VBATT_LOW2_PDP 15W (default) 
+falls below its second threshold. 
+Selects the voltage that is enabled in the 
+
+VBATT_L2_PDO_SELECT 0xBE (default) 
+PDO list. 
+Set the thresholds to which the PDO power 
+
+PS_PDP_THD 45W (default) 
+rating is reduced. 
+
+PS_PDP_THD_PDO_ Selects which voltage is enabled in the PDO 
+0xBE (default) 
+
+SELECT list. 
+VBUS_VOLTAGE Sets the default VBUS voltage. 10b: 5.1V (default) 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 56 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+MODE Sets the PFM/PWM mode. 1b: Forced PWM mode (default) 
+FREQ Sets the switching frequency 01b: 420kHz (default) 
+
+0b: No frequency spread spectrum 
+DITHER Sets the spread spectrum feature 
+
+(default) 
+EN_OFF_TIMER Sets the EN off timer. 000b: No delay (default) 
+
+Sets the output voltage compensation vs 
+LINE_DROP_COMP 00b: No compensation (default) 
+
+load feature. 
+1b: 0.08mV/µs VREF rising slew 
+
+SLEW_RATE Sets the output slew rate to adjust VOUT. rate, 0.08mV/µs VREF falling slew 
+rate (default) 
+
+Sets the high-side peak current limit in boost 
+PEAK_CL 11b: 20A (default) 
+
+mode. 
+Sets the external CC limit RSENS resistor 
+
+RSENS 1b: 10mΩ 
+value. 
+Sets the RDS(ON) of the external N-channel 000b: This function is disabled 
+
+EXT_HS_FET_RON 
+MOSFET at 10VGS. (default) 
+Sets the blank time when the output CC 
+
+CC_BLANK_TIMER 01b: 2ms (default) 
+over-current condition is reached. 
+
+LEGACY_CHARGING_ Selects QC 3.0/DCP short mode / Divider 00b: All DCP modes are active 
+MODE_SEL mode. (default) 
+
+I2C_SLAVE_ADDRESS Sets the MPQ4242’s I2C slave address. 61h (default) 
+Enables the VIN_OVP function. When VIN > 
+
+VIN_OVP 0b: Disable VIN_OVP function 
+22V, the MPQ4242 shuts down. 
+
+ 
+
+  
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 57 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+PACKAGE INPFAOCRKAMGAET OIOUNTL INE DRAWING FOR 22L FCQFN (4X5MM)-2
+MF-PO-D-0555 revision 0.0
+
+QFN-22 (4mmx5mm) 
+
+PIN 1 ID 
+MARKING
+
+PIN 1 ID 
+INDEX AREA
+
+TOP VIEW BOTTOM VIEW
+
+SIDE VIEW SECTION A-A
+
+NOTE:
+
+1) THE LEAD SIDE IS WETTABLE.
+2) ALL DIMENSIONS ARE IN MILLIMETERS.
+3) LEAD COPLANARITY SHALL BE 0.08 
+MILLIMETERS MAX.
+4)  JEDEC REFERENCE IS MO-220.
+5) DRAWING IS NOT TO SCALE.
+
+RECOMMENDED LAND PATTERN  
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 58 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+CARRIER INFORMATION 
+
+Pin1 1 1 1 1
+ABCD ABCD ABCD ABCD
+
+Feed Direction 
+    
+
+ 
+
+Carrier 
+Package Quantity/ Quantity/ Quantity/ Reel Carrier 
+
+Part Number Tape 
+Description Reel Tube Tray Diameter Tape Pitch 
+
+Width 
+
+MPQ4242GVE-0000- QFN-22 
+AEC1-Z (4mmx5mm) 
+
+MPQ4242GVE-0001- QFN-22 
+AEC1-Z (4mmx5mm) 
+
+5000 N/A N/A 13in 12mm 8mm 
+
+MPQ4242GVE-0015- QFN-22 
+AEC1-Z (4mmx5mm) 
+
+MPQ4242GVE-xxxx- QFN-22 
+AEC1-Z (4mmx5mm) 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 59 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved. 
+
+
+
+MPQ4242 – 5A, 36V, FULLY INTEGRATED USB PD SOLUTION, AEC-Q100 
+
+REVISION HISTORY  
+Revision # Revision Date Description Pages Updated 
+
+1.0 6/10/2022 Initial Release - 
+ 
+ 
+
+Notice: The information in this document is subject to change without notice. Please contact MPS for current specifications. 
+Users should warrant and guarantee that third-party Intellectual Property rights are not infringed upon when integrating MPS 
+products into any application. MPS will not assume any legal responsibility for any said applications. 
+
+MPQ4242 Rev. 1.0 MonolithicPower.com 60 
+6/10/2022 MPS Proprietary Information. Patent Protected. Unauthorized Photocopy and Duplication Prohibited. 
+ © 2022 MPS. All Rights Reserved.

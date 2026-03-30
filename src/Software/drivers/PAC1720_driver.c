@@ -30,12 +30,18 @@ static bool pac_read_reg(uint8_t addr, uint8_t reg, uint8_t *out) {
 }
 
 static bool pac_read16(uint8_t addr, uint8_t reg_hi, int16_t *out) {
-    uint8_t hi, lo;
-    if (!pac_read_reg(addr, reg_hi, &hi))       return false;
-    if (!pac_read_reg(addr, reg_hi + 1, &lo))   return false;
-    /* PAC1720 returns 11-bit two's complement in the upper 11 bits */
-    int16_t raw = (int16_t)(((uint16_t)hi << 8) | lo);
-    raw >>= 5; /* shift down — 11-bit in bits 15..5 */
+    /* Read both bytes in a single atomic I2C transaction (write reg addr,
+     * repeated-start, read 2 bytes). Two separate reads risk getting hi and lo
+     * bytes from different conversion cycles if an update lands between them. */
+    uint8_t buf[2] = {0, 0};
+    int ret = i2c_bus_write_read(PAC1720_I2C_INSTANCE, addr,
+                                 &reg_hi, 1u, buf, 2u, PAC1720_TIMEOUT);
+    if (ret != 2) return false;
+    /* 11-bit sign-magnitude result lives in bits [15:5] of the 16-bit word.
+     * Arithmetic right-shift to bits [10:0]; sign bit propagates correctly for
+     * positive readings (negative currents are clamped to 0 by the caller). */
+    int16_t raw = (int16_t)(((uint16_t)buf[0] << 8) | buf[1]);
+    raw >>= 5;
     *out = raw;
     return true;
 }
@@ -56,13 +62,14 @@ bool PAC1720_Init(uint8_t i2c_addr) {
     /* Continuous conversion, 64 samples/s */
     pac_write_reg(i2c_addr, PAC1720_REG_CONV_RATE, 0x03); /* 64 conv/s */
 
-    /* Channel 1 sense config: ±80 mV range, 11-bit resolution */
-    pac_write_reg(i2c_addr, PAC1720_REG_CH1_SENSE_CFG, 0x4F); /* ±80 mV, 11-bit */
-    pac_write_reg(i2c_addr, PAC1720_REG_CH2_SENSE_CFG, 0x4F);
+    /* CH1 and CH2 VSENSE: 40 ms sample time, no averaging, ±80 mV FSR
+     * Reg 0x0B/0x0C: bits[6:5]=10 (40ms), bits[4:2]=000 (1 sample), bits[1:0]=11 (±80mV) */
+    pac_write_reg(i2c_addr, PAC1720_REG_CH1_SENSE_CFG, 0x43);
+    pac_write_reg(i2c_addr, PAC1720_REG_CH2_SENSE_CFG, 0x43);
 
-    /* Source voltage config: 10-bit, 2.5V min range */
-    pac_write_reg(i2c_addr, PAC1720_REG_CH1_VSRC_CFG, 0x0F);
-    pac_write_reg(i2c_addr, PAC1720_REG_CH2_VSRC_CFG, 0x0F);
+    /* VSOURCE sampling: both channels 10 ms, no averaging
+     * Reg 0x0A: bits[7:6]=10 (CH2 10ms), bits[5:3]=000 (1 sample), bits[2:1]=10 (CH1 10ms), bit[0]=0 */
+    pac_write_reg(i2c_addr, PAC1720_REG_VSRC_SAMP_CFG, 0x88);
 
     return true;
 }
@@ -89,12 +96,13 @@ bool PAC1720_ReadVoltage(uint8_t i2c_addr, uint8_t channel, float *voltage_v) {
 
     uint8_t reg_hi = (channel == 1) ? PAC1720_REG_CH1_VSRC_HI
                                     : PAC1720_REG_CH2_VSRC_HI;
-    uint8_t hi, lo;
-    if (!pac_read_reg(i2c_addr, reg_hi, &hi))       return false;
-    if (!pac_read_reg(i2c_addr, reg_hi + 1, &lo))   return false;
+    uint8_t buf[2] = {0, 0};
+    int ret = i2c_bus_write_read(PAC1720_I2C_INSTANCE, i2c_addr,
+                                 &reg_hi, 1u, buf, 2u, PAC1720_TIMEOUT);
+    if (ret != 2) return false;
 
-    /* 10-bit reading in bits 9..0, full scale = 40 V */
-    uint16_t raw = (((uint16_t)hi << 2) | (lo >> 6)) & 0x3FF;
+    /* 10-bit reading in bits[15:6], full scale = 40 V */
+    uint16_t raw = (((uint16_t)buf[0] << 2) | (buf[1] >> 6)) & 0x3FF;
     *voltage_v   = (float)raw * 40.0f / 1023.0f;
     return true;
 }

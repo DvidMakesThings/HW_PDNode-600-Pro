@@ -21,6 +21,9 @@
 #include "USBATask.h"
 #include "../drivers/ethernet_driver.h"
 #include "../drivers/socket.h"
+#include "../drivers/PAC1720_driver.h"
+#include "../eeprom/eeprom_io.h"
+#include "../eeprom/eeprom_memory_map.h"
 
 #define CONSOLE_TAG     "[CONSOLE]"
 #define LINE_BUF_SIZE   128
@@ -89,6 +92,11 @@ static void cmd_help(void) {
     ECHO("  %-28s %s\r\n", "PROV LOCK",         "Force-close write window");
     ECHO("  %-28s %s\r\n", "PROV SN <serial>",  "Set serial (A-Z 0-9 - max 15)");
     ECHO("\r\n");
+    ECHO("EEPROM  (diagnostics)\r\n");
+    ECHO("  %-28s %s\r\n", "EEPROM STATUS",     "Show EEPROM layout and magic");
+    ECHO("  %-28s %s\r\n", "EEPROM DUMP [ALL|addr [len]]","Hex dump (default: first 256 B)");
+    ECHO("  %-28s %s\r\n", "EEPROM ERASE CONFIRM","Erase entire EEPROM (~2.5 s)");
+    ECHO("\r\n");
     ECHO("PD PORTS (USB-C PD)\r\n");
     ECHO("  %-28s %s\r\n", "PD STATUS",        "Show all 8 PD port status");
     ECHO("  %-28s %s\r\n", "PD STATUS <1-8>",  "Show single PD port status");
@@ -96,6 +104,7 @@ static void cmd_help(void) {
     ECHO("USB-A PORTS\r\n");
     ECHO("  %-28s %s\r\n", "USBA STATUS",       "Show all 4 USB-A port status");
     ECHO("  %-28s %s\r\n", "USBA STATUS <1-4>", "Show single USB-A port status");
+    ECHO("  %-28s %s\r\n", "USBA RAW",          "Dump raw PAC1720 ADC readings");
     ECHO("  %-28s %s\r\n", "USBA ON <1-4>",     "Enable USB-A port");
     ECHO("  %-28s %s\r\n", "USBA OFF <1-4>",    "Disable USB-A port");
     ECHO("==============================\r\n");
@@ -280,6 +289,114 @@ static void cmd_set_loc(const char *args) {
     ECHO("Location set to: %s\r\n", id.location);
 }
 
+static void cmd_eeprom(const char *args) {
+    char sub[16]  = {0};
+    char rest[32] = {0};
+    if (args) sscanf(args, "%15s %31[^\0]", sub, rest);
+    for (char *p = sub; *p; p++) *p = (char)toupper((unsigned char)*p);
+
+    /* STATUS */
+    if (strcmp(sub, "STATUS") == 0) {
+        bool magic_ok = eeprom_check_magic();
+        ECHO("EEPROM: CAT24C256, 32 KB\r\n");
+        ECHO("  Magic  : 0x%04X (%s, expected 0x%04X)\r\n",
+             EEPROM_MAGIC_VALUE,
+             magic_ok ? "OK" : "MISMATCH",
+             EEPROM_MAGIC_VALUE);
+        ECHO("  Layout :\r\n");
+        ECHO("    0x%04X  %2u+1 B  Network config + CRC\r\n",
+             EEPROM_NET_ADDR,      (unsigned)sizeof(pdnode_net_cfg_t));
+        ECHO("    0x%04X  %2u+1 B  Device identity + CRC\r\n",
+             EEPROM_IDENTITY_ADDR, (unsigned)sizeof(pdnode_identity_t));
+        return;
+    }
+
+    /* DUMP [ALL | start [len]] */
+    if (strcmp(sub, "DUMP") == 0) {
+        unsigned int start = 0u, length = 256u;
+        char *r = trim(rest);
+        if (*r) {
+            char first[16] = {0};
+            sscanf(r, "%15s", first);
+            for (char *p = first; *p; p++) *p = (char)toupper((unsigned char)*p);
+            if (strcmp(first, "ALL") == 0) {
+                length = EEPROM_TOTAL_SIZE;
+            } else {
+                char arg2[16] = {0};
+                if (sscanf(r, "%x %15s", &start, arg2) == 2) {
+                    sscanf(arg2, "%x", &length);
+                } else {
+                    sscanf(r, "%x", &start);
+                }
+            }
+        }
+        if (start >= EEPROM_TOTAL_SIZE) {
+            ECHO("ERROR: start address 0x%04X out of range\r\n", start);
+            return;
+        }
+        if (start + length > EEPROM_TOTAL_SIZE) {
+            length = EEPROM_TOTAL_SIZE - start;
+        }
+        ECHO("EEPROM dump 0x%04X–0x%04X (%u bytes):\r\n",
+             start, start + length - 1u, length);
+
+        uint8_t buf[16];
+        uint16_t addr = (uint16_t)start;
+        uint16_t end  = (uint16_t)(start + length);
+        uint16_t line = 0u;
+        /* Format each line into a single buffer to avoid partial-line drops
+           when the CDC TX ring is momentarily full. */
+        char line_buf[80];  /* "  XXXX: XX XX ... XX  |................|\r\n" = ~72 B */
+        while (addr < end) {
+            uint16_t chunk = (end - addr < 16u) ? (end - addr) : 16u;
+            eeprom_read_raw(addr, buf, chunk);
+
+            int pos = 0;
+            pos += snprintf(line_buf + pos, sizeof(line_buf) - (size_t)pos,
+                            "  %04X:", addr);
+            for (uint16_t i = 0u; i < chunk; i++)
+                pos += snprintf(line_buf + pos, sizeof(line_buf) - (size_t)pos,
+                                " %02X", buf[i]);
+            for (uint16_t i = chunk; i < 16u; i++)
+                pos += snprintf(line_buf + pos, sizeof(line_buf) - (size_t)pos, "   ");
+            pos += snprintf(line_buf + pos, sizeof(line_buf) - (size_t)pos, "  |");
+            for (uint16_t i = 0u; i < chunk; i++) {
+                char c = (char)buf[i];
+                pos += snprintf(line_buf + pos, sizeof(line_buf) - (size_t)pos,
+                                "%c", (c >= 0x20 && c < 0x7F) ? c : '.');
+            }
+            snprintf(line_buf + pos, sizeof(line_buf) - (size_t)pos, "|\r\n");
+            ECHO("%s", line_buf);
+
+            addr += chunk;
+            line++;
+            if ((line & 0x0Fu) == 0u) {
+                vTaskDelay(pdMS_TO_TICKS(5));  /* yield every 256 bytes */
+            }
+        }
+        return;
+    }
+
+    /* ERASE CONFIRM */
+    if (strcmp(sub, "ERASE") == 0) {
+        char confirm[16] = {0};
+        sscanf(rest, "%15s", confirm);
+        for (char *p = confirm; *p; p++) *p = (char)toupper((unsigned char)*p);
+        if (strcmp(confirm, "CONFIRM") != 0) {
+            ECHO("Type  EEPROM ERASE CONFIRM  to erase all EEPROM contents.\r\n");
+            ECHO("WARNING: This erases network config, identity, and all settings.\r\n");
+            ECHO("         Reboot after erase to reload factory defaults.\r\n");
+            return;
+        }
+        ECHO("Erasing EEPROM... (~2.5 s)\r\n");
+        eeprom_erase();
+        ECHO("EEPROM erased. Reboot to apply factory defaults.\r\n");
+        return;
+    }
+
+    ECHO("Usage: EEPROM STATUS | DUMP [addr [len]] | ERASE CONFIRM\r\n");
+}
+
 static void cmd_prov(const char *args) {
     char sub[16]  = {0};
     char rest[64] = {0};
@@ -394,10 +511,25 @@ static void cmd_usba(const char *args) {
         return;
     }
 
+    if (strcmp(sub, "RAW") == 0) {
+        ECHO("PAC1720 raw current readings:\r\n");
+        float c = 0.0f;
+        const char *labels[4] = {"USB-A1 (IC1 ch1)", "USB-A2 (IC1 ch2)",
+                                  "USB-A3 (IC2 ch1)", "USB-A4 (IC2 ch2)"};
+        uint8_t addrs[4] = {PAC1720_1_I2C_ADDR, PAC1720_1_I2C_ADDR,
+                            PAC1720_2_I2C_ADDR, PAC1720_2_I2C_ADDR};
+        uint8_t chs[4]   = {1, 2, 1, 2};
+        for (int i = 0; i < 4; i++) {
+            bool ok = PAC1720_ReadCurrent(addrs[i], chs[i], &c);
+            ECHO("  %s: %.4f A  (%s)\r\n", labels[i], c, ok ? "ok" : "read error");
+        }
+        return;
+    }
+
     bool turn_on = (strcmp(sub, "ON") == 0);
     bool turn_off = (strcmp(sub, "OFF") == 0);
     if (!turn_on && !turn_off) {
-        ECHO("Usage: USBA STATUS | ON <1-4> | OFF <1-4>\r\n"); return;
+        ECHO("Usage: USBA STATUS | RAW | ON <1-4> | OFF <1-4>\r\n"); return;
     }
 
     int n;
@@ -477,6 +609,8 @@ static void dispatch_command(const char *line) {
         cmd_usba(args ? args : "");
     } else if (strcmp(trimmed, "PROV") == 0) {
         cmd_prov(args ? args : "");
+    } else if (strcmp(trimmed, "EEPROM") == 0) {
+        cmd_eeprom(args ? args : "");
     } else {
         ECHO("Unknown command: '%s'. Type HELP for list.\r\n", trimmed);
     }

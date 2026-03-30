@@ -108,18 +108,33 @@ static void USBATask_Function(void *arg) {
     PAC1720_Init(PAC1720_2_I2C_ADDR);
 
     /* Capture zero-current offsets while all ports are disabled.
-     * Wait 32 ms for the first 64 Hz conversion to complete. */
-    vTaskDelay(pdMS_TO_TICKS(32));
+     * Wait 150 ms (≥9 conversion cycles at 64 Hz) for the ADC to fully settle,
+     * then average 8 samples spaced one conversion period apart (~16 ms each). */
+#define OFFSET_SAMPLES  8
+#define OFFSET_SETTLE_MS 150
+#define OFFSET_INTERVAL_MS 16
+    vTaskDelay(pdMS_TO_TICKS(OFFSET_SETTLE_MS));
     {
-        float c[USBA_NUM_PORTS] = {0};
-        PAC1720_ReadCurrent(PAC1720_1_I2C_ADDR, 1, &c[0]);
-        PAC1720_ReadCurrent(PAC1720_1_I2C_ADDR, 2, &c[1]);
-        PAC1720_ReadCurrent(PAC1720_2_I2C_ADDR, 1, &c[2]);
-        PAC1720_ReadCurrent(PAC1720_2_I2C_ADDR, 2, &c[3]);
-        for (int p = 0; p < USBA_NUM_PORTS; p++) s_current_offset[p] = c[p];
-        INFO_PRINT("%s Zero offsets: %.3f %.3f %.3f %.3f A\r\n",
-                   USBA_TAG, c[0], c[1], c[2], c[3]);
+        float acc[USBA_NUM_PORTS] = {0.0f, 0.0f, 0.0f, 0.0f};
+        for (int s = 0; s < OFFSET_SAMPLES; s++) {
+            float c[USBA_NUM_PORTS] = {0};
+            PAC1720_ReadCurrent(PAC1720_1_I2C_ADDR, 1, &c[0]);
+            PAC1720_ReadCurrent(PAC1720_1_I2C_ADDR, 2, &c[1]);
+            PAC1720_ReadCurrent(PAC1720_2_I2C_ADDR, 1, &c[2]);
+            PAC1720_ReadCurrent(PAC1720_2_I2C_ADDR, 2, &c[3]);
+            for (int p = 0; p < USBA_NUM_PORTS; p++) acc[p] += c[p];
+            vTaskDelay(pdMS_TO_TICKS(OFFSET_INTERVAL_MS));
+        }
+        for (int p = 0; p < USBA_NUM_PORTS; p++)
+            s_current_offset[p] = acc[p] / (float)OFFSET_SAMPLES;
+        INFO_PRINT("%s Zero offsets (avg %d): %.3f %.3f %.3f %.3f A\r\n",
+                   USBA_TAG, OFFSET_SAMPLES,
+                   s_current_offset[0], s_current_offset[1],
+                   s_current_offset[2], s_current_offset[3]);
     }
+#undef OFFSET_SAMPLES
+#undef OFFSET_SETTLE_MS
+#undef OFFSET_INTERVAL_MS
 
     /* Initialise telemetry */
     for (int p = 0; p < USBA_NUM_PORTS; p++) {

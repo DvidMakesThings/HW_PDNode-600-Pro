@@ -304,10 +304,15 @@
             border-radius: 999px;
             background: var(--muted2);
             box-shadow: 0 0 0 6px rgba(255, 255, 255, .04);
+            flex-shrink: 0;
         }
         .dot.good { background: var(--good); box-shadow: 0 0 0 6px rgba(62, 245, 154, .09); }
         .dot.warn { background: var(--warn); box-shadow: 0 0 0 6px rgba(255, 200, 87, .10); }
         .dot.bad  { background: var(--bad);  box-shadow: 0 0 0 6px rgba(255, 77, 109, .10); }
+        .dot[data-action] { cursor: pointer; transition: transform .15s, box-shadow .15s; }
+        .dot[data-action]:hover { transform: scale(1.6); }
+        .dot[data-action]:hover.good { box-shadow: 0 0 0 8px rgba(62, 245, 154, .22); }
+        .dot[data-action]:hover:not(.good):not(.bad) { box-shadow: 0 0 0 8px rgba(255,255,255,.12); }
 
         .section-title {
             display: flex;
@@ -844,7 +849,7 @@
           <summary>
             <div class="ch-summary">
               <div class="ch-name">
-                <span class="dot ${stateDot}"></span>
+                <span class="dot ${stateDot}" data-action="toggle" title="${ch.enabled ? 'Turn OFF' : 'Turn ON'}"></span>
                 <div class="title">
                   <strong>${ch.name}</strong>
                   <span>${ch.alias}</span>
@@ -897,7 +902,7 @@
           <summary>
             <div class="ch-summary">
               <div class="ch-name">
-                <span class="dot ${stateDot}"></span>
+                <span class="dot ${stateDot}" data-action="toggle" title="${ch.enabled ? 'Turn OFF' : 'Turn ON'}"></span>
                 <div class="title">
                   <strong>${ch.name}</strong>
                   <span>Limit: ${ch.currentLimit}</span>
@@ -938,7 +943,7 @@
 
             $$('.channel').forEach(d => {
                 d.addEventListener('click', (e) => {
-                    const btn = e.target.closest('button[data-action]');
+                    const btn = e.target.closest('[data-action]');
                     if (!btn) return;
                     e.preventDefault();
                     e.stopPropagation();
