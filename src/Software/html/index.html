@@ -551,6 +551,7 @@
                             <div style="font-size:12px; color:var(--muted);">System</div>
                             <div style="margin-top:6px; font-size:14px;">Controller: <span style="font-family:var(--mono); color:rgba(234,240,255,.88);">RP2354B</span></div>
                             <div style="margin-top:6px; font-size:14px;">Firmware: <span id="sidebarFw" style="font-family:var(--mono); color:rgba(234,240,255,.88);">—</span></div>
+                            <div style="margin-top:6px; font-size:14px;">Serial: <span id="sidebarSerial" style="font-family:var(--mono); color:rgba(234,240,255,.88);">—</span></div>
                         </div>
                         <div style="display:flex; flex-direction:column; gap:8px; align-items:flex-end;">
                             <div class="pill" style="border-color:rgba(62,245,154,.25); background:rgba(62,245,154,.08); color:rgba(234,240,255,.82);">No faults</div>
@@ -683,6 +684,26 @@
                             <div class="help">Changes apply after Save + reboot.</div>
                         </div>
                         <div class="field">
+                            <label>Subnet mask</label>
+                            <input id="settingsSn" value="—" />
+                            <div class="help">Usually 255.255.255.0 for /24 networks.</div>
+                        </div>
+                        <div class="field">
+                            <label>DNS server</label>
+                            <input id="settingsDns" value="—" />
+                            <div class="help">Primary DNS resolver. Default: 8.8.8.8</div>
+                        </div>
+                        <div class="field">
+                            <label>MAC address</label>
+                            <input id="settingsMac" value="—" readonly style="opacity:.65; cursor:default;" />
+                            <div class="help">Derived from serial number via FNV-1a. Read-only.</div>
+                        </div>
+                        <div class="field">
+                            <label>Serial number</label>
+                            <input id="settingsSerial" value="—" readonly style="opacity:.65; cursor:default;" />
+                            <div class="help">Factory-provisioned device identifier.</div>
+                        </div>
+                        <div class="field">
                             <label>Safety policy</label>
                             <select>
                                 <option selected>Trip on overcurrent, latch fault</option>
@@ -761,7 +782,7 @@
 
         // Initial model — all ports off, real data filled in by fetchStatus().
         const model = {
-            sys: { ip: '—', link: '—', uptime: 0, fw: '—', hw: '—' },
+            sys: { ip: '—', link: '—', uptime: 0, fw: '—', hw: '—', sn: '—', dns: '—', mac: '—', serial: '—' },
             pd: Array.from({ length: 8 }, (_, i) => ({
                 id: i + 1, name: `PD ${i + 1}`, alias: `Port ${i + 1}`,
                 enabled: false, voltage: 0, current: 0, uptime: 0,
@@ -1006,9 +1027,19 @@
             if (model.sys.fw && model.sys.fw !== '—') set('#sidebarFw', model.sys.fw);
             set('#sidebarUptime', uptimeStr(model.sys.uptime));
 
-            // Settings IP field (read-only reflection)
-            const sIp = $('#settingsIp');
-            if (sIp && model.sys.ip !== '—') sIp.value = model.sys.ip;
+            // Settings network fields
+            const sIp  = $('#settingsIp');
+            const sSn  = $('#settingsSn');
+            const sDns = $('#settingsDns');
+            const sMac = $('#settingsMac');
+            const sSer = $('#settingsSerial');
+            const sSidSer = $('#sidebarSerial');
+            if (sIp  && model.sys.ip     !== '—') sIp.value  = model.sys.ip;
+            if (sSn  && model.sys.sn     !== '—') sSn.value  = model.sys.sn;
+            if (sDns && model.sys.dns    !== '—') sDns.value = model.sys.dns;
+            if (sMac && model.sys.mac    !== '—') sMac.value = model.sys.mac;
+            if (sSer && model.sys.serial !== '—') sSer.value = model.sys.serial;
+            if (sSidSer && model.sys.serial !== '—') sSidSer.textContent = model.sys.serial;
 
             const anyFault = model.pd.some(x => x.portState === 'Fault' || x.fault !== 'None' || x.ocShort || x.vbusErr || x.wdtReset)
                           || model.usbA.some(x => x.faultPin);
@@ -1089,6 +1120,24 @@
 
             const btnAllOff = $('#btnAllOff');
             if (btnAllOff) btnAllOff.addEventListener('click', allOff);
+
+            // Settings Save button → POST /api/network
+            const btnSave = $('button.btn.primary', $('#panel-settings'));
+            if (btnSave) {
+                btnSave.addEventListener('click', () => {
+                    const ip  = $('#settingsIp')  ? $('#settingsIp').value  : '';
+                    const sn  = $('#settingsSn')  ? $('#settingsSn').value  : '';
+                    const dns = $('#settingsDns') ? $('#settingsDns').value : '';
+                    fetch('/api/network', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ ip, sn, dns })
+                    }).then(r => r.json()).then(d => {
+                        if (d.ok) alert('Saved. Reboot to apply new network settings.');
+                        else alert('Save failed: ' + (d.error || 'unknown'));
+                    }).catch(() => alert('Could not reach device.'));
+                });
+            }
 
             renderOutputs();
             renderKpis();

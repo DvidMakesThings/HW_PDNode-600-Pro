@@ -245,7 +245,7 @@
 #define PAC1720_I2C_INSTANCE i2c1
 #define PAC1720_1_I2C_ADDR 0x4C
 #define PAC1720_2_I2C_ADDR 0x18
-#define PAC1720_RSENSE_OHM  0.02f   /* 20 mΩ shunt resistors */
+#define PAC1720_RSENSE_OHM 0.02f /* 20 mΩ shunt resistors */
 // USBA_PORT0 is PAC1720_1 Sense 1
 // USBA_PORT1 is PAC1720_1 Sense 2
 // USBA_PORT2 is PAC1720_2 Sense 1
@@ -292,7 +292,17 @@
 #define DEFAULT_MAC {0x02, 0x00, 0x00, 0x60, 0x04, 0x42}
 #define DEFAULT_DHCP 0
 #define DEFAULT_DEVICE_NAME "PDNode-600 Pro"
-#define DEFAULT_LOCATION "Rack"
+#define DEFAULT_LOCATION    "Rack"
+#define DEFAULT_SERIAL      "UNPROVISIONED"
+
+/* MAC prefix: locally-administered, letters "PD" */
+#define PDNODE_MAC_PREFIX0  0x02u
+#define PDNODE_MAC_PREFIX1  0x50u   /* 'P' */
+#define PDNODE_MAC_PREFIX2  0x44u   /* 'D' */
+
+/* Provisioning */
+#define PROV_UNLOCK_TOKEN       "61646d696e"   /* hex-ASCII of "admin" */
+#define PROV_UNLOCK_TIMEOUT_MS  60000u          /* write window: 60 seconds */
 
 #define SNMP_PORT_AGENT 161
 #define NET_TASK_CYCLE_MS 5

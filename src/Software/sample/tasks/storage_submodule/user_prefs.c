@@ -1,0 +1,206 @@
+/**
+ * @file src/tasks/storage_submodule/user_prefs.c
+ * @author DvidMakesThings - David Sipos
+ *
+ * @version 1.0
+ * @date 2025-11-14
+ *
+ * @details Implementation of user preferences management. Handles device name, location,
+ * and temperature unit settings with CRC-8 validation for data integrity.
+ *
+ * @project ENERGIS - The Managed PDU Project for 10-Inch Rack
+ * @github https://github.com/DvidMakesThings/HW_10-In-Rack_PDU
+ */
+
+#include "../../CONFIG.h"
+
+#define ST_USER_PREF_TAG "[ST-USRPR]"
+
+/* External declarations from StorageTask.c */
+extern const userPrefInfo DEFAULT_USER_PREFS;
+
+/**
+ * @brief Write raw user preferences block to EEPROM.
+ *
+ * CRITICAL: Must be called with eepromMtx held!
+ *
+ * @param data Source buffer containing preferences data
+ * @param len Number of bytes to write
+ * @return 0 on success, -1 on bounds check failure or I2C error
+ */
+int EEPROM_WriteUserPreferences(const uint8_t *data, size_t len) {
+    if (len > EEPROM_USER_PREF_SIZE) {
+#if ERRORLOGGER
+        uint16_t err_code =
+            ERR_MAKE_CODE(ERR_MOD_STORAGE, ERR_SEV_ERROR, ERR_FID_ST_USER_PREFS, 0x1);
+        ERROR_PRINT_CODE(err_code, "%s Write length exceeds size\r\n", ST_USER_PREF_TAG);
+        Storage_EnqueueErrorCode(err_code);
+#endif
+        return -1;
+    }
+    return CAT24C256_WriteBuffer(EEPROM_USER_PREF_START, data, (uint16_t)len);
+}
+
+/**
+ * @brief Read raw user preferences block from EEPROM.
+ *
+ * CRITICAL: Must be called with eepromMtx held!
+ *
+ * @param data Destination buffer
+ * @param len Number of bytes to read
+ * @return 0 on success, -1 on bounds check failure
+ */
+int EEPROM_ReadUserPreferences(uint8_t *data, size_t len) {
+    if (len > EEPROM_USER_PREF_SIZE) {
+#if ERRORLOGGER
+        uint16_t err_code =
+            ERR_MAKE_CODE(ERR_MOD_STORAGE, ERR_SEV_ERROR, ERR_FID_ST_USER_PREFS, 0x2);
+        ERROR_PRINT_CODE(err_code, "%s Read length exceeds size\r\n", ST_USER_PREF_TAG);
+        Storage_EnqueueErrorCode(err_code);
+#endif
+        return -1;
+    }
+    CAT24C256_ReadBuffer(EEPROM_USER_PREF_START, data, (uint32_t)len);
+    return 0;
+}
+
+/**
+ * @brief Write user preferences with CRC-8 validation.
+ *
+ * Layout: device_name(32) + location(32) + temp_unit(1) + CRC(1) = 66 bytes
+ * Uses split writes to avoid page boundary issues with CAT24C256.
+ *
+ * CRITICAL: Must be called with eepromMtx held!
+ *
+ * @param prefs Pointer to user preferences structure
+ * @return 0 on success, -1 on null pointer or I2C error
+ */
+int EEPROM_WriteUserPrefsWithChecksum(const userPrefInfo *prefs) {
+    if (!prefs) {
+#if ERRORLOGGER
+        uint16_t err_code =
+            ERR_MAKE_CODE(ERR_MOD_STORAGE, ERR_SEV_ERROR, ERR_FID_ST_USER_PREFS, 0x3);
+        ERROR_PRINT_CODE(err_code, "%s Null pointer for user prefs\r\n", ST_USER_PREF_TAG);
+        Storage_EnqueueErrorCode(err_code);
+#endif
+        return -1;
+    }
+    uint8_t buffer[66];
+
+    /* Pack preferences into buffer */
+    memcpy(&buffer[0], prefs->device_name, 32);
+    memcpy(&buffer[32], prefs->location, 32);
+    buffer[64] = prefs->temp_unit;
+
+    /* Calculate and append CRC */
+    buffer[65] = calculate_crc8(buffer, 65);
+
+    /* Split write to avoid page boundary issues */
+    int res = 0;
+    res |= CAT24C256_WriteBuffer(EEPROM_USER_PREF_START, &buffer[0], 64);
+    res |= CAT24C256_WriteBuffer(EEPROM_USER_PREF_START + 64, &buffer[64], 2);
+
+    return res;
+}
+
+/**
+ * @brief Read and verify user preferences with CRC-8.
+ *
+ * Validates CRC and ensures strings are properly null-terminated for safety.
+ * Detects uninitialized EEPROM (all 0xFF) without generating CRC error.
+ *
+ * CRITICAL: Must be called with eepromMtx held!
+ *
+ * @param prefs Pointer to user preferences structure to fill
+ * @return 0 if CRC OK, -1 on CRC mismatch, empty EEPROM, or null pointer
+ */
+int EEPROM_ReadUserPrefsWithChecksum(userPrefInfo *prefs) {
+    if (!prefs) {
+#if ERRORLOGGER
+        uint16_t err_code =
+            ERR_MAKE_CODE(ERR_MOD_STORAGE, ERR_SEV_ERROR, ERR_FID_ST_USER_PREFS, 0x4);
+        ERROR_PRINT_CODE(err_code, "%s Null pointer for user prefs\r\n", ST_USER_PREF_TAG);
+        Storage_EnqueueErrorCode(err_code);
+#endif
+        return -1;
+    }
+
+    uint8_t record[66];
+    CAT24C256_ReadBuffer(EEPROM_USER_PREF_START, record, 66);
+
+    /* Check for uninitialized EEPROM or read failure (all 0xFF) */
+    bool all_ff = true;
+    for (size_t i = 0; i < 66 && all_ff; i++) {
+        if (record[i] != 0xFF) {
+            all_ff = false;
+        }
+    }
+    if (all_ff) {
+        /* Silent fail - either fresh EEPROM or read already logged error */
+        DEBUG_PRINT("%s EEPROM uninitialized or read failed\r\n", ST_USER_PREF_TAG);
+        return -1;
+    }
+
+    /* Verify CRC only if data looks potentially valid */
+    if (calculate_crc8(&record[0], 65) != record[65]) {
+#if ERRORLOGGER
+        uint16_t err_code =
+            ERR_MAKE_CODE(ERR_MOD_STORAGE, ERR_SEV_ERROR, ERR_FID_ST_USER_PREFS, 0x5);
+        ERROR_PRINT_CODE(err_code, "%s User prefs CRC mismatch\r\n", ST_USER_PREF_TAG);
+        Storage_EnqueueErrorCode(err_code);
+#endif
+        return -1;
+    }
+
+    /* Unpack preferences from buffer */
+    memcpy(prefs->device_name, &record[0], 32);
+    prefs->device_name[31] = '\0'; /* Ensure null termination */
+
+    memcpy(prefs->location, &record[32], 32);
+    prefs->location[31] = '\0'; /* Ensure null termination */
+
+    prefs->temp_unit = record[64];
+
+    return 0;
+}
+
+/**
+ * @brief Load user preferences from EEPROM or return defaults.
+ *
+ * Attempts to read preferences with CRC validation. If successful, returns
+ * stored values. On failure, returns built-in defaults.
+ *
+ * @return Valid userPrefInfo structure (either from EEPROM or defaults)
+ */
+userPrefInfo LoadUserPreferences(void) {
+    userPrefInfo prefs;
+
+    /* Attempt to read from EEPROM with CRC validation */
+    if (EEPROM_ReadUserPrefsWithChecksum(&prefs) == 0) {
+        INFO_PRINT("%s Loaded user prefs from EEPROM\r\n", ST_USER_PREF_TAG);
+        return prefs;
+    }
+
+/* CRC failed or empty EEPROM - use defaults */
+#if ERRORLOGGER
+    uint16_t err_code = ERR_MAKE_CODE(ERR_MOD_STORAGE, ERR_SEV_WARNING, ERR_FID_ST_USER_PREFS, 0x0);
+    WARNING_PRINT_CODE(err_code, "%s Using default user prefs due to read/CRC failure\r\n",
+                       ST_USER_PREF_TAG);
+    Storage_EnqueueWarningCode(err_code);
+#endif
+    return DEFAULT_USER_PREFS;
+}
+
+/**
+ * @brief Write default device name and location with CRC.
+ *
+ * Used during factory defaults initialization to set:
+ * - Device name from DEFAULT_NAME
+ * - Location from DEFAULT_LOCATION
+ * - Temperature unit: Celsius (0)
+ *
+ * @return 0 on success, -1 on write error
+ */
+int EEPROM_WriteDefaultNameLocation(void) {
+    return EEPROM_WriteUserPrefsWithChecksum(&DEFAULT_USER_PREFS);
+}

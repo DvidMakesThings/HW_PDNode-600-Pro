@@ -83,6 +83,12 @@ static void cmd_help(void) {
     ECHO("  %-28s %s\r\n", "SET_NAME <name>",  "Set device name (max 31 chars)");
     ECHO("  %-28s %s\r\n", "SET_LOC <loc>",    "Set location string");
     ECHO("\r\n");
+    ECHO("PROVISIONING  (factory use)\r\n");
+    ECHO("  %-28s %s\r\n", "PROV STATUS",       "Show serial and lock state");
+    ECHO("  %-28s %s\r\n", "PROV UNLOCK <code>","Open 60 s write window");
+    ECHO("  %-28s %s\r\n", "PROV LOCK",         "Force-close write window");
+    ECHO("  %-28s %s\r\n", "PROV SN <serial>",  "Set serial (A-Z 0-9 - max 15)");
+    ECHO("\r\n");
     ECHO("PD PORTS (USB-C PD)\r\n");
     ECHO("  %-28s %s\r\n", "PD STATUS",        "Show all 8 PD port status");
     ECHO("  %-28s %s\r\n", "PD STATUS <1-8>",  "Show single PD port status");
@@ -118,6 +124,7 @@ static void cmd_sysinfo(void) {
     ECHO("  Hardware : %s\r\n", HARDWARE_VERSION);
     ECHO("  Name     : %s\r\n", id.name);
     ECHO("  Location : %s\r\n", id.location);
+    ECHO("  Serial   : %s\r\n", id.serial[0] ? id.serial : "UNPROVISIONED");
     ECHO("  Uptime   : %lud %02lu:%02lu:%02lu\r\n",
          (unsigned long)days, (unsigned long)hours,
          (unsigned long)minutes, (unsigned long)seconds);
@@ -144,21 +151,27 @@ static void cmd_bootsel(void) {
 
 static void cmd_rfs(void) {
     ECHO("Restoring factory defaults...\r\n");
+
+    /* Preserve provisioned serial — only name/location are user-resettable */
+    pdnode_identity_t id;
+    Storage_GetIdentity(&id);
+    strncpy(id.name,     DEFAULT_DEVICE_NAME, sizeof(id.name)     - 1);
+    strncpy(id.location, DEFAULT_LOCATION,    sizeof(id.location) - 1);
+    id.name[sizeof(id.name)         - 1] = '\0';
+    id.location[sizeof(id.location) - 1] = '\0';
+    /* id.serial is preserved from the loaded identity */
+    Storage_SetIdentity(&id);
+
     pdnode_net_cfg_t net = {
         .ip   = DEFAULT_IP,
         .sn   = DEFAULT_SUBNET,
         .gw   = DEFAULT_GW,
         .dns  = DEFAULT_DNS,
-        .mac  = DEFAULT_MAC,
         .dhcp = DEFAULT_DHCP,
     };
-    pdnode_identity_t id;
-    strncpy(id.name,     DEFAULT_DEVICE_NAME, sizeof(id.name)     - 1);
-    strncpy(id.location, DEFAULT_LOCATION,    sizeof(id.location) - 1);
-    id.name[sizeof(id.name) - 1] = '\0';
-    id.location[sizeof(id.location) - 1] = '\0';
+    Storage_FillMac(net.mac);   /* derive MAC from current (preserved) serial */
     Storage_SetNetConfig(&net);
-    Storage_SetIdentity(&id);
+
     ECHO("Factory defaults written. Rebooting in 1 s...\r\n");
     vTaskDelay(pdMS_TO_TICKS(1000));
     Health_RebootNow("FACTORY RESET");
@@ -265,6 +278,55 @@ static void cmd_set_loc(const char *args) {
     id.location[sizeof(id.location) - 1] = '\0';
     Storage_SetIdentity(&id);
     ECHO("Location set to: %s\r\n", id.location);
+}
+
+static void cmd_prov(const char *args) {
+    char sub[16]  = {0};
+    char rest[64] = {0};
+    if (args) sscanf(args, "%15s %63[^\0]", sub, rest);
+    for (char *p = sub; *p; p++) *p = (char)toupper((unsigned char)*p);
+
+    if (strcmp(sub, "STATUS") == 0) {
+        char serial[16] = {0};
+        Storage_GetSerial(serial);
+        ECHO("Provisioning:\r\n");
+        ECHO("  Serial : %s\r\n", serial[0] ? serial : "UNPROVISIONED");
+        ECHO("  Window : %s\r\n", Storage_ProvIsUnlocked() ? "OPEN" : "locked");
+        return;
+    }
+
+    if (strcmp(sub, "UNLOCK") == 0) {
+        char *passcode = trim(rest);
+        if (!*passcode) { ECHO("Usage: PROV UNLOCK <passcode>\r\n"); return; }
+        if (Storage_ProvUnlock(passcode)) {
+            ECHO("Provisioning unlocked. Window open for %u s.\r\n",
+                 (unsigned)(PROV_UNLOCK_TIMEOUT_MS / 1000u));
+        } else {
+            ECHO("ERROR: Invalid passcode\r\n");
+        }
+        return;
+    }
+
+    if (strcmp(sub, "LOCK") == 0) {
+        Storage_ProvLock();
+        ECHO("Provisioning locked.\r\n");
+        return;
+    }
+
+    if (strcmp(sub, "SN") == 0) {
+        char *sn = trim(rest);
+        if (!*sn) { ECHO("Usage: PROV SN <serial>\r\n"); return; }
+        int ret = Storage_SetSerial(sn);
+        switch (ret) {
+        case  0: ECHO("Serial set: %s\r\nMAC regenerated — reboot to apply.\r\n", sn); break;
+        case -1: ECHO("ERROR: Locked. Run PROV UNLOCK first.\r\n");                    break;
+        case -2: ECHO("ERROR: Invalid serial (max 15 chars, A-Z 0-9 -).\r\n");        break;
+        default: ECHO("ERROR: Write failed (%d)\r\n", ret);                            break;
+        }
+        return;
+    }
+
+    ECHO("Usage: PROV STATUS | UNLOCK <passcode> | LOCK | SN <serial>\r\n");
 }
 
 static void print_pd_port(int p) {
@@ -413,6 +475,8 @@ static void dispatch_command(const char *line) {
         }
     } else if (strcmp(trimmed, "USBA") == 0) {
         cmd_usba(args ? args : "");
+    } else if (strcmp(trimmed, "PROV") == 0) {
+        cmd_prov(args ? args : "");
     } else {
         ECHO("Unknown command: '%s'. Type HELP for list.\r\n", trimmed);
     }

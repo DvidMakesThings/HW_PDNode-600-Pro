@@ -1,0 +1,243 @@
+/**
+ * @file src/snmp/snmp_custom.c
+ * @author DvidMakesThings - David Sipos
+ *
+ * @version 1.0.0
+ * @date 2025-11-07
+ *
+ * @details
+ * Implementation of the SNMP OID table for ENERGIS PDU. This file defines the
+ * complete mapping between OIDs and their associated callback functions, as well
+ * as static system identification values.
+ *
+ * The table structure uses the snmp_entry_t format from the W5500 SNMP library,
+ * with each entry specifying:
+ * - OID length and bytes
+ * - Data type (INTEGER, OCTET_STRING, OBJ_ID, TIME_TICKS)
+ * - Data length for fixed values
+ * - Static value or getter/setter function pointers
+ *
+ * @project ENERGIS - The Managed PDU Project for 10-Inch Rack
+ * @github https://github.com/DvidMakesThings/HW_10-In-Rack_PDU
+ */
+
+#include "../CONFIG.h"
+
+const uint8_t COMMUNITY[] = "public";
+const uint8_t COMMUNITY_SIZE = (uint8_t)(sizeof(COMMUNITY) - 1);
+
+/**
+ * @brief SNMP getter for sysContact (RFC1213 system group).
+ *
+ * Returns the contact information for the person responsible for this node.
+ *
+ * @param buf Output buffer for OCTET_STRING value
+ * @param len Pointer to receive string length (bytes written, excluding null)
+ *
+ * @return None
+ */
+static void get_sysContact(void *buf, uint8_t *len) {
+    const char *s = "dvidmakesthings@gmail.com";
+    uint8_t L = (uint8_t)strlen(s);
+    memcpy(buf, s, L);
+    *len = L;
+}
+
+/**
+ * @brief SNMP getter for sysName (RFC1213 system group).
+ *
+ * Returns the administratively-assigned name for this managed node.
+ *
+ * @param buf Output buffer for OCTET_STRING value
+ * @param len Pointer to receive string length (bytes written, excluding null)
+ *
+ * @return None
+ */
+static void get_sysName(void *buf, uint8_t *len) {
+    const char *s = "ENERGIS 10IN MANAGED PDU";
+    uint8_t L = (uint8_t)strlen(s);
+    memcpy(buf, s, L);
+    *len = L;
+}
+
+/**
+ * @brief SNMP getter for sysLocation (RFC1213 system group).
+ *
+ * Returns the physical location of this node.
+ *
+ * @param buf Output buffer for OCTET_STRING value
+ * @param len Pointer to receive string length (bytes written, excluding null)
+ *
+ * @return None
+ */
+static void get_sysLocation(void *buf, uint8_t *len) {
+    const char *s = "Wien";
+    uint8_t L = (uint8_t)strlen(s);
+    memcpy(buf, s, L);
+    *len = L;
+}
+
+/**
+ * @brief SNMP getter for device serial number.
+ *
+ * Retrieves the device serial number from persistent storage and returns it
+ * as an OCTET_STRING. Mapped to sysName OID in the MIB.
+ *
+ * @param buf Output buffer for OCTET_STRING value
+ * @param len Pointer to receive string length (bytes written, excluding null)
+ *
+ * @return None
+ */
+static void get_sysSN(void *buf, uint8_t *len) {
+    const device_identity_t *id = DeviceIdentity_Get();
+
+    const char *s = id->serial_number;
+    uint8_t L = (uint8_t)strlen(s);
+    memcpy(buf, s, L);
+    *len = L;
+}
+
+/* clang-format off */
+snmp_entry_t snmpData[] = {
+    /* RFC1213 system group (.1.3.6.1.2.1.1.X.0) */
+    {8,  {0x2b,6,1,2,1,1,1,0},  SNMPDTYPE_OCTET_STRING, 0, {""}, get_sysName,      NULL}, /* sysDescr */
+    {8,  {0x2b,6,1,2,1,1,2,0},  SNMPDTYPE_OBJ_ID,       8,  {"\x2b\x06\x01\x04\x01\x81\x9b\x19"}, NULL, NULL}, /* sysObjectID = 1.3.6.1.4.1.19865 */
+    {8,  {0x2b,6,1,2,1,1,3,0},  SNMPDTYPE_TIME_TICKS,   4,  {""}, SNMP_GetUptime,  NULL}, /* sysUpTime */
+    {8,  {0x2b,6,1,2,1,1,4,0},  SNMPDTYPE_OCTET_STRING, 0,  {""}, get_sysContact,  NULL}, /* sysContact */
+    {8,  {0x2b,6,1,2,1,1,5,0},  SNMPDTYPE_OCTET_STRING, 0,  {""}, get_sysSN,     NULL}, /* sysSN */
+    {8,  {0x2b,6,1,2,1,1,6,0},  SNMPDTYPE_OCTET_STRING, 0,  {""}, get_sysLocation, NULL}, /* sysLocation */
+    {8,  {0x2b,6,1,2,1,1,7,0},  SNMPDTYPE_INTEGER,      4,  { .intval = 72 },      NULL, NULL}, /* sysServices */
+
+    // “long-length” tests
+    {10, {0x2b, 0x06, 0x01, 0x04, 0x01, 0x81, 0x9b, 0x19, 0x01, 0x00}, SNMPDTYPE_OCTET_STRING, 30,  {"long-length OID Test #1"}, NULL, NULL},
+    {10, {0x2b, 0x06, 0x01, 0x04, 0x01, 0x81, 0xad, 0x42, 0x01, 0x00}, SNMPDTYPE_OCTET_STRING, 35,  {"long-length OID Test #2"}, NULL, NULL},
+    {10, {0x2b, 0x06, 0x01, 0x04, 0x01, 0x81, 0xad, 0x42, 0x02, 0x00}, SNMPDTYPE_OBJ_ID, 10,        {"\x2b\x06\x01\x04\x01\x81\xad\x42\x02\x00"}, NULL, NULL},
+
+    /* network (.1.3.6.1.4.1.19865.4.X.0) */
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x04,0x01,0x00}, SNMPDTYPE_OCTET_STRING, 16, {""}, get_networkIP, NULL},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x04,0x02,0x00}, SNMPDTYPE_OCTET_STRING, 16, {""}, get_networkMask, NULL},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x04,0x03,0x00}, SNMPDTYPE_OCTET_STRING, 16, {""}, get_networkGateway, NULL},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x04,0x04,0x00}, SNMPDTYPE_OCTET_STRING, 16, {""}, get_networkDNS, NULL},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x04,0x05,0x00}, SNMPDTYPE_OCTET_STRING, 16, {""}, get_networkMAC, NULL},
+
+    /* outlet control (.1.3.6.1.4.1.19865.2.N.0) */
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x02,0x01,0x00}, SNMPDTYPE_INTEGER, 4, {""}, get_outlet1_State, (void (*)(int32_t))set_outlet1_State},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x02,0x02,0x00}, SNMPDTYPE_INTEGER, 4, {""}, get_outlet2_State, (void (*)(int32_t))set_outlet2_State},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x02,0x03,0x00}, SNMPDTYPE_INTEGER, 4, {""}, get_outlet3_State, (void (*)(int32_t))set_outlet3_State},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x02,0x04,0x00}, SNMPDTYPE_INTEGER, 4, {""}, get_outlet4_State, (void (*)(int32_t))set_outlet4_State},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x02,0x05,0x00}, SNMPDTYPE_INTEGER, 4, {""}, get_outlet5_State, (void (*)(int32_t))set_outlet5_State},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x02,0x06,0x00}, SNMPDTYPE_INTEGER, 4, {""}, get_outlet6_State, (void (*)(int32_t))set_outlet6_State},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x02,0x07,0x00}, SNMPDTYPE_INTEGER, 4, {""}, get_outlet7_State, (void (*)(int32_t))set_outlet7_State},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x02,0x08,0x00}, SNMPDTYPE_INTEGER, 4, {""}, get_outlet8_State, (void (*)(int32_t))set_outlet8_State},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x02,0x09,0x00}, SNMPDTYPE_INTEGER, 4, {""}, get_allOff_State, (void (*)(int32_t))set_allOff_State},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x02,0x0A,0x00}, SNMPDTYPE_INTEGER, 4, {""}, get_allOn_State,  (void (*)(int32_t))set_allOn_State},
+
+    /* voltage/temperature (.1.3.6.1.4.1.19865.3.X.0) */
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x03,0x01,0x00}, SNMPDTYPE_OCTET_STRING, 16, {""}, get_tempSensorVoltage, NULL},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x03,0x02,0x00}, SNMPDTYPE_OCTET_STRING, 16, {""}, get_tempSensorTemperature, NULL},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x03,0x03,0x00}, SNMPDTYPE_OCTET_STRING, 16, {""}, get_VSUPPLY, NULL},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x03,0x04,0x00}, SNMPDTYPE_OCTET_STRING, 16, {""}, get_VUSB, NULL},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x03,0x05,0x00}, SNMPDTYPE_OCTET_STRING, 16, {""}, get_VSUPPLY_divider, NULL},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x03,0x06,0x00}, SNMPDTYPE_OCTET_STRING, 16, {""}, get_VUSB_divider, NULL},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x03,0x07,0x00}, SNMPDTYPE_OCTET_STRING, 16, {""}, get_coreVREG, NULL},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x03,0x08,0x00}, SNMPDTYPE_OCTET_STRING, 16, {""}, get_coreVREG_status, NULL},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x03,0x09,0x00}, SNMPDTYPE_OCTET_STRING, 16, {""}, get_bandgapRef, NULL},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x03,0x0A,0x00}, SNMPDTYPE_OCTET_STRING, 16, {""}, get_usbPHYrail, NULL},
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x03,0x0B,0x00}, SNMPDTYPE_OCTET_STRING, 16, {""}, get_ioRail, NULL},
+
+    /* power (.1.3.6.1.4.1.19865.5.<ch>.<metric>.0) */
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x01,0x01,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_0_MEAS_VOLTAGE,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x01,0x02,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_0_MEAS_CURRENT,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x01,0x03,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_0_MEAS_WATT,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x01,0x04,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_0_MEAS_PF,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x01,0x05,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_0_MEAS_KWH,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x01,0x06,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_0_MEAS_UPTIME,NULL},
+
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x02,0x01,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_1_MEAS_VOLTAGE,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x02,0x02,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_1_MEAS_CURRENT,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x02,0x03,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_1_MEAS_WATT,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x02,0x04,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_1_MEAS_PF,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x02,0x05,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_1_MEAS_KWH,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x02,0x06,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_1_MEAS_UPTIME,NULL},
+
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x03,0x01,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_2_MEAS_VOLTAGE,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x03,0x02,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_2_MEAS_CURRENT,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x03,0x03,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_2_MEAS_WATT,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x03,0x04,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_2_MEAS_PF,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x03,0x05,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_2_MEAS_KWH,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x03,0x06,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_2_MEAS_UPTIME,NULL},
+
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x04,0x01,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_3_MEAS_VOLTAGE,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x04,0x02,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_3_MEAS_CURRENT,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x04,0x03,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_3_MEAS_WATT,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x04,0x04,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_3_MEAS_PF,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x04,0x05,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_3_MEAS_KWH,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x04,0x06,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_3_MEAS_UPTIME,NULL},
+
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x05,0x01,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_4_MEAS_VOLTAGE,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x05,0x02,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_4_MEAS_CURRENT,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x05,0x03,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_4_MEAS_WATT,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x05,0x04,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_4_MEAS_PF,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x05,0x05,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_4_MEAS_KWH,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x05,0x06,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_4_MEAS_UPTIME,NULL},
+
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x06,0x01,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_5_MEAS_VOLTAGE,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x06,0x02,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_5_MEAS_CURRENT,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x06,0x03,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_5_MEAS_WATT,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x06,0x04,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_5_MEAS_PF,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x06,0x05,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_5_MEAS_KWH,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x06,0x06,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_5_MEAS_UPTIME,NULL},
+
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x07,0x01,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_6_MEAS_VOLTAGE,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x07,0x02,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_6_MEAS_CURRENT,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x07,0x03,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_6_MEAS_WATT,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x07,0x04,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_6_MEAS_PF,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x07,0x05,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_6_MEAS_KWH,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x07,0x06,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_6_MEAS_UPTIME,NULL},
+
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x08,0x01,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_7_MEAS_VOLTAGE,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x08,0x02,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_7_MEAS_CURRENT,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x08,0x03,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_7_MEAS_WATT,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x08,0x04,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_7_MEAS_PF,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x08,0x05,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_7_MEAS_KWH,NULL},
+    {12,{0x2b,6,1,4,1,0x81,0x9b,0x19,0x05,0x08,0x06,0x00},SNMPDTYPE_OCTET_STRING,16,{""},get_power_7_MEAS_UPTIME,NULL},
+
+    /* overcurrent protection (.1.3.6.1.4.1.19865.6.X.0) */
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x06,0x01,0x00}, SNMPDTYPE_INTEGER,      4,  {""}, get_ocp_STATE,                 NULL},                         /* ocpState */
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x06,0x02,0x00}, SNMPDTYPE_OCTET_STRING, 16,  {""}, get_ocp_TOTAL_CURRENT_A,       NULL},                         /* ocpTotalCurrentA */
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x06,0x03,0x00}, SNMPDTYPE_OCTET_STRING, 16,  {""}, get_ocp_LIMIT_A,               NULL},                         /* ocpLimitA */
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x06,0x04,0x00}, SNMPDTYPE_OCTET_STRING, 16,  {""}, get_ocp_WARNING_THRESHOLD_A,   NULL},                         /* ocpWarningThresholdA */
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x06,0x05,0x00}, SNMPDTYPE_OCTET_STRING, 16,  {""}, get_ocp_CRITICAL_THRESHOLD_A,  NULL},                         /* ocpCriticalThresholdA */
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x06,0x06,0x00}, SNMPDTYPE_OCTET_STRING, 16,  {""}, get_ocp_RECOVERY_THRESHOLD_A,  NULL},                         /* ocpRecoveryThresholdA */
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x06,0x07,0x00}, SNMPDTYPE_INTEGER,      4,   {""}, get_ocp_LAST_TRIPPED_CH,        NULL},                         /* ocpLastTrippedCh */
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x06,0x08,0x00}, SNMPDTYPE_INTEGER,      4,   {""}, get_ocp_TRIP_COUNT,             NULL},                         /* ocpTripCount */
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x06,0x09,0x00}, SNMPDTYPE_INTEGER,      4,   {""}, get_ocp_LAST_TRIP_MS,           NULL},                         /* ocpLastTripMs */
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x06,0x0A,0x00}, SNMPDTYPE_INTEGER,      4,   {""}, get_ocp_SWITCHING_ALLOWED,      NULL},                         /* ocpSwitchingAllowed */
+    {11, {0x2b,6,1,4,1,0x81,0x9b,0x19,0x06,0x0B,0x00}, SNMPDTYPE_INTEGER,      4,   {""}, get_ocp_RESET,                 (void (*)(int32_t))set_ocp_RESET}, /* ocpReset */
+
+    
+};
+/* clang-format on */
+
+const int32_t maxData = (int32_t)(sizeof(snmpData) / sizeof(snmpData[0]));
+
+void initTable(void) {
+    /* Table is fully static with compile-time initialization.
+     * No dynamic setup required. */
+}
+
+void initial_Trap(uint8_t *managerIP, uint8_t *agentIP) {
+    /* Construct enterprise OID entry for trap: 1.3.6.1.4.1.19865.1.0 */
+    snmp_entry_t enterprise_oid = {
+        .oidlen = 10,
+        .oid = {0x2b, 0x06, 0x01, 0x04, 0x01, 0x81, 0x9b, 0x19, 0x01, 0x00},
+        .dataType = SNMPDTYPE_OBJ_ID,
+        .dataLen = 10,
+        .u = {.octetstring = "\x2b\x06\x01\x04\x01\x81\x9b\x19\x01\x00"},
+        .getfunction = NULL,
+        .setfunction = NULL};
+
+    /* Send WarmStart trap (generic-trap 1) with no additional variable bindings */
+    (void)SNMP_SendTrap(managerIP, agentIP, (int8_t *)COMMUNITY, enterprise_oid, SNMPTRAP_WARMSTART,
+                        0, 0);
+}

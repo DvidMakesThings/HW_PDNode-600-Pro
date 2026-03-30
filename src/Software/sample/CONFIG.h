@@ -1,0 +1,600 @@
+/**
+ * @file src/CONFIG.h
+ * @author DvidMakesThings - David Sipos
+ *
+ * @defgroup config Configuration Files
+ * @brief Configuration files for the Energis PDU firmware.
+ * @{
+ *
+ * @defgroup config01 1. Hardware Configuration
+ * @ingroup config
+ * @brief Configuration header for ENERGIS PDU firmware.
+ * @{
+ *
+ * @version 2.1.0
+ * @date 2025-12-14
+ *
+ * @details This file contains global configuration settings,
+ * peripheral assignments, and logging macros for the ENERGIS PDU
+ * firmware project. It contains user-configurable options as well
+ * as system constants. It describes GPIO pin assignments, I2C/SPI
+ * peripheral usage, ADC channel assignments, and other peripheral
+ * configurations.
+ *
+ * @project ENERGIS - The Managed PDU Project for 10-Inch Rack
+ * @github https://github.com/DvidMakesThings/HW_10-In-Rack_PDU
+ */
+
+#ifndef CONFIG_H
+#define CONFIG_H
+
+#include "FreeRTOS.h"
+#include "event_groups.h"
+#include "pico/bootrom.h"
+#include "pico/multicore.h"
+#include "pico/stdlib.h"
+#include "queue.h"
+#include "semphr.h"
+#include "task.h"
+#include "timers.h"
+#include <ctype.h>
+#include <math.h>
+#include <stdarg.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "ERROR_CODE.h"
+
+#include "hardware/adc.h"
+#include "hardware/clocks.h"
+#include "hardware/gpio.h"
+#include "hardware/i2c.h"
+#include "hardware/irq.h"
+#include "hardware/pwm.h"
+#include "hardware/spi.h"
+#include "hardware/structs/vreg_and_chip_reset.h"
+#include "hardware/structs/watchdog.h"
+#include "hardware/sync.h"
+#include "hardware/uart.h"
+#include "hardware/watchdog.h"
+
+/* clang-format off */
+
+#include "misc/EEPROM_MemoryMap.h"
+#include "misc/helpers.h"
+#include "misc/crashlog.h"
+#include "misc/rtos_hooks.h"
+#include "misc/power_mgr.h"
+
+#include "drivers/i2c_bus.h"
+#include "drivers/CAT24C256_driver.h"
+#include "drivers/MCP23017_driver.h"
+#include "drivers/button_driver.h"
+#include "drivers/HLW8032_driver.h"
+#include "drivers/ethernet_config.h"
+#include "drivers/ethernet_driver.h"
+#include "drivers/ethernet_w5500regs.h"
+#include "drivers/snmp.h"
+#include "drivers/socket.h"
+
+#include "snmp/snmp_custom.h"
+#include "snmp/snmp_networkCtrl.h"
+#include "snmp/snmp_outletCtrl.h"
+#include "snmp/snmp_powerMon.h"
+#include "snmp/snmp_voltageMon.h"
+
+#include "tasks/storage_submodule/calibration.h"
+#include "tasks/storage_submodule/channel_labels.h"
+#include "tasks/storage_submodule/device_identity.h"
+#include "tasks/storage_submodule/energy_monitor.h"
+#include "tasks/storage_submodule/event_log.h"
+#include "tasks/storage_submodule/factory_defaults.h"
+#include "tasks/storage_submodule/network.h"
+#include "tasks/storage_submodule/storage_common.h"
+#include "tasks/storage_submodule/user_output.h"
+#include "tasks/storage_submodule/user_prefs.h"
+#include "tasks/provisioning_commands.h"
+#include "tasks/OCP.h"
+#include "tasks/SwitchTask.h"
+#include "tasks/ConsoleTask.h"
+#include "tasks/ButtonTask.h"
+#include "tasks/LoggerTask.h"
+#include "tasks/NetTask.h"
+#include "tasks/StorageTask.h"
+#include "tasks/MeterTask.h"
+#include "tasks/InitTask.h"
+#include "tasks/HealthTask.h"
+
+#include "web_handlers/control_handler.h"
+#include "web_handlers/http_server.h"
+#include "web_handlers/page_content.h"
+#include "web_handlers/preset_handler.h"
+#include "web_handlers/settings_handler.h"
+#include "web_handlers/status_handler.h"
+#include "web_handlers/metrics_handler.h"
+/* clang-format on */
+
+/** @name External Handles
+ * @ingroup config01
+ * @{ */
+extern w5500_NetConfig eth_netcfg;
+/** @} */
+
+/********************************************************************************
+ *                          GLOBAL CONFIGURATIONS                               *
+ *                          CONFIGURABLE BY USER                                *
+ ********************************************************************************/
+
+/********************** Button behavior for press durations *********************/
+// Button longpress duration thresholds
+/** @name Button Behavior
+ * @ingroup config01
+ * @{ */
+#define LONGPRESS_DT 2500
+/** @} */
+
+/************************* Debounce and Guard Timers ****************************/
+/** @name Guard/Timing
+ * @ingroup config01
+ * @{ */
+#define DEBOUNCE_MS 100u
+
+#define POST_GUARD_MS (DEBOUNCE_MS + 10u)
+/** @} */
+
+/*********************** Feature Enable/Disable Flags ***************************/
+/** @name Feature Flags
+ * @ingroup config01
+ * @{ */
+#define CFG_ENABLE_METRICS 1
+
+/**
+ * Switch/display policy flags
+ * - When 0, relay switching proceeds even if display mirror writes fail.
+ * - When 1, display mirror failures make the overall switch operation fail.
+ * When enabled (1), any failure to mirror the relay state to the display MCP (0x21)
+ * will cause Switch_SetChannel() to fail. When disabled (0), display mirror is
+ * treated as best-effort: failure is logged as a warning but switching proceeds.
+ */
+#ifndef SWITCH_DISPLAY_STRICT
+#define SWITCH_DISPLAY_STRICT 1
+#endif
+/** @} */
+
+/***************************** Network Defaults *********************************/
+/** @name Network Defaults
+ * @ingroup config01
+ * @{ */
+/**
+ * @brief Default static IPv4 address octets.
+ */
+#define ENERGIS_DEFAULT_IP {192, 168, 0, 22}
+
+/**
+ * @brief Default IPv4 subnet mask octets.
+ */
+#define ENERGIS_DEFAULT_SN {255, 255, 255, 0}
+
+/**
+ * @brief Default IPv4 gateway octets.
+ */
+#define ENERGIS_DEFAULT_GW {192, 168, 0, 1}
+
+/**
+ * @brief Default IPv4 DNS server octets.
+ */
+#define ENERGIS_DEFAULT_DNS {8, 8, 8, 8}
+/** @} */
+
+/***************************** Hardware Version *********************************/
+/** @name Versioning
+ * @ingroup config01
+ * @{ */
+/**
+ * @brief Hardware version string.
+ * @details Format: MAJOR.MINOR.PATCH
+ */
+#define HARDWARE_VERSION "1.1.0"
+
+/**
+ * @brief Hardware version as integer literal.
+ * @details Encoded as: MAJOR*100 + MINOR*10 + PATCH
+ */
+#define HARDWARE_VERSION_LITERAL 110
+
+/***************************** Firmware Version *********************************/
+/**
+ * @brief Firmware version string.
+ * @details Format: MAJOR.MINOR.PATCH
+ */
+#define FIRMWARE_VERSION "1.1.0"
+
+/**
+ * @brief Firmware version as integer literal.
+ * @details Encoded as: MAJOR*100 + MINOR*10 + PATCH
+ */
+#define FIRMWARE_VERSION_LITERAL 110
+/** @} */
+
+/******************** Overcurrent Protection Thresholds ************************/
+/**
+ * @defgroup overcurrent_thresholds Overcurrent Protection Thresholds
+ * @brief Fixed threshold offsets for overcurrent state machine.
+ * @{
+ *
+ * @details
+ * These thresholds are fixed offsets applied to the regional current limit.
+ * The actual limit (10A EU / 15A US) is determined at runtime from EEPROM.
+ *
+ * State Machine:
+ * - NORMAL: Current < (LIMIT - WARNING_OFFSET)
+ * - WARNING: Current >= (LIMIT - WARNING_OFFSET)
+ * - CRITICAL: Current >= (LIMIT - SAFETY_MARGIN)
+ * - LOCKOUT: Trip executed, switching disabled
+ * - RECOVERY: Current < (LIMIT - RECOVERY_OFFSET)
+ */
+
+/**
+ * @brief Safety threshold margin in amperes.
+ * @details Offset from limit for CRITICAL threshold.
+ */
+#define ENERGIS_CURRENT_SAFETY_MARGIN_A 0.5f
+
+/**
+ * @brief Warning threshold offset in amperes.
+ * @details Offset from limit for WARNING threshold.
+ */
+#define ENERGIS_CURRENT_WARNING_OFFSET_A 1.0f
+
+/**
+ * @brief Recovery hysteresis offset in amperes.
+ * @details Offset from limit for RECOVERY threshold (exit lockout).
+ */
+#define ENERGIS_CURRENT_RECOVERY_OFFSET_A 1.5f
+/** @} */
+
+/********************************************************************************
+ *                          GLOBAL CONFIGURATIONS                               *
+ *                       DO NOT TOUCH PART FROM HERE                            *
+ ********************************************************************************/
+
+/* ---------- Default values  ---------- */
+/** @name Defaults
+ * @ingroup config01
+ * @{ */
+#define SWVERSION FIRMWARE_VERSION
+#define SW_REV FIRMWARE_VERSION_LITERAL
+#define HW_REV HARDWARE_VERSION_LITERAL
+#define DEFAULT_NAME "ENERGIS-" FIRMWARE_VERSION
+#define DEFAULT_LOCATION "Location"
+/** @} */
+
+/* ---------- SYSTEM CONSTANTS ---------- */
+/** @name System Constants
+ * @ingroup config01
+ * @{ */
+#define EEPROM_SIZE 0x8000
+#define LOGGER_STACK_SIZE 1024
+#define LOGGER_QUEUE_LEN 64
+#define LOGGER_MSG_MAX 128
+/** @} */
+
+/* ---------- ENERGY MONITORING ---------- */
+/** @name Energy Monitoring
+ * @ingroup config01
+ * @{ */
+#define NOMINAL_SHUNT 0.002f  /**< Nominal shunt resistor value in ohms. */
+#define NOMINAL_R1 1880000.0f /* 1880 kohm high-side divider */
+#define NOMINAL_R2 1000.0f    /* 1 kohm low-side divider */
+
+/** Default DHCP mode for first boot. */
+#define ENERGIS_DEFAULT_DHCP EEPROM_NETINFO_STATIC
+
+/** Locally-administered unicast OUI for ENERGIS ("02:45:4E"). */
+/** @name MAC Address Prefix
+ * @ingroup config01
+ * @{ */
+#define ENERGIS_MAC_PREFIX0 0x02 /* local, unicast */
+#define ENERGIS_MAC_PREFIX1 0x45 /* 'E' */
+#define ENERGIS_MAC_PREFIX2 0x4E /* 'N' */
+/** @} */
+
+/* ---------- LOGGING FLAGS ---------- */
+/** @name Logging Flags
+ * @ingroup config01
+ * @{ */
+#ifndef DEBUG
+#define DEBUG 1
+#endif
+
+#ifndef DEBUG_HEALTH
+#define DEBUG_HEALTH 0
+#endif
+
+#ifndef INFO
+#define INFO 1
+#endif
+
+#ifndef INFO_HEALTH
+#define INFO_HEALTH 0
+#endif
+
+#ifndef PLOT_EN
+#define PLOT_EN 0
+#endif
+
+#ifndef NETLOG
+#define NETLOG 0
+#endif
+
+#ifndef UART_IFACE
+#define UART_IFACE 1
+
+#endif
+/** @} */
+
+/* Ensure logging level flags exist even if commented out elsewhere */
+/** @name Logging Macros
+ * @ingroup config01
+ * @{ */
+#ifndef ERROR
+#define ERROR 1
+#endif
+
+#ifndef WARNING
+#define WARNING 1
+#endif
+
+#if DEBUG
+#define DEBUG_PRINT(...) log_printf("\t[DEBUG] " __VA_ARGS__)
+#else
+#define DEBUG_PRINT(...) ((void)0)
+#endif
+
+#if DEBUG_HEALTH
+#define DEBUG_PRINT_HEALTH(...) log_printf("\t[HEALTH] " __VA_ARGS__)
+#else
+#define DEBUG_PRINT_HEALTH(...) ((void)0)
+#endif
+
+#if INFO_HEALTH
+#define HEALTH_INFO(...) log_printf("[INFO] " __VA_ARGS__)
+#else
+#define HEALTH_INFO(...) ((void)0)
+#endif
+
+#if INFO
+#define INFO_PRINT(...) log_printf("[INFO] " __VA_ARGS__)
+#else
+#define INFO_PRINT(...) ((void)0)
+#endif
+
+#if ERROR
+#define ERROR_PRINT(...) (Switch_SetFaultLed(true, 10), log_printf_force("[ERROR] " __VA_ARGS__))
+#else
+#define ERROR_PRINT(...) ((void)0)
+#endif
+
+#if ERROR && DEBUG
+#define ERROR_PRINT_DEBUG(...) log_printf("[ERROR] " __VA_ARGS__)
+#else
+#define ERROR_PRINT_DEBUG(...) ((void)0)
+#endif
+
+#if WARNING
+#define WARNING_PRINT(...) log_printf_force("[WARNING] " __VA_ARGS__)
+#else
+#define WARNING_PRINT(...) ((void)0)
+#endif
+
+#if PLOT_EN
+#define PLOT(...) log_printf("\t[PLOT] " __VA_ARGS__)
+#else
+#define PLOT(...) ((void)0)
+#endif
+
+#if NETLOG
+#define NETLOG_PRINT(...) log_printf("[NETLOG] " __VA_ARGS__)
+#else
+#define NETLOG_PRINT(...) ((void)0)
+#endif
+
+#if UART_IFACE
+#define ECHO(...) log_printf("\t[ECHO] " __VA_ARGS__)
+#else
+#define ECHO(...) ((void)0)
+#endif
+/** @} */
+
+/********************************************************************************
+ *                          PERIPHERAL ASSIGNMENTS                              *
+ ********************************************************************************/
+// I2C Peripheral Assignments
+/** @name I2C Assignments
+ * @ingroup config01
+ * @{ */
+#define I2C0_SPEED 400000                           // 400 kHz fast mode
+#define I2C1_SPEED 400000                           // 400 kHz fast mode
+#define EEPROM_I2C i2c1                             // Using I2C1 for EEPROM communication
+#define MCP23017_RELAY_I2C i2c1                     // Using I2C1 for Relay Board MCP23017
+#define MCP23017_DISPLAY_I2C i2c0                   // Using I2C0 for Display Board MCP23017
+#define MCP23017_SELECTION_I2C MCP23017_DISPLAY_I2C // Using I2C0 for Selection Row MCP23017
+/** @} */
+
+// SPI Peripheral Assignments
+/** @name SPI Assignments
+ * @ingroup config01
+ * @{ */
+#define SPI_SPEED_W5500 40000000 // 40 MHz
+#define W5500_SPI_INSTANCE spi0  // SPI0 for Ethernet
+/** @} */
+
+/********************************************************************************
+ *                            CONSOLE CONFIGURATIONS                            *
+ ********************************************************************************/
+
+/** @name Console Configuration
+ * @ingroup config01
+ * @{ */
+#define UART_ID uart1
+#define BAUD_RATE 115200
+#define UART_CMD_BUF_LEN 1024
+#define UART_MAX_LINES 4
+/** @} */
+
+/********************************************************************************
+ *                           HLW8032 UART CHANNELS                              *
+ ********************************************************************************/
+
+/** @name HLW8032 UART Channels
+ * @ingroup config01
+ * @{ */
+#define HLW8032_UART_ID uart0
+#define HLW8032_BAUDRATE 4800
+#define HLW8032_FRAME_LENGTH 24
+#define NUM_CHANNELS 8
+#define POLL_INTERVAL_MS 6000u
+#define TX_CH1 0
+#define TX_CH2 1
+#define TX_CH3 2
+#define TX_CH4 3
+#define TX_CH5 4
+#define TX_CH6 5
+#define TX_CH7 6
+#define TX_CH8 7
+/** @} */
+
+/********************************************************************************
+ *                       MCU SPECIFIC DEFINES                                   *
+ ********************************************************************************/
+/** @name MCU Specific
+ * @ingroup config01
+ * @{ */
+#define VREG_BASE 0x40064000
+#define VREG_VSEL_MASK 0x7
+/** @} */
+
+/********************************************************************************
+ *                        RP2040 GPIO PIN ASSIGNMENTS                           *
+ ********************************************************************************/
+/** @name GPIO Assignments
+ * @ingroup config01
+ * @{ */
+#define UART0_RX 0
+#define UART0_TX 1
+#define I2C1_SDA 2
+#define I2C1_SCL 3
+#define I2C0_SDA 4
+#define I2C0_SCL 5
+#define GPIO6 6   // Not used anymore
+#define GPIO7 7   // Not used anymore
+#define GPIO8 8   // Not used anymore
+#define GPIO9 9   // Not used anymore
+#define GPIO10 10 // Not used anymore
+#define GPIO11 11 // Not used anymore
+#define KEY_0 12
+#define KEY_1 13
+#define KEY_2 14
+#define KEY_3 15
+#define BUT_PLUS KEY_1
+#define BUT_MINUS KEY_0
+#define BUT_SET KEY_2
+#define BUT_PWR KEY_3
+#define W5500_MISO 16
+#define W5500_CS 17
+#define W5500_SCK 18
+#define W5500_MOSI 19
+#define W5500_RESET 20
+#define W5500_INT 21
+#define FAN_CTRL 22 // Fan control (not used)
+#define MCP_MB_RST 23
+#define MCP_DP_RST 24
+#define VREG_EN 25
+#define ADC_VUSB 26
+#define NC 27 // ADC Temp sensor (not used)
+#define PROC_LED 28
+#define ADC_12V_MEA 29
+/** @} */
+
+/********************************************************************************
+ *                         ADC CHANNEL ASSIGNMENTS                              *
+ ********************************************************************************/
+/** @name ADC Channels
+ * @ingroup config01
+ * @{ */
+#define ADC_VREF 3.0f
+#define ADC_MAX 4096.0f
+#define ADC_TOL 1.005f // +0.5% correction factor
+#define V_USB 0
+#define V_SUPPLY 3
+#define TEMP_SENSOR 4
+#define VBUS_DIVIDER 2.0f
+#define SUPPLY_DIVIDER 11.0f
+/** @} */
+
+/********************************************************************************
+ *                       MCP23017 RELAY BOARD CONFIGURATIONS                    *
+ ********************************************************************************/
+/** @name Relay Board Config
+ * @ingroup config01
+ * @{ */
+#define MCP_RELAY_ADDR 0x20 // 0b0100000
+#define REL_0 0
+#define REL_1 1
+#define REL_2 2
+#define REL_3 3
+#define REL_4 4
+#define REL_5 5
+#define REL_6 6
+#define REL_7 7
+#define MUX_A 8
+#define MUX_B 9
+#define MUX_C 10
+#define MUX_EN 11
+/** @} */
+
+/********************************************************************************
+ *                        MCP23017 DISPLAY BOARD CONFIGURATIONS                 *
+ ********************************************************************************/
+/** @name Display Board Config
+ * @ingroup config01
+ * @{ */
+#define MCP_DISPLAY_ADDR 0x21 // 0b0100001
+#define OUT_1 0
+#define OUT_2 1
+#define OUT_3 2
+#define OUT_4 3
+#define OUT_5 4
+#define OUT_6 5
+#define OUT_7 6
+#define OUT_8 7
+#define FAULT_LED 8
+#define ETH_LED 9
+#define PWR_LED 10
+/** @} */
+
+/********************************************************************************
+ *                        MCP23017 SELECTION ROW CONFIGURATIONS                 *
+ ********************************************************************************/
+
+/** @name Selection Row Config
+ * @ingroup config01
+ * @{ */
+#define MCP_SELECTION_ADDR 0x23
+#define SEL_1 0
+#define SEL_2 1
+#define SEL_3 2
+#define SEL_4 3
+#define SEL_5 4
+#define SEL_6 5
+#define SEL_7 6
+#define SEL_8 7
+/** @} */
+
+#endif /* CONFIG_H */
+
+/** @} */
+/** @} */

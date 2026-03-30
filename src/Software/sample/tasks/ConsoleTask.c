@@ -1,0 +1,1898 @@
+/**
+ * @file src/tasks/ConsoleTask.c
+ * @author DvidMakesThings - David Sipos
+ *
+ * @version 2.1.0
+ * @date 2025-11-17
+ *
+ * @brief Console task implementation with USB-CDC polling and command dispatch.
+ *
+ * @project ENERGIS - The Managed PDU Project for 10-Inch Rack
+ * @github https://github.com/DvidMakesThings/HW_10-In-Rack_PDU
+ */
+
+#include "../CONFIG.h"
+
+#define CONSOLE_TASK_TAG "[CONSOLE]"
+
+/* Module State */
+
+/**
+ * Bootloader trigger magic value stored in uninitialized RAM.
+ * Set before reboot to indicate bootloader entry request.
+ */
+__attribute__((section(".uninitialized_data"))) static uint32_t bootloader_trigger;
+
+/** Power/relay control message queue. */
+QueueHandle_t q_power = NULL;
+
+/** Configuration storage message queue. */
+QueueHandle_t q_cfg = NULL;
+
+/** Meter reading message queue. */
+QueueHandle_t q_meter = NULL;
+
+/** Network operation message queue. */
+QueueHandle_t q_net = NULL;
+
+/** Maximum line buffer size for command input. */
+#define LINE_BUF_SIZE 128
+
+/** USB-CDC polling interval in milliseconds. */
+#define CONSOLE_POLL_MS 10
+
+/** Line accumulator buffer for command assembly. */
+static char line_buf[LINE_BUF_SIZE];
+
+/** Current line buffer length. */
+static uint16_t line_len = 0;
+
+/* Private Helper Functions */
+
+/**
+ * @brief Skip leading whitespace in string.
+ *
+ * Advances pointer past any leading space or tab characters.
+ *
+ * @param[in] s Input string pointer.
+ * @return Pointer to first non-whitespace character.
+ */
+static const char *skip_spaces(const char *s) {
+    while (*s == ' ' || *s == '\t')
+        s++;
+    return s;
+}
+
+/**
+ * @brief Trim whitespace from both ends of string.
+ *
+ * Removes leading and trailing spaces, tabs, CR, and LF characters.
+ * Modifies the input string in place.
+ *
+ * @param[in,out] str String to trim.
+ * @return Pointer to trimmed string (within same buffer).
+ */
+static char *trim(char *str) {
+    /* Remove leading whitespace */
+    while (*str == ' ' || *str == '\t')
+        str++;
+
+    /* Remove trailing whitespace */
+    char *end = str + strlen(str) - 1;
+    while (end > str && (*end == ' ' || *end == '\t' || *end == '\r' || *end == '\n')) {
+        *end = '\0';
+        end--;
+    }
+    return str;
+}
+
+/**
+ * @brief Parse IP address from dotted decimal string.
+ *
+ * Converts IP address string (e.g., "192.168.1.100") to 4-byte array.
+ * Validates that all octets are in range 0-255.
+ *
+ * @param[in]  str IP address string in dotted decimal format.
+ * @param[out] ip  Array to receive 4 octets.
+ *
+ * @return true on successful parse and validation, false on error.
+ */
+static bool parse_ip(const char *str, uint8_t ip[4]) {
+    int a, b, c, d;
+
+    /* Parse four decimal integers */
+    if (sscanf(str, "%d.%d.%d.%d", &a, &b, &c, &d) != 4) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK, 0x0);
+        ERROR_PRINT_CODE(errorcode, "%s invalid IP address format: %s\r\n", CONSOLE_TASK_TAG, str);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return false;
+    }
+
+    /* Validate octet ranges */
+    if (a < 0 || a > 255 || b < 0 || b > 255 || c < 0 || c > 255 || d < 0 || d > 255) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK, 0x1);
+        ERROR_PRINT_CODE(errorcode, "%s invalid IP address octet value: %s\r\n", CONSOLE_TASK_TAG,
+                         str);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return false;
+    }
+
+    ip[0] = (uint8_t)a;
+    ip[1] = (uint8_t)b;
+    ip[2] = (uint8_t)c;
+    ip[3] = (uint8_t)d;
+    return true;
+}
+
+/**
+ * @brief Extract next whitespace-delimited token from string.
+ *
+ * Parses and null-terminates the next token, advancing the cursor.
+ * Modifies the input string by inserting null terminator.
+ *
+ * @param[in,out] pptr Pointer to string cursor, updated to point past token.
+ *
+ * @return Pointer to token start, or NULL if no more tokens.
+ *
+ * @note The returned token is within the original buffer and null-terminated.
+ * @note Consecutive calls parse successive tokens from the same string.
+ */
+static char *next_token(char **pptr) {
+    if (!pptr || !*pptr)
+        return NULL;
+
+    /* Skip leading whitespace */
+    char *s = (char *)skip_spaces(*pptr);
+    if (*s == '\0') {
+        *pptr = s;
+        return NULL;
+    }
+
+    /* Find token end */
+    char *start = s;
+    while (*s && *s != ' ' && *s != '\t' && *s != '\r' && *s != '\n')
+        s++;
+
+    /* Null-terminate and advance cursor */
+    if (*s) {
+        *s = '\0';
+        s++;
+    }
+    *pptr = s;
+    return start;
+}
+
+/**
+ * @brief Individual command implementation functions.
+ *
+ * Each command handler function implements a specific console command.
+ * Handlers parse arguments, validate inputs, execute operations, and
+ * provide user feedback. Error conditions are logged and reported to user.
+ */
+static void cmd_help(void) {
+    ECHO("=== ENERGIS PDU Console Commands ===\n");
+
+    ECHO("GENERAL COMMANDS\n");
+    ECHO("%-32s %s\n", "HELP", "Show available commands and syntax");
+    ECHO("%-32s %s\n", "SYSINFO", "Show system information");
+    ECHO("%-32s %s\n", "GET_TEMP", "Show MCU temperature");
+    ECHO("%-32s %s\n", "REBOOT", "Reboot the PDU (network changes take effect after reboot)");
+    ECHO("%-32s %s\n", "BOOTSEL", "Put the MCU into boot mode");
+    ECHO("%-32s %s\n", "CLR_ERR", "Clear all errors");
+    ECHO("%-32s %s\n", "RFS", "Restore factory settings");
+
+    ECHO("OUTPUT CONTROL AND MEASUREMENT\n");
+    ECHO("%-32s %s\n", "SET_CH <ch> <STATE>", "Set channel (1-8) to 0|1|ON|OFF|ALL");
+    ECHO("%-32s %s\n", "GET_CH <ch>", "Read current state of channel (1-8|ALL)");
+    ECHO("%-32s %s\n", "OC_STATUS", "Show overcurrent protection status");
+    ECHO("%-32s %s\n", "OC_RESET", "Manually clear overcurrent lockout");
+    ECHO("%-32s %s\n", "READ_HLW8032", "Read power data for all channels");
+    ECHO("%-32s %s\n", "READ_HLW8032 <ch>", "Read power data for channel (1-8)");
+    ECHO("%-32s %s\n", "CALIBRATE <ch> <V> <I>",
+         "Start calibration on channel (1-8) with given V/I");
+    ECHO("%-32s %s\n", "AUTO_CAL_ZERO [ch|ALL]", "Zero-calibrate one channel or ALL");
+    ECHO("%-32s %s\n", "AUTO_CAL_V <voltage> [ch|ALL]",
+         "Voltage-calibrate one channel or ALL (0A assumed)");
+    ECHO("%-32s %s\n", "AUTO_CAL_I <current> <ch|ALL>",
+         "Current-calibrate a channel, or ALL sequentially");
+    ECHO("%-32s %s\n", "SHOW_CALIB <ch>", "Show calibration data (1-8|ALL)");
+
+    ECHO("NETWORK SETTINGS\n");
+    ECHO("%-32s %s\n", "NETINFO", "Display current IP, subnet mask, gateway and DNS");
+    ECHO("%-32s %s\n", "SET_IP <ip>", "Set static IP address (requires reboot)");
+    ECHO("%-32s %s\n", "SET_SN <mask>", "Set subnet mask");
+    ECHO("%-32s %s\n", "SET_GW <gw>", "Set default gateway");
+    ECHO("%-32s %s\n", "SET_DNS <dns>", "Set DNS server");
+    ECHO("%-32s %s\n", "CONFIG_NETWORK <ip$sn$gw$dns>", "Configure all network settings");
+
+    if (DEBUG) {
+        ECHO("DEBUG COMMANDS\n");
+        ECHO("%-32s %s\n", "GET_SUPPLY", "Read 12V supply rail");
+        ECHO("%-32s %s\n", "GET_USB", "Read USB supply rail");
+        ECHO("%-32s %s\n", "CALIB_TEMP <1P|2P> <T1> <T2> [WAIT]",
+             "Calibrate MCU temperature sensor");
+        ECHO("%-32s %s\n", "DUMP_EEPROM", "Enqueue formatted EEPROM dump");
+        ECHO("%-32s %s\n", "READ_ERROR", "Dump error event log region");
+        ECHO("%-32s %s\n", "READ_WARNING", "Dump warning event log region");
+        ECHO("%-32s %s\n", "CLEAR_ERROR", "Clear error event log region");
+        ECHO("%-32s %s\n", "CLEAR_WARNING", "Clear warning event log region");
+        ECHO("%-32s %s\n", "BAADCAFE", "Erase EEPROM (factory wipe; reboot required)");
+        ECHO("PROVISIONING COMMANDS\n");
+        ECHO("%-32s %s\n", "PROV", "Show provisioning commands");
+        ECHO("%-32s %s\n", "PROV UNLOCK <token>", "Unlock provisioning (token=hex string)");
+        ECHO("%-32s %s\n", "PROV LOCK", "Lock provisioning");
+        ECHO("%-32s %s\n", "PROV SET_SN <serial>", "Set device serial number");
+        ECHO("%-32s %s\n", "PROV SET_REGION <EU|US>", "Set device region (10A/15A)");
+        ECHO("%-32s %s\n", "PROV STATUS", "Show provisioning status");
+    }
+
+    ECHO("===========================================================\n");
+}
+
+/**
+ * @brief Enter BOOTSEL (USB ROM bootloader) now, robustly.
+ *        Flush CDC, stop scheduling, disconnect USB, then jump.
+ *
+ * @return None
+ */
+static void cmd_bootsel(void) {
+    ECHO("Entering BOOTSEL mode now...\n");
+
+    /* Optional breadcrumb if you read noinit on next cold boot */
+    bootloader_trigger = 0xDEADBEEF;
+
+    /* Give host a moment to read the last line */
+    vTaskDelay(pdMS_TO_TICKS(20));
+
+    /* Flush stdio USB if present */
+#if PICO_STDIO_USB
+    extern void stdio_usb_flush(void);
+    stdio_usb_flush();
+#endif
+
+    /* Try TinyUSB CDC flush if linked */
+#ifdef CFG_TUD_CDC
+    extern bool tud_cdc_connected(void);
+    extern uint32_t tud_task_interval_ms;
+    extern void tud_task(void);
+    extern void tud_cdc_write_flush(void);
+    for (int i = 0; i < 10; i++) {
+        tud_cdc_write_flush();
+        tud_task();
+        busy_wait_ms(2);
+    }
+#endif
+
+    /* Stop everyone else from running mid-transition */
+    taskENTER_CRITICAL();
+    vTaskSuspendAll();
+
+    /* Best effort: disconnect from USB to force re-enumeration on host */
+#if PICO_STDIO_USB
+    extern void tud_disconnect(void);
+    tud_disconnect(); /* ignore if not linked */
+#endif
+    busy_wait_ms(40); /* let host notice the drop */
+
+    /* Jump to ROM bootloader */
+    reset_usb_boot(0, 0);
+
+    /* Should never return; if it does, park CPU */
+    for (;;)
+        __asm volatile("wfi");
+}
+
+/**
+ * @brief Reboot system via watchdog.
+ *
+ * @details
+ * Flushes console output, waits 100ms, then triggers a software watchdog reset.
+ * This ensures all pending messages are sent before rebooting.
+ *
+ * @return None
+ */
+static void cmd_reboot(void) {
+    ECHO("Rebooting system...\n");
+    vTaskDelay(pdMS_TO_TICKS(100));
+    Health_RebootNow("CLI REBOOT");
+
+    /* Never returns */
+}
+
+/**
+ * @brief Read power data from HLW8032 for a specific channel
+ *
+ * @param args Command arguments (channel number 1-8)
+ * @return None
+ */
+static void cmd_read_hlw8032_ch(const char *args) {
+    int ch;
+    if (sscanf(args, "%d", &ch) != 1 || ch < 1 || ch > 8) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK, 0x2);
+        ERROR_PRINT_CODE(errorcode, "%s invalid channel for READ_HLW8032: %s\r\n", CONSOLE_TASK_TAG,
+                         args);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+
+    meter_telemetry_t telem;
+    if (MeterTask_GetTelemetry(ch - 1, &telem) && telem.valid) {
+        ECHO("CH%u: V=%.2f V, I=%.3f A, P=%.2f W\n\n", ch, telem.voltage, telem.current,
+             telem.power);
+    } else {
+        ECHO("CH%u: No valid telemetry data available\n\n", ch);
+    }
+}
+
+/**
+ * @brief Read power data from HLW8032 for all channels
+ *
+ * @return None
+ */
+static void cmd_read_hlw8032_all(void) {
+    for (int ch = 0; ch < 8; ch++) {
+        meter_telemetry_t telem;
+        if (MeterTask_GetTelemetry(ch, &telem) && telem.valid) {
+            ECHO("CH%u: V=%.2f V, I=%.3f A, P=%.2f W\n", ch + 1, telem.voltage, telem.current,
+                 telem.power);
+        } else {
+            ECHO("CH%u: No valid telemetry data available\n", ch + 1);
+        }
+    }
+    ECHO("\n");
+}
+
+/**
+ * @brief Print system information and health telemetry to the console.
+ *
+ * @details
+ * Prints:
+ * - Provisioning status (serial/region/current limit)
+ * - Firmware and hardware versions
+ * - Clock frequencies
+ * - I2C0/I2C1 derived bus speeds (from configured SCL high/low count registers)
+ * - SPI0 configured bus speed
+ * - Core voltage
+ * - System telemetry (USB/12V/die temperature)
+ *
+ * I2C speeds are derived from the active clk_peri frequency and the I2C
+ * controller's configured fast-mode SCL high/low count registers. This reflects
+ * the current runtime configuration programmed by i2c_set_baudrate().
+ */
+static void cmd_sysinfo(void) {
+    const device_identity_t *id = DeviceIdentity_Get();
+
+    system_telemetry_t sys_tele = {0};
+    bool tele_ok = MeterTask_GetSystemTelemetry(&sys_tele);
+    uint32_t peri_hz = clock_get_hz(clk_peri);
+
+    float sys_freq_mhz = clock_get_hz(clk_sys) / 1e6f;
+    float usb_freq_mhz = clock_get_hz(clk_usb) / 1e6f;
+    float peri_freq_mhz = peri_hz / 1e6f;
+    float adc_freq_mhz = clock_get_hz(clk_adc) / 1e6f;
+
+    uintptr_t i2c0_base = (uintptr_t)i2c_get_hw(i2c0);
+    uintptr_t i2c1_base = (uintptr_t)i2c_get_hw(i2c1);
+
+    uint32_t i2c0_hcnt = *((volatile uint32_t *)(i2c0_base + I2C_IC_FS_SCL_HCNT_OFFSET));
+    uint32_t i2c0_lcnt = *((volatile uint32_t *)(i2c0_base + I2C_IC_FS_SCL_LCNT_OFFSET));
+    uint32_t i2c1_hcnt = *((volatile uint32_t *)(i2c1_base + I2C_IC_FS_SCL_HCNT_OFFSET));
+    uint32_t i2c1_lcnt = *((volatile uint32_t *)(i2c1_base + I2C_IC_FS_SCL_LCNT_OFFSET));
+
+    uint32_t i2c0_cycles = i2c0_hcnt + i2c0_lcnt + 2u;
+    uint32_t i2c1_cycles = i2c1_hcnt + i2c1_lcnt + 2u;
+
+    uint32_t i2c0_baud = (i2c0_cycles != 0u) ? (peri_hz / i2c0_cycles) : 0u;
+    uint32_t i2c1_baud = (i2c1_cycles != 0u) ? (peri_hz / i2c1_cycles) : 0u;
+
+    float spi0_baud = spi_get_baudrate(spi0) / 1e6f;
+
+    uint32_t vreg_raw = *((volatile uint32_t *)VREG_BASE);
+    uint32_t vsel = vreg_raw & VREG_VSEL_MASK;
+    float core_v = 1.10f + 0.05f * vsel;
+
+    ECHO("=== System Information ===\n");
+
+    /* -------- Device Identity -------- */
+    ECHO("=== Device Identity ===\n");
+
+    if (!id->valid) {
+        ECHO("Device Serial: <not provisioned>\n");
+        ECHO("Region:        UNKNOWN\n");
+        ECHO("Provisioned:   No\n\n");
+    } else {
+        const char *region_str = (id->region == DEVICE_REGION_EU)   ? "EU"
+                                 : (id->region == DEVICE_REGION_US) ? "US"
+                                                                    : "UNKNOWN";
+
+        ECHO("Device Serial: %s\n", id->serial_number);
+        ECHO("Region:        %s\n", region_str);
+        ECHO("Provisioned:   Yes\n");
+        ECHO("Current Limit: %.1f A\n\n", DeviceIdentity_GetCurrentLimitA());
+    }
+
+    /* -------- Firmware -------- */
+    ECHO("=== Firmware Info ===\n");
+    ECHO("Firmware Version: %s\n", FIRMWARE_VERSION);
+    ECHO("Hardware Version: %s\n\n", HARDWARE_VERSION);
+
+    /* -------- Clocks -------- */
+    ECHO("=== Clocks ===\n");
+    ECHO("CPU : %.2f MHz\n", sys_freq_mhz);
+    ECHO("USB : %.2f MHz\n", usb_freq_mhz);
+    ECHO("PERI: %.2f MHz\n", peri_freq_mhz);
+    ECHO("ADC : %.2f MHz\n\n", adc_freq_mhz);
+    ECHO("I2C0 Speed : %.2f MHz\n", (i2c0_baud / 1e6f));
+    ECHO("I2C1 Speed : %.2f MHz\n", (i2c1_baud / 1e6f));
+    ECHO("SPI0 Speed : %.2f MHz\n\n", spi0_baud);
+
+    ECHO("Core Voltage: %.2f V (vsel=%lu)\n\n", core_v, (unsigned long)vsel);
+
+    /* -------- Telemetry -------- */
+    ECHO("=== Telemetry ===\n");
+    if (tele_ok) {
+        ECHO("USB Voltage : %.2f V\n", sys_tele.vusb_volts);
+        ECHO("12V Supply  : %.2f V\n", sys_tele.vsupply_volts);
+        ECHO("Die Temp    : %.2f C\n", sys_tele.die_temp_c);
+    } else {
+        ECHO("Telemetry not ready\n");
+    }
+
+    ECHO("========================\n\n");
+}
+
+/**
+ * @brief Read and print RP2040 die temperature from cached telemetry.
+ *
+ * @details
+ * MeterTask owns the ADC. This command reads the latest cached value
+ * (non-blocking). If telemetry isn't ready yet, it prints N/A.
+ *
+ * @return None
+ */
+static void cmd_get_temp(void) {
+    system_telemetry_t sys = {0};
+    if (MeterTask_GetSystemTelemetry(&sys)) {
+        ECHO("Die Temperature: %.2f °C (ADC raw=%u)\n", sys.die_temp_c, sys.raw_temp);
+    } else {
+        ECHO("Die Temperature: N/A (telemetry not ready)\n");
+    }
+}
+
+/**
+ * @brief Calibrate RP2040 die temperature sensor and persist to EEPROM.
+ * @param args Expected formats:
+ *             "1P <T1_C>"
+ *             "2P <T1_C> <T2_C> [delay_ms]"
+ * @return None
+ */
+static void cmd_calib_temp(const char *args) {
+    extern SemaphoreHandle_t eepromMtx;
+
+    if (!args || *args == '\0') {
+        ECHO("Usage:\n  CALIB_TEMP 1P <T1_C>\n  CALIB_TEMP 2P <T1_C> <T2_C> [delay_ms]\n");
+        return;
+    }
+
+    /* Read current telemetry for first raw sample */
+    system_telemetry_t sys = {0};
+    if (!MeterTask_GetSystemTelemetry(&sys) || !sys.valid) {
+        ECHO("Error: temperature telemetry not ready. Try again shortly.\n");
+        return;
+    }
+
+    /* Parse mode */
+    char mode[3] = {0};
+    float T1 = 0.0f, T2 = 0.0f;
+    unsigned delay_ms = 1500;
+
+    /* Try 1P */
+    if (sscanf(args, "%2s %f", mode, &T1) == 2 && strcmp(mode, "1P") == 0) {
+        temp_calib_t rec;
+        if (TempCalibration_ComputeSinglePoint(T1, sys.raw_temp, &rec) != 0) {
+            ECHO("Error: single-point compute failed.\n");
+            return;
+        }
+
+        if (xSemaphoreTake(eepromMtx, pdMS_TO_TICKS(250)) != pdTRUE) {
+#if ERRORLOGGER
+            uint16_t errorcode =
+                ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK, 0x3);
+            ERROR_PRINT_CODE(errorcode, "%s EEPROM busy\r\n", CONSOLE_TASK_TAG);
+            Storage_EnqueueErrorCode(errorcode);
+#endif
+            return;
+        }
+        int wrc = EEPROM_WriteTempCalibration(&rec);
+        xSemaphoreGive(eepromMtx);
+        if (wrc != 0) {
+#if ERRORLOGGER
+            uint16_t errorcode =
+                ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK, 0x4);
+            ERROR_PRINT_CODE(errorcode, "%s EEPROM write failed during CALIB_TEMP 1P\r\n",
+                             CONSOLE_TASK_TAG);
+            Storage_EnqueueErrorCode(errorcode);
+#endif
+            return;
+        }
+        (void)TempCalibration_ApplyToMeterTask(&rec);
+
+        ECHO("CALIB_TEMP 1P OK: offset=%.3f °C (raw=%u)\n", rec.offset_c, (unsigned)sys.raw_temp);
+        return;
+    }
+
+    /* Try 2P */
+    if (sscanf(args, "%2s %f %f %u", mode, &T1, &T2, &delay_ms) >= 3 && strcmp(mode, "2P") == 0) {
+        uint16_t raw1 = sys.raw_temp;
+
+        vTaskDelay(pdMS_TO_TICKS(delay_ms));
+
+        if (!MeterTask_GetSystemTelemetry(&sys) || !sys.valid) {
+            ECHO("Error: temperature telemetry not ready for second point.\n");
+            return;
+        }
+        uint16_t raw2 = sys.raw_temp;
+
+        temp_calib_t rec;
+        if (TempCalibration_ComputeTwoPoint(T1, raw1, T2, raw2, &rec) != 0) {
+            ECHO("Error: two-point compute failed. Check inputs.\n");
+            return;
+        }
+
+        if (xSemaphoreTake(eepromMtx, pdMS_TO_TICKS(250)) != pdTRUE) {
+            ECHO("Error: EEPROM busy.\n");
+            return;
+        }
+        int wrc = EEPROM_WriteTempCalibration(&rec);
+        xSemaphoreGive(eepromMtx);
+        if (wrc != 0) {
+#if ERRORLOGGER
+            uint16_t errorcode =
+                ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK, 0x5);
+            ERROR_PRINT_CODE(errorcode, "%s EEPROM write failed\r\n", CONSOLE_TASK_TAG);
+            Storage_EnqueueErrorCode(errorcode);
+#endif
+            return;
+        }
+        (void)TempCalibration_ApplyToMeterTask(&rec);
+
+        ECHO("CALIB_TEMP 2P OK: V0=%.4f V, S=%.6f V/°C, offset=%.3f °C (raw1=%u, raw2=%u)\n",
+             rec.v0_volts_at_27c, rec.slope_volts_per_deg, rec.offset_c, (unsigned)raw1,
+             (unsigned)raw2);
+        return;
+    }
+
+    ECHO("Usage:\n  CALIB_TEMP 1P <T1_C>\n  CALIB_TEMP 2P <T1_C> <T2_C> [delay_ms]\n");
+}
+
+/**
+ * @brief Set relay channel state.
+ *
+ * @param args Command arguments: "<ch> <0|1|ON|OFF>" where ch=1-8 or ALL
+ * @return None
+ */
+static void cmd_set_ch(const char *args) {
+    char ch_str[16] = {0};
+    char tok[16] = {0};
+
+    if (sscanf(args, "%15s %15s", ch_str, tok) != 2) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK, 0x6);
+        ERROR_PRINT_CODE(errorcode, "%s invalid SET_CH arguments: %s\r\n", CONSOLE_TASK_TAG, args);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+
+    /* Convert ch_str to uppercase for ALL comparison */
+    for (char *p = ch_str; *p; ++p) {
+        *p = (char)toupper((unsigned char)*p);
+    }
+
+    /* Normalize token and resolve to 0/1 */
+    int val = -1;
+    if (tok[0] == '0' && tok[1] == '\0') {
+        val = 0;
+    } else if (tok[0] == '1' && tok[1] == '\0') {
+        val = 1;
+    } else {
+        for (char *p = tok; *p; ++p) {
+            *p = (char)toupper((unsigned char)*p);
+        }
+        if (strcmp(tok, "OFF") == 0) {
+            val = 0;
+        } else if (strcmp(tok, "ON") == 0) {
+            val = 1;
+        }
+    }
+
+    if (val < 0) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK, 0x7);
+        ERROR_PRINT_CODE(errorcode, "%s invalid value for SET_CH: %s. (use 0/1 or ON/OFF)\r\n",
+                         CONSOLE_TASK_TAG, tok);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+
+    /* Handle ALL channels */
+    if (strcmp(ch_str, "ALL") == 0) {
+        /* Check overcurrent before ALL ON */
+        if (val && !Overcurrent_IsSwitchingAllowed()) {
+            ECHO("ERROR: Overcurrent lockout active - cannot turn channels ON\n");
+            ECHO("Use OC_STATUS for details, OC_RESET to clear (after reducing load)\n");
+            return;
+        }
+
+        bool success = true;
+        for (uint8_t ch_idx = 0; ch_idx < 8; ch_idx++) {
+            if (!Switch_SetChannel(ch_idx, val)) {
+#if ERRORLOGGER
+                uint16_t errorcode =
+                    ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK, 0x8);
+                ERROR_PRINT_CODE(errorcode, "%s failed to set CH%d during SET_CH ALL\r\n",
+                                 CONSOLE_TASK_TAG, ch_idx + 1);
+                Storage_EnqueueErrorCode(errorcode);
+#endif
+                success = false;
+            }
+        }
+        if (success) {
+            ECHO("All channels set to %s\n", val ? "ON" : "OFF");
+        }
+        return;
+    }
+
+    /* Handle single channel */
+    int ch = atoi(ch_str);
+    if (ch < 1 || ch > 8) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK, 0x9);
+        ERROR_PRINT_CODE(errorcode, "%s invalid channel for SET_CH: %s\r\n", CONSOLE_TASK_TAG,
+                         ch_str);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+
+    uint8_t ch_idx = (uint8_t)(ch - 1);
+
+    /* Check overcurrent before turning ON */
+    if (val && !Overcurrent_IsSwitchingAllowed()) {
+        ECHO("ERROR: Overcurrent lockout active - cannot turn channel %d ON\n", ch);
+        ECHO("Use OC_STATUS for details, OC_RESET to clear (after reducing load)\n");
+        return;
+    }
+
+    if (Switch_SetChannel(ch_idx, val)) {
+        ECHO("CH%d = %s\n", ch, val ? "ON" : "OFF");
+    } else {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK, 0xA);
+        ERROR_PRINT_CODE(errorcode, "%s failed to set CH%d during SET_CH\r\n", CONSOLE_TASK_TAG,
+                         ch);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+    }
+}
+
+/**
+ * @brief Get relay channel state(s).
+ *
+ * @param args Command arguments: "<ch>" where ch=1-8 or "ALL"
+ * @return None
+ */
+static void cmd_get_ch(const char *args) {
+    if (args == NULL || *args == '\0') {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK, 0xB);
+        ERROR_PRINT_CODE(errorcode,
+                         "%s missing arguments for GET_CH. Usage: GET_CH <ch> (ch=1-8 or ALL)\r\n",
+                         CONSOLE_TASK_TAG);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+
+    /* Make a local, trimmed/uppercased copy of the argument */
+    char tok[16];
+    size_t n = strnlen(args, sizeof(tok) - 1);
+    strncpy(tok, args, n);
+    tok[n] = '\0';
+    char *p = tok;
+    while (*p == ' ' || *p == '\t')
+        p++; /* trim left */
+    for (char *q = p + strlen(p) - 1;
+         q >= p && (*q == ' ' || *q == '\t' || *q == '\r' || *q == '\n'); q--) {
+        *q = '\0'; /* trim right */
+    }
+    for (char *q = p; *q; ++q) {
+        *q = (char)toupper((unsigned char)*q); /* uppercase */
+    }
+
+    if (strcmp(p, "ALL") == 0) {
+        for (uint8_t i = 0; i < 8; i++) {
+            bool state = false;
+            (void)Switch_GetState(i, &state);
+            ECHO("CH%d: %s\r\n", (int)(i + 1), state ? "ON" : "OFF");
+        }
+        return;
+    }
+
+    int ch;
+    if (sscanf(p, "%d", &ch) != 1 || ch < 1 || ch > 8) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK, 0xC);
+        ERROR_PRINT_CODE(
+            errorcode, "%s invalid channel for GET_CH: %s. Usage: GET_CH <ch> (ch=1-8 or ALL)\r\n",
+            CONSOLE_TASK_TAG, p);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+
+    uint8_t ch_idx = (uint8_t)(ch - 1);
+    bool state = false;
+    (void)Switch_GetState(ch_idx, &state);
+    ECHO("CH%d: %s\r\n", ch, state ? "ON" : "OFF");
+}
+
+/**
+ * @brief Display overcurrent protection status.
+ *
+ * @param args Unused
+ * @return None
+ */
+static void cmd_oc_status(char *args) {
+    (void)args;
+
+    overcurrent_status_t status;
+    if (!Overcurrent_GetStatus(&status)) {
+        ECHO("ERROR: Failed to get overcurrent status\n");
+        return;
+    }
+
+    ECHO("=== Overcurrent Protection Status ===\n");
+    /* Print provisioned region rather than compile-time default */
+    switch (DeviceIdentity_GetRegion()) {
+    case DEVICE_REGION_EU:
+        ECHO("Region:           EU (IEC/ENEC)\n");
+        break;
+    case DEVICE_REGION_US:
+        ECHO("Region:           US (UL/CSA)\n");
+        break;
+    default:
+        ECHO("Region:           UNKNOWN\n");
+        break;
+    }
+
+    ECHO("Current Limit:    %.1f A\n", status.limit_a);
+    ECHO("Warning Thresh:   %.2f A (Limit - %.2f)\n", status.warning_threshold_a,
+         ENERGIS_CURRENT_WARNING_OFFSET_A);
+    ECHO("Critical Thresh:  %.2f A (Limit - %.2f)\n", status.critical_threshold_a,
+         ENERGIS_CURRENT_SAFETY_MARGIN_A);
+    ECHO("Recovery Thresh:  %.2f A (Limit - %.2f)\n", status.recovery_threshold_a,
+         ENERGIS_CURRENT_RECOVERY_OFFSET_A);
+    ECHO("\n");
+    ECHO("Total Current:    %.2f A\n", status.total_current_a);
+
+    const char *state_str = "UNKNOWN";
+    switch (status.state) {
+    case OC_STATE_NORMAL:
+        state_str = "NORMAL";
+        break;
+    case OC_STATE_WARNING:
+        state_str = "WARNING";
+        break;
+    case OC_STATE_CRITICAL:
+        state_str = "CRITICAL";
+        break;
+    case OC_STATE_LOCKOUT:
+        state_str = "LOCKOUT";
+        break;
+    }
+    ECHO("Protection State: %s\n", state_str);
+    ECHO("Switching:        %s\n", status.switching_allowed ? "ALLOWED" : "BLOCKED");
+    ECHO("\n");
+    ECHO("Trip Count:       %lu\n", (unsigned long)status.trip_count);
+
+    if (status.last_tripped_channel < 8) {
+        ECHO("Last set CH:      %u\n", (unsigned)(status.last_tripped_channel + 1));
+    }
+
+    if (status.last_trip_timestamp_ms > 0) {
+        uint32_t now = to_ms_since_boot(get_absolute_time());
+        uint32_t ago_s = (now - status.last_trip_timestamp_ms) / 1000;
+        ECHO("Last Trip:        %lu seconds ago\n", (unsigned long)ago_s);
+    }
+    ECHO("\n");
+}
+
+/**
+ * @brief Manually clear overcurrent lockout.
+ *
+ * @param args Unused
+ * @return None
+ */
+static void cmd_oc_reset(char *args) {
+    (void)args;
+
+    if (Overcurrent_ClearLockout()) {
+        ECHO("OK: Overcurrent lockout cleared\n");
+        ECHO("WARNING: Verify load has been reduced before re-enabling channels\n");
+    } else {
+        ECHO("INFO: System is not in lockout state\n");
+    }
+}
+
+/**
+ * @brief Clear error LED on display board.
+ *
+ * @return None
+ */
+static void cmd_clr_err(void) {
+    Switch_SetFaultLed(false, 0);
+    ECHO("Error LED cleared\n");
+}
+
+/**
+ * @brief Calibrate a single HLW8032 channel (deprecated).
+ *
+ * @param args Command arguments: "<ch> <voltage> <current>"
+ * @return None
+ *
+ * @note Legacy blocking calibration is no longer supported. Use AUTO_CAL_ZERO
+ *       and AUTO_CAL_V instead, which run cooperatively in the background.
+ */
+static void cmd_calibrate(const char *args) {
+    (void)args;
+    ECHO("CALIBRATE is deprecated.\r\n");
+    ECHO("Use AUTO_CAL_ZERO (0V/0A) and AUTO_CAL_V <voltage> instead.\r\n");
+}
+
+/**
+ * @brief Auto-calibrate zero point (0V, 0A) for a single channel or ALL (async).
+ *
+ * @param args Optional argument: "ALL" (default) or channel number 1..8
+ *
+ * @details
+ * - When called with no args or "ALL", starts zero calibration for all channels.
+ * - When called with a channel (1..8), runs zero calibration for that channel only.
+ * - Calibration runs asynchronously; check logs for progress and results.
+ */
+static void cmd_auto_cal_zero(const char *args) {
+    int ch = -1; /* 0..7 for single, -1 for ALL */
+
+    if (args && *args) {
+        char buf[32];
+        memset(buf, 0, sizeof(buf));
+        strncpy(buf, args, sizeof(buf) - 1);
+        char *tok = trim(buf);
+        if (*tok) {
+            if (strcasecmp(tok, "ALL") == 0) {
+                ch = -1;
+            } else {
+                int ctmp = atoi(tok);
+                if (ctmp >= 1 && ctmp <= 8) {
+                    ch = ctmp - 1;
+                } else {
+                    ECHO("Usage: AUTO_CAL_ZERO [ch|ALL]\r\n");
+                    ECHO("Example: AUTO_CAL_ZERO 3\r\n");
+                    return;
+                }
+            }
+        }
+    }
+
+    if (ch < 0) {
+        ECHO("========================================\n");
+        ECHO("  AUTO ZERO-POINT CALIBRATION (ASYNC)\n");
+        ECHO("========================================\n");
+        ECHO("Calibrating all 8 channels (0V, 0A)\n");
+        ECHO("Ensure all channels are OFF/disconnected\n");
+        ECHO("Calibration will run in background; check\n ");
+        ECHO("log for per-channel results.\n");
+        ECHO("========================================\n\n");
+
+        if (!hlw8032_calibration_start_zero_all()) {
+#if ERRORLOGGER
+            uint16_t errorcode =
+                ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0x0);
+            ERROR_PRINT_CODE(
+                errorcode, "%s Failed to start async zero-point calibration (already running?)\r\n",
+                CONSOLE_TASK_TAG);
+            Storage_EnqueueErrorCode(errorcode);
+#endif
+            ECHO("ERROR: Could not start zero-point calibration (already running?).\r\n");
+            return;
+        }
+        ECHO("Async zero calibration started.\r\n");
+    } else {
+        ECHO("========================================\n");
+        ECHO("  AUTO ZERO-POINT CALIBRATION (ASYNC)\n");
+        ECHO("========================================\n");
+        ECHO("Channel (console): %d\n", ch + 1);
+        ECHO("Channel (internal): %d\n", ch);
+        ECHO("Condition         : 0V / 0A\n");
+        ECHO("Ensure the selected channel is OFF and unloaded.\n");
+        ECHO("========================================\n\n");
+
+        if (!hlw8032_calibration_start_zero_single((uint8_t)ch)) {
+#if ERRORLOGGER
+            uint16_t errorcode =
+                ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0x0);
+            ERROR_PRINT_CODE(
+                errorcode, "%s Failed to start single-channel zero calibration (busy/invalid)\r\n",
+                CONSOLE_TASK_TAG);
+            Storage_EnqueueErrorCode(errorcode);
+#endif
+            ECHO("ERROR: Could not start single-channel zero calibration.\r\n");
+            return;
+        }
+        ECHO("Async zero calibration started for CH%d.\r\n", ch + 1);
+    }
+}
+
+/**
+ * @brief Auto-calibrate voltage for a single channel or ALL (async).
+ *
+ * @param args Command arguments: "<voltage> [ch|ALL]" (defaults: 230V, ALL)
+ *
+ * @details
+ * - Without args: calibrates all 8 channels using 230V, assuming 0A.
+ * - With args: first token is Vref, second optional token selects a single channel (1..8)
+ *   or ALL. Uses `hlw8032_calibration_start_voltage_single()` when a channel is provided.
+ * - Runs asynchronously; monitor logs for progress.
+ *
+ * @return None
+ */
+static void cmd_auto_cal_v(const char *args) {
+    float ref_voltage = 230.0f;
+    int ch = -1; /* 0..7 for single, -1 for ALL */
+
+    if (args != NULL && strlen(args) > 0) {
+        /* Copy and tokenize: <voltage> [ch|ALL] */
+        char buf[64];
+        memset(buf, 0, sizeof(buf));
+        strncpy(buf, args, sizeof(buf) - 1);
+
+        char *tok_v = strtok(buf, " \t");
+        char *tok_c = strtok(NULL, " \t");
+
+        if (tok_v) {
+            float tmp = (float)atof(tok_v);
+            if (tmp > 0.0f)
+                ref_voltage = tmp;
+        }
+
+        if (tok_c) {
+            /* Accept ALL or channel number 1..8 */
+            if (strcasecmp(tok_c, "ALL") == 0) {
+                ch = -1;
+            } else {
+                int ctmp = atoi(tok_c);
+                if (ctmp >= 1 && ctmp <= 8) {
+                    ch = ctmp - 1;
+                } else {
+                    ECHO("ERROR: Invalid channel. Use 1..8 or ALL.\r\n");
+                    return;
+                }
+            }
+        }
+    }
+
+    if (ref_voltage <= 0.0f) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0x1);
+        ERROR_PRINT_CODE(errorcode, "%s Invalid reference voltage for AUTO_CAL_V: %.3f\r\n",
+                         CONSOLE_TASK_TAG, ref_voltage);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        ECHO("ERROR: Invalid reference voltage.\r\n");
+        return;
+    }
+
+    if (ch < 0) {
+        ECHO("========================================\n");
+        ECHO("  AUTO VOLTAGE CALIBRATION (ASYNC)\n");
+        ECHO("========================================\n");
+        ECHO("Calibrating all 8 channels (%.1fV, 0A)\n", ref_voltage);
+        ECHO("Ensure all channels have the same stable mains voltage\n");
+        ECHO("Calibration will run in background; check log for per-channel results.\n");
+        ECHO("========================================\n\n");
+
+        if (!hlw8032_calibration_start_voltage_all(ref_voltage)) {
+#if ERRORLOGGER
+            uint16_t errorcode =
+                ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0x2);
+            ERROR_PRINT_CODE(errorcode,
+                             "%s Failed to start async voltage calibration (already running?)\r\n",
+                             CONSOLE_TASK_TAG);
+            Storage_EnqueueErrorCode(errorcode);
+#endif
+            ECHO("ERROR: Could not start voltage calibration (already running?).\r\n");
+            return;
+        }
+        ECHO("Async voltage calibration started.\r\n");
+    } else {
+        ECHO("========================================\n");
+        ECHO("  AUTO VOLTAGE CALIBRATION (ASYNC)\n");
+        ECHO("========================================\n");
+        ECHO("Channel: %d\n", ch + 1);
+        ECHO("Vref              : %.1fV\n", ref_voltage);
+        ECHO("Ensure the selected channel sees the reference voltage.\n");
+        ECHO("========================================\n\n");
+
+        if (!hlw8032_calibration_start_voltage_single((uint8_t)ch, ref_voltage)) {
+#if ERRORLOGGER
+            uint16_t errorcode =
+                ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0x2);
+            ERROR_PRINT_CODE(
+                errorcode,
+                "%s Failed to start single-channel voltage calibration (busy/invalid)\r\n",
+                CONSOLE_TASK_TAG);
+            Storage_EnqueueErrorCode(errorcode);
+#endif
+            ECHO("ERROR: Could not start single-channel voltage calibration.\r\n");
+            return;
+        }
+        ECHO("Async voltage calibration started for CH%d.\r\n", ch + 1);
+    }
+}
+
+/**
+ * @brief Auto-calibrate current gain for a single channel (async).
+ *
+ * @param args Command arguments: "<current_A> <channel>"
+ *
+ * @return None
+ *
+ * @note Console uses 1-based channel indices (1..8).
+ *       Internally the driver uses 0-based indices (0..7).
+ * @note Requires a known current flowing through the selected channel.
+ *       Use an external DMM as reference.
+ */
+static void cmd_auto_cal_i(const char *args) {
+    float ref_current = 0.0f;
+    int channel_console = -1;
+    int channel_internal = -2; /* -2 = ALL, -1 = invalid, 0..7 = single */
+
+    if (args == NULL || strlen(args) == 0) {
+        ECHO("Usage: AUTO_CAL_I <current_A> <channel>\r\n");
+        ECHO("Example: AUTO_CAL_I 0.170 2   (for CH2)\r\n");
+        return;
+    }
+
+    char buf[64];
+    memset(buf, 0, sizeof(buf));
+    strncpy(buf, args, sizeof(buf) - 1);
+
+    char *tok1 = strtok(buf, " \t");
+    char *tok2 = strtok(NULL, " \t");
+
+    if (tok1 == NULL || tok2 == NULL) {
+        ECHO("Usage: AUTO_CAL_I <current_A> <channel>\r\n");
+        ECHO("Example: AUTO_CAL_I 0.170 2   (for CH2)\r\n");
+        return;
+    }
+
+    ref_current = (float)atof(tok1);
+    if (strcasecmp(tok2, "ALL") == 0) {
+        channel_internal = -2;
+    } else {
+        channel_console = atoi(tok2);           /* User enters 1..8 */
+        channel_internal = channel_console - 1; /* Convert to 0..7 */
+    }
+
+    if (ref_current <= 0.0f) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0x3);
+        ERROR_PRINT_CODE(errorcode, "%s Invalid reference current for AUTO_CAL_I: %.3f\r\n",
+                         CONSOLE_TASK_TAG, ref_current);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        ECHO("ERROR: Invalid reference current.\r\n");
+        return;
+    }
+
+    if (channel_internal != -2 && (channel_internal < 0 || channel_internal > 7)) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0x4);
+        ERROR_PRINT_CODE(errorcode, "%s Invalid channel for AUTO_CAL_I: %s\r\n", CONSOLE_TASK_TAG,
+                         tok2);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        ECHO("ERROR: Invalid channel index. Valid range: 1..8\r\n");
+        return;
+    }
+
+    if (channel_internal == -2) {
+        /* ALL channels: let driver sequence channels internally */
+        ECHO("========================================\n");
+        ECHO("  AUTO CURRENT CALIBRATION (ASYNC)\n");
+        ECHO("========================================\n");
+        ECHO("Calibrating ALL channels (Iref=%.3fA)\n", ref_current);
+        ECHO("The driver will step through channels automatically.\n");
+        ECHO("Ensure each channel carries the known current when prompted.\n");
+        ECHO("Use an external DMM as reference.\n");
+        ECHO("========================================\n\n");
+        if (!hlw8032_calibration_start_current_all(ref_current)) {
+#if ERRORLOGGER
+            uint16_t errorcode =
+                ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0x5);
+            ERROR_PRINT_CODE(errorcode, "%s Failed to start ALL-channels current calibration\r\n",
+                             CONSOLE_TASK_TAG);
+            Storage_EnqueueErrorCode(errorcode);
+#endif
+            ECHO("ERROR: Failed to start ALL-channels current calibration.\r\n");
+            return;
+        }
+
+        /* Wait until calibration engine completes */
+        while (hlw8032_calibration_is_running()) {
+            vTaskDelay(pdMS_TO_TICKS(50));
+        }
+
+        ECHO("ALL channels current calibration complete.\r\n");
+        return;
+    }
+
+    /* Single channel */
+    ECHO("========================================\n");
+    ECHO("  AUTO CURRENT CALIBRATION (ASYNC)\n");
+    ECHO("========================================\n");
+    ECHO("Channel: %d\n", channel_console);
+    ECHO("Iref              : %.3fA\n", ref_current);
+    ECHO("Ensure the selected channel carries the known current.\n");
+    ECHO("Use an external DMM as reference.\n");
+    ECHO("Calibration runs in background; check log for\n");
+    ECHO("per-channel results.\n");
+    ECHO("========================================\n\n");
+
+    if (!hlw8032_calibration_start_current_single((uint8_t)channel_internal, ref_current)) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0x5);
+        ERROR_PRINT_CODE(errorcode,
+                         "%s Failed to start async current calibration (already running?)\r\n",
+                         CONSOLE_TASK_TAG);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        ECHO("ERROR: Could not start current calibration (already running?).\r\n");
+        return;
+    }
+
+    ECHO("Async current calibration started.\r\n");
+}
+
+/**
+ * @brief Show calibration data for one or all channels.
+ *
+ * @param args Command arguments: "<ch>" where ch=1-8, or empty for ALL
+ * @return None
+ */
+static void cmd_show_calib(const char *args) {
+    if (args == NULL || strlen(args) == 0) {
+        /* Show all channels */
+        for (uint8_t i = 0; i < 8; i++) {
+            hlw8032_print_calibration(i);
+        }
+    } else {
+        /* Show specific channel */
+        int ch = atoi(args);
+        if (ch < 1 || ch > 8) {
+#if ERRORLOGGER
+            uint16_t errorcode =
+                ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0x6);
+            ERROR_PRINT_CODE(errorcode, "%s Invalid channel for SHOW_CALIB: %s\r\n",
+                             CONSOLE_TASK_TAG, args);
+            Storage_EnqueueErrorCode(errorcode);
+#endif
+            return;
+        }
+        hlw8032_print_calibration((uint8_t)(ch - 1));
+    }
+}
+
+/**
+ * @brief Set IP address.
+ *
+ * @param args Command arguments: "<ip>" e.g., "192.168.1.100"
+ * @return None
+ */
+static void cmd_set_ip(const char *args) {
+    uint8_t ip[4];
+    if (!parse_ip(args, ip)) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0x4);
+        ERROR_PRINT_CODE(errorcode, "%s Invalid IP address format: %s\r\n", CONSOLE_TASK_TAG, args);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+
+    networkInfo net;
+    if (!storage_get_network(&net)) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0x5);
+        ERROR_PRINT_CODE(errorcode, "%s Failed to read network config\r\n", CONSOLE_TASK_TAG);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+
+    memcpy(net.ip, ip, 4);
+
+    if (storage_set_network(&net)) {
+        ECHO("IP address set to %d.%d.%d.%d (reboot required)\n", ip[0], ip[1], ip[2], ip[3]);
+    } else {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0x6);
+        ERROR_PRINT_CODE(errorcode, "%s Failed to save IP address\r\n", CONSOLE_TASK_TAG);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+    }
+}
+
+/**
+ * @brief Set subnet mask.
+ *
+ * @param args Command arguments: "<mask>" e.g., "255.255.255.0"
+ * @return None
+ */
+static void cmd_set_sn(const char *args) {
+    uint8_t sn[4];
+    if (!parse_ip(args, sn)) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0x7);
+        ERROR_PRINT_CODE(errorcode, "%s Invalid subnet mask format: %s\r\n", CONSOLE_TASK_TAG,
+                         args);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+
+    networkInfo net;
+    if (!storage_get_network(&net)) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0x8);
+        ERROR_PRINT_CODE(errorcode, "%s Failed to read network config\r\n", CONSOLE_TASK_TAG);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+
+    memcpy(net.sn, sn, 4);
+
+    if (storage_set_network(&net)) {
+        ECHO("Subnet mask set to %d.%d.%d.%d (reboot required)\n", sn[0], sn[1], sn[2], sn[3]);
+    } else {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0x9);
+        ERROR_PRINT_CODE(errorcode, "%s Failed to save subnet mask\r\n", CONSOLE_TASK_TAG);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+    }
+}
+
+/**
+ * @brief Set gateway address.
+ *
+ * @param args Command arguments: "<gw>" e.g., "192.168.1.1"
+ * @return None
+ */
+static void cmd_set_gw(const char *args) {
+    uint8_t gw[4];
+    if (!parse_ip(args, gw)) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0xA);
+        ERROR_PRINT_CODE(errorcode, "%s Invalid gateway format: %s\r\n", CONSOLE_TASK_TAG, args);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+
+    networkInfo net;
+    if (!storage_get_network(&net)) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0xB);
+        ERROR_PRINT_CODE(errorcode, "%s Failed to read network config\r\n", CONSOLE_TASK_TAG);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+
+    memcpy(net.gw, gw, 4);
+
+    if (storage_set_network(&net)) {
+        ECHO("Gateway set to %d.%d.%d.%d (reboot required)\n", gw[0], gw[1], gw[2], gw[3]);
+    } else {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0xC);
+        ERROR_PRINT_CODE(errorcode, "%s Failed to save gateway\r\n", CONSOLE_TASK_TAG);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+    }
+}
+
+/**
+ * @brief Set DNS server address.
+ *
+ * @param args Command arguments: "<dns>" e.g., "8.8.8.8"
+ * @return None
+ */
+static void cmd_set_dns(const char *args) {
+    uint8_t dns[4];
+    if (!parse_ip(args, dns)) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0xD);
+        ERROR_PRINT_CODE(errorcode, "%s Invalid DNS format: %s\r\n", CONSOLE_TASK_TAG, args);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+
+    networkInfo net;
+    if (!storage_get_network(&net)) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0xE);
+        ERROR_PRINT_CODE(errorcode, "%s Failed to read network config\r\n", CONSOLE_TASK_TAG);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+
+    memcpy(net.dns, dns, 4);
+
+    if (storage_set_network(&net)) {
+        ECHO("DNS set to %d.%d.%d.%d (reboot required)\n", dns[0], dns[1], dns[2], dns[3]);
+    } else {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK2, 0xF);
+        ERROR_PRINT_CODE(errorcode, "%s Failed to save DNS\r\n", CONSOLE_TASK_TAG);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+    }
+}
+
+/**
+ * @brief Configure all network settings at once.
+ *
+ * @param args Command arguments: "<ip$sn$gw$dns>"
+ * @return None
+ */
+static void cmd_config_network(const char *args) {
+    char ip_str[20], sn_str[20], gw_str[20], dns_str[20];
+    if (sscanf(args, "%19[^$]$%19[^$]$%19[^$]$%19s", ip_str, sn_str, gw_str, dns_str) != 4) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK3, 0x0);
+        ERROR_PRINT_CODE(
+            errorcode,
+            "%s Invalid CONFIG_NETWORK arguments: %s. Usage: CONFIG_NETWORK <ip$sn$gw$dns>\r\n",
+            CONSOLE_TASK_TAG, args);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+
+    networkInfo net;
+    if (!storage_get_network(&net)) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK3, 0x1);
+        ERROR_PRINT_CODE(errorcode, "%s Failed to read network config\r\n", CONSOLE_TASK_TAG);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+
+    if (!parse_ip(ip_str, net.ip)) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK3, 0x2);
+        ERROR_PRINT_CODE(errorcode, "%s Invalid IP: %s\r\n", CONSOLE_TASK_TAG, ip_str);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+    if (!parse_ip(sn_str, net.sn)) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK3, 0x3);
+        ERROR_PRINT_CODE(errorcode, "%s Invalid subnet: %s\r\n", CONSOLE_TASK_TAG, sn_str);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+    if (!parse_ip(gw_str, net.gw)) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK3, 0x4);
+        ERROR_PRINT_CODE(errorcode, "%s Invalid gateway: %s\r\n", CONSOLE_TASK_TAG, gw_str);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+    if (!parse_ip(dns_str, net.dns)) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK3, 0x5);
+        ERROR_PRINT_CODE(errorcode, "%s Invalid DNS: %s\r\n", CONSOLE_TASK_TAG, dns_str);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return;
+    }
+
+    if (storage_set_network(&net)) {
+        ECHO("Network configured successfully:\n");
+        ECHO("  IP: %s\n", ip_str);
+        ECHO("  Subnet: %s\n", sn_str);
+        ECHO("  Gateway: %s\n", gw_str);
+        ECHO("  DNS: %s\n", dns_str);
+        ECHO("Reboot required to apply changes.\n");
+    } else {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK3, 0x6);
+        ERROR_PRINT_CODE(errorcode, "%s Failed to save network config\r\n", CONSOLE_TASK_TAG);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+    }
+}
+
+/**
+ * @brief Display network information.
+ *
+ * @return None
+ */
+static void cmd_netinfo(void) {
+    ECHO("NETWORK INFORMATION:\n");
+    networkInfo ni;
+    if (!storage_get_network(&ni)) {
+        ni = LoadUserNetworkConfig();
+    }
+    ECHO("[ETH] Network Configuration:\n");
+    ECHO("[ETH]  MAC  : %02X:%02X:%02X:%02X:%02X:%02X\n", ni.mac[0], ni.mac[1], ni.mac[2],
+         ni.mac[3], ni.mac[4], ni.mac[5]);
+    ECHO("[ETH]  IP   : %u.%u.%u.%u\n", ni.ip[0], ni.ip[1], ni.ip[2], ni.ip[3]);
+    ECHO("[ETH]  Mask : %u.%u.%u.%u\n", ni.sn[0], ni.sn[1], ni.sn[2], ni.sn[3]);
+    ECHO("[ETH]  GW   : %u.%u.%u.%u\n", ni.gw[0], ni.gw[1], ni.gw[2], ni.gw[3]);
+    ECHO("[ETH]  DNS  : %u.%u.%u.%u\n", ni.dns[0], ni.dns[1], ni.dns[2], ni.dns[3]);
+    ECHO("[ETH]  DHCP : %s\n", ni.dhcp ? "Enabled" : "Disabled");
+}
+
+/**
+ * @brief Read 12V supply voltage (cached, no ADC access).
+ *
+ * @return None
+ */
+static void cmd_get_supply(void) {
+    system_telemetry_t sys = {0};
+    if (MeterTask_GetSystemTelemetry(&sys)) {
+        ECHO("12V Supply: %.2f V\n", sys.vsupply_volts);
+    } else {
+        ECHO("12V Supply: N/A (telemetry not ready)\n");
+    }
+}
+
+/**
+ * @brief Read USB supply voltage (cached, no ADC access).
+ *
+ * @return None
+ */
+static void cmd_get_usb(void) {
+    system_telemetry_t sys = {0};
+    if (MeterTask_GetSystemTelemetry(&sys)) {
+        ECHO("USB Supply: %.2f V\n", sys.vusb_volts);
+    } else {
+        ECHO("USB Supply: N/A (telemetry not ready)\n");
+    }
+}
+
+/**
+ * @brief Asynchronously dump the error event log region.
+ *
+ * @details
+ * Issues a non-blocking request to StorageTask to print the error event log
+ * region in the same formatted hex layout as the full EEPROM dump, but limited
+ * to the error log address range.
+ */
+static void cmd_read_error_log(void) {
+    if (!storage_dump_error_log_async()) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK3, 0x7);
+        ERROR_PRINT_CODE(errorcode, "%s Failed to enqueue error log dump (storage busy)\r\n",
+                         CONSOLE_TASK_TAG);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+    }
+}
+
+/**
+ * @brief Asynchronously dump the warning event log region.
+ *
+ * @details
+ * Issues a non-blocking request to StorageTask to print the warning event log
+ * region in the same formatted hex layout as the full EEPROM dump, but limited
+ * to the warning log address range.
+ */
+static void cmd_read_warning_log(void) {
+    if (!storage_dump_warning_log_async()) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK3, 0x8);
+        ERROR_PRINT_CODE(errorcode, "%s Failed to enqueue warning log dump (storage busy)\r\n",
+                         CONSOLE_TASK_TAG);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+    }
+}
+
+/**
+ * @brief Asynchronously clear the error event log region.
+ *
+ * @details
+ * Requests StorageTask to erase the error event log region in small chunks.
+ * The operation runs in the background; this command returns immediately.
+ */
+static void cmd_clear_error_log(void) {
+    if (!storage_clear_error_log_async()) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK3, 0x9);
+        ERROR_PRINT_CODE(errorcode, "%s Failed to enqueue error log clear (storage busy)\r\n",
+                         CONSOLE_TASK_TAG);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+    } else {
+        ECHO("Error event log clear requested\n");
+    }
+}
+
+/**
+ * @brief Asynchronously clear the warning event log region.
+ *
+ * @details
+ * Requests StorageTask to erase the warning event log region in small chunks.
+ * The operation runs in the background; this command returns immediately.
+ */
+static void cmd_clear_warning_log(void) {
+    if (!storage_clear_warning_log_async()) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK3, 0xA);
+        ERROR_PRINT_CODE(errorcode, "%s Failed to enqueue warning log clear (storage busy)\r\n",
+                         CONSOLE_TASK_TAG);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+    } else {
+        ECHO("Warning event log clear requested\n");
+    }
+}
+
+/** @} */
+
+/**
+ * @brief Parse and dispatch command line to handler function.
+ *
+ * Parses the input command line, separates command from arguments, converts
+ * to uppercase for case-insensitive matching, and routes to the appropriate
+ * handler function. Unknown commands are reported to user.
+ *
+ * Command Processing:
+ * 1. Trim whitespace from input line
+ * 2. Split command name from arguments
+ * 3. Convert command to uppercase
+ * 4. Match against known commands
+ * 5. Call corresponding handler with arguments
+ *
+ * @param[in] line Null-terminated command line string.
+ *
+ * @note Modifies a local copy of the input line during parsing.
+ * @note Empty lines are ignored silently.
+ */
+static void dispatch_command(const char *line) {
+    char buf[LINE_BUF_SIZE];
+    strncpy(buf, line, sizeof(buf) - 1);
+    buf[sizeof(buf) - 1] = '\0';
+
+    /* Trim and check for empty input */
+    char *trimmed = trim(buf);
+    if (strlen(trimmed) == 0)
+        return;
+
+    /* Separate command from arguments */
+    char *args = strchr(trimmed, ' ');
+    if (args) {
+        *args = '\0';
+        args++;
+        args = trim(args);
+    }
+
+    /* Normalize command to uppercase for matching */
+    for (char *p = trimmed; *p; p++) {
+        *p = (char)toupper((unsigned char)*p);
+    }
+
+    /* GENERAL COMMANDS */
+    if (strcmp(trimmed, "HELP") == 0 || strcmp(trimmed, "?") == 0) {
+        cmd_help();
+    } else if (strcmp(trimmed, "SYSINFO") == 0) {
+        cmd_sysinfo();
+    } else if (strcmp(trimmed, "GET_TEMP") == 0) {
+        cmd_get_temp();
+    } else if (strcmp(trimmed, "REBOOT") == 0) {
+        cmd_reboot();
+    } else if (strcmp(trimmed, "BOOTSEL") == 0) {
+        cmd_bootsel();
+    } else if (strcmp(trimmed, "CLR_ERR") == 0) {
+        cmd_clr_err();
+    } else if (strcmp(trimmed, "RFS") == 0) {
+        ECHO("Restoring factory defaults...\n");
+        if (storage_load_defaults(10000)) {
+            ECHO("Factory defaults written. Rebooting...\n");
+            vTaskDelay(pdMS_TO_TICKS(100));
+            Health_RebootNow("CLI REBOOT");
+        } else {
+            ERROR_PRINT("Failed to write factory defaults\n");
+        }
+    }
+
+    /* OUTPUT CONTROL AND MEASUREMENT */
+    else if (strcmp(trimmed, "SET_CH") == 0) {
+        cmd_set_ch(args ? args : "");
+    } else if (strcmp(trimmed, "GET_CH") == 0) {
+        cmd_get_ch(args ? args : "");
+    } else if (strcasecmp(trimmed, "OC_STATUS") == 0) {
+        cmd_oc_status(args);
+    } else if (strcasecmp(trimmed, "OC_RESET") == 0) {
+        cmd_oc_reset(args);
+    } else if (strcmp(trimmed, "READ_HLW8032") == 0) {
+        if (args) {
+            cmd_read_hlw8032_ch(args);
+        } else {
+            cmd_read_hlw8032_all();
+        }
+    } else if (strcmp(trimmed, "CALIBRATE") == 0) {
+        cmd_calibrate(args ? args : "");
+    } else if (strcmp(trimmed, "AUTO_CAL_ZERO") == 0) {
+        cmd_auto_cal_zero(args ? args : "");
+    } else if (strcmp(trimmed, "AUTO_CAL_V") == 0) {
+        cmd_auto_cal_v(args ? args : "");
+    } else if (strcmp(trimmed, "AUTO_CAL_I") == 0) {
+        cmd_auto_cal_i(args ? args : "");
+    } else if (strcmp(trimmed, "SHOW_CALIB") == 0) {
+        cmd_show_calib(args ? args : "");
+    }
+
+    /* NETWORK SETTINGS */
+    else if (strcmp(trimmed, "NETINFO") == 0) {
+        cmd_netinfo();
+    } else if (strcmp(trimmed, "SET_IP") == 0) {
+        cmd_set_ip(args ? args : "");
+    } else if (strcmp(trimmed, "SET_SN") == 0) {
+        cmd_set_sn(args ? args : "");
+    } else if (strcmp(trimmed, "SET_GW") == 0) {
+        cmd_set_gw(args ? args : "");
+    } else if (strcmp(trimmed, "SET_DNS") == 0) {
+        cmd_set_dns(args ? args : "");
+    } else if (strcmp(trimmed, "CONFIG_NETWORK") == 0) {
+        cmd_config_network(args ? args : "");
+    }
+
+    /* DEBUG COMMANDS */
+    else if (strcmp(trimmed, "GET_SUPPLY") == 0) {
+        cmd_get_supply();
+    } else if (strcmp(trimmed, "GET_USB") == 0) {
+        cmd_get_usb();
+    } else if (strcmp(trimmed, "CALIB_TEMP") == 0) {
+        cmd_calib_temp(args ? args : "");
+    } else if (strcmp(trimmed, "DUMP_EEPROM") == 0) {
+        if (!storage_dump_formatted_async()) {
+            ERROR_PRINT("EEPROM dump enqueue failed\n");
+        }
+    } else if (strcmp(trimmed, "READ_ERROR") == 0) {
+        cmd_read_error_log();
+    } else if (strcmp(trimmed, "READ_WARNING") == 0) {
+        cmd_read_warning_log();
+    } else if (strcmp(trimmed, "CLEAR_ERROR") == 0) {
+        cmd_clear_error_log();
+        Switch_SetFaultLed(false, 0);
+    } else if (strcmp(trimmed, "CLEAR_WARNING") == 0) {
+        cmd_clear_warning_log();
+        Switch_SetFaultLed(false, 0);
+    } else if (strcmp(trimmed, "BAADCAFE") == 0) {
+        ECHO("Erasing EEPROM... (THIS CANNOT BE UNDONE!)\n");
+        storage_erase_all_async();
+    } else if (strcmp(trimmed, "PROV") == 0) {
+        cmd_prov(args ? args : "");
+    } else {
+        ERROR_PRINT("Unknown command: '%s'. Type HELP for list.\n", trimmed);
+    }
+}
+
+/**
+ * @brief Main console task function.
+ *
+ * Continuously polls USB-CDC for character input, accumulates complete command
+ * lines, and dispatches them to handler functions. Supports power management by
+ * suspending command processing in standby mode while maintaining heartbeat.
+ *
+ * Operation Modes:
+ * - RUN: Normal operation with active USB-CDC polling and command processing
+ * - STANDBY: Suspended operation with reduced heartbeat rate, no command processing
+ *
+ * Input Handling:
+ * - Polls USB-CDC at CONSOLE_POLL_MS intervals (non-blocking)
+ * - Accumulates characters until CR or LF received
+ * - Supports backspace/delete for line editing
+ * - Dispatches complete lines to command parser
+ *
+ * Power Management:
+ * - Detects power state transitions automatically
+ * - Suspends all USB-CDC operations in standby
+ * - Maintains reduced heartbeat rate to prevent watchdog timeout
+ * - Resumes normal operation on exit from standby
+ *
+ * @param[in] arg Task parameters (unused).
+ */
+static void ConsoleTask(void *arg) {
+    (void)arg;
+
+    /* Print startup banner */
+    ECHO("%s Task started\r\n", CONSOLE_TASK_TAG);
+    vTaskDelay(pdMS_TO_TICKS(1500));
+    ECHO("\n");
+    ECHO("=== ENERGIS Console Ready ===\n");
+    ECHO("Type HELP for available commands\n");
+    ECHO("\n");
+
+    const TickType_t poll_ticks = pdMS_TO_TICKS(CONSOLE_POLL_MS);
+    static uint32_t hb_cons_ms = 0;
+
+    /* Main event loop */
+    for (;;) {
+        uint32_t __now = to_ms_since_boot(get_absolute_time());
+
+        /* Check current system power state */
+        power_state_t pwr_state = Power_GetState();
+
+        /* Standby mode: suspend command processing, maintain heartbeat */
+        if (pwr_state == PWR_STATE_STANDBY) {
+            if ((__now - hb_cons_ms) >= 500U) {
+                hb_cons_ms = __now;
+                Health_Heartbeat(HEALTH_ID_CONSOLE);
+            }
+            vTaskDelay(pdMS_TO_TICKS(300));
+            continue;
+        }
+
+        /* Normal operation: full USB-CDC polling and command processing */
+
+        /* Send periodic heartbeat */
+        if ((__now - hb_cons_ms) >= CONSOLETASKBEAT_MS) {
+            hb_cons_ms = __now;
+            Health_Heartbeat(HEALTH_ID_CONSOLE);
+        }
+
+        /* Poll for input character (non-blocking) */
+        int ch_int = getchar_timeout_us(0);
+
+        if (ch_int != PICO_ERROR_TIMEOUT) {
+            char ch = (char)ch_int;
+
+            /* Process character based on type */
+            if (ch == '\b' || ch == 0x7F) {
+                /* Backspace: remove last character */
+                if (line_len > 0) {
+                    line_len--;
+                }
+            } else if (ch == '\r' || ch == '\n') {
+                /* Line terminator: dispatch complete command */
+                line_buf[line_len] = '\0';
+                if (line_len > 0) {
+                    dispatch_command(line_buf);
+                    line_len = 0;
+                }
+                log_printf("\r\n");
+            } else if (line_len < (int)(sizeof(line_buf) - 1)) {
+                /* Regular character: append to buffer */
+                line_buf[line_len++] = ch;
+            }
+        } else {
+            /* No input available, yield to other tasks */
+            vTaskDelay(poll_ticks);
+        }
+    }
+}
+
+/* Public API Implementation */
+
+/** See consoletask.h for detailed documentation. */
+BaseType_t ConsoleTask_Init(bool enable) {
+    /* Skip initialization if disabled */
+    if (!enable) {
+        return pdPASS;
+    }
+
+    /* Wait for logger readiness */
+    {
+        extern bool Logger_IsReady(void);
+        TickType_t t0 = xTaskGetTickCount();
+        while (!Logger_IsReady() && (xTaskGetTickCount() - t0) < pdMS_TO_TICKS(2000)) {
+            vTaskDelay(pdMS_TO_TICKS(10));
+        }
+    }
+
+    /* Create inter-task message queues */
+    extern QueueHandle_t q_power, q_cfg, q_meter, q_net;
+    q_power = xQueueCreate(8, sizeof(power_msg_t));
+    q_meter = xQueueCreate(8, sizeof(meter_msg_t));
+    q_net = xQueueCreate(8, sizeof(net_msg_t));
+    q_cfg = xQueueCreate(8, sizeof(storage_msg_t));
+
+    /* Verify queue creation */
+    if (!q_power || !q_cfg || !q_meter || !q_net) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK3, 0xB);
+        ERROR_PRINT_CODE(errorcode, "%s Queue creation failed\r\n", CONSOLE_TASK_TAG);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return pdFAIL;
+    }
+
+    /* Create main console task */
+    extern void ConsoleTask(void *arg);
+    if (xTaskCreate(ConsoleTask, "Console", 1024, NULL, CONSOLETASK_PRIORITY, NULL) != pdPASS) {
+#if ERRORLOGGER
+        uint16_t errorcode =
+            ERR_MAKE_CODE(ERR_MOD_CONSOLE, ERR_SEV_ERROR, ERR_FID_CONSOLETASK3, 0xC);
+        ERROR_PRINT_CODE(errorcode, "%s Failed to create task\r\n", CONSOLE_TASK_TAG);
+        Storage_EnqueueErrorCode(errorcode);
+#endif
+        return pdFAIL;
+    }
+
+    INFO_PRINT("[Console] Task initialized (polling USB-CDC @ %ums)\r\n", CONSOLE_POLL_MS);
+    return pdPASS;
+}
+
+/** See consoletask.h for detailed documentation. */
+bool Console_IsReady(void) {
+    extern QueueHandle_t q_cfg;
+    return (q_cfg != NULL);
+}

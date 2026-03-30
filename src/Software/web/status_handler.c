@@ -13,15 +13,13 @@
 #include "status_handler.h"
 #include "../tasks/HealthTask.h"
 #include "../tasks/PDCardTask.h"
+#include "../tasks/StorageTask.h"
 #include "../tasks/USBATask.h"
 #include "../drivers/PAC1720_driver.h"
 #include "../drivers/ethernet_driver.h"
 #include "../drivers/socket.h"
 
 #define STATUS_TAG  "[STATUS]"
-
-/* Boot time reference (set once on first call) */
-static uint32_t s_boot_ms = 0;
 
 static void send_json(uint8_t sock, const char *json, int len) {
     char hdr[160];
@@ -43,14 +41,24 @@ static void send_json(uint8_t sock, const char *json, int len) {
 void handle_status_request(uint8_t sock) {
     NETLOG_PRINT(">> handle_status_request\r\n");
 
-    if (s_boot_ms == 0) s_boot_ms = to_ms_since_boot(get_absolute_time());
-    uint32_t uptime_s = (to_ms_since_boot(get_absolute_time()) - s_boot_ms) / 1000;
+    uint32_t uptime_s = to_ms_since_boot(get_absolute_time()) / 1000;
 
-    /* Read W5500 IP and link state */
+    /* Read W5500 live IP and link state */
     uint8_t ip[4] = {0};
     getSIPR(ip);
     w5500_PhyLink link = w5500_get_link_status();
     const char *link_str = (link == PHY_LINK_ON) ? "100M Full" : "No Link";
+
+    /* Read stored network config and identity for settings fields */
+    pdnode_net_cfg_t net_cfg;
+    memset(&net_cfg, 0, sizeof(net_cfg));
+    Storage_GetNetConfig(&net_cfg);
+
+    pdnode_identity_t ident;
+    memset(&ident, 0, sizeof(ident));
+    Storage_GetIdentity(&ident);
+    if (ident.serial[0] == '\0')
+        memcpy(ident.serial, "UNPROVISIONED", 14);
 
     /* Allocate JSON buffer — 8 KB covers all PD + USB-A fields with margin */
     const int cap = 8192;
@@ -74,13 +82,22 @@ void handle_status_request(uint8_t sock) {
         "\"link\":\"%s\","
         "\"uptime\":%lu,"
         "\"fw\":\"%s\","
-        "\"hw\":\"%s\""
+        "\"hw\":\"%s\","
+        "\"sn\":\"%u.%u.%u.%u\","
+        "\"dns\":\"%u.%u.%u.%u\","
+        "\"mac\":\"%02X:%02X:%02X:%02X:%02X:%02X\","
+        "\"serial\":\"%s\""
         "},",
         ip[0], ip[1], ip[2], ip[3],
         link_str,
         (unsigned long)uptime_s,
         FIRMWARE_VERSION,
-        HARDWARE_VERSION);
+        HARDWARE_VERSION,
+        net_cfg.sn[0],  net_cfg.sn[1],  net_cfg.sn[2],  net_cfg.sn[3],
+        net_cfg.dns[0], net_cfg.dns[1], net_cfg.dns[2], net_cfg.dns[3],
+        net_cfg.mac[0], net_cfg.mac[1], net_cfg.mac[2],
+        net_cfg.mac[3], net_cfg.mac[4], net_cfg.mac[5],
+        ident.serial);
 
     Health_Heartbeat(HEALTH_ID_NET);
 

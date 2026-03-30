@@ -1,0 +1,281 @@
+/**
+ * @file src/web_handlers/page_content.c
+ * @author DvidMakesThings - David Sipos
+ *
+ * @version 1.0.0
+ * @date 2025-11-07
+ *
+ * @details
+ * Implementation of HTML page content routing and storage management.
+ * Provides simple string matching to map HTTP request paths to flash-stored HTML content.
+ * Uses gzipped blobs for frequently accessed pages to reduce transfer size.
+ *
+ * @project ENERGIS - The Managed PDU Project for 10-Inch Rack
+ * @github https://github.com/DvidMakesThings/HW_10-In-Rack_PDU
+ */
+
+#include "../CONFIG.h"
+#include "../html/control_gz.h"
+#include "../html/help_gz.h"
+#include "../html/settings_gz.h"
+
+/**
+ * @brief HTML content for the Control page.
+ *
+ * This string contains the HTML markup for the Control page,
+ * allowing users to toggle power channels and monitor data.
+ */
+const char control_html[] =
+    "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\" /><meta name=\"viewport\" "
+    "content=\"width=device-width,initial-scale=1.0\"><title>ENERGIS 10IN Managed PDU - "
+    "Control</title><style>* "
+    "{ margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif } body { background: "
+    "#1a1d23; color: #e4e4e4 } a { text-decoration: none; color: #aaa } a:hover { color: #fff } "
+    ".topbar { height: 50px; background: #242731; display: flex; align-items: center; padding: 0 "
+    "20px } .topbar h1 { font-size: 1.2rem; color: #fff } .container { display: flex; height: "
+    "calc(100vh - 50px) } .sidebar { width: 220px; background: #2e323c; padding: 20px 0 } .sidebar "
+    "ul { list-style: none; margin-left: 20px; } .sidebar li { padding: 10px 20px } .sidebar "
+    "li:hover { background: "
+    "#3b404d } .main-content { flex: 1; padding: 20px; overflow-y: auto } table { width: 100%; "
+    "border-collapse: collapse; margin-top: 1rem } th, td { text-align: left; padding: .75rem; "
+    "border-bottom: 1px solid #3f4450 } th { background: #2e323c } .switch { position: relative; "
+    "display: inline-block; width: 50px; height: 24px } .switch input { opacity: 0; width: 0; "
+    "height: 0 } .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: "
+    "0; background: #999; transition: .4s; border-radius: 24px } .slider:before { position: "
+    "absolute; content: \"\"; height: 18px; width: 18px; left: 3px; bottom: 3px; background: #fff; "
+    "transition: .4s; border-radius: 50% } input:checked+.slider { background: #3fa7ff } "
+    "input:checked+.slider:before { transform: translateX(26px) } .btn { background: #3fa7ff; "
+    "border: none; padding: 10px 16px; color: #fff; cursor: pointer; border-radius: 4px; "
+    "font-size: .9rem; margin-right: 8px } .btn:hover { background: #1f8ae3 } .btn-green { "
+    "background: #28a745 } .btn-green:hover { background: #218838 } .btn-red { background: #dc3545 "
+    "} .btn-red:hover { background: #c82333 } .status { margin-top: 1rem; background: #2e323c; "
+    "padding: 10px; border-radius: 4px }</style><script>let pendingChanges = new Set(); function "
+    "updateStatus() { fetch('/api/status') .then(r =>r.json()) .then(data =>{ "
+    "data.channels.forEach((ch, i) =>{ document.getElementById(`voltage-${i + 1}`).innerText = "
+    "ch.voltage.toFixed(2); document.getElementById(`current-${i + 1}`).innerText = "
+    "ch.current.toFixed(2); document.getElementById(`uptime-${i + 1}`).innerText = ch.uptime; "
+    "document.getElementById(`power-${i + 1}`).innerText = ch.power.toFixed(2); if "
+    "(!pendingChanges.has(i + 1)) document.getElementById(`toggle-${i + 1}`).checked = ch.state; "
+    "}); document.getElementById('internal-temperature').innerText = "
+    "data.internalTemperature.toFixed(1); document.getElementById('temp-unit').innerText = "
+    "data.temperatureUnit || '°C'; document.getElementById('system-status').innerText = "
+    "data.systemStatus; }) .catch(console.error); } function toggleChannel(c) { "
+    "pendingChanges.add(c); } function applyChanges(e) { e.preventDefault(); let fd = new "
+    "FormData(e.target), body = new URLSearchParams(); for (let [k] of fd) if "
+    "(k.startsWith('channel')) { let i = +k.replace('channel', ''); if "
+    "(document.getElementById(`toggle-${i}`).checked) body.append(k, 'on'); } "
+    "fetch('/api/control', { "
+    "method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: "
+    "body.toString() }) .then(r =>{ if (!r.ok) throw ''; pendingChanges.clear(); updateStatus(); "
+    "}) .catch(_ =>updateStatus()); } function setAll(state) { for (let i = 1; i<= 8; i++) { "
+    "document.getElementById(`toggle-${i}`).checked = state; toggleChannel(i); } } "
+    "window.addEventListener('load', () =>{ updateStatus(); setInterval(updateStatus, 3000); "
+    "});</script></head><body><div class=\"topbar\"><h1>ENERGIS 10IN  Managed "
+    "PDU</h1></div><div "
+    "class=\"container\"><nav class=\"sidebar\"><ul><li><a "
+    "href=\"control.html\">Control</a></li><li><a href=\"settings.html\">Settings</a></li><li><a "
+    "href=\"help.html\">Help</a></li><li><a href=\"user_manual.html\">User Manual</a></li><li><a "
+    "href=\"automation_manual.html\">Automation Manual</a></li></ul></nav><main "
+    "class=\"main-content\"><h2>Control</h2><p>Manage power channels and monitor "
+    "data.</p><form method=\"post\" action=\"/api/control\" "
+    "onsubmit=\"applyChanges(event)\"><table><tr><th>Channel</th><th>Switch</th><th>Voltage "
+    "(V)</th><th>Current (A)</th><th>Uptime (s)</th><th>Power "
+    "(W)</th></tr><tr><td>1</td><td><label class=\"switch\"><input id=\"toggle-1\" "
+    "type=\"checkbox\" name=\"channel1\" onclick=\"toggleChannel(1)\"><span "
+    "class=\"slider\"></span></label></td><td id=\"voltage-1\">--</td><td "
+    "id=\"current-1\">--</td><td id=\"uptime-1\">--</td><td "
+    "id=\"power-1\">--</td></tr><tr><td>2</td><td><label class=\"switch\"><input id=\"toggle-2\" "
+    "type=\"checkbox\" name=\"channel2\" onclick=\"toggleChannel(2)\"><span "
+    "class=\"slider\"></span></label></td><td id=\"voltage-2\">--</td><td "
+    "id=\"current-2\">--</td><td id=\"uptime-2\">--</td><td "
+    "id=\"power-2\">--</td></tr><tr><td>3</td><td><label class=\"switch\"><input id=\"toggle-3\" "
+    "type=\"checkbox\" name=\"channel3\" onclick=\"toggleChannel(3)\"><span "
+    "class=\"slider\"></span></label></td><td id=\"voltage-3\">--</td><td "
+    "id=\"current-3\">--</td><td id=\"uptime-3\">--</td><td "
+    "id=\"power-3\">--</td></tr><tr><td>4</td><td><label class=\"switch\"><input id=\"toggle-4\" "
+    "type=\"checkbox\" name=\"channel4\" onclick=\"toggleChannel(4)\"><span "
+    "class=\"slider\"></span></label></td><td id=\"voltage-4\">--</td><td "
+    "id=\"current-4\">--</td><td id=\"uptime-4\">--</td><td "
+    "id=\"power-4\">--</td></tr><tr><td>5</td><td><label class=\"switch\"><input id=\"toggle-5\" "
+    "type=\"checkbox\" name=\"channel5\" onclick=\"toggleChannel(5)\"><span "
+    "class=\"slider\"></span></label></td><td id=\"voltage-5\">--</td><td "
+    "id=\"current-5\">--</td><td id=\"uptime-5\">--</td><td "
+    "id=\"power-5\">--</td></tr><tr><td>6</td><td><label class=\"switch\"><input id=\"toggle-6\" "
+    "type=\"checkbox\" name=\"channel6\" onclick=\"toggleChannel(6)\"><span "
+    "class=\"slider\"></span></label></td><td id=\"voltage-6\">--</td><td "
+    "id=\"current-6\">--</td><td id=\"uptime-6\">--</td><td "
+    "id=\"power-6\">--</td></tr><tr><td>7</td><td><label class=\"switch\"><input id=\"toggle-7\" "
+    "type=\"checkbox\" name=\"channel7\" onclick=\"toggleChannel(7)\"><span "
+    "class=\"slider\"></span></label></td><td id=\"voltage-7\">--</td><td "
+    "id=\"current-7\">--</td><td id=\"uptime-7\">--</td><td "
+    "id=\"power-7\">--</td></tr><tr><td>8</td><td><label class=\"switch\"><input id=\"toggle-8\" "
+    "type=\"checkbox\" name=\"channel8\" onclick=\"toggleChannel(8)\"><span "
+    "class=\"slider\"></span></label></td><td id=\"voltage-8\">--</td><td "
+    "id=\"current-8\">--</td><td id=\"uptime-8\">--</td><td "
+    "id=\"power-8\">--</td></tr></table><br><button type=\"submit\" class=\"btn btn-green\">Apply "
+    "Changes</button><button type=\"button\" class=\"btn\" style=\"margin-left:60px\" "
+    "onclick=\"setAll(true)\">All On</button><button type=\"button\" class=\"btn btn-red\" "
+    "onclick=\"setAll(false)\">All Off</button></form><div class=\"status\"><p><strong>Internal "
+    "Temperature:</strong><span id=\"internal-temperature\">--</span><span "
+    "id=\"temp-unit\">°C</span></p><p><strong>System Status:</strong><span "
+    "id=\"system-status\">--</span></p></div></main></div></body></html>\n";
+
+/**
+ * @brief HTML content for the Settings page.
+ *
+ * This string contains the HTML markup for the Settings page,
+ * allowing users to configure network, device, and temperature unit settings.
+ *
+ * @note The Settings page content is stored as a gzip-compressed blob in settings_gz.h
+ */
+// const char settings_html[] =
+
+/**
+ * @brief HTML content for the Help page.
+ *
+ * This string contains the HTML markup for the Help page,
+ * providing guidance and links to manuals for the ENERGIS 10IN Managed PDU.
+ *
+ * @note The Help page content is stored as a gzip-compressed blob in help_gz.h
+ */
+
+// const char help_html[] =
+
+/**
+ * @brief HTML content for the User Manual page.
+ *
+ * This string contains the HTML markup for the User Manual page,
+ * embedding the user manual PDF and providing a download link.
+ */
+const char user_manual_html[] =
+    "<!DOCTYPE html><html><head><meta charset=\"UTF-8\" /><meta name=\"viewport\" "
+    "content=\"width=device-width, initial-scale=1.0\"><title>ENERGIS 10IN Managed PDU - User "
+    "Manual</title><style>* { margin: 0; padding: 0; box-sizing: border-box; font-family: "
+    "sans-serif; } body { background: #1a1d23; color: #e4e4e4; } a { color: #aaa; text-decoration: "
+    "none; } a:hover { color: #fff; } .topbar { height: 50px; background: #242731; display: flex; "
+    "align-items: center; padding: 0 20px; } .topbar h1 { font-size: 1.2rem; color: #fff; } "
+    ".container { display: flex; height: calc(100vh - 50px); } .sidebar { width: 220px; "
+    "background: #2e323c; padding: 20px 0; } .sidebar ul { list-style: none; margin-left: 20px;} "
+    ".sidebar li { "
+    "padding: 10px 20px; } .sidebar li:hover { background: #3b404d; } .sidebar a { color: #ccc; } "
+    ".sidebar a:hover { color: #fff; } .content { flex: 1; display: flex; flex-direction: column; "
+    "} .pdf-container { flex: 1; border: 1px solid #444; } .note { padding: 0.5rem; text-align: "
+    "right; font-size: 0.9rem; }</style></head><body><div class=\"topbar\"><h1>ENERGIS 10IN "
+    "Managed PDU</h1></div><div class=\"container\"><div class=\"sidebar\"><ul><li><a "
+    "href=\"control.html\">Control</a></li><li><a href=\"settings.html\">Settings</a></li><li><a "
+    "href=\"help.html\">Help</a></li><li><a href=\"user_manual.html\">User Manual</a></li><li><a "
+    "href=\"automation_manual.html\">Automation Manual</a></li></ul></div><div "
+    "class=\"content\"><div class=\"pdf-container\"><iframe "
+    "src=\"https://dvidmakesthings.github.io/HW_10-In-Rack_PDU/Manuals/"
+    "ENERGIS_UserManual_rev_1.0.0.pdf\" width=\"100%\" height=\"100%\" "
+    "frameborder=\"0\"></iframe></div><p class=\"note\">If your browser does not display the PDF, "
+    "you can download it directly<a "
+    "href=\"https://dvidmakesthings.github.io/HW_10-In-Rack_PDU/Manuals/"
+    "ENERGIS_UserManual_rev_1.0.0.pdf\" "
+    "target=\"_blank\">here</a>.</p></div></div></body></html>\n";
+
+/**
+ * @brief HTML content for the Automation Manual page.
+ *
+ * This string contains the HTML markup for the Automation Manual page,
+ * embedding the Automation Manual PDF and providing a download link.
+ */
+const char automation_manual_html[] =
+    "<!DOCTYPE html><html><head><meta charset=\"UTF-8\" /><meta name=\"viewport\" "
+    "content=\"width=device-width, initial-scale=1.0\"><title>ENERGIS 10IN Managed PDU - "
+    "Programming "
+    "Manual</title><style>* { margin: 0; padding: 0; box-sizing: border-box; font-family: "
+    "sans-serif; } body { background: #1a1d23; color: #e4e4e4; } a { color: #aaa; text-decoration: "
+    "none; } a:hover { color: #fff; } .topbar { height: 50px; background: #242731; display: flex; "
+    "align-items: center; padding: 0 20px; } .topbar h1 { font-size: 1.2rem; color: #fff; } "
+    ".container { display: flex; height: calc(100vh - 50px); } .sidebar { width: 220px; "
+    "background: #2e323c; padding: 20px 0; } .sidebar ul { list-style: none; margin-left: 20px; } "
+    ".sidebar li { "
+    "padding: 10px 20px; } .sidebar li:hover { background: #3b404d; } .sidebar a { color: #ccc; } "
+    ".sidebar a:hover { color: #fff; } /* Right-side area */ .content { flex: 1; display: flex; "
+    "flex-direction: column; } .pdf-container { flex: 1; border: 1px solid #444; } .note { "
+    "padding: 0.5rem; text-align: right; font-size: 0.9rem; }</style></head><body><div "
+    "class=\"topbar\"><h1>ENERGIS 10IN Managed PDU</h1></div><div class=\"container\"><div "
+    "class=\"sidebar\"><ul><li><a href=\"control.html\">Control</a></li><li><a "
+    "href=\"settings.html\">Settings</a></li><li><a href=\"help.html\">Help</a></li><li><a "
+    "href=\"user_manual.html\">User Manual</a></li><li><a "
+    "href=\"automation_manual.html\">Automation Manual</a></li></ul></div><div "
+    "class=\"content\"><div class=\"pdf-container\"><iframe "
+    "src=\"https://dvidmakesthings.github.io/HW_10-In-Rack_PDU/Manuals/"
+    "ENERGIS_AutomationManual_rev_1.0.0.pdf\" width=\"100%\" height=\"100%\" "
+    "frameborder=\"0\"></iframe></div><p class=\"note\">If your browser does not display the PDF, "
+    "you can download it directly<a "
+    "href=\"https://dvidmakesthings.github.io/HW_10-In-Rack_PDU/Manuals/"
+    "ENERGIS_AutomationManual_rev_1.0.0.pdf\" "
+    "target=\"_blank\">here</a>.</p></div></div></body></html>\n";
+
+/**
+ * @brief Route HTTP request to appropriate HTML page content.
+ * @see page_content.h for detailed documentation.
+ */
+const char *get_page_content(const char *request) {
+    /* Route to settings page */
+    if (strstr(request, "GET /settings.html"))
+        return (const char *)settings_gz;
+
+    /* Route to help page */
+    else if (strstr(request, "GET /help.html"))
+        return (const char *)help_gz;
+
+    /* Route to user manual iframe page */
+    else if (strstr(request, "GET /user_manual.html"))
+        return user_manual_html;
+
+    /* Route to automation manual iframe page */
+    else if (strstr(request, "GET /automation_manual.html"))
+        return automation_manual_html;
+
+    /* Route to control page or root */
+    else if (strstr(request, "GET /control.html") || strstr(request, "GET /"))
+        return (const char *)control_gz;
+
+    /* Default fallback to control page */
+    return (const char *)control_gz;
+}
+
+/**
+ * @brief Get content length and encoding for a requested HTML page.
+ * @see page_content.h for detailed documentation.
+ */
+int get_page_length(const char *request, int *is_gzip) {
+    /* Default to plain HTML */
+    if (is_gzip)
+        *is_gzip = 0;
+
+    /* Settings page (gzipped) */
+    if (strstr(request, "GET /settings.html")) {
+        if (is_gzip)
+            *is_gzip = 1;
+        return (int)settings_gz_len;
+    }
+    /* Help page (gzipped) */
+    else if (strstr(request, "GET /help.html")) {
+        if (is_gzip)
+            *is_gzip = 1;
+        return (int)help_gz_len;
+    }
+    /* User manual page (plain HTML) */
+    else if (strstr(request, "GET /user_manual.html")) {
+        return (int)strlen(user_manual_html);
+    }
+    /* Automation manual page (plain HTML) */
+    else if (strstr(request, "GET /automation_manual.html")) {
+        return (int)strlen(automation_manual_html);
+    }
+    /* Control page or root (gzipped) */
+    else if (strstr(request, "GET /control.html") || strstr(request, "GET /")) {
+        if (is_gzip)
+            *is_gzip = 1;
+        return (int)control_gz_len;
+    }
+
+    /* Default fallback to control page (gzipped) */
+    if (is_gzip)
+        *is_gzip = 1;
+    return (int)control_gz_len;
+}

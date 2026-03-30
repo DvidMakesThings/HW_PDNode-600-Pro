@@ -7,7 +7,8 @@
  *   GET /index.html  → index.html (embedded, gzip)
  *   GET /api/status  → JSON status payload
  *   GET /api/info    → JSON device info
- *   POST /api/usba   → Enable/disable USB-A port
+ *   POST /api/usba    → Enable/disable USB-A port
+ *   POST /api/network → Save network settings (ip, sn, dns)
  *
  * @project PDNode-600 Pro
  * @version 1.0.0
@@ -18,6 +19,7 @@
 #include "status_handler.h"
 #include "index_html.h"
 #include "../tasks/HealthTask.h"
+#include "../tasks/StorageTask.h"
 #include "../tasks/USBATask.h"
 #include "../drivers/socket.h"
 #include "../drivers/ethernet_driver.h"
@@ -149,6 +151,78 @@ static void handle_usba_post(uint8_t sock, const char *req_buf) {
                   (const uint8_t *)resp, rlen, false);
 }
 
+/* Parse "x.x.x.x" IPv4 string into 4-byte array. Returns false on format error. */
+static bool parse_ip(const char *s, uint8_t out[4]) {
+    for (int i = 0; i < 4; i++) {
+        char *end;
+        long v = strtol(s, &end, 10);
+        if (end == s || v < 0 || v > 255) return false;
+        out[i] = (uint8_t)v;
+        s = end;
+        if (i < 3) { if (*s != '.') return false; s++; }
+    }
+    return true;
+}
+
+/* Extract a quoted JSON string field: {"key":"value"} → value */
+static bool json_str_field(const char *body, const char *key,
+                            char *out, int maxlen) {
+    char search[40];
+    snprintf(search, sizeof(search), "\"%s\":\"", key);
+    const char *p = strstr(body, search);
+    if (!p) return false;
+    p += strlen(search);
+    const char *end = strchr(p, '"');
+    if (!end) return false;
+    int len = (int)(end - p);
+    if (len >= maxlen) return false;
+    memcpy(out, p, (size_t)len);
+    out[len] = '\0';
+    return true;
+}
+
+static void handle_network_post(uint8_t sock, const char *req_buf) {
+    const char *body = strstr(req_buf, "\r\n\r\n");
+    if (!body) {
+        const char *err = "{\"ok\":false,\"error\":\"no body\"}";
+        send_response(sock, 400, "application/json",
+                      (const uint8_t *)err, (int)strlen(err), false);
+        return;
+    }
+    body += 4;
+
+    char ip_s[20] = {0}, sn_s[20] = {0}, dns_s[20] = {0};
+    bool have_ip  = json_str_field(body, "ip",  ip_s,  sizeof(ip_s));
+    bool have_sn  = json_str_field(body, "sn",  sn_s,  sizeof(sn_s));
+    bool have_dns = json_str_field(body, "dns", dns_s, sizeof(dns_s));
+
+    pdnode_net_cfg_t cfg;
+    if (!Storage_GetNetConfig(&cfg)) {
+        const char *err = "{\"ok\":false,\"error\":\"storage not ready\"}";
+        send_response(sock, 500, "application/json",
+                      (const uint8_t *)err, (int)strlen(err), false);
+        return;
+    }
+
+    if (have_ip  && !parse_ip(ip_s,  cfg.ip))  have_ip  = false;
+    if (have_sn  && !parse_ip(sn_s,  cfg.sn))  have_sn  = false;
+    if (have_dns && !parse_ip(dns_s, cfg.dns)) have_dns = false;
+
+    if (!have_ip && !have_sn && !have_dns) {
+        const char *err = "{\"ok\":false,\"error\":\"no valid fields\"}";
+        send_response(sock, 400, "application/json",
+                      (const uint8_t *)err, (int)strlen(err), false);
+        return;
+    }
+
+    Storage_SetNetConfig(&cfg);
+
+    char resp[64];
+    int rlen = snprintf(resp, sizeof(resp), "{\"ok\":true}");
+    send_response(sock, 200, "application/json",
+                  (const uint8_t *)resp, rlen, false);
+}
+
 static void handle_not_found(uint8_t sock) {
     const char *body = "<h1>404 Not Found</h1>";
     send_response(sock, 404, "text/html",
@@ -221,6 +295,8 @@ void http_server_process(void) {
             handle_api_info((uint8_t)s_sock);
         } else if (!strncmp(s_buf, "POST /api/usba", 14)) {
             handle_usba_post((uint8_t)s_sock, s_buf);
+        } else if (!strncmp(s_buf, "POST /api/network", 17)) {
+            handle_network_post((uint8_t)s_sock, s_buf);
         } else if (!strncmp(s_buf, "GET / ", 6) ||
                    !strncmp(s_buf, "GET /index.html", 15)) {
             handle_index((uint8_t)s_sock);
